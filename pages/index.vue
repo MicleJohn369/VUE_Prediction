@@ -93,5 +93,10 @@ export default {
     Logo,
     VuetifyLogo,
   },
+  head() {
+    return {
+      title: this.$t('VIEWS.HOME.TITLE'),
+    };
+  },
 };
 </script>

@@ -17,3 +17,14 @@
     </v-col>
   </v-row>
 </template>
+
+<script>
+export default {
+  name: 'Quiniela',
+  nuxtI18n: {
+    paths: {
+      es: '/quiniela',
+    },
+  },
+};
+</script>
