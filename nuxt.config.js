@@ -1,7 +1,9 @@
+import es from './locales/es';
+
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    titleTemplate: '%s - pronostigol-v2',
+    titleTemplate: '%s - Pronostigol',
     title: 'pronostigol-v2',
     meta: [
       { charset: 'utf-8' },
@@ -36,6 +38,19 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    [
+      'nuxt-i18n',
+      {
+        locales: ['es'],
+        defaultLocale: 'es',
+        vueI18n: {
+          fallbackLocale: 'es',
+          messages: {
+            es,
+          },
+        },
+      },
+    ],
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
