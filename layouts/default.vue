@@ -6,8 +6,20 @@
       :clipped="clipped"
       fixed
       app
+      temporary
     >
-      <v-list>
+      <v-list class="pa-0">
+        <v-list-item class="pa-0">
+          <v-list-item-content class="pa-0">
+            <v-list-item-title class="title">
+              <v-img
+                src="https://www.pronostigol.es/img/favicon.png"
+              />
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+      <v-list class="pt-0">
         <v-list-item
           v-for="(item, i) in items"
           :key="i"
@@ -28,33 +40,31 @@
       :clipped-left="clipped"
       fixed
       app
+      color="primary"
+      dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
       <v-toolbar-title v-text="title" />
       <v-spacer />
       <v-btn
         icon
-        @click.stop="rightDrawer = !rightDrawer"
+        href="https://twitter.com/pronostigolesp"
+        title="Cuenta de Twitter"
+        target="_blank"
       >
-        <v-icon>mdi-menu</v-icon>
+        <v-icon>
+          mdi-twitter
+        </v-icon>
+      </v-btn>
+      <v-btn
+        icon
+        href="https://github.com/jualoppaz/pronostigol"
+        title="Repositorio en GitHub"
+        target="_blank"
+      >
+        <v-icon>
+          mdi-github
+        </v-icon>
       </v-btn>
     </v-app-bar>
     <v-main>
@@ -62,28 +72,108 @@
         <nuxt />
       </v-container>
     </v-main>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
     <v-footer
       :absolute="!fixed"
       app
     >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <v-card
+        flat
+        tile
+        width="100%"
+        class="primary lighten-1 text-center"
+        dark
+      >
+        <v-card-text>
+          <v-btn
+            text
+            rounded
+            href="/privacidad"
+          >
+            {{ privacyText }}
+          </v-btn>
+          <v-btn
+            text
+            rounded
+            href="/preguntas-frecuentes"
+          >
+            {{ faqText }}
+          </v-btn>
+          <v-btn
+            text
+            rounded
+            href="/acerca-de"
+          >
+            {{ aboutText }}
+          </v-btn>
+          <v-btn
+            text
+            rounded
+            href="/docs"
+          >
+            {{ apiDocText }}
+          </v-btn>
+        </v-card-text>
+        <v-card-text>
+          <v-btn
+            text
+            rounded
+            href="/quiniela"
+            class="blue darken-3"
+          >
+            {{ quinielaText }}
+          </v-btn>
+          <v-btn
+            text
+            rounded
+            href="/bonoloto"
+            class="black"
+          >
+            {{ bonolotoText }}
+          </v-btn>
+          <v-btn
+            text
+            rounded
+            href="/primitiva"
+            class="green darken-4"
+          >
+            {{ primitivaText }}
+          </v-btn>
+          <v-btn
+            text
+            rounded
+            href="/gordo"
+            class="red accent-4"
+          >
+            {{ gordoText }}
+          </v-btn>
+          <v-btn
+            text
+            rounded
+            href="/euromillones"
+            class="deep-purple darken-4"
+          >
+            {{ euromillonesText }}
+          </v-btn>
+        </v-card-text>
+
+        <v-divider />
+        <v-card-text class="white--text">
+          <strong>
+            <v-icon>
+              mdi-copyright
+            </v-icon>
+            {{ new Date().getFullYear() }}
+          </strong>
+          <v-btn
+            text
+            rounded
+            href="http://www.juanmanuellopezpazos.es"
+            target="_blank"
+          >
+            Juan Manuel López Pazos
+          </v-btn>
+        </v-card-text>
+      </v-card>
     </v-footer>
   </v-app>
 </template>
@@ -92,26 +182,43 @@
 export default {
   data() {
     return {
-      clipped: false,
+      clipped: true,
       drawer: false,
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/',
+          icon: 'mdi-home',
+          title: this.$t('MENU.HOME.TEXT'),
+          to: this.localePath({
+            name: 'index',
+          }),
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire',
+          icon: 'mdi-soccer',
+          title: this.$t('MENU.QUINIELA.TEXT'),
+          to: this.localePath({
+            name: 'quiniela',
+          }),
         },
       ],
       miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js',
+      title: 'Pronostigol',
+      privacyText: this.$t('FOOTER.PRIVACY.TEXT'),
+      faqText: this.$t('FOOTER.FAQ.TEXT'),
+      aboutText: this.$t('FOOTER.ABOUT.TEXT'),
+      apiDocText: this.$t('FOOTER.API_DOC.TEXT'),
+      quinielaText: this.$t('FOOTER.QUINIELA.TEXT'),
+      bonolotoText: this.$t('FOOTER.BONOLOTO.TEXT'),
+      primitivaText: this.$t('FOOTER.PRIMITIVA.TEXT'),
+      gordoText: this.$t('FOOTER.GORDO.TEXT'),
+      euromillonesText: this.$t('FOOTER.EUROMILLONES.TEXT'),
     };
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.v-footer{
+  padding: 0;
+}
+</style>
