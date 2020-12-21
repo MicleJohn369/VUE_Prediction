@@ -50,6 +50,7 @@
           :to="localePath({
             name: 'index',
           })"
+          rounded
           text
           nuxt
         >
