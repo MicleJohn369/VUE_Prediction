@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
+    <v-col cols="12" sm="8">
       <div class="text-center">
         <Logo />
         <div class="text-h1 pb-4">
@@ -9,7 +9,7 @@
         <v-card
           elevation="2"
         >
-          <v-card-text>
+          <v-card-text class="text-justify">
             <v-runtime-template :template="welcomeText" />
           </v-card-text>
           <v-card-text id="games">
@@ -55,6 +55,18 @@
             </v-btn>
           </v-card-text>
         </v-card>
+        <v-card
+          class="mt-3"
+          elevation="2"
+        >
+          <v-card-text>
+            <Timeline
+              id="pronostigolesp"
+              source-type="profile"
+              :options="{ tweetLimit: '4', lang: 'es' }"
+            />
+          </v-card-text>
+        </v-card>
       </div>
     </v-col>
   </v-row>
@@ -63,20 +75,22 @@
 <script>
 import VRuntimeTemplate from 'v-runtime-template';
 import Logo from '@/components/Logo.vue';
+import { Timeline } from 'vue-tweet-embed';
 
 export default {
   components: {
     Logo,
     VRuntimeTemplate,
+    Timeline,
   },
   data() {
     return {
       welcomeText: this.$t('VIEWS.HOME.WELCOME.TEXT'),
-      quinielaText: this.$t('VIEWS.HOME.WELCOME.QUINIELA.TEXT'),
-      bonolotoText: this.$t('VIEWS.HOME.WELCOME.BONOLOTO.TEXT'),
-      primitivaText: this.$t('VIEWS.HOME.WELCOME.PRIMITIVA.TEXT'),
-      gordoText: this.$t('VIEWS.HOME.WELCOME.GORDO.TEXT'),
-      euromillonesText: this.$t('VIEWS.HOME.WELCOME.EUROMILLONES.TEXT'),
+      quinielaText: this.$t('VIEWS.HOME.GAMES.QUINIELA.TEXT'),
+      bonolotoText: this.$t('VIEWS.HOME.GAMES.BONOLOTO.TEXT'),
+      primitivaText: this.$t('VIEWS.HOME.GAMES.PRIMITIVA.TEXT'),
+      gordoText: this.$t('VIEWS.HOME.GAMES.GORDO.TEXT'),
+      euromillonesText: this.$t('VIEWS.HOME.GAMES.EUROMILLONES.TEXT'),
     };
   },
   head() {
