@@ -3,7 +3,7 @@
     size="150"
   >
     <v-img
-      src="/logo.png"
+      src="/images/logo.png"
     />
   </v-avatar>
 </template>
