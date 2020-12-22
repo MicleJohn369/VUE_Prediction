@@ -3,6 +3,8 @@ import es from './locales/es';
 
 import { version } from './package.json';
 
+require('dotenv').config();
+
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -19,6 +21,7 @@ export default {
   },
   publicRuntimeConfig: {
     appVersion: version,
+    apiUrl: process.env.API_URL,
   },
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
@@ -42,6 +45,7 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     '@nuxtjs/moment',
+    '@nuxtjs/dotenv',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
