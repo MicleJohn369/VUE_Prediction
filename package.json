@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "5.12.4",
+    "@nuxtjs/moment": "1.6.1",
     "core-js": "3.8.1",
     "nuxt": "2.14.12",
     "nuxt-i18n": "6.16.0",
