@@ -1,4 +1,9 @@
+/* eslint-disable no-unused-vars */
 import es from './locales/es';
+
+import { version } from './package.json';
+
+require('dotenv').config();
 
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
@@ -14,13 +19,20 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ],
   },
-
+  publicRuntimeConfig: {
+    appVersion: version,
+    apiUrl: process.env.API_URL,
+  },
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
+    {
+      src: '@/assets/global.scss', lang: 'scss',
+    },
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    '@/plugins/nuxt-pronostigol-client.js',
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -32,6 +44,8 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/moment',
+    '@nuxtjs/dotenv',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -64,5 +78,9 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+    extend(config, { isDev, isClient }) {
+      // eslint-disable-next-line no-param-reassign
+      config.resolve.alias.vue = 'vue/dist/vue.common';
+    },
   },
 };

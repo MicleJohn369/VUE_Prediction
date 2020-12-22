@@ -16,6 +16,23 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
+    'no-shadow': [
+      'error',
+      {
+        allow: [
+          'state',
+        ],
+      },
+    ],
+    'no-param-reassign': [
+      'error',
+      {
+        props: true,
+        ignorePropertyModificationsFor: [
+          'Vue',
+        ],
+      },
+    ],
     'no-debugger': [
       'warn',
     ],

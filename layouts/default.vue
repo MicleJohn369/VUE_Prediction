@@ -44,13 +44,26 @@
       dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title v-text="title" />
+      <v-toolbar-title>
+        <v-btn
+          id="pronostigol-toolbar-button"
+          :to="localePath({
+            name: 'index',
+          })"
+          rounded
+          text
+          nuxt
+        >
+          {{ title }}
+        </v-btn>
+      </v-toolbar-title>
       <v-spacer />
       <v-btn
         icon
         href="https://twitter.com/pronostigolesp"
         title="Cuenta de Twitter"
         target="_blank"
+        rel="nofollow"
       >
         <v-icon>
           mdi-twitter
@@ -61,6 +74,7 @@
         href="https://github.com/jualoppaz/pronostigol"
         title="Repositorio en GitHub"
         target="_blank"
+        rel="nofollow"
       >
         <v-icon>
           mdi-github
@@ -113,7 +127,7 @@
             {{ apiDocText }}
           </v-btn>
         </v-card-text>
-        <v-card-text>
+        <v-card-text id="games-footer">
           <v-btn
             text
             rounded
@@ -218,7 +232,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.v-toolbar__content{
+  #pronostigol-toolbar-button{
+    &::before{
+      opacity: 0;
+    }
+
+    &:hover{
+      &::before{
+        opacity: 0.08;
+      }
+    }
+  }
+}
 .v-footer{
   padding: 0;
+
+  #games-footer{
+    .v-btn{
+      margin: 3px 0 3px;
+    }
+  }
 }
 </style>
