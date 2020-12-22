@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import es from './locales/es';
 
+import { version } from './package.json';
+
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -15,7 +17,9 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ],
   },
-
+  publicRuntimeConfig: {
+    appVersion: version,
+  },
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
     {
