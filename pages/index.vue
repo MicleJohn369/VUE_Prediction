@@ -101,6 +101,22 @@
             </v-col>
           </v-row>
         </v-responsive>
+        <v-card
+          class="mt-3 mx-auto"
+          elevation="2"
+          max-width="374"
+        >
+          <v-card-text>
+            <p
+              class="overline"
+              v-text="lastUpdate"
+            />
+            <p
+              class="overline"
+              v-text="currentVersion"
+            />
+          </v-card-text>
+        </v-card>
       </div>
     </v-col>
   </v-row>
@@ -111,11 +127,18 @@ import VRuntimeTemplate from 'v-runtime-template';
 import Logo from '@/components/Logo.vue';
 import { Timeline } from 'vue-tweet-embed';
 
+import utils from '@/utils';
+
+import { mapState } from 'vuex';
+
 export default {
   components: {
     Logo,
     VRuntimeTemplate,
     Timeline,
+  },
+  async fetch() {
+    return this.$store.dispatch('github/getLastCommitDate');
   },
   data() {
     return {
@@ -154,6 +177,20 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    lastCommitDateParsed() {
+      return this.$moment(this.lastCommitDate).format(utils.COMMON.DATE_FORMAT);
+    },
+    ...mapState('github', {
+      lastCommitDate: 'lastCommitDate',
+    }),
+    lastUpdate() {
+      return `${this.$t('VIEWS.HOME.APP_INFO.LAST_UPDATE.TEXT')}: ${this.lastCommitDateParsed}`;
+    },
+    currentVersion() {
+      return `${this.$t('VIEWS.HOME.APP_INFO.CURRENT_VERSION.TEXT')}: ${this.$config.appVersion}`;
+    },
   },
   head() {
     return {
