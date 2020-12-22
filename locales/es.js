@@ -63,6 +63,14 @@ export default {
         TITLE: 'Páginas web recomendadas',
         TEXT: 'A continuación indicamos algunas webs que, desde Pronostigol, consideramos interesantes y relacionadas con la temática que aquí se trata: las estadísticas de sorteos de SELAE.',
       },
+      APP_INFO: {
+        LAST_UPDATE: {
+          TEXT: 'Última actualización',
+        },
+        CURRENT_VERSION: {
+          TEXT: 'Versión actual',
+        },
+      },
     },
   },
 };
