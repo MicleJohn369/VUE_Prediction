@@ -63,6 +63,7 @@
         href="https://twitter.com/pronostigolesp"
         title="Cuenta de Twitter"
         target="_blank"
+        rel="nofollow"
       >
         <v-icon>
           mdi-twitter
@@ -73,6 +74,7 @@
         href="https://github.com/jualoppaz/pronostigol"
         title="Repositorio en GitHub"
         target="_blank"
+        rel="nofollow"
       >
         <v-icon>
           mdi-github
