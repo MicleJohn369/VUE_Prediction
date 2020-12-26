@@ -101,28 +101,32 @@
           <v-btn
             text
             rounded
-            href="/privacidad"
+            to="/privacidad"
+            nuxt
           >
             {{ privacyText }}
           </v-btn>
           <v-btn
             text
             rounded
-            href="/preguntas-frecuentes"
+            to="/preguntas-frecuentes"
+            nuxt
           >
             {{ faqText }}
           </v-btn>
           <v-btn
             text
             rounded
-            href="/acerca-de"
+            to="/acerca-de"
+            nuxt
           >
             {{ aboutText }}
           </v-btn>
           <v-btn
             text
             rounded
-            href="/docs"
+            to="/docs"
+            nuxt
           >
             {{ apiDocText }}
           </v-btn>
@@ -131,7 +135,8 @@
           <v-btn
             text
             rounded
-            href="/quiniela"
+            to="/quiniela"
+            nuxt
             class="blue darken-3"
           >
             {{ quinielaText }}
@@ -139,7 +144,8 @@
           <v-btn
             text
             rounded
-            href="/bonoloto"
+            to="/bonoloto"
+            nuxt
             class="black"
           >
             {{ bonolotoText }}
@@ -147,7 +153,8 @@
           <v-btn
             text
             rounded
-            href="/primitiva"
+            to="/primitiva"
+            nuxt
             class="green darken-4"
           >
             {{ primitivaText }}
@@ -155,7 +162,8 @@
           <v-btn
             text
             rounded
-            href="/gordo"
+            to="/gordo"
+            nuxt
             class="red accent-4"
           >
             {{ gordoText }}
@@ -163,7 +171,8 @@
           <v-btn
             text
             rounded
-            href="/euromillones"
+            to="/euromillones"
+            nuxt
             class="deep-purple darken-4"
           >
             {{ euromillonesText }}
