@@ -16,7 +16,8 @@
             <v-btn
               text
               rounded
-              href="/quiniela"
+              to="/quiniela"
+              nuxt
               class="blue darken-3 white--text"
             >
               {{ quinielaText }}
@@ -24,7 +25,8 @@
             <v-btn
               text
               rounded
-              href="/bonoloto"
+              to="/bonoloto"
+              nuxt
               class="black white--text"
             >
               {{ bonolotoText }}
@@ -32,7 +34,8 @@
             <v-btn
               text
               rounded
-              href="/primitiva"
+              to="/primitiva"
+              nuxt
               class="green darken-4 white--text"
             >
               {{ primitivaText }}
@@ -40,7 +43,8 @@
             <v-btn
               text
               rounded
-              href="/gordo"
+              to="/gordo"
+              nuxt
               class="red accent-4 white--text"
             >
               {{ gordoText }}
@@ -48,7 +52,8 @@
             <v-btn
               text
               rounded
-              href="/euromillones"
+              to="/euromillones"
+              nuxt
               class="deep-purple darken-4 white--text"
             >
               {{ euromillonesText }}
