@@ -108,6 +108,9 @@ export default {
             TEXT: 'Resumen de probabilidades de la Quiniela por categoría',
           },
         },
+        SOURCES: {
+          TEXT: 'Fuentes',
+        },
       },
     },
   },
