@@ -8,7 +8,7 @@
         elevation="2"
       >
         <p
-          class="text-body-2 pa-3 text--secondary"
+          class="text-body-2 pa-3"
           v-text="tocTitle"
         />
         <v-treeview
