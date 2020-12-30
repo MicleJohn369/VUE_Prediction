@@ -32,3 +32,11 @@ span{
     }
   }
 }
+
+a:not([class*=v-]){
+  text-decoration: none;
+
+  &:hover{
+    text-decoration: underline;
+  }
+}
