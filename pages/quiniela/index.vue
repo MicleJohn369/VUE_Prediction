@@ -1,48 +1,59 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12">
-      <div class="blue--text">
-        <div class="text-center text-h1 pb-4">
-          Quiniela
-        </div>
-        <v-card
-          elevation="2"
-        >
-          <p
-            class="text-body-2 pa-3 text--secondary"
-            v-text="tocTitle"
-          />
-          <v-treeview
-            :items="indexItems"
-            expand-icon=""
-            open-all
-            item-children="nested"
-          >
-            <template v-slot:label="{ item }">
-              <v-btn
-                block
-                text
-                link
-                :href="item.target"
-                class="justify-start"
-              >
-                {{ item.emoji }} {{ item.title }}
-              </v-btn>
-            </template>
-          </v-treeview>
-        </v-card>
+      <div class="text-center text-h1 pb-4 blue--text">
+        Quiniela
       </div>
+      <v-card
+        elevation="2"
+      >
+        <p
+          class="text-body-2 pa-3 text--secondary"
+          v-text="tocTitle"
+        />
+        <v-treeview
+          :items="indexItems"
+          expand-icon=""
+          open-all
+          item-children="nested"
+          item-key="target"
+        >
+          <template v-slot:label="{ item }">
+            <v-btn
+              block
+              text
+              link
+              :href="item.target"
+              class="justify-start"
+            >
+              {{ item.emoji }} {{ item.title }}
+            </v-btn>
+          </template>
+        </v-treeview>
+      </v-card>
+      <nuxt-content :document="doc" />
     </v-col>
   </v-row>
 </template>
 
 <script>
+import utils from '@/utils';
+
+import { mapState } from 'vuex';
+
 export default {
   name: 'Quiniela',
   nuxtI18n: {
     paths: {
       es: '/quiniela',
     },
+  },
+  async fetch() {
+    return Promise.all([
+      this.$store.dispatch('posts/getBySlug', {
+        slug: 'quiniela',
+      }),
+    ]);
   },
   data() {
     return {
@@ -91,9 +102,21 @@ export default {
               emoji: '🔸',
             },
           ],
+        }, {
+          title: this.$t('VIEWS.QUINIELA.TOC.SOURCES.TEXT'),
+          target: '#sources',
+          emoji: '📚',
         },
       ],
     };
+  },
+  computed: {
+    ...mapState('posts', {
+      doc: 'current',
+    }),
+  },
+  head() {
+    return utils.getCommonMetas(this.doc);
   },
 };
 </script>
