@@ -3,3 +3,32 @@
     margin-bottom: 0;
   }
 }
+
+span{
+  display: inline-block;
+
+  &.multiplication, &.equal{
+    margin: 0 0.5em 0;
+    vertical-align: baseline;
+  }
+}
+
+.fraction{
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0.2em 0.4ex;
+  text-align: center;
+
+  > span{
+    display: block;
+    padding: 0.15em 0.5em 0;
+
+    &.fup {
+      padding-bottom: 2px;
+    }
+
+    &.fdn{
+      border-top: thin solid black;
+    }
+  }
+}
