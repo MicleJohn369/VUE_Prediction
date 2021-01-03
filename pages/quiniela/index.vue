@@ -1,9 +1,10 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12">
-      <div class="text-center text-h1 pb-4 blue--text">
+      <div class="text-center text-h1 my-3 pb-4 blue--text">
         Quiniela
       </div>
+      <ScrollButton />
       <v-card
         elevation="2"
       >
@@ -40,9 +41,13 @@
 import utils from '@/utils';
 
 import { mapState } from 'vuex';
+import ScrollButton from '@/components/ScrollButton.vue';
 
 export default {
   name: 'Quiniela',
+  components: {
+    ScrollButton,
+  },
   nuxtI18n: {
     paths: {
       es: '/quiniela',
