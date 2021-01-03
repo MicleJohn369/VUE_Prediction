@@ -65,8 +65,13 @@ a:not([class*=v-]){
 
 .nuxt-content{
   .v-data-table.bordered{
+    border: thin solid rgba(0, 0, 0, 0.12);
+
+    th, td{
+      white-space: nowrap;
+    }
+
     table{
-      border: thin solid rgba(0, 0, 0, 0.12);
       border-radius: 4px;
 
       thead{
