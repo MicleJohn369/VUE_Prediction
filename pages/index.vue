@@ -6,6 +6,7 @@
         <div class="text-h1 pb-4">
           Pronostigol
         </div>
+        <ScrollButton />
         <v-card
           elevation="2"
         >
@@ -133,6 +134,7 @@ import Logo from '@/components/Logo.vue';
 import { Timeline } from 'vue-tweet-embed';
 
 import utils from '@/utils';
+import ScrollButton from '@/components/ScrollButton.vue';
 
 import { mapState } from 'vuex';
 
@@ -141,6 +143,7 @@ export default {
     Logo,
     VRuntimeTemplate,
     Timeline,
+    ScrollButton,
   },
   async fetch() {
     return this.$store.dispatch('github/getLastCommitDate');
