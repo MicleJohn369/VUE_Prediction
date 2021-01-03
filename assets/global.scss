@@ -62,3 +62,32 @@ a:not([class*=v-]){
     text-decoration: underline;
   }
 }
+
+.nuxt-content{
+  .v-data-table.bordered{
+    table{
+      border: thin solid rgba(0, 0, 0, 0.12);
+      border-radius: 4px;
+
+      thead{
+        tr{
+          th{
+            &:not(:first-child){
+              border-left: thin solid rgba(0, 0, 0, 0.12);
+            }
+          }
+        }
+      }
+
+      tbody{
+        tr{
+          td{
+            &:not(:first-child){
+              border-left: thin solid rgba(0, 0, 0, 0.12);
+            }
+          }
+        }
+      }
+    }
+  }
+}
