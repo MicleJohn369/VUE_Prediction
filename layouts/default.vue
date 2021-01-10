@@ -19,21 +19,68 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
-      <v-list class="pt-0">
-        <v-list-item
+      <v-list>
+        <div
           v-for="(item, i) in items"
           :key="i"
-          :to="item.to"
-          router
-          exact
         >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
+          <v-list-item
+            v-if="!item.items"
+            :key="i"
+            :to="item.to"
+            class="v-list-item"
+          >
+            <v-list-item-action>
+              <v-icon
+                :color="item.iconColor"
+              >
+                {{ item.icon }}
+              </v-icon>
+            </v-list-item-action>
             <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
+          </v-list-item>
+          <v-list-group
+            v-else
+            :key="item.title"
+            no-action
+          >
+            <template v-slot:activator>
+              <v-list-item
+                class="px-0"
+              >
+                <v-list-item-action>
+                  <v-icon
+                    v-if="item.icon"
+                    :color="item.iconColor"
+                  >
+                    {{ item.icon }}
+                  </v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>{{ item.title }}</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </template>
+            <v-list-item
+              v-for="(subItem, j) in item.items"
+              :key="j"
+              :to="subItem.to"
+              class="pl-8"
+            >
+              <v-list-item-action>
+                <v-icon
+                  v-if="subItem.icon"
+                  :color="subItem.iconColor"
+                >
+                  {{ subItem.icon }}
+                </v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title v-text="subItem.title" />
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-group>
+        </div>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
@@ -218,9 +265,62 @@ export default {
         },
         {
           icon: 'mdi-soccer',
+          iconColor: 'primary',
           title: this.$t('MENU.QUINIELA.TEXT'),
           to: this.localePath({
             name: 'quiniela',
+          }),
+          items: [
+            {
+              icon: 'mdi-dice-multiple',
+              title: this.$t('MENU.QUINIELA.PROBABILITIES.TEXT'),
+              to: this.localePath({
+                name: 'quiniela',
+              }),
+            }, {
+              icon: 'mdi-history',
+              title: this.$t('MENU.QUINIELA.TICKETS.TEXT'),
+              to: this.localePath({
+                name: 'quiniela-tickets',
+              }),
+            },
+          ],
+        }, {
+          icon: 'mdi-clover',
+          iconColor: 'black',
+          title: this.$t('MENU.BONOLOTO.TEXT'),
+          to: this.localePath({
+            name: 'bonoloto',
+          }),
+          items: [
+            {
+              icon: 'mdi-history',
+              title: this.$t('MENU.BONOLOTO.TICKETS.TEXT'),
+              to: this.localePath({
+                name: 'bonoloto',
+              }),
+            },
+          ],
+        }, {
+          icon: 'mdi-cash',
+          iconColor: 'green',
+          title: this.$t('MENU.PRIMITIVA.TEXT'),
+          to: this.localePath({
+            name: 'primitiva',
+          }),
+        }, {
+          icon: 'mdi-cash-multiple',
+          iconColor: 'red',
+          title: this.$t('MENU.GORDO.TEXT'),
+          to: this.localePath({
+            name: 'gordo',
+          }),
+        }, {
+          icon: 'mdi-star-circle',
+          iconColor: 'purple darken-4',
+          title: this.$t('MENU.EUROMILLONES.TEXT'),
+          to: this.localePath({
+            name: 'euromillones',
           }),
         },
       ],
