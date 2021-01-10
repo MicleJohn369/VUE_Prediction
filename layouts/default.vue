@@ -28,6 +28,7 @@
             v-if="!item.items"
             :key="i"
             :to="item.to"
+            exact
             class="v-list-item"
           >
             <v-list-item-action>
@@ -65,6 +66,7 @@
               v-for="(subItem, j) in item.items"
               :key="j"
               :to="subItem.to"
+              exact
               class="pl-8"
             >
               <v-list-item-action>
@@ -97,6 +99,7 @@
           :to="localePath({
             name: 'index',
           })"
+          exact
           rounded
           text
           nuxt
