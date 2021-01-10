@@ -5,6 +5,27 @@ export default {
     },
     QUINIELA: {
       TEXT: 'Quiniela',
+      PROBABILITIES: {
+        TEXT: 'Probabilidades',
+      },
+      TICKETS: {
+        TEXT: 'Sorteos',
+      },
+    },
+    BONOLOTO: {
+      TEXT: 'Bonoloto',
+      TICKETS: {
+        TEXT: 'Sorteos',
+      },
+    },
+    PRIMITIVA: {
+      TEXT: 'Primitiva',
+    },
+    GORDO: {
+      TEXT: 'El Gordo',
+    },
+    EUROMILLONES: {
+      TEXT: 'Euromillones',
     },
   },
   FOOTER: {
