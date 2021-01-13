@@ -24,10 +24,6 @@
           :server-items-length="total"
           :loading="loading"
           class="elevation-1"
-          locale="es-ES"
-          :footer-props="{
-            'items-per-page-text': itemsPerPageText
-          }"
         >
           <template v-slot:[`item.fecha`]="{ item }">
             {{ getTicketDate(item.fecha) }}
@@ -91,7 +87,6 @@ export default {
           value: 'fecha',
         },
       ],
-      itemsPerPageText: this.$t('VIEWS.QUINIELA.TICKETS.ITEMS_PER_PAGE'),
     };
   },
   computed: {
