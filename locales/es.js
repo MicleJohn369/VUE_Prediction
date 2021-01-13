@@ -5,6 +5,27 @@ export default {
     },
     QUINIELA: {
       TEXT: 'Quiniela',
+      PROBABILITIES: {
+        TEXT: 'Probabilidades',
+      },
+      TICKETS: {
+        TEXT: 'Sorteos',
+      },
+    },
+    BONOLOTO: {
+      TEXT: 'Bonoloto',
+      TICKETS: {
+        TEXT: 'Sorteos',
+      },
+    },
+    PRIMITIVA: {
+      TEXT: 'Primitiva',
+    },
+    GORDO: {
+      TEXT: 'El Gordo',
+    },
+    EUROMILLONES: {
+      TEXT: 'Euromillones',
     },
   },
   FOOTER: {
@@ -110,6 +131,28 @@ export default {
         },
         SOURCES: {
           TEXT: 'Fuentes',
+        },
+      },
+      TICKETS: {
+        INTRO_TEXT: 'Aquí encontrarás un amplio histórico en el que poder buscar los sorteos históricos de la Quiniela. Si lo necesitas tienes la posibilidad de filtrar por una temporada en concreto, así como de paginar los resultados.',
+        FILTERS: {
+          SEASON: {
+            LABEL: 'Temporada',
+          },
+          SEARCH: {
+            TEXT: 'Buscar',
+          },
+        },
+        TABLE: {
+          DAY: {
+            LABEL: 'Jornada',
+          },
+          MODALITY: {
+            LABEL: 'Modalidad',
+          },
+          DATE: {
+            LABEL: 'Fecha',
+          },
         },
       },
     },

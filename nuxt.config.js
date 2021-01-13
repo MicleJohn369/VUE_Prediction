@@ -1,7 +1,13 @@
 /* eslint-disable no-unused-vars */
+// eslint-disable-next-line import/no-extraneous-dependencies
+import esVuetifyLocale from 'vuetify/es5/locale/es';
 import es from './locales/es';
-
 import { version } from './package.json';
+
+es = {
+  ...es,
+  $vuetify: esVuetifyLocale,
+};
 
 require('dotenv').config();
 
@@ -73,8 +79,7 @@ export default {
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
-    dark: false,
+    optionsPath: './vuetify.options.js',
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
