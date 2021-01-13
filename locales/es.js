@@ -133,9 +133,6 @@ export default {
           TEXT: 'Fuentes',
         },
       },
-      TICKETS: {
-        ITEMS_PER_PAGE: 'Registros por página',
-      },
     },
   },
 };
