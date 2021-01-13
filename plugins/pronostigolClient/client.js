@@ -6,6 +6,7 @@ function PronostigolClient({
 
 const QUINIELA = 'quiniela';
 const TICKETS = 'tickets';
+const SEASONS = 'seasons';
 
 /**
  * API Resources
@@ -28,6 +29,13 @@ PronostigolClient.prototype.getLastCommitDate = function getLastCommitDate() {
  */
 PronostigolClient.prototype.getQuinielaTickets = function getQuinielaTickets(params) {
   return this.restClient.get(`/${QUINIELA}/${TICKETS}`, {
+    params,
+  })
+    .then((response) => response.data);
+};
+
+PronostigolClient.prototype.getQuinielaSeasons = function getQuinielaSeasons(params) {
+  return this.restClient.get(`/${QUINIELA}/${SEASONS}`, {
     params,
   })
     .then((response) => response.data);
