@@ -106,6 +106,9 @@ export default {
       deep: true,
     },
   },
+  destroyed() {
+    this.$store.dispatch('quiniela/destroyTickets');
+  },
   methods: {
     getTicketDate(date) {
       return this.$moment(date).format('DD/MM/yyyy');
