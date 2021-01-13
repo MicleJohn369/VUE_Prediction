@@ -8,27 +8,58 @@
       <v-card
         elevation="2"
       >
-        <v-card-text>
-          Aquí encontrarás un amplio histórico en el que poder buscar
-          los sorteos de la Quiniela de las temporadas que se indican a continuación.
-        </v-card-text>
+        <v-card-text
+          v-text="ticketsIntroText"
+        />
       </v-card>
+      <v-form v-model="valid">
+        <v-container>
+          <v-row>
+            <v-col
+              cols="12"
+              md="4"
+            >
+              <v-select
+                v-model="season"
+                :items="seasons"
+                :label="seasonText"
+                item-text="name"
+                item-value="value"
+              />
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col
+              cols="12"
+              md="4"
+            >
+              <v-btn
+                color="primary"
+                @click="getTickets"
+                v-text="searchText"
+              />
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-form>
       <v-card
         elevation="2"
         class="mt-3"
       >
-        <v-data-table
-          :headers="headers"
-          :items="tickets"
-          :options.sync="options"
-          :server-items-length="total"
-          :loading="loading"
-          class="elevation-1"
-        >
-          <template v-slot:[`item.fecha`]="{ item }">
-            {{ getTicketDate(item.fecha) }}
-          </template>
-        </v-data-table>
+        <client-only>
+          <v-data-table
+            :headers="headers"
+            :items="tickets"
+            :options.sync="options"
+            :server-items-length="total"
+            :loading="loading"
+            class="elevation-1"
+          >
+            <template v-slot:[`item.fecha`]="{ item }">
+              {{ getTicketDate(item.fecha) }}
+            </template>
+          </v-data-table>
+        </client-only>
       </v-card>
     </v-col>
   </v-row>
@@ -48,16 +79,17 @@ export default {
     },
   },
   async fetch() {
-    this.$store.commit('quiniela/setTicketFilters', {
-      season: '2020-2021',
+    this.$store.commit('quiniela/setTicketPagination', {
+      sort_property: this.options.sortBy[0],
+      sort_type: this.options.sortDesc[0] ? 'desc' : 'asc',
     });
 
-    this.$store.commit('quiniela/setTicketPagination', {
-      sort_property: this.options.sortBy,
-      sort_type: this.options.sortDesc ? 'desc' : 'asc',
+    this.$store.commit('quiniela/setSeasonPagination', {
+      sort_type: 'desc',
     });
 
     return Promise.all([
+      this.$store.dispatch('quiniela/getSeasons'),
       this.$store.dispatch('quiniela/getTickets'),
     ]);
   },
@@ -70,23 +102,30 @@ export default {
       },
       headers: [
         {
-          text: 'xoxJornada',
+          text: this.$t('VIEWS.QUINIELA.TICKETS.TABLE.DAY.LABEL'),
           align: 'center',
           sortable: false,
           value: 'jornada',
         },
         {
-          text: 'xoxModalidad',
+          text: this.$t('VIEWS.QUINIELA.TICKETS.TABLE.MODALITY.LABEL'),
           align: 'center',
           sortable: false,
           value: 'modalidad',
         }, {
-          text: 'xoxFecha',
+          text: this.$t('VIEWS.QUINIELA.TICKETS.TABLE.DATE.LABEL'),
           align: 'center',
           sortable: true,
           value: 'fecha',
         },
       ],
+      valid: false,
+      rules: {
+        season: {},
+      },
+      ticketsIntroText: this.$t('VIEWS.QUINIELA.TICKETS.INTRO_TEXT'),
+      seasonText: this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEASON.LABEL'),
+      searchText: this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEARCH.TEXT'),
     };
   },
   computed: {
@@ -94,9 +133,21 @@ export default {
       tickets: (state) => state.tickets.data,
       total: (state) => state.tickets.total,
       pagination: 'ticketPagination',
-      filters: 'ticketFilters',
+      seasons: (state) => state.seasons,
       loading: 'loading',
     }),
+    season: {
+      get() {
+        return this.$store.state.quiniela.ticketFilters.season;
+      },
+      set(value) {
+        const filters = this.$store.state.quiniela.ticketFilters;
+        this.$store.commit('quiniela/setTicketFilters', {
+          ...filters,
+          season: value === 'Histórico' ? null : value,
+        });
+      },
+    },
   },
   watch: {
     options: {
