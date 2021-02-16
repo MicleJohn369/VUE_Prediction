@@ -58,6 +58,29 @@
             <template v-slot:[`item.fecha`]="{ item }">
               {{ getTicketDate(item.fecha) }}
             </template>
+            <template v-slot:[`item.actions`]="{ item }">
+              <v-btn
+                dark
+                fab
+                x-small
+                color="blue"
+                :to="localePath({
+                  name: 'quiniela-tickets-season-day',
+                  params: {
+                    season: item.temporada,
+                    day: item.jornada,
+                  }
+                })"
+                nuxt
+              >
+                <v-icon
+                  small
+                  :title="detailTicketTooltip"
+                >
+                  mdi-eye
+                </v-icon>
+              </v-btn>
+            </template>
           </v-data-table>
         </client-only>
       </v-card>
@@ -117,6 +140,11 @@ export default {
           align: 'center',
           sortable: true,
           value: 'fecha',
+        }, {
+          text: this.$t('VIEWS.QUINIELA.TICKETS.TABLE.ACTIONS.LABEL'),
+          align: 'center',
+          sortable: false,
+          value: 'actions',
         },
       ],
       valid: false,
@@ -126,6 +154,7 @@ export default {
       ticketsIntroText: this.$t('VIEWS.QUINIELA.TICKETS.INTRO_TEXT'),
       seasonText: this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEASON.LABEL'),
       searchText: this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEARCH.TEXT'),
+      detailTicketTooltip: this.$t('VIEWS.QUINIELA.TICKETS.TABLE.ACTIONS.SEE.TOOLTIP'),
     };
   },
   computed: {
