@@ -153,6 +153,12 @@ export default {
           DATE: {
             LABEL: 'Fecha',
           },
+          ACTIONS: {
+            LABEL: 'Acciones',
+            SEE: {
+              TOOLTIP: 'Ver detalle de ticket',
+            },
+          },
         },
       },
     },
