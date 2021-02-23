@@ -151,10 +151,14 @@ export default {
         },
       },
       TICKETS: {
+        TITLE: 'Histórico de sorteos de la Quiniela',
         INTRO_TEXT: 'Aquí encontrarás un amplio histórico en el que poder buscar los sorteos históricos de la Quiniela. Si lo necesitas tienes la posibilidad de filtrar por una temporada en concreto, así como de paginar los resultados.',
         FILTERS: {
           SEASON: {
             LABEL: 'Temporada',
+            ERRORS: {
+              REQUIRED: 'La temporada es obligatoria',
+            },
           },
           SEARCH: {
             TEXT: 'Buscar',
