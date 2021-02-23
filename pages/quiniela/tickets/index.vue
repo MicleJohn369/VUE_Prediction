@@ -12,7 +12,10 @@
           v-text="ticketsIntroText"
         />
       </v-card>
-      <v-form v-model="valid">
+      <v-form
+        ref="form"
+        v-model="valid"
+      >
         <v-container>
           <v-row>
             <v-col
@@ -21,6 +24,7 @@
             >
               <v-select
                 v-model="season"
+                :rules="rules.season"
                 :items="seasons"
                 :label="seasonText"
                 item-text="name"
@@ -35,9 +39,10 @@
             >
               <v-btn
                 color="primary"
-                @click="getTickets"
-                v-text="searchText"
-              />
+                @click="submitForm"
+              >
+                {{ searchText }}
+              </v-btn>
             </v-col>
           </v-row>
         </v-container>
@@ -149,7 +154,9 @@ export default {
       ],
       valid: false,
       rules: {
-        season: {},
+        season: [
+          (v) => !!v || this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEASON.ERRORS.REQUIRED'),
+        ],
       },
       ticketsIntroText: this.$t('VIEWS.QUINIELA.TICKETS.INTRO_TEXT'),
       seasonText: this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEASON.LABEL'),
@@ -190,8 +197,12 @@ export default {
     this.$store.dispatch('quiniela/destroyTickets');
   },
   methods: {
-    getTicketDate(date) {
-      return this.$moment(date).format('DD/MM/yyyy');
+    submitForm() {
+      this.$refs.form.validate();
+
+      if (this.valid) {
+        this.getTickets();
+      }
     },
     getTickets() {
       const {
