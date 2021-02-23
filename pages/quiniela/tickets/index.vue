@@ -1,8 +1,19 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12">
-      <div class="text-center text-h2 my-3 pb-4 blue--text">
-        Histórico de sorteos de la Quiniela
+      <v-breadcrumbs :items="items">
+        <template v-slot:item="{ item }">
+          <v-breadcrumbs-item
+            :to="item.to"
+            :disabled="item.disabled"
+            nuxt
+          >
+            {{ item.text.toUpperCase() }}
+          </v-breadcrumbs-item>
+        </template>
+      </v-breadcrumbs>
+      <div class="text-h2 my-3 pb-4 blue--text">
+        {{ titleText }}
       </div>
       <ScrollButton />
       <v-card
@@ -123,11 +134,35 @@ export default {
 
     return Promise.all([
       this.$store.dispatch('quiniela/getSeasons'),
-      this.$store.dispatch('quiniela/getTickets'),
-    ]);
+    ])
+      .then(() => {
+        const filters = this.$store.state.quiniela.ticketFilters;
+        this.$store.commit('quiniela/setTicketFilters', {
+          ...filters,
+          season: 'Histórico',
+        });
+
+        return this.$store.dispatch('quiniela/getTickets');
+      });
   },
   data() {
     return {
+      items: [
+        {
+          text: this.$t('BREADCRUMBS.HOME.TEXT'),
+          disabled: false,
+          to: this.localePath({
+            name: 'index',
+          }),
+        },
+        {
+          text: this.$t('BREADCRUMBS.QUINIELA.TEXT'),
+          disabled: true,
+        }, {
+          text: this.$t('BREADCRUMBS.QUINIELA.TICKETS.TEXT'),
+          disabled: true,
+        },
+      ],
       options: {
         mustSort: true,
         sortBy: ['fecha'],
@@ -163,6 +198,7 @@ export default {
           (v) => !!v || this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEASON.ERRORS.REQUIRED'),
         ],
       },
+      titleText: this.$t('VIEWS.QUINIELA.TICKETS.TITLE'),
       ticketsIntroText: this.$t('VIEWS.QUINIELA.TICKETS.INTRO_TEXT'),
       seasonText: this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEASON.LABEL'),
       searchText: this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEARCH.TEXT'),
@@ -185,7 +221,7 @@ export default {
         const filters = this.$store.state.quiniela.ticketFilters;
         this.$store.commit('quiniela/setTicketFilters', {
           ...filters,
-          season: value === 'Histórico' ? null : value,
+          season: value,
         });
       },
     },
