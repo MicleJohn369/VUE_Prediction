@@ -57,6 +57,23 @@ export default {
       TEXT: 'Euromillones',
     },
   },
+  BREADCRUMBS: {
+    HOME: {
+      TEXT: 'Inicio',
+    },
+    QUINIELA: {
+      TEXT: 'Quiniela',
+      PROBABILITIES: {
+        TEXT: 'Probabilidades',
+      },
+      TICKETS: {
+        TEXT: 'Sorteos',
+        TICKET: {
+          TEXT: '{season} - J{day}',
+        },
+      },
+    },
+  },
   VIEWS: {
     HOME: {
       TITLE: 'Inicio',
