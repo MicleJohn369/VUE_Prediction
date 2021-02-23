@@ -8,6 +8,7 @@ export const state = () => ({
   ticketPagination: {},
   seasons: [],
   seasonPagination: {},
+  currentTicket: {},
   loading: true,
 });
 
@@ -26,11 +27,22 @@ export const actions = {
       .then((tickets) => commit('setTickets', tickets))
       .finally(() => commit('setIsLoading', false));
   },
+  getTicket({ commit }, { season, day }) {
+    return Vue.pronostigolClient.getQuinielaTicket({
+      season,
+      day,
+    })
+      .then((ticket) => commit('setTicket', ticket))
+      .finally(() => commit('setIsLoading', false));
+  },
   destroyTickets({ commit }) {
     return commit('setTickets', {
       data: [],
       total: 0,
     });
+  },
+  destroyTicket({ commit }) {
+    return commit('setTicket', {});
   },
   /**
    * Seasons
@@ -60,6 +72,9 @@ export const mutations = {
   },
   setTicketPagination(state, pagination) {
     Vue.set(state, 'ticketPagination', pagination);
+  },
+  setTicket(state, ticket) {
+    Vue.set(state, 'currentTicket', ticket);
   },
   /**
    * Seasons
