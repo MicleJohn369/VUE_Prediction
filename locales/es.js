@@ -160,6 +160,14 @@ export default {
             },
           },
         },
+        TICKET: {
+          TITLE: 'Detalle de sorteo',
+          INFO: {
+            SEASON: 'Temporada',
+            DATE: 'Fecha',
+            DAY: 'Jornada',
+          },
+        },
       },
     },
   },
