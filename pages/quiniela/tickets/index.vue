@@ -61,7 +61,7 @@
             class="elevation-1"
           >
             <template v-slot:[`item.fecha`]="{ item }">
-              {{ getTicketDate(item.fecha) }}
+              {{ getFormattedDate(item.fecha) }}
             </template>
             <template v-slot:[`item.actions`]="{ item }">
               <v-btn
@@ -99,6 +99,8 @@ import { mapState } from 'vuex';
 
 import utils from '@/utils';
 
+import getFormattedDateMixin from '@/mixins/getFormattedDate';
+
 export default {
   name: 'QuinielaTickets',
   nuxtI18n: {
@@ -106,6 +108,9 @@ export default {
       es: '/quiniela/sorteos',
     },
   },
+  mixins: [
+    getFormattedDateMixin,
+  ],
   async fetch() {
     this.$store.commit('quiniela/setTicketPagination', {
       sort_property: this.options.sortBy[0],
