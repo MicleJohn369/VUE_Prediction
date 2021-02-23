@@ -1,6 +1,17 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12">
+      <v-breadcrumbs :items="items">
+        <template v-slot:item="{ item }">
+          <v-breadcrumbs-item
+            :to="item.to"
+            :disabled="item.disabled"
+            nuxt
+          >
+            {{ item.text.toUpperCase() }}
+          </v-breadcrumbs-item>
+        </template>
+      </v-breadcrumbs>
       <div class="text-center text-h1 my-3 pb-4 blue--text">
         Quiniela
       </div>
@@ -62,6 +73,22 @@ export default {
   },
   data() {
     return {
+      items: [
+        {
+          text: this.$t('BREADCRUMBS.HOME.TEXT'),
+          disabled: false,
+          to: this.localePath({
+            name: 'index',
+          }),
+        },
+        {
+          text: this.$t('BREADCRUMBS.QUINIELA.TEXT'),
+          disabled: true,
+        }, {
+          text: this.$t('BREADCRUMBS.QUINIELA.PROBABILITIES.TEXT'),
+          disabled: true,
+        },
+      ],
       tocTitle: this.$t('VIEWS.QUINIELA.TOC.TITLE.TEXT'),
       indexItems: [
         {
