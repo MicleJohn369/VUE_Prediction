@@ -20,8 +20,14 @@ export const actions = {
    */
   getTickets({ state, commit }) {
     commit('setIsLoading', true);
+
+    const ticketFilters = { ...state.ticketFilters };
+    if (ticketFilters.season === 'Histórico') {
+      ticketFilters.season = null;
+    }
+
     return Vue.pronostigolClient.getQuinielaTickets({
-      ...state.ticketFilters,
+      ...ticketFilters,
       ...state.ticketPagination,
     })
       .then((tickets) => commit('setTickets', tickets))
