@@ -34,6 +34,8 @@ export const actions = {
       .finally(() => commit('setIsLoading', false));
   },
   getTicket({ commit }, { season, day }) {
+    commit('setIsLoading', true);
+
     return Vue.pronostigolClient.getQuinielaTicket({
       season,
       day,
