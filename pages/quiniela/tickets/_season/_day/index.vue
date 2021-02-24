@@ -36,6 +36,61 @@
           </v-list-item>
         </v-list>
       </v-card>
+      <v-simple-table
+        class="mt-5"
+      >
+        <template v-slot:default>
+          <thead>
+            <tr>
+              <th class="text-center">
+                {{ rowLabel }}
+              </th>
+              <th class="text-center">
+                {{ competitionLabel }}
+              </th>
+              <th class="text-center">
+                {{ dayLabel }}
+              </th>
+              <th class="text-center" colspan="3">
+                {{ footballMatchLabel }}
+              </th>
+              <th class="text-center">
+                {{ resultLabel }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="partido in ticket.partidos"
+              :key="partido.fila"
+            >
+              <td class="text-center">
+                {{ partido.fila }}
+              </td>
+              <td class="text-center">
+                {{ partido.competicion }}
+              </td>
+              <td class="text-center">
+                {{ partido.jornada }}
+              </td>
+              <td class="text-right">
+                {{ partido.local }}
+              </td>
+              <td class="text-center">
+                {{ partido.golesLocal }} - {{ partido.golesVisitante }}
+              </td>
+              <td>{{ partido.visitante }}</td>
+              <td class="text-center">
+                <v-chip
+                  color="primary"
+                >
+                  {{ partido.resultado }}
+                </v-chip>
+              </td>
+            </tr>
+          </tbody>
+        </template>
+      </v-simple-table>
     </v-col>
   </v-row>
 </template>
@@ -99,6 +154,11 @@ export default {
       seasonText: this.$t('VIEWS.QUINIELA.TICKETS.TICKET.INFO.SEASON'),
       dateText: this.$t('VIEWS.QUINIELA.TICKETS.TICKET.INFO.DATE'),
       dayText: this.$t('VIEWS.QUINIELA.TICKETS.TICKET.INFO.DAY'),
+      rowLabel: this.$t('VIEWS.QUINIELA.TICKETS.TICKET.TABLE.ROW.LABEL'),
+      competitionLabel: this.$t('VIEWS.QUINIELA.TICKETS.TICKET.TABLE.COMPETITION.LABEL'),
+      dayLabel: this.$t('VIEWS.QUINIELA.TICKETS.TICKET.TABLE.DAY.LABEL'),
+      footballMatchLabel: this.$t('VIEWS.QUINIELA.TICKETS.TICKET.TABLE.FOOTBALL_MATCH.LABEL'),
+      resultLabel: this.$t('VIEWS.QUINIELA.TICKETS.TICKET.TABLE.RESULT.LABEL'),
     };
   },
   computed: {
