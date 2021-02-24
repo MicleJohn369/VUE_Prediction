@@ -188,6 +188,23 @@ export default {
             DATE: 'Fecha',
             DAY: 'Jornada',
           },
+          TABLE: {
+            ROW: {
+              LABEL: 'Fila',
+            },
+            COMPETITION: {
+              LABEL: 'Competición',
+            },
+            DAY: {
+              LABEL: 'Jornada',
+            },
+            FOOTBALL_MATCH: {
+              LABEL: 'Partido',
+            },
+            RESULT: {
+              LABEL: 'Resultado',
+            },
+          },
         },
       },
     },
