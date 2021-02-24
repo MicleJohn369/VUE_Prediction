@@ -1,8 +1,19 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12">
-      <div class="text-center text-h2 my-3 pb-4 blue--text">
-        Histórico de sorteos de la Quiniela
+      <v-breadcrumbs :items="items">
+        <template v-slot:item="{ item }">
+          <v-breadcrumbs-item
+            :to="item.to"
+            :disabled="item.disabled"
+            nuxt
+          >
+            {{ item.text.toUpperCase() }}
+          </v-breadcrumbs-item>
+        </template>
+      </v-breadcrumbs>
+      <div class="text-h2 my-3 pb-4 blue--text">
+        {{ titleText }}
       </div>
       <ScrollButton />
       <v-card
@@ -12,7 +23,10 @@
           v-text="ticketsIntroText"
         />
       </v-card>
-      <v-form v-model="valid">
+      <v-form
+        ref="form"
+        v-model="valid"
+      >
         <v-container>
           <v-row>
             <v-col
@@ -21,6 +35,7 @@
             >
               <v-select
                 v-model="season"
+                :rules="rules.season"
                 :items="seasons"
                 :label="seasonText"
                 item-text="name"
@@ -35,9 +50,10 @@
             >
               <v-btn
                 color="primary"
-                @click="getTickets"
-                v-text="searchText"
-              />
+                @click="submitForm"
+              >
+                {{ searchText }}
+              </v-btn>
             </v-col>
           </v-row>
         </v-container>
@@ -56,7 +72,30 @@
             class="elevation-1"
           >
             <template v-slot:[`item.fecha`]="{ item }">
-              {{ getTicketDate(item.fecha) }}
+              {{ getFormattedDate(item.fecha) }}
+            </template>
+            <template v-slot:[`item.actions`]="{ item }">
+              <v-btn
+                dark
+                fab
+                x-small
+                color="blue"
+                :to="localePath({
+                  name: 'quiniela-tickets-season-day',
+                  params: {
+                    season: item.temporada,
+                    day: item.jornada,
+                  }
+                })"
+                nuxt
+              >
+                <v-icon
+                  small
+                  :title="detailTicketTooltip"
+                >
+                  mdi-eye
+                </v-icon>
+              </v-btn>
             </template>
           </v-data-table>
         </client-only>
@@ -71,6 +110,8 @@ import { mapState } from 'vuex';
 
 import utils from '@/utils';
 
+import getFormattedDateMixin from '@/mixins/getFormattedDate';
+
 export default {
   name: 'QuinielaTickets',
   nuxtI18n: {
@@ -78,6 +119,9 @@ export default {
       es: '/quiniela/sorteos',
     },
   },
+  mixins: [
+    getFormattedDateMixin,
+  ],
   async fetch() {
     this.$store.commit('quiniela/setTicketPagination', {
       sort_property: this.options.sortBy[0],
@@ -90,11 +134,35 @@ export default {
 
     return Promise.all([
       this.$store.dispatch('quiniela/getSeasons'),
-      this.$store.dispatch('quiniela/getTickets'),
-    ]);
+    ])
+      .then(() => {
+        const filters = this.$store.state.quiniela.ticketFilters;
+        this.$store.commit('quiniela/setTicketFilters', {
+          ...filters,
+          season: 'Histórico',
+        });
+
+        return this.$store.dispatch('quiniela/getTickets');
+      });
   },
   data() {
     return {
+      items: [
+        {
+          text: this.$t('BREADCRUMBS.HOME.TEXT'),
+          disabled: false,
+          to: this.localePath({
+            name: 'index',
+          }),
+        },
+        {
+          text: this.$t('BREADCRUMBS.QUINIELA.TEXT'),
+          disabled: true,
+        }, {
+          text: this.$t('BREADCRUMBS.QUINIELA.TICKETS.TEXT'),
+          disabled: true,
+        },
+      ],
       options: {
         mustSort: true,
         sortBy: ['fecha'],
@@ -117,15 +185,24 @@ export default {
           align: 'center',
           sortable: true,
           value: 'fecha',
+        }, {
+          text: this.$t('VIEWS.QUINIELA.TICKETS.TABLE.ACTIONS.LABEL'),
+          align: 'center',
+          sortable: false,
+          value: 'actions',
         },
       ],
       valid: false,
       rules: {
-        season: {},
+        season: [
+          (v) => !!v || this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEASON.ERRORS.REQUIRED'),
+        ],
       },
+      titleText: this.$t('VIEWS.QUINIELA.TICKETS.TITLE'),
       ticketsIntroText: this.$t('VIEWS.QUINIELA.TICKETS.INTRO_TEXT'),
       seasonText: this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEASON.LABEL'),
       searchText: this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEARCH.TEXT'),
+      detailTicketTooltip: this.$t('VIEWS.QUINIELA.TICKETS.TABLE.ACTIONS.SEE.TOOLTIP'),
     };
   },
   computed: {
@@ -144,7 +221,7 @@ export default {
         const filters = this.$store.state.quiniela.ticketFilters;
         this.$store.commit('quiniela/setTicketFilters', {
           ...filters,
-          season: value === 'Histórico' ? null : value,
+          season: value,
         });
       },
     },
@@ -161,8 +238,12 @@ export default {
     this.$store.dispatch('quiniela/destroyTickets');
   },
   methods: {
-    getTicketDate(date) {
-      return this.$moment(date).format('DD/MM/yyyy');
+    submitForm() {
+      this.$refs.form.validate();
+
+      if (this.valid) {
+        this.getTickets();
+      }
     },
     getTickets() {
       const {

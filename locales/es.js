@@ -57,6 +57,23 @@ export default {
       TEXT: 'Euromillones',
     },
   },
+  BREADCRUMBS: {
+    HOME: {
+      TEXT: 'Inicio',
+    },
+    QUINIELA: {
+      TEXT: 'Quiniela',
+      PROBABILITIES: {
+        TEXT: 'Probabilidades',
+      },
+      TICKETS: {
+        TEXT: 'Sorteos',
+        TICKET: {
+          TEXT: '{season} - J{day}',
+        },
+      },
+    },
+  },
   VIEWS: {
     HOME: {
       TITLE: 'Inicio',
@@ -134,10 +151,14 @@ export default {
         },
       },
       TICKETS: {
+        TITLE: 'Histórico de sorteos de la Quiniela',
         INTRO_TEXT: 'Aquí encontrarás un amplio histórico en el que poder buscar los sorteos históricos de la Quiniela. Si lo necesitas tienes la posibilidad de filtrar por una temporada en concreto, así como de paginar los resultados.',
         FILTERS: {
           SEASON: {
             LABEL: 'Temporada',
+            ERRORS: {
+              REQUIRED: 'La temporada es obligatoria',
+            },
           },
           SEARCH: {
             TEXT: 'Buscar',
@@ -152,6 +173,37 @@ export default {
           },
           DATE: {
             LABEL: 'Fecha',
+          },
+          ACTIONS: {
+            LABEL: 'Acciones',
+            SEE: {
+              TOOLTIP: 'Ver detalle de ticket',
+            },
+          },
+        },
+        TICKET: {
+          TITLE: 'Detalle de sorteo',
+          INFO: {
+            SEASON: 'Temporada',
+            DATE: 'Fecha',
+            DAY: 'Jornada',
+          },
+          TABLE: {
+            ROW: {
+              LABEL: 'Fila',
+            },
+            COMPETITION: {
+              LABEL: 'Competición',
+            },
+            DAY: {
+              LABEL: 'Jornada',
+            },
+            FOOTBALL_MATCH: {
+              LABEL: 'Partido',
+            },
+            RESULT: {
+              LABEL: 'Resultado',
+            },
           },
         },
       },

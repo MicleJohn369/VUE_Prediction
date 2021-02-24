@@ -34,6 +34,14 @@ PronostigolClient.prototype.getQuinielaTickets = function getQuinielaTickets(par
     .then((response) => response.data);
 };
 
+PronostigolClient.prototype.getQuinielaTicket = function getQuinielaTickets(params) {
+  const season = params && params.season;
+  const day = params && params.day;
+
+  return this.restClient.get(`/${QUINIELA}/${TICKETS}/season/${season}/day/${day}`)
+    .then((response) => response.data);
+};
+
 PronostigolClient.prototype.getQuinielaSeasons = function getQuinielaSeasons(params) {
   return this.restClient.get(`/${QUINIELA}/${SEASONS}`, {
     params,

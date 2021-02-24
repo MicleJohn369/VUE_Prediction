@@ -4,21 +4,10 @@
       v-model="drawer"
       :mini-variant="miniVariant"
       :clipped="clipped"
+      floating
       fixed
       app
-      temporary
     >
-      <v-list class="pa-0">
-        <v-list-item class="pa-0">
-          <v-list-item-content class="pa-0">
-            <v-list-item-title class="title">
-              <v-img
-                src="https://www.pronostigol.es/img/favicon.png"
-              />
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
       <v-list>
         <div
           v-for="(item, i) in items"
@@ -256,7 +245,7 @@ export default {
   data() {
     return {
       clipped: true,
-      drawer: false,
+      drawer: true,
       fixed: false,
       items: [
         {

@@ -8,6 +8,7 @@ export const state = () => ({
   ticketPagination: {},
   seasons: [],
   seasonPagination: {},
+  currentTicket: {},
   loading: true,
 });
 
@@ -19,11 +20,27 @@ export const actions = {
    */
   getTickets({ state, commit }) {
     commit('setIsLoading', true);
+
+    const ticketFilters = { ...state.ticketFilters };
+    if (ticketFilters.season === 'Histórico') {
+      ticketFilters.season = null;
+    }
+
     return Vue.pronostigolClient.getQuinielaTickets({
-      ...state.ticketFilters,
+      ...ticketFilters,
       ...state.ticketPagination,
     })
       .then((tickets) => commit('setTickets', tickets))
+      .finally(() => commit('setIsLoading', false));
+  },
+  getTicket({ commit }, { season, day }) {
+    commit('setIsLoading', true);
+
+    return Vue.pronostigolClient.getQuinielaTicket({
+      season,
+      day,
+    })
+      .then((ticket) => commit('setTicket', ticket))
       .finally(() => commit('setIsLoading', false));
   },
   destroyTickets({ commit }) {
@@ -31,6 +48,9 @@ export const actions = {
       data: [],
       total: 0,
     });
+  },
+  destroyTicket({ commit }) {
+    return commit('setTicket', {});
   },
   /**
    * Seasons
@@ -60,6 +80,9 @@ export const mutations = {
   },
   setTicketPagination(state, pagination) {
     Vue.set(state, 'ticketPagination', pagination);
+  },
+  setTicket(state, ticket) {
+    Vue.set(state, 'currentTicket', ticket);
   },
   /**
    * Seasons
