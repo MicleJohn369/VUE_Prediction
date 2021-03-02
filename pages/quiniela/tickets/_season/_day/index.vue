@@ -172,23 +172,26 @@ export default {
   },
   head() {
     // TODO
+    const { season } = this.$route.params;
+    const { day } = this.$route.params;
+
     const seoInfo = {
-      title: '⚽ Quiniela | Histórico de sorteos de la quiniela',
+      title: `⚽ Quiniela | Detalle del sorteo ${day} de la temporada ${season}`,
       metas: {
-        description: 'Apartado en el que poder consultar el histórico de sorteos de la quiniela. ⚡ Se pueden filtrar por temporada.',
-        keywords: 'quiniela, histórico, historico, sorteos',
-        canonical_url: 'https://www.pronostigol.es/quiniela/sorteos',
-        og_title: '⚽ Quiniela | Histórico de sorteos de la quiniela',
+        description: `Página con toda la información del sorteo de quiniela número ${day} de la temporada ${season}.`,
+        keywords: `quiniela, jornada ${day}, temporada ${season}`,
+        canonical_url: `https://www.pronostigol.es/quiniela/sorteos/${season}/${day}`,
+        og_title: `⚽ Quiniela | Detalle del sorteo ${day} de la temporada ${season}`,
         og_type: 'website',
         og_image: 'https://www.pronostigol.es/img/logo-quiniela.png',
-        og_url: 'https://www.pronostigol.es/quiniela',
-        og_description: 'Apartado en el que poder consultar el histórico de sorteos de la quiniela. ⚡ Se pueden filtrar por temporada.',
+        og_url: `https://www.pronostigol.es/quiniela/sorteos/${season}/${day}`,
+        og_description: `Página con toda la información del sorteo de quiniela número ${day} de la temporada ${season}.`,
         og_site_name: 'Pronostigol',
         twitter_site: '@pronostigolesp',
         twitter_card: 'summary_large_image',
         twitter_image: 'https://www.pronostigol.es/img/logo-quiniela.png',
-        twitter_title: '⚽ Quiniela | Histórico de sorteos de la quiniela',
-        twitter_description: 'Apartado en el que poder consultar el histórico de sorteos de la quiniela. ⚡ Se pueden filtrar por temporada.',
+        twitter_title: `⚽ Quiniela | Detalle del sorteo ${day} de la temporada ${season}`,
+        twitter_description: `Página con toda la información del sorteo de quiniela número ${day} de la temporada ${season}.`,
       },
     };
 
