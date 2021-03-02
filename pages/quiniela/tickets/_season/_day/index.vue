@@ -84,7 +84,7 @@
                 <v-chip
                   color="primary"
                 >
-                  {{ partido.resultado }}
+                  {{ getRowResult(partido) }}
                 </v-chip>
               </td>
             </tr>
@@ -169,6 +169,12 @@ export default {
   },
   destroyed() {
     this.$store.dispatch('quiniela/destroyTicket');
+  },
+  methods: {
+    getRowResult(partido) {
+      if (partido.fila === 15 && partido.resultadoConGoles) return partido.resultadoConGoles;
+      return partido.resultado;
+    },
   },
   head() {
     // TODO
