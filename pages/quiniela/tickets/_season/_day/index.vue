@@ -177,7 +177,6 @@ export default {
     },
   },
   head() {
-    // TODO
     const { season } = this.$route.params;
     const { day } = this.$route.params;
 
