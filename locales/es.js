@@ -11,6 +11,9 @@ export default {
       TICKETS: {
         TEXT: 'Sorteos',
       },
+      STATS: {
+        TEXT: 'Estadísticas',
+      },
     },
     BONOLOTO: {
       TEXT: 'Bonoloto',
@@ -71,6 +74,9 @@ export default {
         TICKET: {
           TEXT: '{season} - J{day}',
         },
+      },
+      STATS: {
+        TEXT: 'Estadísticas',
       },
     },
   },
@@ -203,6 +209,23 @@ export default {
             },
             RESULT: {
               LABEL: 'Resultado',
+            },
+          },
+        },
+      },
+      STATS: {
+        TITLE: 'Estadísticas de la Quiniela',
+        INTRO_TEXT: 'Ésta es, casi con total seguridad, la funcionalidad más importante de nuestra sección de la Quiniela. Aquí podrás consultar una gran variedad de estadísticas para saber cuáles son las combinaciones más repetidas, los datos de un equipo como local o visitante, los resultados más repetidos según la fila y otras muchas cosas.',
+        CUSTOM_STATS_FORM: {
+          FILTERS: {
+            SEASON: {
+              LABEL: 'Temporada',
+            },
+            COMPETITION: {
+              LABEL: 'Competición',
+            },
+            SEARCH: {
+              TEXT: 'Buscar',
             },
           },
         },
