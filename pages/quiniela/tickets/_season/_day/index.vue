@@ -116,12 +116,15 @@ export default {
   async fetch() {
     return Promise.all([
       this.$store.dispatch('quiniela/getTicket', {
-        season: this.$route.params.season,
-        day: this.$route.params.day,
+        season: this.season,
+        day: this.day,
       }),
     ]);
   },
   data() {
+    const { season } = this.$route.params;
+    const { day } = this.$route.params;
+
     return {
       items: [
         {
@@ -142,14 +145,14 @@ export default {
           }),
         }, {
           text: this.$t('BREADCRUMBS.QUINIELA.TICKETS.TICKET.TEXT', {
-            season: this.$route.params.season,
-            day: this.$route.params.day,
+            season,
+            day,
           }),
           disabled: true,
         },
       ],
-      season: this.$route.params.season,
-      day: this.$route.params.day,
+      season,
+      day,
       titleText: this.$t('VIEWS.QUINIELA.TICKETS.TICKET.TITLE'),
       seasonText: this.$t('VIEWS.QUINIELA.TICKETS.TICKET.INFO.SEASON'),
       dateText: this.$t('VIEWS.QUINIELA.TICKETS.TICKET.INFO.DATE'),
@@ -177,8 +180,8 @@ export default {
     },
   },
   head() {
-    const { season } = this.$route.params;
-    const { day } = this.$route.params;
+    const { season } = this;
+    const { day } = this;
 
     const seoInfo = {
       title: `⚽ Quiniela | Detalle del sorteo ${day} de la temporada ${season}`,
