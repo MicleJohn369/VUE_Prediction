@@ -7,6 +7,7 @@ function PronostigolClient({
 const QUINIELA = 'quiniela';
 const TICKETS = 'tickets';
 const SEASONS = 'seasons';
+const COMPETITIONS = 'competitions';
 
 /**
  * API Resources
@@ -44,6 +45,13 @@ PronostigolClient.prototype.getQuinielaTicket = function getQuinielaTickets(para
 
 PronostigolClient.prototype.getQuinielaSeasons = function getQuinielaSeasons(params) {
   return this.restClient.get(`/${QUINIELA}/${SEASONS}`, {
+    params,
+  })
+    .then((response) => response.data);
+};
+
+PronostigolClient.prototype.getQuinielaCompetitions = function getQuinielaCompetitions(params) {
+  return this.restClient.get(`/${QUINIELA}/${COMPETITIONS}`, {
     params,
   })
     .then((response) => response.data);
