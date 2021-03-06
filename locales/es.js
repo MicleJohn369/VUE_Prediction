@@ -216,6 +216,10 @@ export default {
       STATS: {
         TITLE: 'Estadísticas de la Quiniela',
         INTRO_TEXT: 'Ésta es, casi con total seguridad, la funcionalidad más importante de nuestra sección de la Quiniela. Aquí podrás consultar una gran variedad de estadísticas para saber cuáles son las combinaciones más repetidas, los datos de un equipo como local o visitante, los resultados más repetidos según la fila y otras muchas cosas.',
+        TABS: {
+          CUSTOM: 'Personalizadas',
+          STANDARD: 'Estándar',
+        },
         CUSTOM_STATS_FORM: {
           FILTERS: {
             SEASON: {
@@ -223,6 +227,29 @@ export default {
             },
             COMPETITION: {
               LABEL: 'Competición',
+            },
+            SEARCH_BY: {
+              LABEL: 'Buscar por:',
+              OPTIONS: {
+                GENERAL: {
+                  LABEL: 'General',
+                },
+                TEAM: {
+                  LABEL: 'Equipo',
+                },
+                FOOTBALL_MATCH: {
+                  LABEL: 'Partido',
+                },
+              },
+            },
+            TEAM: {
+              LABEL: 'Equipo',
+            },
+            LOCAL_TEAM: {
+              LABEL: 'Equipo local',
+            },
+            VISITOR_TEAM: {
+              LABEL: 'Equipo visitante',
             },
             SEARCH: {
               TEXT: 'Buscar',
