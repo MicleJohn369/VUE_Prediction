@@ -4,11 +4,11 @@ export const state = () => ({
   tickets: {
     data: [],
   },
-  seasons: [],
-  seasonPagination: {},
   ticketsFilters: {},
   ticketsPagination: {},
   currentTicket: {},
+  seasons: [],
+  seasonsPagination: {},
   loading: true,
 });
 
@@ -58,7 +58,7 @@ export const actions = {
   getSeasons({ state, commit }) {
     commit('setIsLoading', true);
     return Vue.pronostigolClient.getQuinielaSeasons({
-      ...state.seasonPagination,
+      ...state.seasonsPagination,
     })
       .then((seasons) => commit('setSeasons', seasons))
       .finally(() => commit('setIsLoading', false));
