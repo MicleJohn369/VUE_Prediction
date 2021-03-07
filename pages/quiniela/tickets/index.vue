@@ -136,7 +136,7 @@ export default {
       this.$store.dispatch('quiniela/getSeasons'),
     ])
       .then(() => {
-        const filters = this.$store.state.quiniela.ticketFilters;
+        const filters = this.$store.state.quiniela.ticketsFilters;
         this.$store.commit('quiniela/setTicketFilters', {
           ...filters,
           season: 'Histórico',
@@ -209,16 +209,16 @@ export default {
     ...mapState('quiniela', {
       tickets: (state) => state.tickets.data,
       total: (state) => state.tickets.total,
-      pagination: 'ticketPagination',
+      pagination: 'ticketsPagination',
       seasons: (state) => state.seasons,
       loading: 'loading',
     }),
     season: {
       get() {
-        return this.$store.state.quiniela.ticketFilters.season;
+        return this.$store.state.quiniela.ticketsFilters.season;
       },
       set(value) {
-        const filters = this.$store.state.quiniela.ticketFilters;
+        const filters = this.$store.state.quiniela.ticketsFilters;
         this.$store.commit('quiniela/setTicketFilters', {
           ...filters,
           season: value,

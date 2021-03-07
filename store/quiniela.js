@@ -4,10 +4,10 @@ export const state = () => ({
   tickets: {
     data: [],
   },
-  ticketFilters: {},
-  ticketPagination: {},
   seasons: [],
   seasonPagination: {},
+  ticketsFilters: {},
+  ticketsPagination: {},
   currentTicket: {},
   loading: true,
 });
@@ -21,14 +21,14 @@ export const actions = {
   getTickets({ state, commit }) {
     commit('setIsLoading', true);
 
-    const ticketFilters = { ...state.ticketFilters };
-    if (ticketFilters.season === 'Histórico') {
-      ticketFilters.season = null;
+    const ticketsFilters = { ...state.ticketsFilters };
+    if (ticketsFilters.season === 'Histórico') {
+      ticketsFilters.season = null;
     }
 
     return Vue.pronostigolClient.getQuinielaTickets({
-      ...ticketFilters,
-      ...state.ticketPagination,
+      ...ticketsFilters,
+      ...state.ticketsPagination,
     })
       .then((tickets) => commit('setTickets', tickets))
       .finally(() => commit('setIsLoading', false));
@@ -75,11 +75,11 @@ export const mutations = {
   setTickets(state, tickets) {
     Vue.set(state, 'tickets', tickets);
   },
-  setTicketFilters(state, filters) {
-    Vue.set(state, 'ticketFilters', filters);
+  setTicketsFilters(state, filters) {
+    Vue.set(state, 'ticketsFilters', filters);
   },
   setTicketPagination(state, pagination) {
-    Vue.set(state, 'ticketPagination', pagination);
+    Vue.set(state, 'ticketsPagination', pagination);
   },
   setTicket(state, ticket) {
     Vue.set(state, 'currentTicket', ticket);
@@ -91,6 +91,6 @@ export const mutations = {
     Vue.set(state, 'seasons', seasons);
   },
   setSeasonPagination(state, pagination) {
-    Vue.set(state, 'seasonPagination', pagination);
+    Vue.set(state, 'seasonsPagination', pagination);
   },
 };
