@@ -9,6 +9,7 @@ const TICKETS = 'tickets';
 const SEASONS = 'seasons';
 const COMPETITIONS = 'competitions';
 const TEAMS = 'teams';
+const HISTORICAL = 'historical';
 
 /**
  * API Resources
@@ -60,6 +61,13 @@ PronostigolClient.prototype.getQuinielaCompetitions = function getQuinielaCompet
 
 PronostigolClient.prototype.getQuinielaTeams = function getQuinielaTeams(params) {
   return this.restClient.get(`/${QUINIELA}/${TEAMS}`, {
+    params,
+  })
+    .then((response) => response.data);
+};
+
+PronostigolClient.prototype.getQuinielaStats = function getQuinielaStats(params) {
+  return this.restClient.get(`/${QUINIELA}/${HISTORICAL}`, {
     params,
   })
     .then((response) => response.data);
