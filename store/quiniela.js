@@ -1,5 +1,7 @@
 import Vue from 'vue';
 
+import utils from '@/utils';
+
 export const state = () => ({
   tickets: {
     data: [],
@@ -9,10 +11,36 @@ export const state = () => ({
   currentTicket: {},
   seasons: [],
   seasonsPagination: {},
+  competitions: [],
+  competitionsPagination: {},
+  teams: [],
+  teamsPagination: {},
+  stats: {
+    filas: [],
+    plenosRenovados: [],
+  },
+  statsFilters: {},
+  statsPagination: {},
+  specialResults: [
+    '0-0',
+    '0-1',
+    '0-2',
+    '0-M',
+    '1-0',
+    '1-1',
+    '1-2',
+    '1-M',
+    '2-0',
+    '2-1',
+    '2-2',
+    '2-M',
+    'M-0',
+    'M-1',
+    'M-2',
+    'M-M',
+  ],
   loading: true,
 });
-
-export const getters = {};
 
 export const actions = {
   /**
@@ -63,6 +91,61 @@ export const actions = {
       .then((seasons) => commit('setSeasons', seasons))
       .finally(() => commit('setIsLoading', false));
   },
+  /**
+   * Competitions
+   */
+  getCompetitions({ state, commit }) {
+    commit('setIsLoading', true);
+    return Vue.pronostigolClient.getQuinielaCompetitions({
+      ...state.competitionPagination,
+    })
+      .then((competitions) => commit('setCompetitions', competitions))
+      .finally(() => commit('setIsLoading', false));
+  },
+  /**
+   * Teams
+   */
+  getTeams({ state, commit }) {
+    commit('setIsLoading', true);
+    return Vue.pronostigolClient.getQuinielaTeams({
+      ...state.teamsPagination,
+    })
+      .then((teams) => commit('setTeams', teams))
+      .finally(() => commit('setIsLoading', false));
+  },
+  /**
+   * Stats
+   */
+  getStats({ state, commit }) {
+    commit('setIsLoading', true);
+
+    const statsFilters = { ...state.statsFilters };
+    if (statsFilters.season === 'Histórico') {
+      statsFilters.season = null;
+    }
+
+    if (statsFilters.competition === 'Todas') {
+      statsFilters.competition = null;
+    }
+
+    statsFilters.searchBy = null;
+
+    return Vue.pronostigolClient.getQuinielaStats({
+      ...statsFilters,
+      ...state.statsPagination,
+    })
+      .then((stats) => {
+        const filledStats = utils.getFilledStats(stats);
+        commit('setStats', filledStats);
+      })
+      .finally(() => commit('setIsLoading', false));
+  },
+  destroyStats({ commit }) {
+    return commit('setStats', {
+      filas: [],
+      plenosRenovados: [],
+    });
+  },
 };
 
 export const mutations = {
@@ -92,5 +175,35 @@ export const mutations = {
   },
   setSeasonPagination(state, pagination) {
     Vue.set(state, 'seasonsPagination', pagination);
+  },
+  /**
+   * Competitions
+   */
+  setCompetitions(state, competitions) {
+    Vue.set(state, 'competitions', competitions);
+  },
+  setCompetitionPagination(state, pagination) {
+    Vue.set(state, 'competitionPagination', pagination);
+  },
+  /**
+   * Teams
+   */
+  setTeams(state, teams) {
+    Vue.set(state, 'teams', teams);
+  },
+  setTeamPagination(state, pagination) {
+    Vue.set(state, 'teamsPagination', pagination);
+  },
+  /**
+   * Stats
+   */
+  setStatsFilters(state, filters) {
+    Vue.set(state, 'statsFilters', filters);
+  },
+  setStats(state, stats) {
+    Vue.set(state, 'stats', stats);
+  },
+  setStatPagination(state, pagination) {
+    Vue.set(state, 'statsPagination', pagination);
   },
 };
