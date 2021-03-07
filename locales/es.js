@@ -1,4 +1,7 @@
 export default {
+  COMMON: {
+    TOTAL: 'Total',
+  },
   MENU: {
     HOME: {
       TEXT: 'Inicio',
@@ -254,6 +257,28 @@ export default {
             SEARCH: {
               TEXT: 'Buscar',
             },
+          },
+        },
+        GENERAL_STATS: {
+          TABLE: {
+            ROW: {
+              LABEL: 'Fila',
+            },
+            LOCAL_WINS: {
+              LABEL: 'Victorias locales',
+            },
+            DRAWS: {
+              LABEL: 'Empates',
+            },
+            VISITOR_WINS: {
+              LABEL: 'Victorias visitantes',
+            },
+            FOOTBALL_MATCHES_COUNT: {
+              LABEL: 'Número de partidos',
+            },
+          },
+          SPECIAL_RESULTS_TABLE: {
+            INFO_MESSAGE: 'La siguiente tabla contiene los resultados del pleno al 15 a partir de la 2014-2015, en la que el formato cambió. Por tanto, esta tabla no mostrará datos de la 2013-2014 ni anteriores.',
           },
         },
       },
