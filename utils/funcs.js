@@ -143,6 +143,38 @@ function getCommonMetas(doc) {
   return obj;
 }
 
+function getFilledStats(stats) {
+  const from = 1;
+  const to = 15;
+
+  const emptyRow = {
+    victoriasLocales: 0,
+    empates: 0,
+    victoriasVisitantes: 0,
+  };
+
+  const res = {
+    filas: [],
+    plenosRenovados: stats.plenosRenovados,
+  };
+
+  for (let i = from; i <= to; i += 1) {
+    const row = stats.filas.find((item) => item.fila === i);
+
+    if (!row) {
+      res.filas.push({
+        ...emptyRow,
+        fila: i,
+      });
+    } else {
+      res.filas.push(row);
+    }
+  }
+
+  return res;
+}
+
 export default {
   getCommonMetas,
+  getFilledStats,
 };
