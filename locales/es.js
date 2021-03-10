@@ -281,6 +281,12 @@ export default {
             INFO_MESSAGE: 'La siguiente tabla contiene los resultados del pleno al 15 a partir de la 2014-2015, en la que el formato cambió. Por tanto, esta tabla no mostrará datos de la 2013-2014 ni anteriores.',
           },
         },
+        TEAM_STATS: {
+          TABS: {
+            LOCAL: 'Local',
+            VISITOR: 'Visitante',
+          },
+        },
       },
     },
   },
