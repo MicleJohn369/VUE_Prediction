@@ -40,6 +40,7 @@
         </v-tabs>
         <v-tabs-items
           v-model="currentTab"
+          :touchless="true"
         >
           <v-tab-item>
             <CustomStatsForm :show="show" />
@@ -57,20 +58,17 @@
                 dark
                 icons-and-text
               >
-                <v-tabs-slider />
-
-                <v-tab>
-                  xoxLocal
-                  <v-icon>mdi-stadium</v-icon>
-                </v-tab>
-
-                <v-tab>
-                  xoxVisitante
-                  <v-icon>mdi-airplane-takeoff</v-icon>
+                <v-tab
+                  v-for="(placeTab, index) in placesTab"
+                  :key="index"
+                >
+                  {{ placeTab.name }}
+                  <v-icon>{{ placeTab.icon }}</v-icon>
                 </v-tab>
               </v-tabs>
               <v-tabs-items
                 v-model="currentPlaceTab"
+                :touchless="true"
               >
                 <v-tab-item>
                   <CustomStatsTable
@@ -165,8 +163,13 @@ export default {
       ],
       currentTab: null,
       placesTab: [
-        { name: 'xoxLocal' },
-        { name: 'xoxVisitante' },
+        {
+          name: this.$t('VIEWS.QUINIELA.STATS.TEAM_STATS.TABS.LOCAL'),
+          icon: 'mdi-stadium',
+        }, {
+          name: this.$t('VIEWS.QUINIELA.STATS.TEAM_STATS.TABS.VISITOR'),
+          icon: 'mdi-airplane-takeoff',
+        },
       ],
       currentPlaceTab: null,
       show: {
