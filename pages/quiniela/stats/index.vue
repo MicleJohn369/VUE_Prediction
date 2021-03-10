@@ -47,6 +47,45 @@
               v-if="show.stats"
               :stats="stats"
             />
+            <v-card
+              v-if="show.statsByPlace"
+            >
+              <v-tabs
+                v-model="currentPlaceTab"
+                background-color="primary"
+                centered
+                dark
+                icons-and-text
+              >
+                <v-tabs-slider />
+
+                <v-tab>
+                  xoxLocal
+                  <v-icon>mdi-stadium</v-icon>
+                </v-tab>
+
+                <v-tab>
+                  xoxVisitante
+                  <v-icon>mdi-airplane-takeoff</v-icon>
+                </v-tab>
+              </v-tabs>
+              <v-tabs-items
+                v-model="currentPlaceTab"
+              >
+                <v-tab-item>
+                  <CustomStatsTable
+                    class="pa-3"
+                    :stats="statsAsLocal"
+                  />
+                </v-tab-item>
+                <v-tab-item>
+                  <CustomStatsTable
+                    class="pa-3"
+                    :stats="statsAsVisitor"
+                  />
+                </v-tab-item>
+              </v-tabs-items>
+            </v-card>
           </v-tab-item>
           <v-tab-item />
         </v-tabs-items>
@@ -125,14 +164,22 @@ export default {
         { name: this.$t('VIEWS.QUINIELA.STATS.TABS.STANDARD') },
       ],
       currentTab: null,
+      placesTab: [
+        { name: 'xoxLocal' },
+        { name: 'xoxVisitante' },
+      ],
+      currentPlaceTab: null,
       show: {
         stats: false,
+        statsByPlace: false,
       },
     };
   },
   computed: {
     ...mapState('quiniela', {
       stats: (state) => state.stats,
+      statsAsLocal: (state) => state.statsAsLocal,
+      statsAsVisitor: (state) => state.statsAsVisitor,
     }),
   },
   destroyed() {
