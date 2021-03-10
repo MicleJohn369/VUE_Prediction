@@ -111,8 +111,7 @@
         justify="center"
       >
         <v-col
-          cols="12"
-          md="auto"
+          cols="auto"
         >
           <v-btn
             color="primary"
