@@ -91,7 +91,9 @@
       >
         {{ specialResultsInfoMessage }}
       </v-alert>
-      <v-simple-table>
+      <v-simple-table
+        class="special-results-table"
+      >
         <template
           v-slot:default
         >
@@ -201,3 +203,15 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.special-results-table{
+  thead{
+    tr{
+      th{
+        white-space: nowrap;
+      }
+    }
+  }
+}
+</style>
