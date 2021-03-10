@@ -181,7 +181,12 @@ function getFilledStats(stats, specialResults) {
   return res;
 }
 
+function cloneObject(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
 export default {
   getCommonMetas,
   getFilledStats,
+  cloneObject,
 };
