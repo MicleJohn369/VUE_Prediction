@@ -33,21 +33,39 @@
               <td class="text-center" v-text="row.fila" />
               <td class="text-center">
                 <v-chip
-                  :color="getCellColor(row.victoriasLocales, row.empates, row.victoriasVisitantes)"
+                  :color="getCellColor(
+                    row.victoriasLocales,
+                    [
+                      row.empates,
+                      row.victoriasVisitantes,
+                    ]
+                  )"
                 >
                   {{ row.victoriasLocales }}
                 </v-chip>
               </td>
               <td class="text-center">
                 <v-chip
-                  :color="getCellColor(row.empates, row.victoriasLocales, row.victoriasVisitantes)"
+                  :color="getCellColor(
+                    row.empates,
+                    [
+                      row.victoriasLocales,
+                      row.victoriasVisitantes,
+                    ]
+                  )"
                 >
                   {{ row.empates }}
                 </v-chip>
               </td>
               <td class="text-center">
                 <v-chip
-                  :color="getCellColor(row.victoriasVisitantes, row.victoriasLocales, row.empates)"
+                  :color="getCellColor(
+                    row.victoriasVisitantes,
+                    [
+                      row.victoriasLocales,
+                      row.empates,
+                    ]
+                  )"
                 >
                   {{ row.victoriasVisitantes }}
                 </v-chip>
@@ -58,21 +76,39 @@
               <td class="text-center" v-text="totalLabel" />
               <td class="text-center">
                 <v-chip
-                  :color="getCellColor(localWinsCount, drawsCount, visitorWinsCount)"
+                  :color="getCellColor(
+                    localWinsCount,
+                    [
+                      drawsCount,
+                      visitorWinsCount,
+                    ]
+                  )"
                 >
                   {{ localWinsCount }}
                 </v-chip>
               </td>
               <td class="text-center">
                 <v-chip
-                  :color="getCellColor(drawsCount, localWinsCount, visitorWinsCount)"
+                  :color="getCellColor(
+                    drawsCount,
+                    [
+                      localWinsCount,
+                      visitorWinsCount,
+                    ]
+                  )"
                 >
                   {{ drawsCount }}
                 </v-chip>
               </td>
               <td class="text-center">
                 <v-chip
-                  :color="getCellColor(visitorWinsCount, localWinsCount, drawsCount)"
+                  :color="getCellColor(
+                    visitorWinsCount,
+                    [
+                      localWinsCount,
+                      drawsCount,
+                    ]
+                  )"
                 >
                   {{ visitorWinsCount }}
                 </v-chip>
@@ -116,11 +152,19 @@
                 v-text="15"
               />
               <td
-                v-for="(row, index) in specialResults"
+                v-for="(specialResult, index) in specialResults"
                 :key="index"
                 class="text-center"
-                v-text="stats.plenosRenovados[row]"
-              />
+              >
+                <v-chip
+                  :color="getSpecialResultCellColor({
+                    result: specialResult,
+                    occurrences: stats.plenosRenovados[specialResult]
+                  }, stats.plenosRenovados)"
+                >
+                  {{ stats.plenosRenovados[specialResult] }}
+                </v-chip>
+              </td>
               <td class="text-center" v-text="specialResultsFootballMatchesCount" />
             </tr>
             <tr>
@@ -142,14 +186,13 @@
 </template>
 
 <script>
-import getCellColorMixin from '@/mixins/getCellColor';
 import { mapState } from 'vuex';
+
+import utils from '@/utils';
 
 export default {
   name: 'GeneralStats',
-  mixins: [
-    getCellColorMixin,
-  ],
+  mixins: [],
   props: {
     stats: {
       type: Object,
@@ -199,6 +242,56 @@ export default {
   methods: {
     getRowFootballMatchesCount(row) {
       return row.victoriasLocales + row.empates + row.victoriasVisitantes;
+    },
+    getCellColor(cellOccurrences, otherOccurrences) {
+      if (cellOccurrences === 0) {
+        return '';
+      }
+
+      const isHigherUnique = otherOccurrences
+        .every((value) => cellOccurrences > value);
+
+      if (isHigherUnique) {
+        return 'success';
+      }
+
+      const isHigherShared = otherOccurrences
+        .every((value) => cellOccurrences >= value);
+
+      if (isHigherShared) {
+        return 'warning';
+      }
+
+      return 'error';
+    },
+    getSpecialResultCellColor(cell, allCells) {
+      const { result } = cell;
+      const { occurrences } = cell;
+
+      if (occurrences === 0) {
+        return '';
+      }
+
+      const plenosRenovados = utils.cloneObject(allCells);
+      delete plenosRenovados[result];
+
+      const values = Object.values(plenosRenovados);
+
+      const isHigherUnique = values
+        .every((value) => occurrences > value);
+
+      if (isHigherUnique) {
+        return 'success';
+      }
+
+      const isHigherShared = values
+        .every((value) => occurrences >= value);
+
+      if (isHigherShared) {
+        return 'warning';
+      }
+
+      return 'error';
     },
   },
 };
