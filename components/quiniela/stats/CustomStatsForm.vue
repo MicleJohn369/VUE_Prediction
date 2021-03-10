@@ -252,7 +252,7 @@ export default {
     },
   },
   methods: {
-    submitForm() {
+    async submitForm() {
       this.resetShow();
       this.$store.dispatch('quiniela/destroyStats');
 
@@ -261,12 +261,24 @@ export default {
       if (this.valid) {
         if (this.searchBy === 'general' || this.searchBy === 'partido') {
           this.show.stats = true;
-          this.getStats();
+          await this.getStats();
+        } else if (this.searchBy === 'equipo') {
+          this.show.statsByPlace = true;
+          await Promise.all([
+            this.getStatsAsLocal(),
+            this.getStatsAsVisitor(),
+          ]);
         }
       }
     },
     getStats() {
       return this.$store.dispatch('quiniela/getStats');
+    },
+    getStatsAsLocal() {
+      return this.$store.dispatch('quiniela/getStatsAsLocal');
+    },
+    getStatsAsVisitor() {
+      return this.$store.dispatch('quiniela/getStatsAsVisitor');
     },
     resetShow() {
       Object.keys(this.show).forEach((item) => {
