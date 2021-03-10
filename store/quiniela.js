@@ -17,10 +17,18 @@ export const state = () => ({
   teamsPagination: {},
   stats: {
     filas: [],
-    plenosRenovados: [],
+    plenosRenovados: {},
   },
   statsFilters: {},
   statsPagination: {},
+  statsAsLocal: {
+    filas: [],
+    plenosRenovados: {},
+  },
+  statsAsVisitor: {
+    filas: [],
+    plenosRenovados: {},
+  },
   specialResults: [
     '0-0',
     '0-1',
@@ -135,7 +143,7 @@ export const actions = {
       ...state.statsPagination,
     })
       .then((stats) => {
-        const filledStats = utils.getFilledStats(stats);
+        const filledStats = utils.getFilledStats(stats, state.specialResults);
         commit('setStats', filledStats);
       })
       .finally(() => commit('setIsLoading', false));
@@ -143,8 +151,60 @@ export const actions = {
   destroyStats({ commit }) {
     return commit('setStats', {
       filas: [],
-      plenosRenovados: [],
+      plenosRenovados: {},
     });
+  },
+  getStatsAsLocal({ state, commit }) {
+    commit('setIsLoading', true);
+
+    const statsFilters = { ...state.statsFilters };
+    if (statsFilters.season === 'Histórico') {
+      statsFilters.season = null;
+    }
+
+    if (statsFilters.competition === 'Todas') {
+      statsFilters.competition = null;
+    }
+
+    statsFilters.searchBy = null;
+    statsFilters.local_team = statsFilters.team;
+    statsFilters.team = null;
+
+    return Vue.pronostigolClient.getQuinielaStats({
+      ...statsFilters,
+      ...state.statsPagination,
+    })
+      .then((stats) => {
+        const filledStats = utils.getFilledStats(stats, state.specialResults);
+        commit('setStatsAsLocal', filledStats);
+      })
+      .finally(() => commit('setIsLoading', false));
+  },
+  getStatsAsVisitor({ state, commit }) {
+    commit('setIsLoading', true);
+
+    const statsFilters = { ...state.statsFilters };
+    if (statsFilters.season === 'Histórico') {
+      statsFilters.season = null;
+    }
+
+    if (statsFilters.competition === 'Todas') {
+      statsFilters.competition = null;
+    }
+
+    statsFilters.searchBy = null;
+    statsFilters.visitor_team = statsFilters.team;
+    statsFilters.team = null;
+
+    return Vue.pronostigolClient.getQuinielaStats({
+      ...statsFilters,
+      ...state.statsPagination,
+    })
+      .then((stats) => {
+        const filledStats = utils.getFilledStats(stats, state.specialResults);
+        commit('setStatsAsVisitor', filledStats);
+      })
+      .finally(() => commit('setIsLoading', false));
   },
 };
 
@@ -203,7 +263,13 @@ export const mutations = {
   setStats(state, stats) {
     Vue.set(state, 'stats', stats);
   },
-  setStatPagination(state, pagination) {
+  setStatsPagination(state, pagination) {
     Vue.set(state, 'statsPagination', pagination);
+  },
+  setStatsAsLocal(state, stats) {
+    Vue.set(state, 'statsAsLocal', stats);
+  },
+  setStatsAsVisitor(state, stats) {
+    Vue.set(state, 'statsAsVisitor', stats);
   },
 };
