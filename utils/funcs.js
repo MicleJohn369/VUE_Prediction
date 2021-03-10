@@ -143,7 +143,7 @@ function getCommonMetas(doc) {
   return obj;
 }
 
-function getFilledStats(stats) {
+function getFilledStats(stats, specialResults) {
   const from = 1;
   const to = 15;
 
@@ -155,7 +155,7 @@ function getFilledStats(stats) {
 
   const res = {
     filas: [],
-    plenosRenovados: stats.plenosRenovados,
+    plenosRenovados: {},
   };
 
   for (let i = from; i <= to; i += 1) {
@@ -169,6 +169,13 @@ function getFilledStats(stats) {
     } else {
       res.filas.push(row);
     }
+  }
+
+  for (let i = 0; i <= specialResults.length; i += 1) {
+    const specialResult = specialResults[i];
+
+    res.plenosRenovados[specialResult] = stats
+      .plenosRenovados[specialResult] || 0;
   }
 
   return res;
