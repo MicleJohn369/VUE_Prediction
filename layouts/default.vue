@@ -247,6 +247,7 @@ export default {
       clipped: true,
       drawer: true,
       fixed: false,
+      miniVariant: false,
       items: [
         {
           icon: 'mdi-home',
@@ -274,6 +275,12 @@ export default {
               title: this.$t('MENU.QUINIELA.TICKETS.TEXT'),
               to: this.localePath({
                 name: 'quiniela-tickets',
+              }),
+            }, {
+              icon: 'mdi-poll-box',
+              title: this.$t('MENU.QUINIELA.STATS.TEXT'),
+              to: this.localePath({
+                name: 'quiniela-stats',
               }),
             },
           ],
@@ -316,7 +323,6 @@ export default {
           }),
         },
       ],
-      miniVariant: false,
       title: 'Pronostigol',
       privacyText: this.$t('FOOTER.PRIVACY.TEXT'),
       faqText: this.$t('FOOTER.FAQ.TEXT'),

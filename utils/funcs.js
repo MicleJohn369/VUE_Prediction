@@ -143,6 +143,50 @@ function getCommonMetas(doc) {
   return obj;
 }
 
+function getFilledStats(stats, specialResults) {
+  const from = 1;
+  const to = 15;
+
+  const emptyRow = {
+    victoriasLocales: 0,
+    empates: 0,
+    victoriasVisitantes: 0,
+  };
+
+  const res = {
+    filas: [],
+    plenosRenovados: {},
+  };
+
+  for (let i = from; i <= to; i += 1) {
+    const row = stats.filas.find((item) => item.fila === i);
+
+    if (!row) {
+      res.filas.push({
+        ...emptyRow,
+        fila: i,
+      });
+    } else {
+      res.filas.push(row);
+    }
+  }
+
+  for (let i = 0; i <= specialResults.length; i += 1) {
+    const specialResult = specialResults[i];
+
+    res.plenosRenovados[specialResult] = stats
+      .plenosRenovados[specialResult] || 0;
+  }
+
+  return res;
+}
+
+function cloneObject(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
 export default {
   getCommonMetas,
+  getFilledStats,
+  cloneObject,
 };

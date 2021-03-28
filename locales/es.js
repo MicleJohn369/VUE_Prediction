@@ -1,4 +1,7 @@
 export default {
+  COMMON: {
+    TOTAL: 'Total',
+  },
   MENU: {
     HOME: {
       TEXT: 'Inicio',
@@ -10,6 +13,9 @@ export default {
       },
       TICKETS: {
         TEXT: 'Sorteos',
+      },
+      STATS: {
+        TEXT: 'Estadísticas',
       },
     },
     BONOLOTO: {
@@ -71,6 +77,9 @@ export default {
         TICKET: {
           TEXT: '{season} - J{day}',
         },
+      },
+      STATS: {
+        TEXT: 'Estadísticas',
       },
     },
   },
@@ -203,6 +212,103 @@ export default {
             },
             RESULT: {
               LABEL: 'Resultado',
+            },
+          },
+        },
+      },
+      STATS: {
+        TITLE: 'Estadísticas de la Quiniela',
+        INTRO_TEXT: 'Ésta es, casi con total seguridad, la funcionalidad más importante de nuestra sección de la Quiniela. Aquí podrás consultar una gran variedad de estadísticas para saber cuáles son las combinaciones más repetidas, los datos de un equipo como local o visitante, los resultados más repetidos según la fila y otras muchas cosas.',
+        TABS: {
+          CUSTOM: 'Personalizadas',
+          STANDARD: 'Estándar',
+        },
+        CUSTOM_STATS_FORM: {
+          FILTERS: {
+            SEASON: {
+              LABEL: 'Temporada',
+            },
+            COMPETITION: {
+              LABEL: 'Competición',
+            },
+            SEARCH_BY: {
+              LABEL: 'Buscar por:',
+              OPTIONS: {
+                GENERAL: {
+                  LABEL: 'General',
+                },
+                TEAM: {
+                  LABEL: 'Equipo',
+                },
+                FOOTBALL_MATCH: {
+                  LABEL: 'Partido',
+                },
+              },
+            },
+            TEAM: {
+              LABEL: 'Equipo',
+            },
+            LOCAL_TEAM: {
+              LABEL: 'Equipo local',
+            },
+            VISITOR_TEAM: {
+              LABEL: 'Equipo visitante',
+            },
+            SEARCH: {
+              TEXT: 'Buscar',
+            },
+          },
+        },
+        GENERAL_STATS: {
+          TABLE: {
+            ROW: {
+              LABEL: 'Fila',
+            },
+            LOCAL_WINS: {
+              LABEL: 'Victorias locales',
+            },
+            DRAWS: {
+              LABEL: 'Empates',
+            },
+            VISITOR_WINS: {
+              LABEL: 'Victorias visitantes',
+            },
+            FOOTBALL_MATCHES_COUNT: {
+              LABEL: 'Número de partidos',
+            },
+          },
+          SPECIAL_RESULTS_TABLE: {
+            INFO_MESSAGE: 'La siguiente tabla contiene los resultados del pleno al 15 a partir de la 2014-2015, en la que el formato cambió. Por tanto, esta tabla no mostrará datos de la 2013-2014 ni anteriores.',
+          },
+        },
+        TEAM_STATS: {
+          TABS: {
+            LOCAL: 'Local',
+            VISITOR: 'Visitante',
+          },
+        },
+        STANDARD_STATS_FORM: {
+          FILTERS: {
+            SEARCH_BY: {
+              LABEL: 'Buscar por:',
+              OPTIONS: {
+                OCCURRENCES: {
+                  LABEL: 'Ocurrencias',
+                },
+              },
+            },
+            SEARCH: {
+              TEXT: 'Buscar',
+            },
+          },
+        },
+        STANDARD_STATS: {
+          TABLE: {
+            RESULT: {
+              LABEL: 'Resultado',
+            },
+            OCCURRENCES: {
+              LABEL: 'Apariciones',
             },
           },
         },
