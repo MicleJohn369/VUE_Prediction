@@ -29,6 +29,14 @@ export const state = () => ({
     filas: [],
     plenosRenovados: {},
   },
+  standardStats: {
+    data: [],
+  },
+  standardStatsFilters: {},
+  standardStatsPagination: {
+    page: 1,
+    per_page: 10,
+  },
   specialResults: [
     '0-0',
     '0-1',
@@ -206,6 +214,27 @@ export const actions = {
       })
       .finally(() => commit('setIsLoading', false));
   },
+  getStandardStats({ commit, state }) {
+    commit('setIsLoading', true);
+
+    const standardStatsFilters = { ...state.standardStatsFilters };
+
+    standardStatsFilters.searchBy = null;
+
+    return Vue.pronostigolClient.getQuinielaStandardStats({
+      ...standardStatsFilters,
+      ...state.standardStatsPagination,
+    })
+      .then((standardStats) => {
+        commit('setStandardStats', standardStats);
+      })
+      .finally(() => commit('setIsLoading', false));
+  },
+  destroyStandardStats({ commit }) {
+    return commit('setStandardStats', {
+      data: [],
+    });
+  },
 };
 
 export const mutations = {
@@ -271,5 +300,17 @@ export const mutations = {
   },
   setStatsAsVisitor(state, stats) {
     Vue.set(state, 'statsAsVisitor', stats);
+  },
+  /**
+   * Standard stats
+   */
+  setStandardStatsFilters(state, filters) {
+    Vue.set(state, 'standardStatsFilters', filters);
+  },
+  setStandardStats(state, stats) {
+    Vue.set(state, 'standardStats', stats);
+  },
+  setStandardStatsPagination(state, pagination) {
+    Vue.set(state, 'standardStatsPagination', pagination);
   },
 };
