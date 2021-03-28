@@ -287,6 +287,31 @@ export default {
             VISITOR: 'Visitante',
           },
         },
+        STANDARD_STATS_FORM: {
+          FILTERS: {
+            SEARCH_BY: {
+              LABEL: 'Buscar por:',
+              OPTIONS: {
+                OCCURRENCES: {
+                  LABEL: 'Ocurrencias',
+                },
+              },
+            },
+            SEARCH: {
+              TEXT: 'Buscar',
+            },
+          },
+        },
+        STANDARD_STATS: {
+          TABLE: {
+            RESULT: {
+              LABEL: 'Resultado',
+            },
+            OCCURRENCES: {
+              LABEL: 'Apariciones',
+            },
+          },
+        },
       },
     },
   },
