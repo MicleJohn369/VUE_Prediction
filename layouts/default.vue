@@ -260,9 +260,6 @@ export default {
           icon: 'mdi-soccer',
           iconColor: 'primary',
           title: this.$t('MENU.QUINIELA.TEXT'),
-          to: this.localePath({
-            name: 'quiniela',
-          }),
           items: [
             {
               icon: 'mdi-dice-multiple',
@@ -288,13 +285,10 @@ export default {
           icon: 'mdi-clover',
           iconColor: 'black',
           title: this.$t('MENU.BONOLOTO.TEXT'),
-          to: this.localePath({
-            name: 'bonoloto',
-          }),
           items: [
             {
-              icon: 'mdi-history',
-              title: this.$t('MENU.BONOLOTO.TICKETS.TEXT'),
+              icon: 'mdi-dice-multiple',
+              title: this.$t('MENU.BONOLOTO.PROBABILITIES.TEXT'),
               to: this.localePath({
                 name: 'bonoloto',
               }),
