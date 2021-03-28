@@ -42,6 +42,7 @@
           <p>{{ searchByLabel }}</p>
           <v-radio-group
             v-model="searchBy"
+            mandatory
           >
             <v-radio
               :label="searchByGeneralLabel"
