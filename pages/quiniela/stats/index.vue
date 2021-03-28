@@ -85,7 +85,12 @@
               </v-tabs-items>
             </v-card>
           </v-tab-item>
-          <v-tab-item />
+          <v-tab-item>
+            <StandardStatsForm :show="show" />
+            <StandardStatsTable
+              v-if="show.standardStats"
+            />
+          </v-tab-item>
         </v-tabs-items>
       </v-card>
     </v-col>
@@ -99,13 +104,16 @@ import utils from '@/utils';
 import { mapState } from 'vuex';
 
 import CustomStatsForm from '@/components/quiniela/stats/CustomStatsForm.vue';
-import CustomStatsTable from '~/components/quiniela/stats/CustomStatsTable.vue';
+import CustomStatsTable from '@/components/quiniela/stats/CustomStatsTable.vue';
+
+import StandardStatsForm from '@/components/quiniela/stats/StandardStatsForm.vue';
 
 export default {
   name: 'QuinielaStats',
   components: {
     CustomStatsForm,
     CustomStatsTable,
+    StandardStatsForm,
   },
   nuxtI18n: {
     paths: {
@@ -175,6 +183,7 @@ export default {
       show: {
         stats: false,
         statsByPlace: false,
+        standardStats: false,
       },
     };
   },
