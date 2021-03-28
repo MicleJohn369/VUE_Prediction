@@ -191,7 +191,7 @@ import { mapState } from 'vuex';
 import utils from '@/utils';
 
 export default {
-  name: 'GeneralStats',
+  name: 'CustomStatsTable',
   mixins: [],
   props: {
     stats: {
