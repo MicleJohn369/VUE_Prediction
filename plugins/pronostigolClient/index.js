@@ -1,7 +1,7 @@
 const axios = require('axios');
 // const axiosAdapter = require('axios/lib/adapters/xhr');
 
-const client = require('./client.js');
+const client = require('./client');
 
 module.exports = (config) => {
   // axios.defaults.adapter = axiosAdapter;
