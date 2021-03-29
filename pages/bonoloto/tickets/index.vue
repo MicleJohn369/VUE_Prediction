@@ -12,7 +12,7 @@
           </v-breadcrumbs-item>
         </template>
       </v-breadcrumbs>
-      <div class="text-h2 my-3 pb-4 blue--text">
+      <div class="text-h2 my-3 pb-4 black--text">
         {{ titleText }}
       </div>
       <ScrollButton />
@@ -34,15 +34,14 @@
               md="4"
             >
               <v-select
-                v-model="season"
+                v-model="year"
                 :rules="[
-                  (v) => !!v || this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEASON.ERRORS.REQUIRED')
+                  (v) => !!v || this.$t('VIEWS.BONOLOTO.TICKETS.FILTERS.YEAR.ERRORS.REQUIRED'),
                 ]"
-                :items="seasons"
-                :label="seasonText"
+                :items="years"
+                :label="yearText"
                 item-text="name"
                 item-value="value"
-                required
               />
             </v-col>
           </v-row>
@@ -84,10 +83,10 @@
                 x-small
                 color="blue"
                 :to="localePath({
-                  name: 'quiniela-tickets-season-day',
+                  name: 'bonoloto-tickets-year-day',
                   params: {
-                    season: item.temporada,
-                    day: item.jornada,
+                    year: item.anyo,
+                    day: item.sorteo,
                   }
                 })"
                 nuxt
@@ -116,37 +115,31 @@ import utils from '@/utils';
 import getFormattedDateMixin from '@/mixins/getFormattedDate';
 
 export default {
-  name: 'QuinielaTickets',
+  name: 'BonolotoTickets',
   nuxtI18n: {
     paths: {
-      es: '/quiniela/sorteos',
+      es: '/bonoloto/sorteos',
     },
   },
   mixins: [
     getFormattedDateMixin,
   ],
   async fetch() {
-    this.$store.commit('quiniela/setTicketPagination', {
+    this.$store.commit('bonoloto/setTicketPagination', {
       sort_property: this.options.sortBy[0],
       sort_type: this.options.sortDesc[0] ? 'desc' : 'asc',
     });
 
-    this.$store.commit('quiniela/setSeasonPagination', {
+    // TODO: Implementar ordenación de años de Bonoloto en servidor
+
+    this.$store.commit('bonoloto/setYearsPagination', {
       sort_type: 'desc',
     });
 
     return Promise.all([
-      this.$store.dispatch('quiniela/getSeasons'),
+      this.$store.dispatch('bonoloto/getYears'),
     ])
-      .then(() => {
-        const filters = this.$store.state.quiniela.ticketsFilters;
-        this.$store.commit('quiniela/setTicketsFilters', {
-          ...filters,
-          season: 'Histórico',
-        });
-
-        return this.$store.dispatch('quiniela/getTickets');
-      });
+      .then(() => this.$store.dispatch('bonoloto/getTickets'));
   },
   data() {
     return {
@@ -159,10 +152,10 @@ export default {
           }),
         },
         {
-          text: this.$t('BREADCRUMBS.QUINIELA.TEXT'),
+          text: this.$t('BREADCRUMBS.BONOLOTO.TEXT'),
           disabled: true,
         }, {
-          text: this.$t('BREADCRUMBS.QUINIELA.TICKETS.TEXT'),
+          text: this.$t('BREADCRUMBS.BONOLOTO.TICKETS.TEXT'),
           disabled: true,
         },
       ],
@@ -173,53 +166,47 @@ export default {
       },
       headers: [
         {
-          text: this.$t('VIEWS.QUINIELA.TICKETS.TABLE.DAY.LABEL'),
+          text: this.$t('VIEWS.BONOLOTO.TICKETS.TABLE.RAFFLE.LABEL'),
           align: 'center',
           sortable: false,
-          value: 'jornada',
-        },
-        {
-          text: this.$t('VIEWS.QUINIELA.TICKETS.TABLE.MODALITY.LABEL'),
-          align: 'center',
-          sortable: false,
-          value: 'modalidad',
+          value: 'sorteo',
         }, {
-          text: this.$t('VIEWS.QUINIELA.TICKETS.TABLE.DATE.LABEL'),
+          text: this.$t('VIEWS.BONOLOTO.TICKETS.TABLE.DATE.LABEL'),
           align: 'center',
           sortable: true,
           value: 'fecha',
         }, {
-          text: this.$t('VIEWS.QUINIELA.TICKETS.TABLE.ACTIONS.LABEL'),
+          text: this.$t('VIEWS.BONOLOTO.TICKETS.TABLE.ACTIONS.LABEL'),
           align: 'center',
           sortable: false,
           value: 'actions',
         },
       ],
       valid: false,
-      titleText: this.$t('VIEWS.QUINIELA.TICKETS.TITLE'),
-      ticketsIntroText: this.$t('VIEWS.QUINIELA.TICKETS.INTRO_TEXT'),
-      seasonText: this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEASON.LABEL'),
-      searchText: this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEARCH.TEXT'),
-      detailTicketTooltip: this.$t('VIEWS.QUINIELA.TICKETS.TABLE.ACTIONS.SEE.TOOLTIP'),
+      titleText: this.$t('VIEWS.BONOLOTO.TICKETS.TITLE'),
+      ticketsIntroText: this.$t('VIEWS.BONOLOTO.TICKETS.INTRO_TEXT'),
+      yearText: this.$t('VIEWS.BONOLOTO.TICKETS.FILTERS.YEAR.LABEL'),
+      searchText: this.$t('VIEWS.BONOLOTO.TICKETS.FILTERS.SEARCH.TEXT'),
+      detailTicketTooltip: this.$t('VIEWS.BONOLOTO.TICKETS.TABLE.ACTIONS.SEE.TOOLTIP'),
     };
   },
   computed: {
-    ...mapState('quiniela', {
+    ...mapState('bonoloto', {
       tickets: (state) => state.tickets.data,
       total: (state) => state.tickets.total,
       pagination: 'ticketsPagination',
-      seasons: (state) => state.seasons,
+      years: (state) => state.years,
       loading: 'loading',
     }),
-    season: {
+    year: {
       get() {
-        return this.$store.state.quiniela.ticketsFilters.season;
+        return this.$store.state.bonoloto.ticketsFilters.year;
       },
       set(value) {
-        const filters = this.$store.state.quiniela.ticketsFilters;
-        this.$store.commit('quiniela/setTicketsFilters', {
+        const filters = this.$store.state.bonoloto.ticketsFilters;
+        this.$store.commit('bonoloto/setTicketsFilters', {
           ...filters,
-          season: value,
+          year: value,
         });
       },
     },
@@ -233,7 +220,7 @@ export default {
     },
   },
   destroyed() {
-    this.$store.dispatch('quiniela/destroyTickets');
+    this.$store.dispatch('bonoloto/destroyTickets');
   },
   methods: {
     submitForm() {
@@ -248,34 +235,34 @@ export default {
         sortBy, sortDesc, page, itemsPerPage,
       } = this.options;
 
-      this.$store.commit('quiniela/setTicketPagination', {
+      this.$store.commit('bonoloto/setTicketPagination', {
         page,
         per_page: itemsPerPage,
         sort_type: sortDesc[0] ? 'desc' : 'asc',
         sort_property: sortBy[0],
       });
 
-      this.$store.dispatch('quiniela/getTickets');
+      this.$store.dispatch('bonoloto/getTickets');
     },
   },
   head() {
     const seoInfo = {
-      title: '⚽ Quiniela | Histórico de sorteos de la quiniela',
+      title: '🍀 Bonoloto | Histórico de sorteos de la Bonoloto',
       metas: {
-        description: 'Apartado en el que poder consultar el histórico de sorteos de la quiniela. ⚡ Se pueden filtrar por temporada.',
-        keywords: 'quiniela, histórico, historico, sorteos',
-        canonical_url: 'https://www.pronostigol.es/quiniela/sorteos',
-        og_title: '⚽ Quiniela | Histórico de sorteos de la quiniela',
+        description: 'Apartado en el que poder consultar el histórico de sorteos de la Bonoloto. ⚡ Se pueden filtrar por año.',
+        keywords: 'bonoloto, histórico, historico, sorteos',
+        canonical_url: 'https://www.pronostigol.es/bonoloto/sorteos',
+        og_title: '🍀 Bonoloto | Histórico de sorteos de la Bonoloto',
         og_type: 'website',
-        og_image: 'https://www.pronostigol.es/img/logo-quiniela.png',
-        og_url: 'https://www.pronostigol.es/quiniela',
-        og_description: 'Apartado en el que poder consultar el histórico de sorteos de la quiniela. ⚡ Se pueden filtrar por temporada.',
+        og_image: 'https://www.pronostigol.es/img/logo-bonoloto.png',
+        og_url: 'https://www.pronostigol.es/bonoloto',
+        og_description: 'Apartado en el que poder consultar el histórico de sorteos de la bonoloto. ⚡ Se pueden filtrar por año.',
         og_site_name: 'Pronostigol',
         twitter_site: '@pronostigolesp',
         twitter_card: 'summary_large_image',
-        twitter_image: 'https://www.pronostigol.es/img/logo-quiniela.png',
-        twitter_title: '⚽ Quiniela | Histórico de sorteos de la quiniela',
-        twitter_description: 'Apartado en el que poder consultar el histórico de sorteos de la quiniela. ⚡ Se pueden filtrar por temporada.',
+        twitter_image: 'https://www.pronostigol.es/img/logo-bonoloto.png',
+        twitter_title: '🍀 Bonoloto | Histórico de sorteos de la Bonoloto',
+        twitter_description: 'Apartado en el que poder consultar el histórico de sorteos de la Bonoloto. ⚡ Se pueden filtrar por año.',
       },
     };
 

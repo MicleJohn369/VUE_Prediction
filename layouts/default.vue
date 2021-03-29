@@ -292,6 +292,12 @@ export default {
               to: this.localePath({
                 name: 'bonoloto',
               }),
+            }, {
+              icon: 'mdi-history',
+              title: this.$t('MENU.BONOLOTO.TICKETS.TEXT'),
+              to: this.localePath({
+                name: 'bonoloto-tickets',
+              }),
             },
           ],
         }, {

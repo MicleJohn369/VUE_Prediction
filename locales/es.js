@@ -90,6 +90,12 @@ export default {
       PROBABILITIES: {
         TEXT: 'Probabilidades',
       },
+      TICKETS: {
+        TEXT: 'Sorteos',
+        TICKET: {
+          TEXT: '{season} - J{day}',
+        },
+      },
     },
   },
   VIEWS: {
@@ -357,6 +363,35 @@ export default {
         },
         SOURCES: {
           TEXT: 'Fuentes',
+        },
+      },
+      TICKETS: {
+        TITLE: 'Histórico de sorteos de la Bonoloto',
+        INTRO_TEXT: 'Aquí encontrarás un amplio histórico en el que poder buscar los sorteos históricos de la Bonoloto. Si lo necesitas tienes la posibilidad de filtrar por un año en concreto, así como de paginar los resultados.',
+        FILTERS: {
+          YEAR: {
+            LABEL: 'Año',
+            ERRORS: {
+              REQUIRED: 'El año es obligatorio',
+            },
+          },
+          SEARCH: {
+            TEXT: 'Buscar',
+          },
+        },
+        TABLE: {
+          RAFFLE: {
+            LABEL: 'Sorteo',
+          },
+          DATE: {
+            LABEL: 'Fecha',
+          },
+          ACTIONS: {
+            LABEL: 'Acciones',
+            SEE: {
+              TOOLTIP: 'Ver detalle de ticket',
+            },
+          },
         },
       },
     },
