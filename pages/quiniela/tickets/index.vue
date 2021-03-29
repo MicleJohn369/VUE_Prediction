@@ -35,11 +35,14 @@
             >
               <v-select
                 v-model="season"
-                :rules="rules.season"
+                :rules="[
+                  (v) => !!v || this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEASON.ERRORS.REQUIRED')
+                ]"
                 :items="seasons"
                 :label="seasonText"
                 item-text="name"
                 item-value="value"
+                required
               />
             </v-col>
           </v-row>
@@ -137,7 +140,7 @@ export default {
     ])
       .then(() => {
         const filters = this.$store.state.quiniela.ticketsFilters;
-        this.$store.commit('quiniela/setTicketFilters', {
+        this.$store.commit('quiniela/setTicketsFilters', {
           ...filters,
           season: 'Histórico',
         });
@@ -193,11 +196,6 @@ export default {
         },
       ],
       valid: false,
-      rules: {
-        season: [
-          (v) => !!v || this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEASON.ERRORS.REQUIRED'),
-        ],
-      },
       titleText: this.$t('VIEWS.QUINIELA.TICKETS.TITLE'),
       ticketsIntroText: this.$t('VIEWS.QUINIELA.TICKETS.INTRO_TEXT'),
       seasonText: this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEASON.LABEL'),
@@ -219,7 +217,7 @@ export default {
       },
       set(value) {
         const filters = this.$store.state.quiniela.ticketsFilters;
-        this.$store.commit('quiniela/setTicketFilters', {
+        this.$store.commit('quiniela/setTicketsFilters', {
           ...filters,
           season: value,
         });
