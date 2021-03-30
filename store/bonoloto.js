@@ -9,8 +9,6 @@ export const state = () => ({
   currentTicket: {},
   years: [],
   yearsPagination: {},
-  competitions: [],
-  competitionsPagination: {},
   stats: {
     filas: [],
   },
@@ -77,17 +75,6 @@ export const actions = {
       .finally(() => commit('setIsLoading', false));
   },
   /**
-   * Competitions
-   */
-  getCompetitions({ state, commit }) {
-    commit('setIsLoading', true);
-    return Vue.pronostigolClient.getBonolotoCompetitions({
-      ...state.competitionPagination,
-    })
-      .then((competitions) => commit('setCompetitions', competitions))
-      .finally(() => commit('setIsLoading', false));
-  },
-  /**
    * Stats
    */
   getStats({ state, commit }) {
@@ -96,10 +83,6 @@ export const actions = {
     const statsFilters = { ...state.statsFilters };
     if (statsFilters.year === 'Histórico') {
       statsFilters.year = null;
-    }
-
-    if (statsFilters.competition === 'Todas') {
-      statsFilters.competition = null;
     }
 
     statsFilters.searchBy = null;
@@ -168,15 +151,6 @@ export const mutations = {
   },
   setYearsPagination(state, pagination) {
     Vue.set(state, 'yearsPagination', pagination);
-  },
-  /**
-   * Competitions
-   */
-  setCompetitions(state, competitions) {
-    Vue.set(state, 'competitions', competitions);
-  },
-  setCompetitionsPagination(state, pagination) {
-    Vue.set(state, 'competitionPagination', pagination);
   },
   /**
    * Stats
