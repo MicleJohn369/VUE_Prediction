@@ -83,10 +83,10 @@
                 x-small
                 color="blue"
                 :to="localePath({
-                  name: 'bonoloto-tickets-year-day',
+                  name: 'bonoloto-tickets-year-raffle',
                   params: {
                     year: item.anyo,
-                    day: item.sorteo,
+                    raffle: item.sorteo,
                   }
                 })"
                 nuxt
