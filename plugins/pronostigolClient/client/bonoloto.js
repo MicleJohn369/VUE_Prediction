@@ -14,14 +14,6 @@ function bonolotoMethods(client) {
       .then((response) => response.data);
   };
 
-  PronostigolClient.prototype.getBonolotoTicket = function getBonolotoTickets(params) {
-    const year = params && params.year;
-    const day = params && params.day;
-
-    return this.restClient.get(`/${BONOLOTO}/${TICKETS}/year/${year}/day/${day}`)
-      .then((response) => response.data);
-  };
-
   PronostigolClient.prototype.getBonolotoYears = function getBonolotoYears(params) {
     return this.restClient.get(`/${BONOLOTO}/${YEARS}`, {
       params,
