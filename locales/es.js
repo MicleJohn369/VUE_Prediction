@@ -93,7 +93,7 @@ export default {
       TICKETS: {
         TEXT: 'Sorteos',
         TICKET: {
-          TEXT: '{season} - J{day}',
+          TEXT: '{year} - Sorteo {raffle}',
         },
       },
     },
@@ -390,6 +390,25 @@ export default {
             LABEL: 'Acciones',
             SEE: {
               TOOLTIP: 'Ver detalle de ticket',
+            },
+          },
+        },
+        TICKET: {
+          TITLE: 'Detalle de sorteo',
+          INFO: {
+            YEAR: 'Año',
+            DATE: 'Fecha',
+            RAFFLE: 'Sorteo',
+          },
+          TABLE: {
+            NUMBERS: {
+              LABEL: 'Números',
+            },
+            COMPLEMENTARY: {
+              LABEL: 'Complementario',
+            },
+            REIMBURSEMENT: {
+              LABEL: 'Reintegro',
             },
           },
         },
