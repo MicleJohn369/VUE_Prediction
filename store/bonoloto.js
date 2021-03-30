@@ -6,7 +6,11 @@ export const state = () => ({
   },
   ticketsFilters: {},
   ticketsPagination: {},
-  currentTicket: {},
+  currentTicket: {
+    resultado: {
+      bolas: [],
+    },
+  },
   years: [],
   yearsPagination: {},
   stats: {
@@ -44,14 +48,14 @@ export const actions = {
       .then((tickets) => commit('setTickets', tickets))
       .finally(() => commit('setIsLoading', false));
   },
-  getTicket({ commit }, { year, day }) {
+  getTicket({ commit }, { year, raffle }) {
     commit('setIsLoading', true);
 
-    return Vue.pronostigolClient.getBonolotoTicket({
+    return Vue.pronostigolClient.getBonolotoTickets({
       year,
-      day,
+      raffle,
     })
-      .then((ticket) => commit('setTicket', ticket))
+      .then((tickets) => commit('setTicket', tickets.data[0]))
       .finally(() => commit('setIsLoading', false));
   },
   destroyTickets({ commit }) {
@@ -61,7 +65,11 @@ export const actions = {
     });
   },
   destroyTicket({ commit }) {
-    return commit('setTicket', {});
+    return commit('setTicket', {
+      resultado: {
+        bolas: [],
+      },
+    });
   },
   /**
    * Years
