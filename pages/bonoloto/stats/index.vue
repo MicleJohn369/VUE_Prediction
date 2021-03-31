@@ -31,6 +31,9 @@
         <BonolotoOccurrencesByNumberStatsTable
           v-if="show.occurrencesByNumber"
         />
+        <BonolotoOccurrencesByResultStatsTable
+          v-if="show.occurrencesByResult"
+        />
       </v-card>
     </v-col>
   </v-row>
@@ -40,12 +43,11 @@
 
 import utils from '@/utils';
 
-import { mapState } from 'vuex';
-
 import ScrollButton from '@/components/ScrollButton.vue';
 
 import BonolotoStatsForm from '@/components/bonoloto/stats/BonolotoStatsForm.vue';
 import BonolotoOccurrencesByNumberStatsTable from '@/components/bonoloto/stats/BonolotoOccurrencesByNumberStatsTable.vue';
+import BonolotoOccurrencesByResultStatsTable from '@/components/bonoloto/stats/BonolotoOccurrencesByResultStatsTable.vue';
 
 export default {
   name: 'BonolotoStats',
@@ -53,6 +55,7 @@ export default {
     ScrollButton,
     BonolotoStatsForm,
     BonolotoOccurrencesByNumberStatsTable,
+    BonolotoOccurrencesByResultStatsTable,
   },
   nuxtI18n: {
     paths: {
@@ -72,8 +75,7 @@ export default {
         const filters = this.$store.state.bonoloto.statsFilters;
         this.$store.commit('bonoloto/setStatsFilters', {
           ...filters,
-          year: 'Histórico',
-          searchBy: 'general',
+          searchBy: 'occurrencesByNumber',
         });
       });
   },
@@ -107,13 +109,7 @@ export default {
       },
     };
   },
-  computed: {
-    ...mapState('bonoloto', {
-      stats: (state) => state.stats,
-      statsAsLocal: (state) => state.statsAsLocal,
-      statsAsVisitor: (state) => state.statsAsVisitor,
-    }),
-  },
+  computed: {},
   destroyed() {
     this.$store.dispatch('bonoloto/destroyTickets');
   },
