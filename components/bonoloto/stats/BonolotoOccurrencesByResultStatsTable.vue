@@ -34,7 +34,7 @@ import { mapState } from 'vuex';
 import getFormattedNumber from '@/mixins/getFormattedNumber';
 
 export default {
-  name: 'BonolotoStatsTable',
+  name: 'BonolotoOccurrencesByResultStatsTable',
   mixins: [
     getFormattedNumber,
   ],

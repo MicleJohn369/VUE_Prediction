@@ -2,19 +2,26 @@
   <div>
     <v-data-table
       :headers="headers"
-      :items="occurrencesByNumberStats.data"
+      :items="stats.data"
       :options.sync="options"
-      :server-items-length="occurrencesByNumberStats.total"
+      :server-items-length="stats.total"
       :loading="loading"
       class="elevation-1"
     >
       <template
-        v-slot:[`item.number`]="{ item }"
+        v-slot:[`item.result`]="{ item }"
       >
+        <v-chip
+          v-for="number in item.resultado"
+          :key="number.numero"
+          color="primary"
+        >
+          {{ getFormattedNumber(number.numero) }}
+        </v-chip>
         <v-chip
           color="primary"
         >
-          {{ getFormattedNumber(item.numero) }}
+          R {{ item.reintegro ? item.reintegro : '-' }}
         </v-chip>
       </template>
       <template
@@ -32,7 +39,7 @@ import { mapState } from 'vuex';
 import getFormattedNumber from '@/mixins/getFormattedNumber';
 
 export default {
-  name: 'BonolotoOccurrencesByNumberStatsTable',
+  name: 'BonolotoOccurrencesByResultWithReimbursementStatsTable',
   mixins: [
     getFormattedNumber,
   ],
@@ -46,13 +53,13 @@ export default {
       },
       headers: [
         {
-          text: this.$t('VIEWS.BONOLOTO.STATS.OCCURRENCES_BY_NUMBER_STATS.TABLE.NUMBER.LABEL'),
+          text: this.$t('VIEWS.BONOLOTO.STATS.OCCURRENCES_BY_RESULT_WITH_REIMBURSEMENT_STATS.TABLE.RESULT.LABEL'),
           align: 'center',
           sortable: true,
-          value: 'number',
+          value: 'result',
         },
         {
-          text: this.$t('VIEWS.BONOLOTO.STATS.OCCURRENCES_BY_NUMBER_STATS.TABLE.OCCURRENCES.LABEL'),
+          text: this.$t('VIEWS.BONOLOTO.STATS.OCCURRENCES_BY_RESULT_WITH_REIMBURSEMENT_STATS.TABLE.OCCURRENCES.LABEL'),
           align: 'center',
           sortable: true,
           value: 'occurrences',
@@ -64,13 +71,13 @@ export default {
     ...mapState('bonoloto', {
       loading: 'loading',
       pagination: 'statsPagination',
-      occurrencesByNumberStats: (state) => state.stats.occurrencesByNumber,
+      stats: (state) => state.stats.occurrencesByResultWithReimbursement,
     }),
   },
   watch: {
     options: {
       handler() {
-        this.getOccurrencesByNumberStats();
+        this.getOccurrencesByResultWithReimbursementStats();
       },
       deep: true,
     },
@@ -79,7 +86,7 @@ export default {
     this.$store.dispatch('bonoloto/destroyStats');
   },
   methods: {
-    getOccurrencesByNumberStats() {
+    getOccurrencesByResultWithReimbursementStats() {
       const {
         sortBy, sortDesc, page, itemsPerPage,
       } = this.options;
@@ -91,7 +98,7 @@ export default {
         sort_property: sortBy[0],
       });
 
-      this.$store.dispatch('bonoloto/getOccurrencesByNumberStats');
+      this.$store.dispatch('bonoloto/getOccurrencesByResultWithReimbursementStats');
     },
   },
 };
