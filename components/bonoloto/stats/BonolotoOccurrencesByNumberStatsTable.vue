@@ -46,13 +46,13 @@ export default {
       },
       headers: [
         {
-          text: this.$t('VIEWS.BONOLOTO.STATS.OCCURRENCES_BY_NUMBER_STATS.TABLE.NUMBER.LABEL'),
+          text: this.$t('VIEWS.BONOLOTO.STATS.OCCURRENCES_BY_NUMBER.TABLE.NUMBER.LABEL'),
           align: 'center',
           sortable: true,
           value: 'number',
         },
         {
-          text: this.$t('VIEWS.BONOLOTO.STATS.OCCURRENCES_BY_NUMBER_STATS.TABLE.OCCURRENCES.LABEL'),
+          text: this.$t('VIEWS.BONOLOTO.STATS.OCCURRENCES_BY_NUMBER.TABLE.OCCURRENCES.LABEL'),
           align: 'center',
           sortable: true,
           value: 'occurrences',

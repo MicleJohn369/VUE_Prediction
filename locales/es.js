@@ -452,7 +452,7 @@ export default {
             },
           },
         },
-        OCCURRENCES_BY_NUMBER_STATS: {
+        OCCURRENCES_BY_NUMBER: {
           TABLE: {
             NUMBER: {
               LABEL: 'Número',
@@ -462,7 +462,7 @@ export default {
             },
           },
         },
-        OCCURRENCES_BY_RESULT_STATS: {
+        OCCURRENCES_BY_RESULT: {
           TABLE: {
             RESULT: {
               LABEL: 'Resultado',
@@ -472,7 +472,7 @@ export default {
             },
           },
         },
-        OCCURRENCES_BY_RESULT_WITH_REIMBURSEMENT_STATS: {
+        OCCURRENCES_BY_RESULT_WITH_REIMBURSEMENT: {
           TABLE: {
             RESULT: {
               LABEL: 'Resultado',
@@ -482,7 +482,7 @@ export default {
             },
           },
         },
-        OCCURRENCES_BY_REIMBURSEMENT_STATS: {
+        OCCURRENCES_BY_REIMBURSEMENT: {
           TABLE: {
             REIMBURSEMENT: {
               LABEL: 'Resultado',
