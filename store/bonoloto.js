@@ -14,17 +14,12 @@ export const state = () => ({
   years: [],
   yearsPagination: {},
   stats: {
-    filas: [],
+    occurrencesByNumber: {},
   },
   statsFilters: {},
-  statsPagination: {},
-  standardStats: {
-    data: [],
-  },
-  standardStatsFilters: {},
-  standardStatsPagination: {
+  statsPagination: {
     page: 1,
-    per_page: 10,
+    per_page: 15,
   },
   loading: true,
 });
@@ -85,49 +80,25 @@ export const actions = {
   /**
    * Stats
    */
-  getStats({ state, commit }) {
+  getOccurrencesByNumberStats({ state, commit }) {
     commit('setIsLoading', true);
 
     const statsFilters = { ...state.statsFilters };
-    if (statsFilters.year === 'Histórico') {
-      statsFilters.year = null;
-    }
 
     statsFilters.searchBy = null;
 
-    return Vue.pronostigolClient.getBonolotoStats({
+    return Vue.pronostigolClient.getBonolotoOccurrencesByNumberStats({
       ...statsFilters,
       ...state.statsPagination,
     })
       .then((stats) => {
-        commit('setStats', stats);
+        commit('setOccurrencesByNumberStats', stats);
       })
       .finally(() => commit('setIsLoading', false));
   },
   destroyStats({ commit }) {
     return commit('setStats', {
-      filas: [],
-    });
-  },
-  getStandardStats({ commit, state }) {
-    commit('setIsLoading', true);
-
-    const standardStatsFilters = { ...state.standardStatsFilters };
-
-    standardStatsFilters.searchBy = null;
-
-    return Vue.pronostigolClient.getBonolotoStandardStats({
-      ...standardStatsFilters,
-      ...state.standardStatsPagination,
-    })
-      .then((standardStats) => {
-        commit('setStandardStats', standardStats);
-      })
-      .finally(() => commit('setIsLoading', false));
-  },
-  destroyStandardStats({ commit }) {
-    return commit('setStandardStats', {
-      data: [],
+      occurrencesByNumber: {},
     });
   },
 };
@@ -166,28 +137,15 @@ export const mutations = {
   setStatsFilters(state, filters) {
     Vue.set(state, 'statsFilters', filters);
   },
-  setStats(state, stats) {
-    Vue.set(state, 'stats', stats);
+  setStats(state, { occurrencesByNumber }) {
+    Vue.set(state, 'stats', {
+      occurrencesByNumber,
+    });
+  },
+  setOccurrencesByNumberStats(state, stats) {
+    Vue.set(state.stats, 'occurrencesByNumber', stats);
   },
   setStatsPagination(state, pagination) {
     Vue.set(state, 'statsPagination', pagination);
-  },
-  setStatsAsLocal(state, stats) {
-    Vue.set(state, 'statsAsLocal', stats);
-  },
-  setStatsAsVisitor(state, stats) {
-    Vue.set(state, 'statsAsVisitor', stats);
-  },
-  /**
-   * Standard stats
-   */
-  setStandardStatsFilters(state, filters) {
-    Vue.set(state, 'standardStatsFilters', filters);
-  },
-  setStandardStats(state, stats) {
-    Vue.set(state, 'standardStats', stats);
-  },
-  setStandardStatsPagination(state, pagination) {
-    Vue.set(state, 'standardStatsPagination', pagination);
   },
 };
