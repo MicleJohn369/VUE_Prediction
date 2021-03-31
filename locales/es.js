@@ -421,7 +421,7 @@ export default {
       },
       STATS: {
         TITLE: 'Estadísticas de la Bonoloto',
-        INTRO_TEXT: 'Ésta es, casi con total seguridad, la funcionalidad más importante de nuestra sección de la Quiniela. Aquí podrás consultar una gran variedad de estadísticas para saber cuáles son las combinaciones más repetidas, los datos de un equipo como local o visitante, los resultados más repetidos según la fila y otras muchas cosas.',
+        INTRO_TEXT: 'Aquí podrás consultar todo tipo de estadísticas sobre la Bonoloto, de modo que podrás saber cuáles son los números o los reintegros que se han dado en más ocasiones. Así podrás realizar tus apuestas con mayor criterio.',
         STATS_FORM: {
           FILTERS: {
             SEARCH_BY: {
