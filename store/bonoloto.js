@@ -15,6 +15,7 @@ export const state = () => ({
   yearsPagination: {},
   stats: {
     occurrencesByNumber: {},
+    occurrencesByResult: {},
   },
   statsFilters: {},
   statsPagination: {
@@ -96,9 +97,26 @@ export const actions = {
       })
       .finally(() => commit('setIsLoading', false));
   },
+  getOccurrencesByResultStats({ state, commit }) {
+    commit('setIsLoading', true);
+
+    const statsFilters = { ...state.statsFilters };
+
+    statsFilters.searchBy = null;
+
+    return Vue.pronostigolClient.getBonolotoOccurrencesByResultStats({
+      ...statsFilters,
+      ...state.statsPagination,
+    })
+      .then((stats) => {
+        commit('setOccurrencesByResultStats', stats);
+      })
+      .finally(() => commit('setIsLoading', false));
+  },
   destroyStats({ commit }) {
     return commit('setStats', {
       occurrencesByNumber: {},
+      occurrencesByResult: {},
     });
   },
 };
@@ -137,13 +155,17 @@ export const mutations = {
   setStatsFilters(state, filters) {
     Vue.set(state, 'statsFilters', filters);
   },
-  setStats(state, { occurrencesByNumber }) {
+  setStats(state, { occurrencesByNumber, occurrencesByResult }) {
     Vue.set(state, 'stats', {
       occurrencesByNumber,
+      occurrencesByResult,
     });
   },
   setOccurrencesByNumberStats(state, stats) {
     Vue.set(state.stats, 'occurrencesByNumber', stats);
+  },
+  setOccurrencesByResultStats(state, stats) {
+    Vue.set(state.stats, 'occurrencesByResult', stats);
   },
   setStatsPagination(state, pagination) {
     Vue.set(state, 'statsPagination', pagination);
