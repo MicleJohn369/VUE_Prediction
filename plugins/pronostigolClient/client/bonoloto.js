@@ -53,6 +53,14 @@ function bonolotoMethods(client) {
       })
         .then((response) => response.data);
     };
+
+  PronostigolClient.prototype
+    .getBonolotoLastDateByNumberStats = function getBonolotoLastDateByNumberStats(params) {
+      return this.restClient.get(`/${BONOLOTO}/${HISTORICAL}/lastDateByNumber`, {
+        params,
+      })
+        .then((response) => response.data);
+    };
 }
 
 module.exports = bonolotoMethods;
