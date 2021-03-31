@@ -35,6 +35,15 @@ function bonolotoMethods(client) {
       })
         .then((response) => response.data);
     };
+
+  PronostigolClient.prototype
+    .getBonolotoOccurrencesByResultWithReimbursementStats = function
+    getBonolotoOccurrencesByResultWithReimbursementStats(params) {
+      return this.restClient.get(`/${BONOLOTO}/${HISTORICAL}/occurrencesByResultWithReimbursement`, {
+        params,
+      })
+        .then((response) => response.data);
+    };
 }
 
 module.exports = bonolotoMethods;
