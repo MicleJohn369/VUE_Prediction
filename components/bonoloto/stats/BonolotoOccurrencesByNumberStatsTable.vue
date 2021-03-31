@@ -14,7 +14,7 @@
         <v-chip
           color="primary"
         >
-          {{ item.numero }}
+          {{ getFormattedNumber(item.numero) }}
         </v-chip>
       </template>
       <template
@@ -29,9 +29,13 @@
 <script>
 import { mapState } from 'vuex';
 
+import getFormattedNumber from '@/mixins/getFormattedNumber';
+
 export default {
   name: 'BonolotoStatsTable',
-  mixins: [],
+  mixins: [
+    getFormattedNumber,
+  ],
   data() {
     return {
       options: {
@@ -79,8 +83,6 @@ export default {
       const {
         sortBy, sortDesc, page, itemsPerPage,
       } = this.options;
-
-      debugger;
 
       this.$store.commit('bonoloto/setStatsPagination', {
         page,
