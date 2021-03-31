@@ -103,17 +103,22 @@ import utils from '@/utils';
 
 import { mapState } from 'vuex';
 
+import ScrollButton from '@/components/ScrollButton.vue';
+
 import CustomStatsForm from '@/components/quiniela/stats/CustomStatsForm.vue';
 import CustomStatsTable from '@/components/quiniela/stats/CustomStatsTable.vue';
 
 import StandardStatsForm from '@/components/quiniela/stats/StandardStatsForm.vue';
+import StandardStatsTable from '@/components/quiniela/stats/StandardStatsTable.vue';
 
 export default {
   name: 'QuinielaStats',
   components: {
+    ScrollButton,
     CustomStatsForm,
     CustomStatsTable,
     StandardStatsForm,
+    StandardStatsTable,
   },
   nuxtI18n: {
     paths: {

@@ -2,7 +2,6 @@ const BONOLOTO = 'bonoloto';
 const TICKETS = 'tickets';
 const YEARS = 'years';
 const HISTORICAL = 'historical';
-const COMBINATIONS = 'combinations';
 
 function bonolotoMethods(client) {
   const PronostigolClient = client;
@@ -21,19 +20,56 @@ function bonolotoMethods(client) {
       .then((response) => response.data);
   };
 
-  PronostigolClient.prototype.getBonolotoStats = function getBonolotoStats(params) {
-    return this.restClient.get(`/${BONOLOTO}/${HISTORICAL}`, {
-      params,
-    })
-      .then((response) => response.data);
-  };
+  PronostigolClient.prototype
+    .getBonolotoOccurrencesByNumberStats = function getBonolotoOccurrencesByNumberStats(params) {
+      return this.restClient.get(`/${BONOLOTO}/${HISTORICAL}/occurrencesByNumber`, {
+        params,
+      })
+        .then((response) => response.data);
+    };
 
-  PronostigolClient.prototype.getBonolotoStandardStats = function getBonolotoStandardStats(params) {
-    return this.restClient.get(`/${BONOLOTO}/${HISTORICAL}/${COMBINATIONS}`, {
-      params,
-    })
-      .then((response) => response.data);
-  };
+  PronostigolClient.prototype
+    .getBonolotoOccurrencesByResultStats = function getBonolotoOccurrencesByResultStats(params) {
+      return this.restClient.get(`/${BONOLOTO}/${HISTORICAL}/occurrencesByResult`, {
+        params,
+      })
+        .then((response) => response.data);
+    };
+
+  PronostigolClient.prototype
+    .getBonolotoOccurrencesByResultWithReimbursementStats = function
+    getBonolotoOccurrencesByResultWithReimbursementStats(params) {
+      return this.restClient.get(`/${BONOLOTO}/${HISTORICAL}/occurrencesByResultWithReimbursement`, {
+        params,
+      })
+        .then((response) => response.data);
+    };
+
+  PronostigolClient.prototype
+    .getBonolotoOccurrencesByReimbursementStats = function
+    getBonolotoOccurrencesByReimbursementStats(params) {
+      return this.restClient.get(`/${BONOLOTO}/${HISTORICAL}/occurrencesByReimbursement`, {
+        params,
+      })
+        .then((response) => response.data);
+    };
+
+  PronostigolClient.prototype
+    .getBonolotoLastDateByNumberStats = function getBonolotoLastDateByNumberStats(params) {
+      return this.restClient.get(`/${BONOLOTO}/${HISTORICAL}/lastDateByNumber`, {
+        params,
+      })
+        .then((response) => response.data);
+    };
+
+  PronostigolClient.prototype
+    .getBonolotoLastDateByReimbursementStats = function
+    getBonolotoLastDateByReimbursementStats(params) {
+      return this.restClient.get(`/${BONOLOTO}/${HISTORICAL}/lastDateByReimbursement`, {
+        params,
+      })
+        .then((response) => response.data);
+    };
 }
 
 module.exports = bonolotoMethods;

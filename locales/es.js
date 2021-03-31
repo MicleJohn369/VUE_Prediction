@@ -26,6 +26,9 @@ export default {
       TICKETS: {
         TEXT: 'Sorteos',
       },
+      STATS: {
+        TEXT: 'Estadísticas',
+      },
     },
     PRIMITIVA: {
       TEXT: 'Primitiva',
@@ -95,6 +98,9 @@ export default {
         TICKET: {
           TEXT: '{year} - Sorteo {raffle}',
         },
+      },
+      STATS: {
+        TEXT: 'Estadísticas',
       },
     },
   },
@@ -409,6 +415,100 @@ export default {
             },
             REIMBURSEMENT: {
               LABEL: 'Reintegro',
+            },
+          },
+        },
+      },
+      STATS: {
+        TITLE: 'Estadísticas de la Bonoloto',
+        INTRO_TEXT: 'Aquí podrás consultar todo tipo de estadísticas sobre la Bonoloto, de modo que podrás saber cuáles son los números o los reintegros que se han dado en más ocasiones. Así podrás realizar tus apuestas con mayor criterio.',
+        STATS_FORM: {
+          FILTERS: {
+            SEARCH_BY: {
+              LABEL: 'Buscar por:',
+              OPTIONS: {
+                OCCURRENCES_BY_NUMBER: {
+                  LABEL: 'Apariciones por número',
+                },
+                OCCURRENCES_BY_RESULT: {
+                  LABEL: 'Apariciones por resultado (Sin reintegro)',
+                },
+                OCCURRENCES_BY_RESULT_WITH_REIMBURSEMENT: {
+                  LABEL: 'Apariciones por resultado (Con reintegro)',
+                },
+                OCCURRENCES_BY_REIMBURSEMENT: {
+                  LABEL: 'Apariciones por reintegro',
+                },
+                LAST_DATE_BY_NUMBER: {
+                  LABEL: 'Última aparición por número',
+                },
+                LAST_DATE_BY_REIMBURSEMENT: {
+                  LABEL: 'Última aparición por reintegro',
+                },
+              },
+            },
+            SEARCH: {
+              TEXT: 'Buscar',
+            },
+          },
+        },
+        OCCURRENCES_BY_NUMBER: {
+          TABLE: {
+            NUMBER: {
+              LABEL: 'Número',
+            },
+            OCCURRENCES: {
+              LABEL: 'Apariciones',
+            },
+          },
+        },
+        OCCURRENCES_BY_RESULT: {
+          TABLE: {
+            RESULT: {
+              LABEL: 'Resultado',
+            },
+            OCCURRENCES: {
+              LABEL: 'Apariciones',
+            },
+          },
+        },
+        OCCURRENCES_BY_RESULT_WITH_REIMBURSEMENT: {
+          TABLE: {
+            RESULT: {
+              LABEL: 'Resultado',
+            },
+            OCCURRENCES: {
+              LABEL: 'Apariciones',
+            },
+          },
+        },
+        OCCURRENCES_BY_REIMBURSEMENT: {
+          TABLE: {
+            REIMBURSEMENT: {
+              LABEL: 'Resultado',
+            },
+            OCCURRENCES: {
+              LABEL: 'Apariciones',
+            },
+          },
+        },
+        LAST_DATE_BY_NUMBER: {
+          TABLE: {
+            NUMBER: {
+              LABEL: 'Número',
+            },
+            DATE: {
+              LABEL: 'Fecha',
+            },
+          },
+        },
+        LAST_DATE_BY_REIMBURSEMENT: {
+          TABLE: {
+            REIMBURSEMENT: {
+              LABEL: 'Reintegro',
+            },
+            DATE: {
+              LABEL: 'Fecha',
             },
           },
         },
