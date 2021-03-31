@@ -37,6 +37,9 @@
         <BonolotoOccurrencesByResultWithReimbursementStatsTable
           v-if="show.occurrencesByResultWithReimbursement"
         />
+        <BonolotoOccurrencesByReimbursementStatsTable
+          v-if="show.occurrencesByReimbursement"
+        />
       </v-card>
     </v-col>
   </v-row>
@@ -52,6 +55,7 @@ import BonolotoStatsForm from '@/components/bonoloto/stats/BonolotoStatsForm.vue
 import BonolotoOccurrencesByNumberStatsTable from '@/components/bonoloto/stats/BonolotoOccurrencesByNumberStatsTable.vue';
 import BonolotoOccurrencesByResultStatsTable from '@/components/bonoloto/stats/BonolotoOccurrencesByResultStatsTable.vue';
 import BonolotoOccurrencesByResultWithReimbursementStatsTable from '@/components/bonoloto/stats/BonolotoOccurrencesByResultWithReimbursementStatsTable.vue';
+import BonolotoOccurrencesByReimbursementStatsTable from '@/components/bonoloto/stats/BonolotoOccurrencesByReimbursementStatsTable.vue';
 
 export default {
   name: 'BonolotoStats',
@@ -61,6 +65,7 @@ export default {
     BonolotoOccurrencesByNumberStatsTable,
     BonolotoOccurrencesByResultStatsTable,
     BonolotoOccurrencesByResultWithReimbursementStatsTable,
+    BonolotoOccurrencesByReimbursementStatsTable,
   },
   nuxtI18n: {
     paths: {
