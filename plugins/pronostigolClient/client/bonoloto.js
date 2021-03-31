@@ -61,6 +61,15 @@ function bonolotoMethods(client) {
       })
         .then((response) => response.data);
     };
+
+  PronostigolClient.prototype
+    .getBonolotoLastDateByReimbursementStats = function
+    getBonolotoLastDateByReimbursementStats(params) {
+      return this.restClient.get(`/${BONOLOTO}/${HISTORICAL}/lastDateByReimbursement`, {
+        params,
+      })
+        .then((response) => response.data);
+    };
 }
 
 module.exports = bonolotoMethods;
