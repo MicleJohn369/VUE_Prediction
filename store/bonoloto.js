@@ -1,5 +1,7 @@
 import Vue from 'vue';
 
+import utils from '@/utils';
+
 export const state = () => ({
   tickets: {
     data: [],
@@ -19,6 +21,7 @@ export const state = () => ({
     occurrencesByResultWithReimbursement: {},
     occurrencesByReimbursement: {},
     lastDateByNumber: {},
+    lastDateByReimbursement: {},
   },
   statsFilters: {},
   statsPagination: {
@@ -164,6 +167,22 @@ export const actions = {
       })
       .finally(() => commit('setIsLoading', false));
   },
+  getLastDateByReimbursementStats({ state, commit }) {
+    commit('setIsLoading', true);
+
+    const statsFilters = { ...state.statsFilters };
+
+    statsFilters.searchBy = null;
+
+    return Vue.pronostigolClient.getBonolotoLastDateByReimbursementStats({
+      ...statsFilters,
+      ...state.statsPagination,
+    })
+      .then((stats) => {
+        commit('setLastDateByReimbursementStats', stats);
+      })
+      .finally(() => commit('setIsLoading', false));
+  },
   destroyStats({ commit }) {
     return commit('setStats', {
       occurrencesByNumber: {},
@@ -171,6 +190,7 @@ export const actions = {
       occurrencesByResultWithReimbursement: {},
       occurrencesByReimbursement: {},
       lastDateByNumber: {},
+      lastDateByReimbursement: {},
     });
   },
 };
@@ -227,7 +247,27 @@ export const mutations = {
   setLastDateByNumberStats(state, stats) {
     Vue.set(state.stats, 'lastDateByNumber', stats);
   },
+  setLastDateByReimbursementStats(state, stats) {
+    Vue.set(state.stats, 'lastDateByReimbursement', stats);
+  },
   setStatsPagination(state, pagination) {
     Vue.set(state, 'statsPagination', pagination);
+  },
+};
+
+export const getters = {
+  getLastDateByReimbursementStats: (state) => {
+    const lastDateByReimbursement = utils.cloneObject(state.stats.lastDateByReimbursement);
+
+    if (!lastDateByReimbursement.data) {
+      return lastDateByReimbursement;
+    }
+
+    lastDateByReimbursement.data = lastDateByReimbursement.data
+      .filter((item) => item.reintegro !== null);
+
+    lastDateByReimbursement.total = lastDateByReimbursement.data.length;
+
+    return lastDateByReimbursement;
   },
 };
