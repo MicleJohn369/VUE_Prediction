@@ -103,6 +103,7 @@ export default {
   methods: {
     async submitForm() {
       this.resetShow();
+      await this.$nextTick();
       this.$store.dispatch('bonoloto/destroyStats');
 
       this.$refs.form.validate();
