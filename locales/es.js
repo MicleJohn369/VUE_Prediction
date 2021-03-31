@@ -502,6 +502,16 @@ export default {
             },
           },
         },
+        LAST_DATE_BY_REIMBURSEMENT: {
+          TABLE: {
+            REIMBURSEMENT: {
+              LABEL: 'Reintegro',
+            },
+            DATE: {
+              LABEL: 'Fecha',
+            },
+          },
+        },
       },
     },
   },
