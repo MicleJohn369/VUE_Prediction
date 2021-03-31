@@ -298,6 +298,12 @@ export default {
               to: this.localePath({
                 name: 'bonoloto-tickets',
               }),
+            }, {
+              icon: 'mdi-poll-box',
+              title: this.$t('MENU.BONOLOTO.STATS.TEXT'),
+              to: this.localePath({
+                name: 'bonoloto-stats',
+              }),
             },
           ],
         }, {
