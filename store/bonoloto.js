@@ -18,6 +18,7 @@ export const state = () => ({
     occurrencesByResult: {},
     occurrencesByResultWithReimbursement: {},
     occurrencesByReimbursement: {},
+    lastDateByNumber: {},
   },
   statsFilters: {},
   statsPagination: {
@@ -147,12 +148,29 @@ export const actions = {
       })
       .finally(() => commit('setIsLoading', false));
   },
+  getLastDateByNumberStats({ state, commit }) {
+    commit('setIsLoading', true);
+
+    const statsFilters = { ...state.statsFilters };
+
+    statsFilters.searchBy = null;
+
+    return Vue.pronostigolClient.getBonolotoLastDateByNumberStats({
+      ...statsFilters,
+      ...state.statsPagination,
+    })
+      .then((stats) => {
+        commit('setLastDateByNumberStats', stats);
+      })
+      .finally(() => commit('setIsLoading', false));
+  },
   destroyStats({ commit }) {
     return commit('setStats', {
       occurrencesByNumber: {},
       occurrencesByResult: {},
       occurrencesByResultWithReimbursement: {},
       occurrencesByReimbursement: {},
+      lastDateByNumber: {},
     });
   },
 };
@@ -205,6 +223,9 @@ export const mutations = {
   },
   setOccurrencesByReimbursementStats(state, stats) {
     Vue.set(state.stats, 'occurrencesByReimbursement', stats);
+  },
+  setLastDateByNumberStats(state, stats) {
+    Vue.set(state.stats, 'lastDateByNumber', stats);
   },
   setStatsPagination(state, pagination) {
     Vue.set(state, 'statsPagination', pagination);
