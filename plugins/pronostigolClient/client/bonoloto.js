@@ -21,12 +21,13 @@ function bonolotoMethods(client) {
       .then((response) => response.data);
   };
 
-  PronostigolClient.prototype.getBonolotoStats = function getBonolotoStats(params) {
-    return this.restClient.get(`/${BONOLOTO}/${HISTORICAL}`, {
-      params,
-    })
-      .then((response) => response.data);
-  };
+  PronostigolClient.prototype
+    .getBonolotoOccurrencesByNumberStats = function getBonolotoOccurrencesByNumberStats(params) {
+      return this.restClient.get(`/${BONOLOTO}/${HISTORICAL}/occurrencesByNumber`, {
+        params,
+      })
+        .then((response) => response.data);
+    };
 
   PronostigolClient.prototype.getBonolotoStandardStats = function getBonolotoStandardStats(params) {
     return this.restClient.get(`/${BONOLOTO}/${HISTORICAL}/${COMBINATIONS}`, {
