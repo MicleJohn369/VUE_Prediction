@@ -26,6 +26,9 @@ export default {
       TICKETS: {
         TEXT: 'Sorteos',
       },
+      STATS: {
+        TEXT: 'Estadísticas',
+      },
     },
     PRIMITIVA: {
       TEXT: 'Primitiva',
@@ -95,6 +98,9 @@ export default {
         TICKET: {
           TEXT: '{year} - Sorteo {raffle}',
         },
+      },
+      STATS: {
+        TEXT: 'Estadísticas',
       },
     },
   },
@@ -409,6 +415,50 @@ export default {
             },
             REIMBURSEMENT: {
               LABEL: 'Reintegro',
+            },
+          },
+        },
+      },
+      STATS: {
+        TITLE: 'Estadísticas de la Bonoloto',
+        INTRO_TEXT: 'Ésta es, casi con total seguridad, la funcionalidad más importante de nuestra sección de la Quiniela. Aquí podrás consultar una gran variedad de estadísticas para saber cuáles son las combinaciones más repetidas, los datos de un equipo como local o visitante, los resultados más repetidos según la fila y otras muchas cosas.',
+        STATS_FORM: {
+          FILTERS: {
+            SEARCH_BY: {
+              LABEL: 'Buscar por:',
+              OPTIONS: {
+                OCCURRENCES_BY_NUMBER: {
+                  LABEL: 'Apariciones por número',
+                },
+                OCCURRENCES_BY_RESULT: {
+                  LABEL: 'Apariciones por resultado (Sin reintegro)',
+                },
+                OCCURRENCES_BY_RESULT_WITH_REIMBURSEMENT: {
+                  LABEL: 'Apariciones por resultado (Con reintegro)',
+                },
+                OCCURRENCES_BY_REIMBURSEMENT: {
+                  LABEL: 'Apariciones por reintegro',
+                },
+                LAST_DATE_BY_NUMBER: {
+                  LABEL: 'Última aparición por número',
+                },
+                LAST_DATE_BY_REIMBURSEMENT: {
+                  LABEL: 'Última aparición por reintegro',
+                },
+              },
+            },
+            SEARCH: {
+              TEXT: 'Buscar',
+            },
+          },
+        },
+        OCCURRENCES_BY_NUMBER_STATS: {
+          TABLE: {
+            NUMBER: {
+              LABEL: 'Número',
+            },
+            OCCURRENCES: {
+              LABEL: 'Apariciones',
             },
           },
         },
