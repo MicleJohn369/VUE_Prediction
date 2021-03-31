@@ -15,6 +15,7 @@
           <v-radio-group
             v-model="searchBy"
             mandatory
+            :disabled="loading"
           >
             <v-radio
               :label="searchByOccurrencesByNumberLabel"
@@ -51,6 +52,7 @@
         >
           <v-btn
             color="primary"
+            :disabled="loading"
             @click="submitForm"
           >
             {{ searchText }}
@@ -62,6 +64,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'BonolotoStatsForm',
   props: {
@@ -99,6 +103,9 @@ export default {
         });
       },
     },
+    ...mapState('bonoloto', {
+      loading: (state) => state.loading,
+    }),
   },
   methods: {
     async submitForm() {
