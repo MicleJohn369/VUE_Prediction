@@ -472,6 +472,16 @@ export default {
             },
           },
         },
+        OCCURRENCES_BY_RESULT_WITH_REIMBURSEMENT_STATS: {
+          TABLE: {
+            RESULT: {
+              LABEL: 'Resultado',
+            },
+            OCCURRENCES: {
+              LABEL: 'Apariciones',
+            },
+          },
+        },
       },
     },
   },
