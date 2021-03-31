@@ -492,6 +492,16 @@ export default {
             },
           },
         },
+        LAST_DATE_BY_NUMBER: {
+          TABLE: {
+            NUMBER: {
+              LABEL: 'Número',
+            },
+            DATE: {
+              LABEL: 'Fecha',
+            },
+          },
+        },
       },
     },
   },
