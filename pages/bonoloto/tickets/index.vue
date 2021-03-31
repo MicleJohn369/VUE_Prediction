@@ -114,8 +114,13 @@ import utils from '@/utils';
 
 import getFormattedDateMixin from '@/mixins/getFormattedDate';
 
+import ScrollButton from '@/components/ScrollButton.vue';
+
 export default {
   name: 'BonolotoTickets',
+  components: {
+    ScrollButton,
+  },
   nuxtI18n: {
     paths: {
       es: '/bonoloto/sorteos',

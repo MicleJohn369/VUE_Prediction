@@ -103,8 +103,13 @@ import utils from '@/utils';
 
 import getFormattedDateMixin from '@/mixins/getFormattedDate';
 
+import ScrollButton from '@/components/ScrollButton.vue';
+
 export default {
   name: 'QuinielaTicket',
+  components: {
+    ScrollButton,
+  },
   nuxtI18n: {
     paths: {
       es: '/quiniela/sorteos/:season/:day',
