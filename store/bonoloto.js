@@ -16,6 +16,7 @@ export const state = () => ({
   stats: {
     occurrencesByNumber: {},
     occurrencesByResult: {},
+    occurrencesByResultWithReimbursement: {},
   },
   statsFilters: {},
   statsPagination: {
@@ -113,10 +114,27 @@ export const actions = {
       })
       .finally(() => commit('setIsLoading', false));
   },
+  getOccurrencesByResultWithReimbursementStats({ state, commit }) {
+    commit('setIsLoading', true);
+
+    const statsFilters = { ...state.statsFilters };
+
+    statsFilters.searchBy = null;
+
+    return Vue.pronostigolClient.getBonolotoOccurrencesByResultWithReimbursementStats({
+      ...statsFilters,
+      ...state.statsPagination,
+    })
+      .then((stats) => {
+        commit('setOccurrencesByResultWithReimbursementStats', stats);
+      })
+      .finally(() => commit('setIsLoading', false));
+  },
   destroyStats({ commit }) {
     return commit('setStats', {
       occurrencesByNumber: {},
       occurrencesByResult: {},
+      occurrencesByResultWithReimbursement: {},
     });
   },
 };
@@ -155,17 +173,17 @@ export const mutations = {
   setStatsFilters(state, filters) {
     Vue.set(state, 'statsFilters', filters);
   },
-  setStats(state, { occurrencesByNumber, occurrencesByResult }) {
-    Vue.set(state, 'stats', {
-      occurrencesByNumber,
-      occurrencesByResult,
-    });
+  setStats(state, stats) {
+    Vue.set(state, 'stats', stats);
   },
   setOccurrencesByNumberStats(state, stats) {
     Vue.set(state.stats, 'occurrencesByNumber', stats);
   },
   setOccurrencesByResultStats(state, stats) {
     Vue.set(state.stats, 'occurrencesByResult', stats);
+  },
+  setOccurrencesByResultWithReimbursementStats(state, stats) {
+    Vue.set(state.stats, 'occurrencesByResultWithReimbursement', stats);
   },
   setStatsPagination(state, pagination) {
     Vue.set(state, 'statsPagination', pagination);
