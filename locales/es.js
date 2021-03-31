@@ -482,6 +482,16 @@ export default {
             },
           },
         },
+        OCCURRENCES_BY_REIMBURSEMENT_STATS: {
+          TABLE: {
+            REIMBURSEMENT: {
+              LABEL: 'Resultado',
+            },
+            OCCURRENCES: {
+              LABEL: 'Apariciones',
+            },
+          },
+        },
       },
     },
   },
