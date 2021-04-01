@@ -863,7 +863,14 @@ published: true
     </v-list-item-icon>
     <v-list-item-content>
       <v-list-item-title>
-        <a href="https://www.pdcahome.com/5116/es-rentable-jugar-a-la-quiniela-probabilidades-de-ganar" target="_blank" title="PCDA Home">https://www.pdcahome.com/5116/es-rentable-jugar-a-la-quiniela-probabilidades-de-ganar</a>
+        <a 
+          href="https://www.pdcahome.com/5116/es-rentable-jugar-a-la-quiniela-probabilidades-de-ganar" 
+          target="_blank" 
+          title="PCDA Home"
+          rel="nofollow"
+        >
+          https://www.pdcahome.com/5116/es-rentable-jugar-a-la-quiniela-probabilidades-de-ganar
+        </a>
       </v-list-item-title>
       <v-list-item-subtitle>PCDA Home</v-list-item-subtitle>
     </v-list-item-content>
@@ -876,7 +883,14 @@ published: true
     </v-list-item-icon>
     <v-list-item-content>
       <v-list-item-title>
-        <a href="http://www.estadisticaparatodos.es/taller/loterias/quinielas14.html" target="_blank" title="Estadísticas para todos">http://www.estadisticaparatodos.es/taller/loterias/quinielas14.html</a>
+        <a 
+          href="http://www.estadisticaparatodos.es/taller/loterias/quinielas14.html" 
+          target="_blank" 
+          title="Estadísticas para todos"
+          rel="nofollow"
+        >
+          http://www.estadisticaparatodos.es/taller/loterias/quinielas14.html
+        </a>
       </v-list-item-title>
       <v-list-item-subtitle>Estadísticas para todos</v-list-item-subtitle>
     </v-list-item-content>
@@ -892,7 +906,14 @@ published: true
     </v-list-item-icon>
     <v-list-item-content>
       <v-list-item-title>
-        <a href="https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html" target="_blank" title="www.periodni.com">https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html</a>
+        <a 
+          href="https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html" 
+          target="_blank" 
+          title="www.periodni.com"
+          rel="nofollow"
+        >
+          https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html
+        </a>
       </v-list-item-title>
       <v-list-item-subtitle>www.periodni.com</v-list-item-subtitle>
     </v-list-item-content>

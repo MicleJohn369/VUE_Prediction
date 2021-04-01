@@ -1,64 +1,56 @@
 ---
-title: '🍀 Bonoloto | Probabilidades y premios de la Bonoloto'
+title: '🍀 Primitiva | Probabilidades y premios de la Primitiva'
 metas: 
-  description: 'Información sobre las categorías de premios de la Bonoloto. ☑️ Se incluyen los cálculos de las probabilidades de acertar.'
-  keywords: 'bonoloto, probabilidades, cálculos, categorías, premios'
-  canonical_url: 'https://www.pronostigol.es/bonoloto'
-  og_title: '🍀 Bonoloto | Probabilidades y premios de la Bonoloto'
+  description: 'Información sobre las categorías de premios de la Primitiva. ☑️ Se incluyen los cálculos de las probabilidades de acertar.'
+  keywords: 'primitiva, probabilidades, cálculos, categorías, premios'
+  canonical_url: 'https://www.pronostigol.es/primitiva'
+  og_title: '🍀 Primitiva | Probabilidades y premios de la Primitiva'
   og_type: 'website'
-  og_image: 'https://www.pronostigol.es/img/logo-bonoloto.png'
-  og_url: 'https://www.pronostigol.es/bonoloto'
-  og_description: 'Información sobre las categorías de premios de la Bonoloto. ☑️ Se incluyen los cálculos de las probabilidades de acertar.'
-  og_site_name: 'Bonoloto'
+  og_image: 'https://www.pronostigol.es/img/logo-primitiva.png'
+  og_url: 'https://www.pronostigol.es/primitiva'
+  og_description: 'Información sobre las categorías de premios de la Primitiva. ☑️ Se incluyen los cálculos de las probabilidades de acertar.'
+  og_site_name: 'Primitiva'
   twitter_site: '@pronostigolesp'
   twitter_card: 'summary_large_image'
-  twitter_image: 'https://www.pronostigol.es/img/logo-bonoloto.png'
-  twitter_title: '🍀 Bonoloto | Probabilidades y premios de la Bonoloto'
-  twitter_description: 'Información sobre las categorías de premios de la Bonoloto. ☑️ Se incluyen los cálculos de las probabilidades de acertar.'
+  twitter_image: 'https://www.pronostigol.es/img/logo-primitiva.png'
+  twitter_title: '🍀 Primitiva | Probabilidades y premios de la Primitiva'
+  twitter_description: 'Información sobre las categorías de premios de la Primitiva. ☑️ Se incluyen los cálculos de las probabilidades de acertar.'
 published: true
 ---
 
 <v-card elevation="2" :class="{ 'my-3': true }">
-  <v-card-title id="introduction" :class="{ 'black--text': true }">🚀 Introducción</v-card-title>
+  <v-card-title id="introduction" :class="{ 'green--text text--darken-2': true }">🚀 Introducción</v-card-title>
   <v-card-text>
-    En esta sección encontrarás multitud de <nuxt-link to="/bonoloto/estadisticas" title="Estadísticas">estadísticas</nuxt-link> asociadas al sorteo de la <b>Bonoloto</b> de España. Podrás conocer los resultados más repetidos, el histórico de <nuxt-link to="/bonoloto/sorteos" title="Sorteos">sorteos</nuxt-link>, los reintegros que aparecen con más frecuencia y una amplia gama de consultas a realizar. De este modo te será mucho más sencillo realizar tus apuestas.
+    <p class="text-justify">
+      En esta sección encontrarás multitud de <nuxt-link to="/primitiva/estadisticas" title="Estadísticas">estadísticas</nuxt-link> asociadas al sorteo de la <b>Primitiva</b> de España. Podrás conocer los resultados más repetidos, el histórico de <nuxt-link to="/primitiva/sorteos" title="Sorteos">sorteos</nuxt-link>, los reintegros que aparecen con más frecuencia y una amplia gama de consultas a realizar. De este modo te será mucho más sencillo realizar tus apuestas.
+    </p>
   </v-card-text>
-  <v-card-title id="probabilities" :class="{ 'black--text': true }">
+  <v-card-title id="probabilities" :class="{ 'green--text text--darken-2': true }">
     🎲 Probabilidades
   </v-card-title>
 <v-card-text>
   <p class="text-justify">
-    En la <b>Bonoloto</b> se extraen 6 bolas de entre 49, numeradas del 1 al 49. Hay varias categorías de premios en función del número de aciertos, las cuales pasan desde 3 aciertos a los 6. De forma adicional se extrae una séptima bola, la cual se denomina <b>complementario</b> y se utiliza para añadir una categoría extra para aquellos que aciertan 5 bolas pero falla una, de modo que se les da una oportunidad para acertar la séptima: no obtendrían el máximo premio posible pero sí un premio mayor a la categoría de 5 aciertos.
+    Dado que el formato de la <b>Primitiva</b> es idéntico al de la <nuxt-link to="/bonoloto" title="Bonoloto">Bonoloto</nuxt-link>, a excepción de las categorías de los premios y el coste de las apuestas, veremos que las probabilidades son las mismas.
   </p>
   <p class="text-justify">
-    También hay que destacar la existencia del <b>reintegro</b>. En cada sorteo, tras extraerse la bola que se corresponde con el complementario, se extrae una bola de un bombo totalmente distinto. En dicho bombo hay 10 bolas, numeradas del 0 al 9. El reintegro de cada apuesta es generado de forma aleatoria, por lo que no se puede escoger el número asociado. Si se acierta dicho número en una apuesta obtendremos premio con el mismo valor que el importe de la apuesta, recuperando así nuestra inversión.
+    En el caso de la <b>Primitiva</b> hay que destacar la existencia de una categoría especial, cuyo premio se obtiene acertando los 6 números del sorteo y, además, el reintegro.
   </p>
-  <p>
-    Para saber la probabilidad de acierto de cada bola usaremos la <b>Regla de Laplace</b>, que dice lo siguiente:
+  <p class="text-justify">
+    Al igual que en la sección de la <nuxt-link to="/bonoloto" title="Bonoloto">Bonoloto</nuxt-link> nos vamos a apoyar en la <b>Regla de Laplace</b> para determinar la probabilidad de cada una de las categorías:
   </p>
   <div class="text-center my-3">
-    <span>
-      <b>
-        Probabilidad
-      </b>
-    </span>
-    <span class="equal">
-      <b>=</b>
-    </span>
+    <span><b>Probabilidad</b></span>
+    <span class="equal"><b>=</b></span>
     <div class="fraction">
-      <span class="fup">
-        <b>Casos favorables</b>
-      </span>
-      <span class="fdn">
-        <b>Casos posibles</b>
-      </span>
+      <span class="fup"><b>Casos favorables</b></span>
+      <span class="fdn"><b>Casos posibles</b></span>
     </div>
   </div>
   <p class="text-justify">
-    En la <b>Bonoloto</b> se obtiene premio cuando se aciertan, al menos, 3 de los 6 números resultantes en un sorteo, o bien cuando se acierta el reintegro. Para más info consultar el <b>Título V. Capítulo Segundo. Reparto de Premios</b> en el siguiente <a href="https://www.loteriasyapuestas.es/f/loterias/documentos/normativa/normativa%20SELAE/BONOLOTO%20modif%2028%205%2015-3.pdf" target="_blank" title="Normas de Bonoloto" rel="nofollow">enlace</a>.
+    Se puede consultar el detalle de las categorías de premios de la <b>Primitiva</b> en el siguiente <a href="https://www.loteriasyapuestas.es/es/la-primitiva/como-se-juega/como-jugar-a-la-primitiva" target="_blank" title="Normas de Primitiva" rel="nofollow">enlace</a>.
   </p>
   <p class="text-justify">
-    Para saber cuántas combinaciones posibles hay tiraremos de combinatoria. La fórmula para saber cuántas combinaciones de <b>m</b> elementos tomados de <b>n</b> en <b>n</b> elementos es:
+    También haremos uso de la combinatoria. La fórmula para saber cuántas combinaciones de <b>m</b> elementos tomados de <b>n</b> en <b>n</b> elementos es:
   </p>
   <div class="text-center my-3">
     <div class="combination">
@@ -68,16 +60,14 @@ published: true
         <sub><b>m</b></sub>
       </span>
     </div>
-    <span class="equal">
-      <b>=</b>
-    </span>
+    <span class="equal"><b>=</b></span>
     <div class="fraction">
       <span class="fup"><b>m!</b></span>
       <span class="fdn"><b>n! × (m - n)!</b></span>
     </div>
   </div>
   <p class="text-justify">
-    En este caso, queremos saber cuántas combinaciones de 6 números hay sobre 49 posibles. El cálculo sería el siguiente:
+    Dado que hay 49 números y el resultado estará conformado por 6, el cálculo sería el siguiente:
   </p>
   <div class="text-center my-3">
     <div class="combination">
@@ -109,15 +99,15 @@ published: true
     </div>
   </div>
   <p class="text-justify">
-    Con estos cálculos podemos saber que hay casi <b>14 millones</b> de combinaciones posibles de 49 números tomados en grupos de 6. Ahora ya podemos calcular las probabilidades de tener acierto en las distintas categorías de la <b>Bonoloto</b>.
+    Al igual que en la <nuxt-link to="/bonoloto" title="Bonoloto">Bonoloto</nuxt-link> hay casi <b>14 millones</b> de combinaciones posibles de 49 números tomados en grupos de 6.
   </p>
 </v-card-text>
-<v-card-title id="probability-three-numbers" :class="{ 'black--text': true }">
-  🔸 Probabilidad de acertar 3 números en la Bonoloto
+<v-card-title id="probability-three-numbers" :class="{ 'green--text text--darken-2': true }">
+  🔸 Probabilidad de acertar 3 números en la Primitiva
 </v-card-title>
 <v-card-text>
-  <p>
-    Para saber la probabilidad exacta de obtener 3 aciertos calcularemos por separado la probabilidad de acertar un número, multiplicándola por la probabilidad del siguiente acierto, lo cual implica restar un acierto posible y una bola del total, y nuevamente por la probabilidad del tercer acierto. Por tanto, los cálculos serían los siguientes:
+  <p class="text-justify">
+    Como se explica en la sección de la <nuxt-link to="/bonoloto" title="Bonoloto">Bonoloto</nuxt-link>, para conocer la probabilidad de obtener 3 aciertos hay que calcular por separado la probabilidad de acertar un número, multiplicándola por la probabilidad del siguiente acierto, lo cual implica restar un acierto posible y una bola del total. Seguidamente, hacemos lo propio con el tercer acierto. Matemáticamente, sería como se indica a continuación:
   </p>
   <div class="text-center my-3">
     <span>Probabilidad (3 ó más aciertos)</span>
@@ -138,7 +128,7 @@ published: true
     </div>
   </div>
   <p class="text-justify">
-    Pero claro, estamos incluyendo las probabilidades de obtener más aciertos de los que buscamos, que son 3. Por tanto, si queremos precisar tenemos que añadir la restricción de fallar las 3 bolas restantes. De este modo tenemos:
+    Debemos saber que estamos incluyendo las probabilidades de obtener más aciertos de los que buscamos, que son 3. Por tanto, si queremos precisar tenemos que añadir la restricción de fallar las 3 bolas restantes. Dicho esto, los cálculos quedarían del siguiente modo:
   </p>
   <div class="text-center my-3">
     <span>Probabilidad (3 aciertos)</span>
@@ -179,7 +169,7 @@ published: true
     </div>
   </div>
   <p class="text-justify">
-    Sin embargo hemos pasado por alto un detalle importante, y es que no hay una sola combinación que nos sirva, ya que de 6 bolas que tiene nuestra apuesta nos valen todas aquellas combinaciones que tengan 3 de esas 6. Por tanto, para determinar la probabilidad real habrá que multiplicar el resultado anterior por la combinación de las 6 bolas que significan un acierto tomadas de 3 en 3, es decir.
+    Sin embargo, hay que tener presente que no sólo nos vale una combinación, sino que nos vale cualquiera que contenga una de las combinaciones que tengan 3 de esos 6 números. Por tanto, para obtener la probabilidad real habrá que multiplicar el resultado anterior por la combinación de las 6 bolas que significan un acierto tomadas de 3 en 3:
   </p>
   <div class="text-center my-3">
     <span>Probabilidad (3 aciertos)</span>
@@ -210,17 +200,17 @@ published: true
     </div>
     <span class="equal">=</span>
     <div class="fraction">
-      <span class="fup">246820</span>
-      <span class="fdn">13983816</span>
+      <span class="fup"><b>246820</b></span>
+      <span class="fdn"><b>13983816</b></span>
     </div>
-  </div>  
+  </div>
 </v-card-text>
-<v-card-title id="probability-four-numbers" :class="{ 'black--text': true }">
-  🔸 Probabilidad de acertar 4 números en la Bonoloto
+<v-card-title id="probability-four-numbers" :class="{ 'green--text text--darken-2': true }">
+  🔸 Probabilidad de acertar 4 números en la Primitiva
 </v-card-title>
 <v-card-text>
   <p class="text-justify">
-    En el caso de la probabilidad exacta de obtener 4 aciertos podemos extender el cálculo anterior, imponiendo las restricciones de acertar 4 bolas pero fallando las 2 últimas. Así pues, los cálculos serían los que siguen:
+    El caso de la probabilidad exacta de obtener 4 aciertos es igual que el anterior, sólo que elevando en una unidad el número de aciertos y reduciéndolo en una el de los fallos. Los cálculos serían:
   </p>
   <div class="text-center my-3">
     <span>Probabilidad (4 aciertos)</span>
@@ -261,9 +251,9 @@ published: true
     </div>
   </div>
   <p class="text-justify">
-    Tal y como se comentó en el apartado anterior, debemos incluir aquellas combinaciones en las que las bolas acertadas varíen,ya que no nos importa qué combinación de las posibles sea la resultante. En este caso los cálculos serían los siguientes:
+    Como se ha comentado anteriormente, debemos incluir aquellas combinaciones en las que las bolas acertadas varíen, ya que no nos importa qué combinación de las posibles sea la resultante. En este caso los cálculos serían los siguientes:
   </p>
-  <div class="text-center my-3">
+  <div class="text-center v-margin">
     <span>Probabilidad (4 aciertos)</span>
     <span class="equal">=</span>
     <div class="combination">
@@ -292,17 +282,17 @@ published: true
     </div>
     <span class="equal">=</span>
     <div class="fraction">
-      <span class="fup">13545</span>
-      <span class="fdn">13983816</span>
+      <span class="fup"><b>13545</b></span>
+      <span class="fdn"><b>13983816</b></span>
     </div>
   </div>
 </v-card-text>
-<v-card-title id="probability-five-numbers" :class="{ 'black--text': true }">
-  🔸 Probabilidad de acertar 5 números en la Bonoloto
+<v-card-title id="probability-five-numbers" :class="{ 'green--text text--darken-2': true }">
+  🔸 Probabilidad de acertar 5 números en la Primitiva
 </v-card-title>
 <v-card-text>
   <p class="text-justify">
-    Este caso es un poco peculiar en comparación con el resto. Siguiendo con el razonamiento previo uno puede pensar que el inicio de los cálculos sería el siguiente:
+    Este caso se complica si lo comparamos con el resto. Siguiendo con el razonamiento previo uno puede pensar que los cálculos serían:
   </p>
   <div class="text-center my-3">
     <span>Probabilidad (5 aciertos)</span>
@@ -338,9 +328,9 @@ published: true
     </div>
   </div>
   <p class="text-justify">
-    No obstante, tenemos que ser conscientes de que hay una categoría de premios entre 5 aciertos y 6, en la cual interviene el complementario. En las categorías previas nos daba igual incluirlo, puesto que no tenía relevancia de cara a los premios. Pero en esta ocasión no es lo mismo acertarlo que fallarlo. Por tanto, tenemos que imponer la condición de fallar el complementario para centrarnos en los 5 aciertos exactos. Dicho esto, tendríamos que realizar el siguiente ajuste:
+    Pero tenemos que ser conscientes de que hay una categoría de premios entre 5 aciertos y 6, en la cual entra en escena el complementario. En las categorías previas nos daba igual incluirlo, puesto que era una bola indiferente a efectos de premio. Sin embargo, en esta ocasión no es lo mismo acertarlo que fallarlo. Por tanto, tenemos que añadir la condición de fallar el complementario para centrarnos en los 5 aciertos exactos. Si lo trasladamos a los cálculos tendríamos que:
   </p>
-  <div class="text-center my-3">
+  <div class="text-center v-margin">
     <span>Probabilidad (5 aciertos)</span>
     <span class="equal">=</span>
     <div class="fraction">
@@ -384,7 +374,7 @@ published: true
     </div>
   </div>
   <p class="text-justify">
-    Realizado este ajuste, ahora sí podemos aplicar la lógica anterior de las combinaciones de los números, puesto que nos da igual cuál sea la bola no acertada:
+    Hecho este ajuste, ahora sí podemos aplicar la lógica anterior de las combinaciones de los números, puesto que no es relevante la bola no acertada:
   </p>
   <div class="text-center my-3">
     <span>Probabilidad (5 aciertos)</span>
@@ -415,13 +405,13 @@ published: true
     </div>
     <span class="equal">=</span>
     <div class="fraction">
-      <span class="fup">252</span>
-      <span class="fdn">13983816</span>
+      <span class="fup"><b>252</b></span>
+      <span class="fdn"><b>13983816</b></span>
     </div>
   </div>
 </v-card-text>
-<v-card-title id="probability-five-numbers-and-complementary" :class="{ 'black--text': true }">
-  🔸 Probabilidad de acertar 5 números y el complementario en la Bonoloto
+<v-card-title id="probability-five-numbers-and-complementary" :class="{ 'green--text text--darken-2': true }">
+  🔸 Probabilidad de acertar 5 números y el complementario en la Primitiva
 </v-card-title>
 <v-card-text>
   <p class="text-justify">
@@ -471,7 +461,7 @@ published: true
     </div>
   </div>
   <p class="text-justify">
-    Como es ya habitual, no nos importa cuál de las 6 bolas sea la no acertada. El resto de los cálculos coinciden con el caso anterior tal y como se puede comprobar:
+    Una vez más no nos importa cuál de las 6 bolas sea la no acertada. El resto de los cálculos coinciden con el caso anterior tal y como se puede comprobar:
   </p>
   <div class="text-center my-3">
     <span>Probabilidad (5 aciertos y el complementario)</span>
@@ -497,17 +487,17 @@ published: true
     </div>
     <span class="equal">=</span>
     <div class="fraction">
-      <span class="fup">6</span>
-      <span class="fdn">13983816</span>
+      <span class="fup"><b>6</b></span>
+      <span class="fdn"><b>13983816</b></span>
     </div>
   </div>
 </v-card-text>
-<v-card-title id="probability-six-numbers" :class="{ 'black--text': true }">
-  🔸 Probabilidad de acertar la Bonoloto
+<v-card-title id="probability-six-numbers" :class="{ 'green--text text--darken-2': true }">
+  🔸 Probabilidad de acertar la Primitiva
 </v-card-title>
 <v-card-text>
   <p class="text-justify">
-    Este caso es el más sencillo de calcular de todos, puesto que para acertar la <b>Bonoloto</b> es necesario que acertemos todas y cada una de las 6 bolas resultantes, sin oportunidad de fallo. Así pues, no hay que tener en cuenta ningún tipo de casuística de distinto orden de números, ni complementario, etc.
+    Este caso es el más sencillo de calcular de todos, puesto que para acertar la <b>Primitiva</b> es necesario que acertemos todas y cada una de las 6 bolas resultantes, sin fallos que valgan. Por tanto, no hay que contemplar ningún tipo de casuística de distinto orden de números, ni complementario, etc.
   </p>
   <div class="text-center my-3">
     <span>Probabilidad (6 aciertos)</span>
@@ -548,17 +538,17 @@ published: true
     </div>
     <span class="equal">=</span>
     <div class="fraction">
-      <span class="fup">1</span>
-      <span class="fdn">13983816</span>
+      <span class="fup"><b>1</b></span>
+      <span class="fdn"><b>13983816</b></span>
     </div>
   </div>
 </v-card-text>
-<v-card-title id="probability-reimbursement" :class="{ 'black--text': true }">
-  🔸 Probabilidad de acertar el reintegro de la Bonoloto
+<v-card-title id="probability-reimbursement" :class="{ 'green--text text--darken-2': true }">
+  🔸 Probabilidad de acertar el reintegro de la Primitiva
 </v-card-title>
 <v-card-text>
   <p class="text-justify">
-    Como se ha comentado anteriormente, en el reintegro hay 10 bolas numeradas del 0 al 9. Como sólo nos vale acertar una de ellas, la probabilidad de acertar el reintegro es:
+    Recordemos que en el reintegro hay 10 bolas numeradas del 0 al 9. Como sólo nos vale acertar una de las 10 bolas, la probabilidad de acertar el reintegro es:
   </p>
   <div class="text-center my-3">
     <span>Probabilidad (reintegro)</span>
@@ -567,16 +557,14 @@ published: true
       <span class="fup">1</span>
       <span class="fdn">10</span>
     </div>
-    <span class="equal">=</span>
-    <span class="result"><b>0.1</b></span>
   </div>
 </v-card-text>
-<v-card-title id="probability-summary" :class="{ 'black--text': true }">
-  🔸 Resumen de probabilidades de la Bonoloto por categoría
+<v-card-title id="probability-summary" :class="{ 'green--text text--darken-2': true }">
+  🔸 Resumen de probabilidades de la Primitiva por categoría
 </v-card-title>
 <v-card-text>
   <p class="text-justify">
-    Una vez que se han realizado todos los cálculos, podemos finalizar esta sección con un resumen en el que figuren todas y cada una de las categorías de premios de la <b>Bonoloto</b> junto con sus probabilidades.
+    Como hemos realizado todos los cálculos, podemos finalizar esta sección con un resumen en el que consten todas y cada una de las categorías de premios de la <b>Primitiva</b> junto con sus probabilidades.
   </p>
   <v-simple-table :class="{ bordered: true }">
     <template v-slot:default>
@@ -594,6 +582,22 @@ published: true
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td class="text-center">
+            Categoría especial
+          </td>
+          <td class="text-center">
+            6 + Reintegro
+          </td>
+          <td class="text-center py-1">
+            <div class="fraction">
+              <span class="fup"><b>1</b></span>
+              <span class="fdn"><b>139838160</b></span>
+            </div>
+            <span class="equal"><b>≈</b></span>
+            <span class="result"><b>0.000000007</b></span>
+          </td>
+        </tr>
         <tr>
           <td class="text-center">
             1ª Categoría
@@ -694,7 +698,7 @@ published: true
     </template>
   </v-simple-table>
 </v-card-text>
-<v-card-title id="sources" :class="{ 'black--text': true }">
+<v-card-title id="sources" :class="{ 'green--text text--darken-2': true }">
   📚 Fuentes
 </v-card-title>
 <v-card-text>
@@ -741,9 +745,6 @@ published: true
       <v-list-item-subtitle>Combinación ganadora</v-list-item-subtitle>
     </v-list-item-content>
   </v-list-item>
-  <p class="mt-3">
-    También hay que destacar la fuente de la que hemos tomado la implementación de las fracciones matemáticas en HTML. Se trata de la siguiente página:
-  </p>
   <v-list-item>
     <v-list-item-icon>
       <v-icon color="primary">
@@ -753,15 +754,15 @@ published: true
     <v-list-item-content>
       <v-list-item-title>
         <a 
-          href="https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html" 
+          href="https://www.laprimitiva.info/bases-del-juego/probabilidades-la-primitiva.html" 
           target="_blank" 
-          title="www.periodni.com"
+          title="LaPrimitiva.info"
           rel="nofollow"
         >
-          https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html
+          https://www.laprimitiva.info/bases-del-juego/probabilidades-la-primitiva.html
         </a>
       </v-list-item-title>
-      <v-list-item-subtitle>www.periodni.com</v-list-item-subtitle>
+      <v-list-item-subtitle>LaPrimitiva.info</v-list-item-subtitle>
     </v-list-item-content>
   </v-list-item>
 </v-card-text>

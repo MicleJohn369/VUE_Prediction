@@ -308,11 +308,17 @@ export default {
           ],
         }, {
           icon: 'mdi-cash',
-          iconColor: 'green',
+          iconColor: 'green darken-2',
           title: this.$t('MENU.PRIMITIVA.TEXT'),
-          to: this.localePath({
-            name: 'primitiva',
-          }),
+          items: [
+            {
+              icon: 'mdi-dice-multiple',
+              title: this.$t('MENU.PRIMITIVA.PROBABILITIES.TEXT'),
+              to: this.localePath({
+                name: 'primitiva',
+              }),
+            },
+          ],
         }, {
           icon: 'mdi-cash-multiple',
           iconColor: 'red',
