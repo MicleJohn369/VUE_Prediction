@@ -1,10 +1,10 @@
 ---
-title: '🍀 Primitiva | Probabilidades y premios de la Primitiva'
+title: '🤑 Primitiva | Probabilidades y premios de la Primitiva'
 metas: 
   description: 'Información sobre las categorías de premios de la Primitiva. ☑️ Se incluyen los cálculos de las probabilidades de acertar.'
   keywords: 'primitiva, probabilidades, cálculos, categorías, premios'
   canonical_url: 'https://www.pronostigol.es/primitiva'
-  og_title: '🍀 Primitiva | Probabilidades y premios de la Primitiva'
+  og_title: '🤑 Primitiva | Probabilidades y premios de la Primitiva'
   og_type: 'website'
   og_image: 'https://www.pronostigol.es/img/logo-primitiva.png'
   og_url: 'https://www.pronostigol.es/primitiva'
@@ -13,7 +13,7 @@ metas:
   twitter_site: '@pronostigolesp'
   twitter_card: 'summary_large_image'
   twitter_image: 'https://www.pronostigol.es/img/logo-primitiva.png'
-  twitter_title: '🍀 Primitiva | Probabilidades y premios de la Primitiva'
+  twitter_title: '🤑 Primitiva | Probabilidades y premios de la Primitiva'
   twitter_description: 'Información sobre las categorías de premios de la Primitiva. ☑️ Se incluyen los cálculos de las probabilidades de acertar.'
 published: true
 ---
