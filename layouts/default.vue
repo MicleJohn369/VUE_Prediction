@@ -317,6 +317,12 @@ export default {
               to: this.localePath({
                 name: 'primitiva',
               }),
+            }, {
+              icon: 'mdi-history',
+              title: this.$t('MENU.PRIMITIVA.TICKETS.TEXT'),
+              to: this.localePath({
+                name: 'primitiva-tickets',
+              }),
             },
           ],
         }, {
