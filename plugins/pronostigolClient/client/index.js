@@ -31,4 +31,9 @@ require('./quiniela')(PronostigolClient);
  */
 require('./bonoloto')(PronostigolClient);
 
+/**
+ * Primitiva methods
+ */
+require('./primitiva')(PronostigolClient);
+
 module.exports = (deps) => PronostigolClient.bind(null, deps);

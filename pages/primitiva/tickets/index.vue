@@ -12,7 +12,7 @@
           </v-breadcrumbs-item>
         </template>
       </v-breadcrumbs>
-      <div class="text-h2 my-3 pb-4 black--text">
+      <div class="text-h2 my-3 pb-4 green--text text--darken-2">
         {{ titleText }}
       </div>
       <ScrollButton />
@@ -81,7 +81,7 @@
                 x-small
                 color="blue"
                 :to="localePath({
-                  name: 'bonoloto-tickets-year-raffle',
+                  name: 'primitiva-tickets-year-raffle',
                   params: {
                     year: item.anyo,
                     raffle: item.sorteo,
@@ -115,34 +115,34 @@ import getFormattedDateMixin from '@/mixins/getFormattedDate';
 import ScrollButton from '@/components/ScrollButton.vue';
 
 export default {
-  name: 'BonolotoTickets',
+  name: 'PrimitivaTickets',
   components: {
     ScrollButton,
   },
   nuxtI18n: {
     paths: {
-      es: '/bonoloto/sorteos',
+      es: '/primitiva/sorteos',
     },
   },
   mixins: [
     getFormattedDateMixin,
   ],
   async fetch() {
-    this.$store.commit('bonoloto/setTicketPagination', {
+    this.$store.commit('primitiva/setTicketPagination', {
       sort_property: this.options.sortBy[0],
       sort_type: this.options.sortDesc[0] ? 'desc' : 'asc',
     });
 
-    // TODO: Implementar ordenación de años de Bonoloto en servidor
+    // TODO: Implementar ordenación de años de Primitiva en servidor
 
-    this.$store.commit('bonoloto/setYearsPagination', {
+    this.$store.commit('primitiva/setYearsPagination', {
       sort_type: 'desc',
     });
 
     return Promise.all([
-      this.$store.dispatch('bonoloto/getYears'),
+      this.$store.dispatch('primitiva/getYears'),
     ])
-      .then(() => this.$store.dispatch('bonoloto/getTickets'));
+      .then(() => this.$store.dispatch('primitiva/getTickets'));
   },
   data() {
     return {
@@ -155,10 +155,10 @@ export default {
           }),
         },
         {
-          text: this.$t('BREADCRUMBS.BONOLOTO.TEXT'),
+          text: this.$t('BREADCRUMBS.PRIMITIVA.TEXT'),
           disabled: true,
         }, {
-          text: this.$t('BREADCRUMBS.BONOLOTO.TICKETS.TEXT'),
+          text: this.$t('BREADCRUMBS.PRIMITIVA.TICKETS.TEXT'),
           disabled: true,
         },
       ],
@@ -169,32 +169,32 @@ export default {
       },
       headers: [
         {
-          text: this.$t('VIEWS.BONOLOTO.TICKETS.TABLE.RAFFLE.LABEL'),
+          text: this.$t('VIEWS.PRIMITIVA.TICKETS.TABLE.RAFFLE.LABEL'),
           align: 'center',
           sortable: false,
           value: 'sorteo',
         }, {
-          text: this.$t('VIEWS.BONOLOTO.TICKETS.TABLE.DATE.LABEL'),
+          text: this.$t('VIEWS.PRIMITIVA.TICKETS.TABLE.DATE.LABEL'),
           align: 'center',
           sortable: true,
           value: 'fecha',
         }, {
-          text: this.$t('VIEWS.BONOLOTO.TICKETS.TABLE.ACTIONS.LABEL'),
+          text: this.$t('VIEWS.PRIMITIVA.TICKETS.TABLE.ACTIONS.LABEL'),
           align: 'center',
           sortable: false,
           value: 'actions',
         },
       ],
       valid: false,
-      titleText: this.$t('VIEWS.BONOLOTO.TICKETS.TITLE'),
-      ticketsIntroText: this.$t('VIEWS.BONOLOTO.TICKETS.INTRO_TEXT'),
-      yearText: this.$t('VIEWS.BONOLOTO.TICKETS.FILTERS.YEAR.LABEL'),
-      searchText: this.$t('VIEWS.BONOLOTO.TICKETS.FILTERS.SEARCH.TEXT'),
-      detailTicketTooltip: this.$t('VIEWS.BONOLOTO.TICKETS.TABLE.ACTIONS.SEE.TOOLTIP'),
+      titleText: this.$t('VIEWS.PRIMITIVA.TICKETS.TITLE'),
+      ticketsIntroText: this.$t('VIEWS.PRIMITIVA.TICKETS.INTRO_TEXT'),
+      yearText: this.$t('VIEWS.PRIMITIVA.TICKETS.FILTERS.YEAR.LABEL'),
+      searchText: this.$t('VIEWS.PRIMITIVA.TICKETS.FILTERS.SEARCH.TEXT'),
+      detailTicketTooltip: this.$t('VIEWS.PRIMITIVA.TICKETS.TABLE.ACTIONS.SEE.TOOLTIP'),
     };
   },
   computed: {
-    ...mapState('bonoloto', {
+    ...mapState('primitiva', {
       tickets: (state) => state.tickets.data,
       total: (state) => state.tickets.total,
       pagination: 'ticketsPagination',
@@ -203,11 +203,11 @@ export default {
     }),
     year: {
       get() {
-        return this.$store.state.bonoloto.ticketsFilters.year;
+        return this.$store.state.primitiva.ticketsFilters.year;
       },
       set(value) {
-        const filters = this.$store.state.bonoloto.ticketsFilters;
-        this.$store.commit('bonoloto/setTicketsFilters', {
+        const filters = this.$store.state.primitiva.ticketsFilters;
+        this.$store.commit('primitiva/setTicketsFilters', {
           ...filters,
           year: value,
         });
@@ -223,7 +223,7 @@ export default {
     },
   },
   destroyed() {
-    this.$store.dispatch('bonoloto/destroyTickets');
+    this.$store.dispatch('primitiva/destroyTickets');
   },
   methods: {
     submitForm() {
@@ -238,34 +238,34 @@ export default {
         sortBy, sortDesc, page, itemsPerPage,
       } = this.options;
 
-      this.$store.commit('bonoloto/setTicketPagination', {
+      this.$store.commit('primitiva/setTicketPagination', {
         page,
         per_page: itemsPerPage,
         sort_type: sortDesc[0] ? 'desc' : 'asc',
         sort_property: sortBy[0],
       });
 
-      this.$store.dispatch('bonoloto/getTickets');
+      this.$store.dispatch('primitiva/getTickets');
     },
   },
   head() {
     const seoInfo = {
-      title: '🍀 Bonoloto | Histórico de sorteos de la Bonoloto',
+      title: '🍀 Primitiva | Histórico de sorteos de la Primitiva',
       metas: {
-        description: 'Apartado en el que poder consultar el histórico de sorteos de la Bonoloto. ⚡ Se pueden filtrar por año.',
-        keywords: 'bonoloto, histórico, historico, sorteos',
-        canonical_url: 'https://www.pronostigol.es/bonoloto/sorteos',
-        og_title: '🍀 Bonoloto | Histórico de sorteos de la Bonoloto',
+        description: 'Apartado en el que poder consultar el histórico de sorteos de la Primitiva. ⚡ Se pueden filtrar por año.',
+        keywords: 'primitiva, histórico, historico, sorteos',
+        canonical_url: 'https://www.pronostigol.es/primitiva/sorteos',
+        og_title: '🍀 Primitiva | Histórico de sorteos de la Primitiva',
         og_type: 'website',
-        og_image: 'https://www.pronostigol.es/img/logo-bonoloto.png',
-        og_url: 'https://www.pronostigol.es/bonoloto',
-        og_description: 'Apartado en el que poder consultar el histórico de sorteos de la bonoloto. ⚡ Se pueden filtrar por año.',
+        og_image: 'https://www.pronostigol.es/img/logo-primitiva.png',
+        og_url: 'https://www.pronostigol.es/primitiva',
+        og_description: 'Apartado en el que poder consultar el histórico de sorteos de la primitiva. ⚡ Se pueden filtrar por año.',
         og_site_name: 'Pronostigol',
         twitter_site: '@pronostigolesp',
         twitter_card: 'summary_large_image',
-        twitter_image: 'https://www.pronostigol.es/img/logo-bonoloto.png',
-        twitter_title: '🍀 Bonoloto | Histórico de sorteos de la Bonoloto',
-        twitter_description: 'Apartado en el que poder consultar el histórico de sorteos de la Bonoloto. ⚡ Se pueden filtrar por año.',
+        twitter_image: 'https://www.pronostigol.es/img/logo-primitiva.png',
+        twitter_title: '🍀 Primitiva | Histórico de sorteos de la Primitiva',
+        twitter_description: 'Apartado en el que poder consultar el histórico de sorteos de la Primitiva. ⚡ Se pueden filtrar por año.',
       },
     };
 
