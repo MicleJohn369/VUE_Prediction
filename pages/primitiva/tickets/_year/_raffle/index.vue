@@ -13,14 +13,14 @@
           </v-breadcrumbs-item>
         </template>
       </v-breadcrumbs>
-      <div class="text-h2 my-3 pb-4 black--text">
+      <div class="text-h2 my-3 pb-4 green--text text--darken-2">
         {{ titleText }}
       </div>
       <ScrollButton />
       <div>
         <v-card
           :loading="loading"
-          color="black"
+          color="green darken-2"
           elevation="2"
           max-width="350"
         >
@@ -48,7 +48,7 @@
         <v-card
           class="mt-5"
           :loading="loading"
-          color="black"
+          color="green darken-2"
           elevation="2"
         >
           <v-simple-table>
@@ -122,13 +122,13 @@ import getFormattedDateMixin from '@/mixins/getFormattedDate';
 import ScrollButton from '@/components/ScrollButton.vue';
 
 export default {
-  name: 'BonolotoTicket',
+  name: 'PrimitivaTicket',
   components: {
     ScrollButton,
   },
   nuxtI18n: {
     paths: {
-      es: '/bonoloto/sorteos/:year/:raffle',
+      es: '/primitiva/sorteos/:year/:raffle',
     },
   },
   mixins: [
@@ -136,7 +136,7 @@ export default {
   ],
   async fetch() {
     return Promise.all([
-      this.$store.dispatch('bonoloto/getTicket', {
+      this.$store.dispatch('primitiva/getTicket', {
         year: this.year,
         raffle: this.raffle,
       }),
@@ -156,16 +156,16 @@ export default {
           }),
         },
         {
-          text: this.$t('BREADCRUMBS.BONOLOTO.TEXT'),
+          text: this.$t('BREADCRUMBS.PRIMITIVA.TEXT'),
           disabled: true,
         }, {
-          text: this.$t('BREADCRUMBS.BONOLOTO.TICKETS.TEXT'),
+          text: this.$t('BREADCRUMBS.PRIMITIVA.TICKETS.TEXT'),
           disabled: false,
           to: this.localePath({
-            name: 'bonoloto-tickets',
+            name: 'primitiva-tickets',
           }),
         }, {
-          text: this.$t('BREADCRUMBS.BONOLOTO.TICKETS.TICKET.TEXT', {
+          text: this.$t('BREADCRUMBS.PRIMITIVA.TICKETS.TICKET.TEXT', {
             year,
             raffle,
           }),
@@ -174,24 +174,24 @@ export default {
       ],
       year,
       raffle,
-      titleText: this.$t('VIEWS.BONOLOTO.TICKETS.TICKET.TITLE'),
-      yearText: this.$t('VIEWS.BONOLOTO.TICKETS.TICKET.INFO.YEAR'),
-      dateText: this.$t('VIEWS.BONOLOTO.TICKETS.TICKET.INFO.DATE'),
-      raffleText: this.$t('VIEWS.BONOLOTO.TICKETS.TICKET.INFO.RAFFLE'),
-      numbersLabel: this.$t('VIEWS.BONOLOTO.TICKETS.TICKET.TABLE.NUMBERS.LABEL'),
-      complementaryLabel: this.$t('VIEWS.BONOLOTO.TICKETS.TICKET.TABLE.COMPLEMENTARY.LABEL'),
-      reimbursementLabel: this.$t('VIEWS.BONOLOTO.TICKETS.TICKET.TABLE.REIMBURSEMENT.LABEL'),
+      titleText: this.$t('VIEWS.PRIMITIVA.TICKETS.TICKET.TITLE'),
+      yearText: this.$t('VIEWS.PRIMITIVA.TICKETS.TICKET.INFO.YEAR'),
+      dateText: this.$t('VIEWS.PRIMITIVA.TICKETS.TICKET.INFO.DATE'),
+      raffleText: this.$t('VIEWS.PRIMITIVA.TICKETS.TICKET.INFO.RAFFLE'),
+      numbersLabel: this.$t('VIEWS.PRIMITIVA.TICKETS.TICKET.TABLE.NUMBERS.LABEL'),
+      complementaryLabel: this.$t('VIEWS.PRIMITIVA.TICKETS.TICKET.TABLE.COMPLEMENTARY.LABEL'),
+      reimbursementLabel: this.$t('VIEWS.PRIMITIVA.TICKETS.TICKET.TABLE.REIMBURSEMENT.LABEL'),
       loadingText: this.$t('COMMON.LOADING'),
     };
   },
   computed: {
-    ...mapState('bonoloto', {
+    ...mapState('primitiva', {
       ticket: (state) => state.currentTicket,
       loading: 'loading',
     }),
   },
   destroyed() {
-    this.$store.dispatch('bonoloto/destroyTicket');
+    this.$store.dispatch('primitiva/destroyTicket');
   },
   methods: {},
   head() {
@@ -199,22 +199,22 @@ export default {
     const { raffle } = this;
 
     const seoInfo = {
-      title: `🍀 Bonoloto | Detalle del sorteo ${raffle} del año ${year}`,
+      title: `🍀 Primitiva | Detalle del sorteo ${raffle} del año ${year}`,
       metas: {
-        description: `Página con toda la información del sorteo de bonoloto número ${raffle} del año ${year}.`,
-        keywords: `bonoloto, jornada ${raffle}, año ${year}`,
-        canonical_url: `https://www.pronostigol.es/bonoloto/sorteos/${year}/${raffle}`,
-        og_title: `🍀 Bonoloto | Detalle del sorteo ${raffle} del año ${year}`,
+        description: `Página con toda la información del sorteo de primitiva número ${raffle} del año ${year}.`,
+        keywords: `primitiva, jornada ${raffle}, año ${year}`,
+        canonical_url: `https://www.pronostigol.es/primitiva/sorteos/${year}/${raffle}`,
+        og_title: `🍀 Primitiva | Detalle del sorteo ${raffle} del año ${year}`,
         og_type: 'website',
-        og_image: 'https://www.pronostigol.es/img/logo-bonoloto.png',
-        og_url: `https://www.pronostigol.es/bonoloto/sorteos/${year}/${raffle}`,
-        og_description: `Página con toda la información del sorteo de bonoloto número ${raffle} del año ${year}.`,
+        og_image: 'https://www.pronostigol.es/img/logo-primitiva.png',
+        og_url: `https://www.pronostigol.es/primitiva/sorteos/${year}/${raffle}`,
+        og_description: `Página con toda la información del sorteo de primitiva número ${raffle} del año ${year}.`,
         og_site_name: 'Pronostigol',
         twitter_site: '@pronostigolesp',
         twitter_card: 'summary_large_image',
-        twitter_image: 'https://www.pronostigol.es/img/logo-bonoloto.png',
-        twitter_title: `🍀 Bonoloto | Detalle del sorteo ${raffle} del año ${year}`,
-        twitter_description: `Página con toda la información del sorteo de bonoloto número ${raffle} del año ${year}.`,
+        twitter_image: 'https://www.pronostigol.es/img/logo-primitiva.png',
+        twitter_title: `🍀 Primitiva | Detalle del sorteo ${raffle} del año ${year}`,
+        twitter_description: `Página con toda la información del sorteo de primitiva número ${raffle} del año ${year}.`,
       },
     };
 
