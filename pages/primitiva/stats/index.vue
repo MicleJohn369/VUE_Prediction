@@ -134,24 +134,23 @@ export default {
     this.$store.dispatch('primitiva/destroyTickets');
   },
   head() {
-    // TODO: Añadir info SEO para estadísticas de primitiva
     const seoInfo = {
-      title: '🍀 Primitiva | Histórico de sorteos de la primitiva',
+      title: '🤑 Primitiva | Estadísticas de la Primitiva',
       metas: {
-        description: 'Apartado en el que poder consultar el histórico de sorteos de la primitiva. ⚡ Se pueden filtrar por temporada.',
-        keywords: 'primitiva, histórico, historico, sorteos',
-        canonical_url: 'https://www.pronostigol.es/primitiva/sorteos',
-        og_title: '🍀 Primitiva | Histórico de sorteos de la primitiva',
+        description: '📊 Estadísticas avanzadas sobre la Primitiva. ⚡ Se incluyen multitud de filtros para personalizar las consultas.',
+        keywords: 'primitiva, estadísticas, estadisticas, consultas',
+        canonical_url: 'https://www.pronostigol.es/primitiva/estadisticas',
+        og_title: '🤑 Primitiva | Estadísticas de la Primitiva',
         og_type: 'website',
         og_image: 'https://www.pronostigol.es/img/logo-primitiva.png',
         og_url: 'https://www.pronostigol.es/primitiva',
-        og_description: 'Apartado en el que poder consultar el histórico de sorteos de la primitiva. ⚡ Se pueden filtrar por temporada.',
+        og_description: '📊 Estadísticas avanzadas sobre la Primitiva. ⚡ Se incluyen multitud de filtros para personalizar las consultas.',
         og_site_name: 'Pronostigol',
         twitter_site: '@pronostigolesp',
         twitter_card: 'summary_large_image',
         twitter_image: 'https://www.pronostigol.es/img/logo-primitiva.png',
-        twitter_title: '🍀 Primitiva | Histórico de sorteos de la primitiva',
-        twitter_description: 'Apartado en el que poder consultar el histórico de sorteos de la primitiva. ⚡ Se pueden filtrar por temporada.',
+        twitter_title: '🤑 Primitiva | Estadísticas de la Primitiva',
+        twitter_description: '📊 Estadísticas avanzadas sobre la Primitiva. ⚡ Se incluyen multitud de filtros para personalizar las consultas.',
       },
     };
 
