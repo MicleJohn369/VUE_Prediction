@@ -35,6 +35,9 @@ export default {
       PROBABILITIES: {
         TEXT: 'Probabilidades',
       },
+      TICKETS: {
+        TEXT: 'Sorteos',
+      },
     },
     GORDO: {
       TEXT: 'El Gordo',
@@ -110,6 +113,12 @@ export default {
       TEXT: 'Primitiva',
       PROBABILITIES: {
         TEXT: 'Probabilidades',
+      },
+      TICKETS: {
+        TEXT: 'Sorteos',
+        TICKET: {
+          TEXT: '{year} - Sorteo {raffle}',
+        },
       },
     },
   },
@@ -557,6 +566,54 @@ export default {
         },
         SOURCES: {
           TEXT: 'Fuentes',
+        },
+      },
+      TICKETS: {
+        TITLE: 'Histórico de sorteos de la Primitiva',
+        INTRO_TEXT: 'Aquí encontrarás un amplio histórico en el que poder buscar los sorteos históricos de la Primitiva. Si lo necesitas tienes la posibilidad de filtrar por un año en concreto, así como de paginar los resultados.',
+        FILTERS: {
+          YEAR: {
+            LABEL: 'Año',
+            ERRORS: {
+              REQUIRED: 'El año es obligatorio',
+            },
+          },
+          SEARCH: {
+            TEXT: 'Buscar',
+          },
+        },
+        TABLE: {
+          RAFFLE: {
+            LABEL: 'Sorteo',
+          },
+          DATE: {
+            LABEL: 'Fecha',
+          },
+          ACTIONS: {
+            LABEL: 'Acciones',
+            SEE: {
+              TOOLTIP: 'Ver detalle de ticket',
+            },
+          },
+        },
+        TICKET: {
+          TITLE: 'Detalle de sorteo',
+          INFO: {
+            YEAR: 'Año',
+            DATE: 'Fecha',
+            RAFFLE: 'Sorteo',
+          },
+          TABLE: {
+            NUMBERS: {
+              LABEL: 'Números',
+            },
+            COMPLEMENTARY: {
+              LABEL: 'Complementario',
+            },
+            REIMBURSEMENT: {
+              LABEL: 'Reintegro',
+            },
+          },
         },
       },
     },
