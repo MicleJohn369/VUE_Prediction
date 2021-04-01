@@ -17,73 +17,96 @@
         {{ titleText }}
       </div>
       <ScrollButton />
-      <v-card
-        elevation="2"
-        max-width="350"
-      >
-        <v-list>
-          <v-list-item>
-            <v-list-item-title>{{ yearText }}</v-list-item-title>
-            <v-list-item-subtitle>{{ ticket.anyo }}</v-list-item-subtitle>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-title>{{ dateText }}</v-list-item-title>
-            <v-list-item-subtitle>{{ getFormattedDate(ticket.fecha) }}</v-list-item-subtitle>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-title>{{ raffleText }}</v-list-item-title>
-            <v-list-item-subtitle>{{ ticket.sorteo }}</v-list-item-subtitle>
-          </v-list-item>
-        </v-list>
-      </v-card>
-      <v-simple-table
-        class="mt-5"
-      >
-        <template v-slot:default>
-          <thead>
-            <tr>
-              <th
-                class="text-center"
-              >
-                {{ numbersLabel }}
-              </th>
-              <th class="text-center">
-                {{ complementaryLabel }}
-              </th>
-              <th class="text-center">
-                {{ reimbursementLabel }}
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="text-center">
-                <v-chip
-                  v-for="bola in ticket.resultado.bolas"
-                  :key="bola.numero"
-                  color="primary"
-                >
-                  {{ bola.numero }}
-                </v-chip>
-              </td>
-              <td class="text-center">
-                <v-chip
-                  color="primary"
-                >
-                  {{ ticket.resultado.complementario }}
-                </v-chip>
-              </td>
-              <td class="text-center">
-                <v-chip
-                  color="primary"
-                >
-                  R {{ ticket.resultado.reintegro }}
-                </v-chip>
-              </td>
-            </tr>
-          </tbody>
-        </template>
-      </v-simple-table>
+      <div>
+        <v-card
+          :loading="loading"
+          color="black"
+          elevation="2"
+          max-width="350"
+        >
+          <v-list>
+            <v-list-item
+              v-if="loading"
+              class="text-center"
+            >
+              <v-list-item-title>{{ loadingText }}</v-list-item-title>
+            </v-list-item>
+            <v-list-item v-if="!loading">
+              <v-list-item-title>{{ yearText }}</v-list-item-title>
+              <v-list-item-subtitle>{{ ticket.anyo }}</v-list-item-subtitle>
+            </v-list-item>
+            <v-list-item v-if="!loading">
+              <v-list-item-title>{{ dateText }}</v-list-item-title>
+              <v-list-item-subtitle>{{ getFormattedDate(ticket.fecha) }}</v-list-item-subtitle>
+            </v-list-item>
+            <v-list-item v-if="!loading">
+              <v-list-item-title>{{ raffleText }}</v-list-item-title>
+              <v-list-item-subtitle>{{ ticket.sorteo }}</v-list-item-subtitle>
+            </v-list-item>
+          </v-list>
+        </v-card>
+        <v-card
+          class="mt-5"
+          :loading="loading"
+          color="black"
+          elevation="2"
+        >
+          <v-simple-table>
+            <template v-slot:default>
+              <thead>
+                <tr>
+                  <th
+                    class="text-center"
+                  >
+                    {{ numbersLabel }}
+                  </th>
+                  <th class="text-center">
+                    {{ complementaryLabel }}
+                  </th>
+                  <th class="text-center">
+                    {{ reimbursementLabel }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-if="loading">
+                  <td
+                    class="text-center"
+                    colspan="3"
+                  >
+                    {{ loadingText }}
+                  </td>
+                </tr>
+                <tr v-else>
+                  <td class="text-center">
+                    <v-chip
+                      v-for="bola in ticket.resultado.bolas"
+                      :key="bola.numero"
+                      color="primary"
+                    >
+                      {{ bola.numero }}
+                    </v-chip>
+                  </td>
+                  <td class="text-center">
+                    <v-chip
+                      color="primary"
+                    >
+                      {{ ticket.resultado.complementario }}
+                    </v-chip>
+                  </td>
+                  <td class="text-center">
+                    <v-chip
+                      color="primary"
+                    >
+                      {{ ticket.resultado.reintegro }}
+                    </v-chip>
+                  </td>
+                </tr>
+              </tbody>
+            </template>
+          </v-simple-table>
+        </v-card>
+      </div>
     </v-col>
   </v-row>
 </template>
@@ -158,6 +181,7 @@ export default {
       numbersLabel: this.$t('VIEWS.BONOLOTO.TICKETS.TICKET.TABLE.NUMBERS.LABEL'),
       complementaryLabel: this.$t('VIEWS.BONOLOTO.TICKETS.TICKET.TABLE.COMPLEMENTARY.LABEL'),
       reimbursementLabel: this.$t('VIEWS.BONOLOTO.TICKETS.TICKET.TABLE.REIMBURSEMENT.LABEL'),
+      loadingText: this.$t('COMMON.LOADING'),
     };
   },
   computed: {
