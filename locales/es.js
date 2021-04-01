@@ -1,6 +1,7 @@
 export default {
   COMMON: {
     TOTAL: 'Total',
+    LOADING: 'Cargando...',
   },
   MENU: {
     HOME: {
