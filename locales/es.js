@@ -32,6 +32,9 @@ export default {
     },
     PRIMITIVA: {
       TEXT: 'Primitiva',
+      PROBABILITIES: {
+        TEXT: 'Probabilidades',
+      },
     },
     GORDO: {
       TEXT: 'El Gordo',
@@ -101,6 +104,12 @@ export default {
       },
       STATS: {
         TEXT: 'Estadísticas',
+      },
+    },
+    PRIMITIVA: {
+      TEXT: 'Primitiva',
+      PROBABILITIES: {
+        TEXT: 'Probabilidades',
       },
     },
   },
@@ -511,6 +520,43 @@ export default {
               LABEL: 'Fecha',
             },
           },
+        },
+      },
+    },
+    PRIMITIVA: {
+      TOC: {
+        TITLE: {
+          TEXT: 'Índice de contenidos',
+        },
+        INTRODUCTION: {
+          TEXT: 'Introducción',
+        },
+        PROBABILITIES: {
+          TEXT: 'Probabilidades',
+          THREE_NUMBERS: {
+            TEXT: 'Probabilidad de acertar 3 números en la Primitiva',
+          },
+          FOUR_NUMBERS: {
+            TEXT: 'Probabilidad de acertar 4 números en la Primitiva',
+          },
+          FIVE_NUMBERS: {
+            TEXT: 'Probabilidad de acertar 5 números en la Primitiva',
+          },
+          FIVE_NUMBERS_AND_COMPLEMENTARY: {
+            TEXT: 'Probabilidad de acertar 5 números y el complementario en la Primitiva',
+          },
+          SIX_NUMBERS: {
+            TEXT: 'Probabilidad de acertar la Primitiva',
+          },
+          REIMBURSEMENT: {
+            TEXT: 'Probabilidad de acertar el reintegro de la Primitiva',
+          },
+          SUMMARY: {
+            TEXT: 'Resumen de probabilidades de la Primitiva por categoría',
+          },
+        },
+        SOURCES: {
+          TEXT: 'Fuentes',
         },
       },
     },
