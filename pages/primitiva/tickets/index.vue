@@ -257,12 +257,12 @@ export default {
   },
   head() {
     const seoInfo = {
-      title: '🍀 Primitiva | Histórico de sorteos de la Primitiva',
+      title: '🤑 Primitiva | Histórico de sorteos de la Primitiva',
       metas: {
         description: 'Apartado en el que poder consultar el histórico de sorteos de la Primitiva. ⚡ Se pueden filtrar por año.',
         keywords: 'primitiva, histórico, historico, sorteos',
         canonical_url: 'https://www.pronostigol.es/primitiva/sorteos',
-        og_title: '🍀 Primitiva | Histórico de sorteos de la Primitiva',
+        og_title: '🤑 Primitiva | Histórico de sorteos de la Primitiva',
         og_type: 'website',
         og_image: 'https://www.pronostigol.es/img/logo-primitiva.png',
         og_url: 'https://www.pronostigol.es/primitiva',
@@ -271,7 +271,7 @@ export default {
         twitter_site: '@pronostigolesp',
         twitter_card: 'summary_large_image',
         twitter_image: 'https://www.pronostigol.es/img/logo-primitiva.png',
-        twitter_title: '🍀 Primitiva | Histórico de sorteos de la Primitiva',
+        twitter_title: '🤑 Primitiva | Histórico de sorteos de la Primitiva',
         twitter_description: 'Apartado en el que poder consultar el histórico de sorteos de la Primitiva. ⚡ Se pueden filtrar por año.',
       },
     };

@@ -134,24 +134,23 @@ export default {
     this.$store.dispatch('bonoloto/destroyTickets');
   },
   head() {
-    // TODO: Añadir info SEO para estadísticas de bonoloto
     const seoInfo = {
-      title: '🍀 Bonoloto | Histórico de sorteos de la bonoloto',
+      title: '🍀 Bonoloto | Estadísticas de la Bonoloto',
       metas: {
-        description: 'Apartado en el que poder consultar el histórico de sorteos de la bonoloto. ⚡ Se pueden filtrar por temporada.',
-        keywords: 'bonoloto, histórico, historico, sorteos',
-        canonical_url: 'https://www.pronostigol.es/bonoloto/sorteos',
-        og_title: '🍀 Bonoloto | Histórico de sorteos de la bonoloto',
+        description: '📊 Estadísticas avanzadas sobre la Bonoloto. ⚡ Se incluyen multitud de filtros para personalizar las consultas.',
+        keywords: 'bonoloto, estadísticas, estadisticas, consultas',
+        canonical_url: 'https://www.pronostigol.es/bonoloto/estadisticas',
+        og_title: '🍀 Bonoloto | Estadísticas de la Bonoloto',
         og_type: 'website',
         og_image: 'https://www.pronostigol.es/img/logo-bonoloto.png',
         og_url: 'https://www.pronostigol.es/bonoloto',
-        og_description: 'Apartado en el que poder consultar el histórico de sorteos de la bonoloto. ⚡ Se pueden filtrar por temporada.',
+        og_description: '📊 Estadísticas avanzadas sobre la Bonoloto. ⚡ Se incluyen multitud de filtros para personalizar las consultas.',
         og_site_name: 'Pronostigol',
         twitter_site: '@pronostigolesp',
         twitter_card: 'summary_large_image',
         twitter_image: 'https://www.pronostigol.es/img/logo-bonoloto.png',
-        twitter_title: '🍀 Bonoloto | Histórico de sorteos de la bonoloto',
-        twitter_description: 'Apartado en el que poder consultar el histórico de sorteos de la bonoloto. ⚡ Se pueden filtrar por temporada.',
+        twitter_title: '🍀 Bonoloto | Estadísticas de la Bonoloto',
+        twitter_description: '📊 Estadísticas avanzadas sobre la Bonoloto. ⚡ Se incluyen multitud de filtros para personalizar las consultas.',
       },
     };
 

@@ -2,9 +2,9 @@
   <div>
     <v-data-table
       :headers="headers"
-      :items="occurrencesByReimbursementStats.data"
+      :items="lastDateByReimbursementStats.data"
       :options.sync="options"
-      :server-items-length="occurrencesByReimbursementStats.total"
+      :server-items-length="lastDateByReimbursementStats.total"
       :loading="loading"
       class="elevation-1"
     >
@@ -12,7 +12,7 @@
         <v-progress-linear
           indeterminate
           absolute
-          color="black"
+          color="green darken-2"
         />
       </template>
       <template
@@ -21,84 +21,86 @@
         <v-chip
           color="primary"
         >
-          {{ item.reintegro !== null ? item.reintegro : '-' }}
+          {{ item.reintegro }}
         </v-chip>
       </template>
       <template
-        v-slot:[`item.occurrences`]="{ item }"
+        v-slot:[`item.date`]="{ item }"
       >
-        {{ item.apariciones }}
+        {{ getFormattedDate(item.fecha) }}
       </template>
     </v-data-table>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
-import getFormattedNumber from '@/mixins/getFormattedNumber';
+import getFormattedDate from '@/mixins/getFormattedDate';
 
 export default {
-  name: 'BonolotoOccurrencesByReimbursementStatsTable',
+  name: 'PrimitivaLastDateByReimbursementStatsTable',
   mixins: [
-    getFormattedNumber,
+    getFormattedDate,
   ],
   data() {
     return {
       options: {
         mustSort: true,
-        sortBy: ['occurrences'],
-        sortDesc: [true],
-        itemsPerPage: this.$store.state.bonoloto.statsPagination.per_page,
+        sortBy: ['date'],
+        sortDesc: [false],
+        itemsPerPage: this.$store.state.primitiva.statsPagination.per_page,
       },
       headers: [
         {
-          text: this.$t('VIEWS.BONOLOTO.STATS.OCCURRENCES_BY_REIMBURSEMENT.TABLE.REIMBURSEMENT.LABEL'),
+          text: this.$t('VIEWS.PRIMITIVA.STATS.LAST_DATE_BY_REIMBURSEMENT.TABLE.REIMBURSEMENT.LABEL'),
           align: 'center',
           sortable: true,
           value: 'reimbursement',
         },
         {
-          text: this.$t('VIEWS.BONOLOTO.STATS.OCCURRENCES_BY_REIMBURSEMENT.TABLE.OCCURRENCES.LABEL'),
+          text: this.$t('VIEWS.PRIMITIVA.STATS.LAST_DATE_BY_REIMBURSEMENT.TABLE.DATE.LABEL'),
           align: 'center',
           sortable: true,
-          value: 'occurrences',
+          value: 'date',
         },
       ],
     };
   },
   computed: {
-    ...mapState('bonoloto', {
+    ...mapState('primitiva', {
       loading: 'loading',
       pagination: 'statsPagination',
-      occurrencesByReimbursementStats: (state) => state.stats.occurrencesByReimbursement,
+    }),
+    ...mapGetters('primitiva', {
+      lastDateByReimbursementStats: 'getLastDateByReimbursementStats',
     }),
   },
   watch: {
     options: {
       handler() {
-        this.getOccurrencesByReimbursementStats();
+        this.getLastDateByReimbursementStats();
       },
       deep: true,
     },
   },
   destroyed() {
-    this.$store.dispatch('bonoloto/destroyStats');
+    this.$store.dispatch('primitiva/destroyStats');
   },
   methods: {
-    getOccurrencesByReimbursementStats() {
+    getLastDateByReimbursementStats() {
       const {
         sortBy, sortDesc, page, itemsPerPage,
       } = this.options;
 
-      this.$store.commit('bonoloto/setStatsPagination', {
+      this.$store.commit('primitiva/setStatsPagination', {
         page,
         per_page: itemsPerPage,
         sort_type: sortDesc[0] ? 'desc' : 'asc',
         sort_property: sortBy[0],
       });
 
-      this.$store.dispatch('bonoloto/getOccurrencesByReimbursementStats');
+      this.$store.dispatch('primitiva/getLastDateByReimbursementStats');
     },
   },
 };
