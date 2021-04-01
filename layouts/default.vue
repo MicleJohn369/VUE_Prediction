@@ -323,6 +323,12 @@ export default {
               to: this.localePath({
                 name: 'primitiva-tickets',
               }),
+            }, {
+              icon: 'mdi-poll-box',
+              title: this.$t('MENU.PRIMITIVA.STATS.TEXT'),
+              to: this.localePath({
+                name: 'primitiva-stats',
+              }),
             },
           ],
         }, {
