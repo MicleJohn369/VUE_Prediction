@@ -199,12 +199,12 @@ export default {
     const { raffle } = this;
 
     const seoInfo = {
-      title: `🍀 Primitiva | Detalle del sorteo ${raffle} del año ${year}`,
+      title: `🤑 Primitiva | Detalle del sorteo ${raffle} del año ${year}`,
       metas: {
         description: `Página con toda la información del sorteo de primitiva número ${raffle} del año ${year}.`,
         keywords: `primitiva, jornada ${raffle}, año ${year}`,
         canonical_url: `https://www.pronostigol.es/primitiva/sorteos/${year}/${raffle}`,
-        og_title: `🍀 Primitiva | Detalle del sorteo ${raffle} del año ${year}`,
+        og_title: `🤑 Primitiva | Detalle del sorteo ${raffle} del año ${year}`,
         og_type: 'website',
         og_image: 'https://www.pronostigol.es/img/logo-primitiva.png',
         og_url: `https://www.pronostigol.es/primitiva/sorteos/${year}/${raffle}`,
@@ -213,7 +213,7 @@ export default {
         twitter_site: '@pronostigolesp',
         twitter_card: 'summary_large_image',
         twitter_image: 'https://www.pronostigol.es/img/logo-primitiva.png',
-        twitter_title: `🍀 Primitiva | Detalle del sorteo ${raffle} del año ${year}`,
+        twitter_title: `🤑 Primitiva | Detalle del sorteo ${raffle} del año ${year}`,
         twitter_description: `Página con toda la información del sorteo de primitiva número ${raffle} del año ${year}.`,
       },
     };
