@@ -8,6 +8,13 @@
       :loading="loading"
       class="elevation-1"
     >
+      <template v-slot:progress>
+        <v-progress-linear
+          indeterminate
+          absolute
+          color="black"
+        />
+      </template>
       <template
         v-slot:[`item.number`]="{ item }"
       >
