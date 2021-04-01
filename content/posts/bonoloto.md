@@ -54,10 +54,10 @@ published: true
       </span>
     </div>
   </div>
-  <p class="justify-text">
+  <p class="text-justify">
     En la <b>Bonoloto</b> se obtiene premio cuando se aciertan, al menos, 3 de los 6 números resultantes en un sorteo, o bien cuando se acierta el reintegro. Para más info consultar el <b>Título V. Capítulo Segundo. Reparto de Premios</b> en el siguiente <a href="https://www.loteriasyapuestas.es/f/loterias/documentos/normativa/normativa%20SELAE/BONOLOTO%20modif%2028%205%2015-3.pdf" target="_blank" title="Normas de Bonoloto" rel="nofollow">enlace</a>.
   </p>
-  <p class="justify-text">
+  <p class="text-justify">
     Para saber cuántas combinaciones posibles hay tiraremos de combinatoria. La fórmula para saber cuántas combinaciones de <b>m</b> elementos tomados de <b>n</b> en <b>n</b> elementos es:
   </p>
   <div class="text-center my-3">
@@ -76,7 +76,7 @@ published: true
       <span class="fdn"><b>n! × (m - n)!</b></span>
     </div>
   </div>
-  <p class="justify-text">
+  <p class="text-justify">
     En este caso, queremos saber cuántas combinaciones de 6 números hay sobre 49 posibles. El cálculo sería el siguiente:
   </p>
   <div class="text-center my-3">
@@ -108,7 +108,7 @@ published: true
       <span class="fdn">720</span>
     </div>
   </div>
-  <p class="justify-text">
+  <p class="text-justify">
     Con estos cálculos podemos saber que hay casi <b>14 millones</b> de combinaciones posibles de 49 números tomados en grupos de 6. Ahora ya podemos calcular las probabilidades de tener acierto en las distintas categorías de la <b>Bonoloto</b>.
   </p>
 </v-card-text>
@@ -752,7 +752,14 @@ published: true
     </v-list-item-icon>
     <v-list-item-content>
       <v-list-item-title>
-        <a href="https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html" target="_blank" title="www.periodni.com">https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html</a>
+        <a 
+          href="https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html" 
+          target="_blank" 
+          title="www.periodni.com"
+          rel="nofollow"
+        >
+          https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html
+        </a>
       </v-list-item-title>
       <v-list-item-subtitle>www.periodni.com</v-list-item-subtitle>
     </v-list-item-content>
