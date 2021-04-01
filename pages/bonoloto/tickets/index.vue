@@ -35,13 +35,11 @@
             >
               <v-select
                 v-model="year"
-                :rules="[
-                  (v) => !!v || this.$t('VIEWS.BONOLOTO.TICKETS.FILTERS.YEAR.ERRORS.REQUIRED'),
-                ]"
                 :items="years"
                 :label="yearText"
                 item-text="name"
                 item-value="value"
+                clearable
               />
             </v-col>
           </v-row>
