@@ -71,6 +71,13 @@
             :loading="loading"
             class="elevation-1"
           >
+            <template v-slot:progress>
+              <v-progress-linear
+                indeterminate
+                absolute
+                color="green darken-2"
+              />
+            </template>
             <template v-slot:[`item.fecha`]="{ item }">
               {{ getFormattedDate(item.fecha) }}
             </template>
