@@ -37,18 +37,18 @@ function bonolotoMethods(client) {
     };
 
   PronostigolClient.prototype
-    .getGordoOccurrencesByResultWithReimbursementStats = function
-    getGordoOccurrencesByResultWithReimbursementStats(params) {
-      return this.restClient.get(`/${GORDO}/${HISTORICAL}/occurrencesByResultWithReimbursement`, {
+    .getGordoOccurrencesByResultWithSpecialNumberStats = function
+    getGordoOccurrencesByResultWithSpecialNumberStats(params) {
+      return this.restClient.get(`/${GORDO}/${HISTORICAL}/occurrencesByResultWithSpecialNumber`, {
         params,
       })
         .then((response) => response.data);
     };
 
   PronostigolClient.prototype
-    .getGordoOccurrencesByReimbursementStats = function
-    getGordoOccurrencesByReimbursementStats(params) {
-      return this.restClient.get(`/${GORDO}/${HISTORICAL}/occurrencesByReimbursement`, {
+    .getGordoOccurrencesBySpecialNumberStats = function
+    getGordoOccurrencesBySpecialNumberStats(params) {
+      return this.restClient.get(`/${GORDO}/${HISTORICAL}/occurrencesBySpecialNumber`, {
         params,
       })
         .then((response) => response.data);
@@ -63,9 +63,9 @@ function bonolotoMethods(client) {
     };
 
   PronostigolClient.prototype
-    .getGordoLastDateByReimbursementStats = function
-    getGordoLastDateByReimbursementStats(params) {
-      return this.restClient.get(`/${GORDO}/${HISTORICAL}/lastDateByReimbursement`, {
+    .getGordoLastDateBySpecialNumberStats = function
+    getGordoLastDateBySpecialNumberStats(params) {
+      return this.restClient.get(`/${GORDO}/${HISTORICAL}/lastDateBySpecialNumber`, {
         params,
       })
         .then((response) => response.data);

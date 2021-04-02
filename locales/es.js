@@ -534,7 +534,7 @@ export default {
         OCCURRENCES_BY_REIMBURSEMENT: {
           TABLE: {
             REIMBURSEMENT: {
-              LABEL: 'Resultado',
+              LABEL: 'Reintegro',
             },
             OCCURRENCES: {
               LABEL: 'Apariciones',
@@ -713,7 +713,7 @@ export default {
         OCCURRENCES_BY_REIMBURSEMENT: {
           TABLE: {
             REIMBURSEMENT: {
-              LABEL: 'Resultado',
+              LABEL: 'Reintegro',
             },
             OCCURRENCES: {
               LABEL: 'Apariciones',
@@ -834,7 +834,7 @@ export default {
       },
       STATS: {
         TITLE: 'Estadísticas de El Gordo de la Primitiva',
-        INTRO_TEXT: 'Aquí podrás consultar todo tipo de estadísticas sobre El Gordo de la Primitiva, de modo que podrás saber cuáles son los números o los reintegros que se han dado en más ocasiones. Así podrás realizar tus apuestas con mayor criterio.',
+        INTRO_TEXT: 'Aquí podrás consultar todo tipo de estadísticas sobre El Gordo de la Primitiva, de modo que podrás saber cuáles son los números o los números clave que se han dado en más ocasiones. Así podrás realizar tus apuestas con mayor criterio.',
         STATS_FORM: {
           FILTERS: {
             SEARCH_BY: {
@@ -844,19 +844,19 @@ export default {
                   LABEL: 'Apariciones por número',
                 },
                 OCCURRENCES_BY_RESULT: {
-                  LABEL: 'Apariciones por resultado (Sin reintegro)',
+                  LABEL: 'Apariciones por resultado (Sin número clave)',
                 },
-                OCCURRENCES_BY_RESULT_WITH_REIMBURSEMENT: {
-                  LABEL: 'Apariciones por resultado (Con reintegro)',
+                OCCURRENCES_BY_RESULT_WITH_SPECIAL_NUMBER: {
+                  LABEL: 'Apariciones por resultado (Con número clave)',
                 },
-                OCCURRENCES_BY_REIMBURSEMENT: {
-                  LABEL: 'Apariciones por reintegro',
+                OCCURRENCES_BY_SPECIAL_NUMBER: {
+                  LABEL: 'Apariciones por número clave',
                 },
                 LAST_DATE_BY_NUMBER: {
                   LABEL: 'Última aparición por número',
                 },
-                LAST_DATE_BY_REIMBURSEMENT: {
-                  LABEL: 'Última aparición por reintegro',
+                LAST_DATE_BY_SPECIAL_NUMBER: {
+                  LABEL: 'Última aparición por número clave',
                 },
               },
             },
@@ -885,7 +885,7 @@ export default {
             },
           },
         },
-        OCCURRENCES_BY_RESULT_WITH_REIMBURSEMENT: {
+        OCCURRENCES_BY_RESULT_WITH_SPECIAL_NUMBER: {
           TABLE: {
             RESULT: {
               LABEL: 'Resultado',
@@ -895,10 +895,10 @@ export default {
             },
           },
         },
-        OCCURRENCES_BY_REIMBURSEMENT: {
+        OCCURRENCES_BY_SPECIAL_NUMBER: {
           TABLE: {
-            REIMBURSEMENT: {
-              LABEL: 'Resultado',
+            SPECIAL_NUMBER: {
+              LABEL: 'Número Clave',
             },
             OCCURRENCES: {
               LABEL: 'Apariciones',
@@ -915,9 +915,9 @@ export default {
             },
           },
         },
-        LAST_DATE_BY_REIMBURSEMENT: {
+        LAST_DATE_BY_SPECIAL_NUMBER: {
           TABLE: {
-            REIMBURSEMENT: {
+            SPECIAL_NUMBER: {
               LABEL: 'Reintegro',
             },
             DATE: {

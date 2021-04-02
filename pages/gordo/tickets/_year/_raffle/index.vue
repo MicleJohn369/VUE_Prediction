@@ -188,12 +188,12 @@ export default {
     const { raffle } = this;
 
     const seoInfo = {
-      title: `🤑 El Gordo de la Primitiva | Detalle del sorteo ${raffle} del año ${year}`,
+      title: `💰 El Gordo de la Primitiva | Detalle del sorteo ${raffle} del año ${year}`,
       metas: {
         description: `Página con toda la información del sorteo de El Gordo de la Primitiva número ${raffle} del año ${year}.`,
         keywords: `gordo, primitiva, sorteo ${raffle}, año ${year}`,
         canonical_url: `https://www.pronostigol.es/primitiva/sorteos/${year}/${raffle}`,
-        og_title: `🤑 El Gordo de la Primitiva | Detalle del sorteo ${raffle} del año ${year}`,
+        og_title: `💰 El Gordo de la Primitiva | Detalle del sorteo ${raffle} del año ${year}`,
         og_type: 'website',
         og_image: 'https://www.pronostigol.es/img/logo-gordo.png',
         og_url: `https://www.pronostigol.es/primitiva/sorteos/${year}/${raffle}`,
@@ -202,7 +202,7 @@ export default {
         twitter_site: '@pronostigolesp',
         twitter_card: 'summary_large_image',
         twitter_image: 'https://www.pronostigol.es/img/logo-gordo.png',
-        twitter_title: `🤑 El Gordo de la Primitiva | Detalle del sorteo ${raffle} del año ${year}`,
+        twitter_title: `💰 El Gordo de la Primitiva | Detalle del sorteo ${raffle} del año ${year}`,
         twitter_description: `Página con toda la información del sorteo de El Gordo de la Primitiva número ${raffle} del año ${year}.`,
       },
     };

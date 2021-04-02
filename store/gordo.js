@@ -18,10 +18,10 @@ export const state = () => ({
   stats: {
     occurrencesByNumber: {},
     occurrencesByResult: {},
-    occurrencesByResultWithReimbursement: {},
-    occurrencesByReimbursement: {},
+    occurrencesByResultWithSpecialNumber: {},
+    occurrencesBySpecialNumber: {},
     lastDateByNumber: {},
-    lastDateByReimbursement: {},
+    lastDateBySpecialNumber: {},
   },
   statsFilters: {},
   statsPagination: {
@@ -119,35 +119,35 @@ export const actions = {
       })
       .finally(() => commit('setIsLoading', false));
   },
-  getOccurrencesByResultWithReimbursementStats({ state, commit }) {
+  getOccurrencesByResultWithSpecialNumberStats({ state, commit }) {
     commit('setIsLoading', true);
 
     const statsFilters = { ...state.statsFilters };
 
     statsFilters.searchBy = null;
 
-    return Vue.pronostigolClient.getGordoOccurrencesByResultWithReimbursementStats({
+    return Vue.pronostigolClient.getGordoOccurrencesByResultWithSpecialNumberStats({
       ...statsFilters,
       ...state.statsPagination,
     })
       .then((stats) => {
-        commit('setOccurrencesByResultWithReimbursementStats', stats);
+        commit('setOccurrencesByResultWithSpecialNumberStats', stats);
       })
       .finally(() => commit('setIsLoading', false));
   },
-  getOccurrencesByReimbursementStats({ state, commit }) {
+  getOccurrencesBySpecialNumberStats({ state, commit }) {
     commit('setIsLoading', true);
 
     const statsFilters = { ...state.statsFilters };
 
     statsFilters.searchBy = null;
 
-    return Vue.pronostigolClient.getGordoOccurrencesByReimbursementStats({
+    return Vue.pronostigolClient.getGordoOccurrencesBySpecialNumberStats({
       ...statsFilters,
       ...state.statsPagination,
     })
       .then((stats) => {
-        commit('setOccurrencesByReimbursementStats', stats);
+        commit('setOccurrencesBySpecialNumberStats', stats);
       })
       .finally(() => commit('setIsLoading', false));
   },
@@ -167,19 +167,19 @@ export const actions = {
       })
       .finally(() => commit('setIsLoading', false));
   },
-  getLastDateByReimbursementStats({ state, commit }) {
+  getLastDateBySpecialNumberStats({ state, commit }) {
     commit('setIsLoading', true);
 
     const statsFilters = { ...state.statsFilters };
 
     statsFilters.searchBy = null;
 
-    return Vue.pronostigolClient.getGordoLastDateByReimbursementStats({
+    return Vue.pronostigolClient.getGordoLastDateBySpecialNumberStats({
       ...statsFilters,
       ...state.statsPagination,
     })
       .then((stats) => {
-        commit('setLastDateByReimbursementStats', stats);
+        commit('setLastDateBySpecialNumberStats', stats);
       })
       .finally(() => commit('setIsLoading', false));
   },
@@ -187,10 +187,10 @@ export const actions = {
     return commit('setStats', {
       occurrencesByNumber: {},
       occurrencesByResult: {},
-      occurrencesByResultWithReimbursement: {},
-      occurrencesByReimbursement: {},
+      occurrencesByResultWithSpecialNumber: {},
+      occurrencesBySpecialNumber: {},
       lastDateByNumber: {},
-      lastDateByReimbursement: {},
+      lastDateBySpecialNumber: {},
     });
   },
 };
@@ -238,17 +238,17 @@ export const mutations = {
   setOccurrencesByResultStats(state, stats) {
     Vue.set(state.stats, 'occurrencesByResult', stats);
   },
-  setOccurrencesByResultWithReimbursementStats(state, stats) {
-    Vue.set(state.stats, 'occurrencesByResultWithReimbursement', stats);
+  setOccurrencesByResultWithSpecialNumberStats(state, stats) {
+    Vue.set(state.stats, 'occurrencesByResultWithSpecialNumber', stats);
   },
-  setOccurrencesByReimbursementStats(state, stats) {
-    Vue.set(state.stats, 'occurrencesByReimbursement', stats);
+  setOccurrencesBySpecialNumberStats(state, stats) {
+    Vue.set(state.stats, 'occurrencesBySpecialNumber', stats);
   },
   setLastDateByNumberStats(state, stats) {
     Vue.set(state.stats, 'lastDateByNumber', stats);
   },
-  setLastDateByReimbursementStats(state, stats) {
-    Vue.set(state.stats, 'lastDateByReimbursement', stats);
+  setLastDateBySpecialNumberStats(state, stats) {
+    Vue.set(state.stats, 'lastDateBySpecialNumber', stats);
   },
   setStatsPagination(state, pagination) {
     Vue.set(state, 'statsPagination', pagination);
@@ -256,18 +256,18 @@ export const mutations = {
 };
 
 export const getters = {
-  getLastDateByReimbursementStats: (state) => {
-    const lastDateByReimbursement = utils.cloneObject(state.stats.lastDateByReimbursement);
+  getLastDateBySpecialNumberStats: (state) => {
+    const lastDateBySpecialNumber = utils.cloneObject(state.stats.lastDateBySpecialNumber);
 
-    if (!lastDateByReimbursement.data) {
-      return lastDateByReimbursement;
+    if (!lastDateBySpecialNumber.data) {
+      return lastDateBySpecialNumber;
     }
 
-    lastDateByReimbursement.data = lastDateByReimbursement.data
+    lastDateBySpecialNumber.data = lastDateBySpecialNumber.data
       .filter((item) => item.reintegro !== null);
 
-    lastDateByReimbursement.total = lastDateByReimbursement.data.length;
+    lastDateBySpecialNumber.total = lastDateBySpecialNumber.data.length;
 
-    return lastDateByReimbursement;
+    return lastDateBySpecialNumber;
   },
 };
