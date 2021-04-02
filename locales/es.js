@@ -826,11 +826,8 @@ export default {
             NUMBERS: {
               LABEL: 'Números',
             },
-            COMPLEMENTARY: {
-              LABEL: 'Complementario',
-            },
-            REIMBURSEMENT: {
-              LABEL: 'Reintegro',
+            SPECIAL_NUMBER: {
+              LABEL: 'Número Clave',
             },
           },
         },
