@@ -135,12 +135,12 @@ export default {
   },
   head() {
     const seoInfo = {
-      title: '🤑 El Gordo de la Primitiva | Estadísticas de El Gordo de la Primitiva',
+      title: '💰 El Gordo de la Primitiva | Estadísticas de El Gordo de la Primitiva',
       metas: {
         description: '📊 Estadísticas avanzadas sobre El Gordo de la Primitiva. ⚡ Se incluyen multitud de filtros para personalizar las consultas.',
         keywords: 'gordo, primitiva, estadísticas, estadisticas, consultas',
         canonical_url: 'https://www.pronostigol.es/gordo/estadisticas',
-        og_title: '🤑 El Gordo de la Primitiva | Estadísticas de El Gordo de la Primitiva',
+        og_title: '💰 El Gordo de la Primitiva | Estadísticas de El Gordo de la Primitiva',
         og_type: 'website',
         og_image: 'https://www.pronostigol.es/img/logo-gordo.png',
         og_url: 'https://www.pronostigol.es/gordo',
@@ -149,7 +149,7 @@ export default {
         twitter_site: '@pronostigolesp',
         twitter_card: 'summary_large_image',
         twitter_image: 'https://www.pronostigol.es/img/logo-gordo.png',
-        twitter_title: '🤑 El Gordo de la Primitiva | Estadísticas de El Gordo de la Primitiva',
+        twitter_title: '💰 El Gordo de la Primitiva | Estadísticas de El Gordo de la Primitiva',
         twitter_description: '📊 Estadísticas avanzadas sobre El Gordo de la Primitiva. ⚡ Se incluyen multitud de filtros para personalizar las consultas.',
       },
     };
