@@ -45,6 +45,9 @@ export default {
     },
     GORDO: {
       TEXT: 'El Gordo',
+      PROBABILITIES: {
+        TEXT: 'Probabilidades',
+      },
     },
     EUROMILLONES: {
       TEXT: 'Euromillones',
@@ -126,6 +129,12 @@ export default {
       },
       STATS: {
         TEXT: 'Estadísticas',
+      },
+    },
+    GORDO: {
+      TEXT: 'El Gordo de la Primitiva',
+      PROBABILITIES: {
+        TEXT: 'Probabilidades',
       },
     },
   },

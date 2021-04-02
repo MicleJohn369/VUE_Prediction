@@ -202,7 +202,7 @@ export default {
       title: `🍀 Bonoloto | Detalle del sorteo ${raffle} del año ${year}`,
       metas: {
         description: `Página con toda la información del sorteo de bonoloto número ${raffle} del año ${year}.`,
-        keywords: `bonoloto, jornada ${raffle}, año ${year}`,
+        keywords: `bonoloto, sorteo ${raffle}, año ${year}`,
         canonical_url: `https://www.pronostigol.es/bonoloto/sorteos/${year}/${raffle}`,
         og_title: `🍀 Bonoloto | Detalle del sorteo ${raffle} del año ${year}`,
         og_type: 'website',

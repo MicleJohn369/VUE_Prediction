@@ -335,9 +335,15 @@ export default {
           icon: 'mdi-cash-multiple',
           iconColor: 'red',
           title: this.$t('MENU.GORDO.TEXT'),
-          to: this.localePath({
-            name: 'gordo',
-          }),
+          items: [
+            {
+              icon: 'mdi-dice-multiple',
+              title: this.$t('MENU.GORDO.PROBABILITIES.TEXT'),
+              to: this.localePath({
+                name: 'gordo',
+              }),
+            },
+          ],
         }, {
           icon: 'mdi-star-circle',
           iconColor: 'purple darken-4',

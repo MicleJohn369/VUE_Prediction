@@ -202,7 +202,7 @@ export default {
       title: `🤑 Primitiva | Detalle del sorteo ${raffle} del año ${year}`,
       metas: {
         description: `Página con toda la información del sorteo de primitiva número ${raffle} del año ${year}.`,
-        keywords: `primitiva, jornada ${raffle}, año ${year}`,
+        keywords: `primitiva, sorteo ${raffle}, año ${year}`,
         canonical_url: `https://www.pronostigol.es/primitiva/sorteos/${year}/${raffle}`,
         og_title: `🤑 Primitiva | Detalle del sorteo ${raffle} del año ${year}`,
         og_type: 'website',
