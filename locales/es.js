@@ -48,6 +48,12 @@ export default {
       PROBABILITIES: {
         TEXT: 'Probabilidades',
       },
+      TICKETS: {
+        TEXT: 'Sorteos',
+      },
+      STATS: {
+        TEXT: 'Estadísticas',
+      },
     },
     EUROMILLONES: {
       TEXT: 'Euromillones',
@@ -135,6 +141,15 @@ export default {
       TEXT: 'El Gordo de la Primitiva',
       PROBABILITIES: {
         TEXT: 'Probabilidades',
+      },
+      TICKETS: {
+        TEXT: 'Sorteos',
+        TICKET: {
+          TEXT: '{year} - Sorteo {raffle}',
+        },
+      },
+      STATS: {
+        TEXT: 'Estadísticas',
       },
     },
   },
@@ -635,6 +650,194 @@ export default {
       STATS: {
         TITLE: 'Estadísticas de la Primitiva',
         INTRO_TEXT: 'Aquí podrás consultar todo tipo de estadísticas sobre la Primitiva, de modo que podrás saber cuáles son los números o los reintegros que se han dado en más ocasiones. Así podrás realizar tus apuestas con mayor criterio.',
+        STATS_FORM: {
+          FILTERS: {
+            SEARCH_BY: {
+              LABEL: 'Buscar por:',
+              OPTIONS: {
+                OCCURRENCES_BY_NUMBER: {
+                  LABEL: 'Apariciones por número',
+                },
+                OCCURRENCES_BY_RESULT: {
+                  LABEL: 'Apariciones por resultado (Sin reintegro)',
+                },
+                OCCURRENCES_BY_RESULT_WITH_REIMBURSEMENT: {
+                  LABEL: 'Apariciones por resultado (Con reintegro)',
+                },
+                OCCURRENCES_BY_REIMBURSEMENT: {
+                  LABEL: 'Apariciones por reintegro',
+                },
+                LAST_DATE_BY_NUMBER: {
+                  LABEL: 'Última aparición por número',
+                },
+                LAST_DATE_BY_REIMBURSEMENT: {
+                  LABEL: 'Última aparición por reintegro',
+                },
+              },
+            },
+            SEARCH: {
+              TEXT: 'Buscar',
+            },
+          },
+        },
+        OCCURRENCES_BY_NUMBER: {
+          TABLE: {
+            NUMBER: {
+              LABEL: 'Número',
+            },
+            OCCURRENCES: {
+              LABEL: 'Apariciones',
+            },
+          },
+        },
+        OCCURRENCES_BY_RESULT: {
+          TABLE: {
+            RESULT: {
+              LABEL: 'Resultado',
+            },
+            OCCURRENCES: {
+              LABEL: 'Apariciones',
+            },
+          },
+        },
+        OCCURRENCES_BY_RESULT_WITH_REIMBURSEMENT: {
+          TABLE: {
+            RESULT: {
+              LABEL: 'Resultado',
+            },
+            OCCURRENCES: {
+              LABEL: 'Apariciones',
+            },
+          },
+        },
+        OCCURRENCES_BY_REIMBURSEMENT: {
+          TABLE: {
+            REIMBURSEMENT: {
+              LABEL: 'Resultado',
+            },
+            OCCURRENCES: {
+              LABEL: 'Apariciones',
+            },
+          },
+        },
+        LAST_DATE_BY_NUMBER: {
+          TABLE: {
+            NUMBER: {
+              LABEL: 'Número',
+            },
+            DATE: {
+              LABEL: 'Fecha',
+            },
+          },
+        },
+        LAST_DATE_BY_REIMBURSEMENT: {
+          TABLE: {
+            REIMBURSEMENT: {
+              LABEL: 'Reintegro',
+            },
+            DATE: {
+              LABEL: 'Fecha',
+            },
+          },
+        },
+      },
+    },
+    GORDO: {
+      TOC: {
+        TITLE: {
+          TEXT: 'Índice de contenidos',
+        },
+        INTRODUCTION: {
+          TEXT: 'Introducción',
+        },
+        PROBABILITIES: {
+          TEXT: 'Probabilidades',
+          TWO_NUMBERS: {
+            TEXT: 'Probabilidad de acertar 2 números en El Gordo de la Primitiva',
+          },
+          TWO_NUMBERS_AND_SPECIAL_NUMBER: {
+            TEXT: 'Probabilidad de acertar 2 números y el número clave en El Gordo de la Primitiva',
+          },
+          THREE_NUMBERS: {
+            TEXT: 'Probabilidad de acertar 3 números en El Gordo de la Primitiva',
+          },
+          THREE_NUMBERS_AND_SPECIAL_NUMBER: {
+            TEXT: 'Probabilidad de acertar 3 números y el número clave en El Gordo de la Primitiva',
+          },
+          FOUR_NUMBERS: {
+            TEXT: 'Probabilidad de acertar 4 números en El Gordo de la Primitiva',
+          },
+          FOUR_NUMBERS_AND_SPECIAL_NUMBER: {
+            TEXT: 'Probabilidad de acertar 4 números y el número clave en El Gordo de la Primitiva',
+          },
+          FIVE_NUMBERS: {
+            TEXT: 'Probabilidad de acertar 5 números en El Gordo de la Primitiva',
+          },
+          FIVE_NUMBERS_AND_SPECIAL_NUMBER: {
+            TEXT: 'Probabilidad de acertar El Gordo de la Primitiva',
+          },
+          SPECIAL_NUMBER: {
+            TEXT: 'Probabilidad de acertar el número clave de El Gordo de la Primitiva',
+          },
+          SUMMARY: {
+            TEXT: 'Resumen de probabilidades de El Gordo de la Primitiva por categoría',
+          },
+        },
+        SOURCES: {
+          TEXT: 'Fuentes',
+        },
+      },
+      TICKETS: {
+        TITLE: 'Histórico de sorteos de El Gordo de la Primitiva',
+        INTRO_TEXT: 'Aquí encontrarás un amplio histórico en el que poder buscar los sorteos históricos de El Gordo de la Primitiva. Si lo necesitas tienes la posibilidad de filtrar por un año en concreto, así como de paginar los resultados.',
+        FILTERS: {
+          YEAR: {
+            LABEL: 'Año',
+            ERRORS: {
+              REQUIRED: 'El año es obligatorio',
+            },
+          },
+          SEARCH: {
+            TEXT: 'Buscar',
+          },
+        },
+        TABLE: {
+          RAFFLE: {
+            LABEL: 'Sorteo',
+          },
+          DATE: {
+            LABEL: 'Fecha',
+          },
+          ACTIONS: {
+            LABEL: 'Acciones',
+            SEE: {
+              TOOLTIP: 'Ver detalle de ticket',
+            },
+          },
+        },
+        TICKET: {
+          TITLE: 'Detalle de sorteo',
+          INFO: {
+            YEAR: 'Año',
+            DATE: 'Fecha',
+            RAFFLE: 'Sorteo',
+          },
+          TABLE: {
+            NUMBERS: {
+              LABEL: 'Números',
+            },
+            COMPLEMENTARY: {
+              LABEL: 'Complementario',
+            },
+            REIMBURSEMENT: {
+              LABEL: 'Reintegro',
+            },
+          },
+        },
+      },
+      STATS: {
+        TITLE: 'Estadísticas de El Gordo de la Primitiva',
+        INTRO_TEXT: 'Aquí podrás consultar todo tipo de estadísticas sobre El Gordo de la Primitiva, de modo que podrás saber cuáles son los números o los reintegros que se han dado en más ocasiones. Así podrás realizar tus apuestas con mayor criterio.',
         STATS_FORM: {
           FILTERS: {
             SEARCH_BY: {
