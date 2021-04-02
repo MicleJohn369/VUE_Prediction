@@ -342,6 +342,12 @@ export default {
               to: this.localePath({
                 name: 'gordo',
               }),
+            }, {
+              icon: 'mdi-history',
+              title: this.$t('MENU.GORDO.TICKETS.TEXT'),
+              to: this.localePath({
+                name: 'gordo-tickets',
+              }),
             },
           ],
         }, {

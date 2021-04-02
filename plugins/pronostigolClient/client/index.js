@@ -36,4 +36,9 @@ require('./bonoloto')(PronostigolClient);
  */
 require('./primitiva')(PronostigolClient);
 
+/**
+ * Gordo methods
+ */
+require('./gordo')(PronostigolClient);
+
 module.exports = (deps) => PronostigolClient.bind(null, deps);
