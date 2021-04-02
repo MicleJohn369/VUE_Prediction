@@ -333,7 +333,7 @@ export default {
           ],
         }, {
           icon: 'mdi-cash-multiple',
-          iconColor: 'red',
+          iconColor: 'red darken-2',
           title: this.$t('MENU.GORDO.TEXT'),
           items: [
             {
@@ -347,6 +347,12 @@ export default {
               title: this.$t('MENU.GORDO.TICKETS.TEXT'),
               to: this.localePath({
                 name: 'gordo-tickets',
+              }),
+            }, {
+              icon: 'mdi-poll-box',
+              title: this.$t('MENU.GORDO.STATS.TEXT'),
+              to: this.localePath({
+                name: 'gordo-stats',
               }),
             },
           ],
