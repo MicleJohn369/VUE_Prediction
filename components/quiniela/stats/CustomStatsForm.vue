@@ -144,13 +144,13 @@ export default {
         season: [],
         competition: [],
         team: [
-          (v) => !!v || 'xoxEl equipo es obligatorio',
+          (v) => !!v || this.$t('VIEWS.QUINIELA.STATS.CUSTOM_STATS_FORM.FILTERS.TEAM.ERRORS.REQUIRED'),
         ],
         localTeam: [
-          (v) => !!v || 'xoxEl equipo local es obligatorio',
+          (v) => !!v || this.$t('VIEWS.QUINIELA.STATS.CUSTOM_STATS_FORM.FILTERS.LOCAL_TEAM.ERRORS.REQUIRED'),
         ],
         visitorTeam: [
-          (v) => !!v || 'xoxEl equipo visitante es obligatorio',
+          (v) => !!v || this.$t('VIEWS.QUINIELA.STATS.CUSTOM_STATS_FORM.FILTERS.VISITOR_TEAM.ERRORS.REQUIRED'),
         ],
       },
       valid: false,

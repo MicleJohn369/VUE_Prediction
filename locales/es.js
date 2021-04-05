@@ -341,12 +341,21 @@ export default {
             },
             TEAM: {
               LABEL: 'Equipo',
+              ERRORS: {
+                REQUIRED: 'El equipo es obligatorio',
+              },
             },
             LOCAL_TEAM: {
               LABEL: 'Equipo local',
+              ERRORS: {
+                REQUIRED: 'El equipo local es obligatorio',
+              },
             },
             VISITOR_TEAM: {
               LABEL: 'Equipo visitante',
+              ERRORS: {
+                REQUIRED: 'El equipo visitante es obligatorio',
+              },
             },
             SEARCH: {
               TEXT: 'Buscar',
