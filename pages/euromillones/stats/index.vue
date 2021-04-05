@@ -135,22 +135,22 @@ export default {
   },
   head() {
     const seoInfo = {
-      title: '💰 El Euromillones de la Primitiva | Estadísticas de El Euromillones de la Primitiva',
+      title: '🌟 Euromillones | Estadísticas de Euromillones',
       metas: {
-        description: '📊 Estadísticas avanzadas sobre El Euromillones de la Primitiva. ⚡ Se incluyen multitud de filtros para personalizar las consultas.',
-        keywords: 'euromillones, primitiva, estadísticas, estadisticas, consultas',
+        description: '📊 Estadísticas avanzadas sobre Euromillones. ⚡ Se incluyen multitud de filtros para personalizar las consultas.',
+        keywords: 'euromillones, estadísticas, estadisticas, consultas',
         canonical_url: 'https://www.pronostigol.es/euromillones/estadisticas',
-        og_title: '💰 El Euromillones de la Primitiva | Estadísticas de El Euromillones de la Primitiva',
+        og_title: '🌟 Euromillones | Estadísticas de Euromillones',
         og_type: 'website',
         og_image: 'https://www.pronostigol.es/img/logo-euromillones.png',
         og_url: 'https://www.pronostigol.es/euromillones',
-        og_description: '📊 Estadísticas avanzadas sobre El Euromillones de la Primitiva. ⚡ Se incluyen multitud de filtros para personalizar las consultas.',
+        og_description: '📊 Estadísticas avanzadas sobre Euromillones. ⚡ Se incluyen multitud de filtros para personalizar las consultas.',
         og_site_name: 'Pronostigol',
         twitter_site: '@pronostigolesp',
         twitter_card: 'summary_large_image',
         twitter_image: 'https://www.pronostigol.es/img/logo-euromillones.png',
-        twitter_title: '💰 El Euromillones de la Primitiva | Estadísticas de El Euromillones de la Primitiva',
-        twitter_description: '📊 Estadísticas avanzadas sobre El Euromillones de la Primitiva. ⚡ Se incluyen multitud de filtros para personalizar las consultas.',
+        twitter_title: '🌟 Euromillones | Estadísticas de Euromillones',
+        twitter_description: '📊 Estadísticas avanzadas sobre Euromillones. ⚡ Se incluyen multitud de filtros para personalizar las consultas.',
       },
     };
 
