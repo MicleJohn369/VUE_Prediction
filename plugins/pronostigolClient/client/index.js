@@ -41,4 +41,9 @@ require('./primitiva')(PronostigolClient);
  */
 require('./gordo')(PronostigolClient);
 
+/**
+ * Euromillones methods
+ */
+require('./euromillones')(PronostigolClient);
+
 module.exports = (deps) => PronostigolClient.bind(null, deps);

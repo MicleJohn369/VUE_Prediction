@@ -3,7 +3,7 @@ const TICKETS = 'tickets';
 const YEARS = 'years';
 const HISTORICAL = 'historical';
 
-function bonolotoMethods(client) {
+function methods(client) {
   const PronostigolClient = client;
 
   PronostigolClient.prototype.getGordoTickets = function getGordoTickets(params) {
@@ -72,4 +72,4 @@ function bonolotoMethods(client) {
     };
 }
 
-module.exports = bonolotoMethods;
+module.exports = methods;

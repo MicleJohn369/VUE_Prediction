@@ -6,7 +6,7 @@ const TEAMS = 'teams';
 const HISTORICAL = 'historical';
 const COMBINATIONS = 'combinations';
 
-function quinielaMethods(client) {
+function methods(client) {
   const PronostigolClient = client;
 
   PronostigolClient.prototype.getQuinielaTickets = function getQuinielaTickets(params) {
@@ -60,4 +60,4 @@ function quinielaMethods(client) {
   };
 }
 
-module.exports = quinielaMethods;
+module.exports = methods;
