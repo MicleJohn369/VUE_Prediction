@@ -367,6 +367,12 @@ export default {
               to: this.localePath({
                 name: 'euromillones',
               }),
+            }, {
+              icon: 'mdi-history',
+              title: this.$t('MENU.EUROMILLONES.TICKETS.TEXT'),
+              to: this.localePath({
+                name: 'euromillones-tickets',
+              }),
             },
           ],
         },
