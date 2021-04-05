@@ -1069,7 +1069,7 @@ export default {
         },
       },
       STATS: {
-        TITLE: 'Estadísticas del Euromillones',
+        TITLE: 'Estadísticas de Euromillones',
         INTRO_TEXT: 'Aquí podrás consultar todo tipo de estadísticas sobre el Euromillones, de modo que podrás saber cuáles son los números o las estrellas que se han dado en más ocasiones. Así podrás realizar tus apuestas con mayor criterio.',
         STATS_FORM: {
           FILTERS: {
