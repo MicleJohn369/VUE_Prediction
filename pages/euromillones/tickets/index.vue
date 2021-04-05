@@ -260,7 +260,7 @@ export default {
       title: '🌟 Euromillones | Histórico de sorteos de Euromillones',
       metas: {
         description: 'Apartado en el que poder consultar el histórico de sorteos de Euromillones. ⚡ Se pueden filtrar por año.',
-        keywords: 'euromillones, primitiva, histórico, historico, sorteos',
+        keywords: 'euromillones, histórico, historico, sorteos',
         canonical_url: 'https://www.pronostigol.es/euromillones/sorteos',
         og_title: '🌟 Euromillones | Histórico de sorteos de Euromillones',
         og_type: 'website',
