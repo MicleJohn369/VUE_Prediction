@@ -3,7 +3,7 @@ const TICKETS = 'tickets';
 const YEARS = 'years';
 const HISTORICAL = 'historical';
 
-function primitivaMethods(client) {
+function methods(client) {
   const PronostigolClient = client;
 
   PronostigolClient.prototype.getPrimitivaTickets = function getPrimitivaTickets(params) {
@@ -72,4 +72,4 @@ function primitivaMethods(client) {
     };
 }
 
-module.exports = primitivaMethods;
+module.exports = methods;
