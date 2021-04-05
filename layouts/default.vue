@@ -360,9 +360,15 @@ export default {
           icon: 'mdi-star-circle',
           iconColor: 'purple darken-4',
           title: this.$t('MENU.EUROMILLONES.TEXT'),
-          to: this.localePath({
-            name: 'euromillones',
-          }),
+          items: [
+            {
+              icon: 'mdi-dice-multiple',
+              title: this.$t('MENU.EUROMILLONES.PROBABILITIES.TEXT'),
+              to: this.localePath({
+                name: 'euromillones',
+              }),
+            },
+          ],
         },
       ],
       title: 'Pronostigol',

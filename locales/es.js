@@ -57,6 +57,15 @@ export default {
     },
     EUROMILLONES: {
       TEXT: 'Euromillones',
+      PROBABILITIES: {
+        TEXT: 'Probabilidades',
+      },
+      TICKETS: {
+        TEXT: 'Sorteos',
+      },
+      STATS: {
+        TEXT: 'Estadísticas',
+      },
     },
   },
   FOOTER: {
@@ -139,6 +148,21 @@ export default {
     },
     GORDO: {
       TEXT: 'El Gordo de la Primitiva',
+      PROBABILITIES: {
+        TEXT: 'Probabilidades',
+      },
+      TICKETS: {
+        TEXT: 'Sorteos',
+        TICKET: {
+          TEXT: '{year} - Sorteo {raffle}',
+        },
+      },
+      STATS: {
+        TEXT: 'Estadísticas',
+      },
+    },
+    EUROMILLONES: {
+      TEXT: 'Euromillones',
       PROBABILITIES: {
         TEXT: 'Probabilidades',
       },
@@ -919,6 +943,209 @@ export default {
           TABLE: {
             SPECIAL_NUMBER: {
               LABEL: 'Reintegro',
+            },
+            DATE: {
+              LABEL: 'Fecha',
+            },
+          },
+        },
+      },
+    },
+    EUROMILLONES: {
+      TOC: {
+        TITLE: {
+          TEXT: 'Índice de contenidos',
+        },
+        INTRODUCTION: {
+          TEXT: 'Introducción',
+        },
+        PROBABILITIES: {
+          TEXT: 'Probabilidades',
+          ONE_NUMBER_AND_TWO_STARS: {
+            TEXT: 'Probabilidad de acertar 1 número y las 2 estrellas en Euromillones',
+          },
+          TWO_NUMBERS: {
+            TEXT: 'Probabilidad de acertar 2 números en Euromillones',
+          },
+          TWO_NUMBERS_AND_ONE_STAR: {
+            TEXT: 'Probabilidad de acertar 2 números y 1 estrella en Euromillones',
+          },
+          TWO_NUMBERS_AND_TWO_STARS: {
+            TEXT: 'Probabilidad de acertar 2 números y las 2 estrellas en Euromillones',
+          },
+          THREE_NUMBERS: {
+            TEXT: 'Probabilidad de acertar 3 números en Euromillones',
+          },
+          THREE_NUMBERS_AND_ONE_STAR: {
+            TEXT: 'Probabilidad de acertar 3 números y 1 estrella en Euromillones',
+          },
+          THREE_NUMBERS_AND_TWO_STARS: {
+            TEXT: 'Probabilidad de acertar 3 números y las 2 estrellas en Euromillones',
+          },
+          FOUR_NUMBERS: {
+            TEXT: 'Probabilidad de acertar 4 números en Euromillones',
+          },
+          FOUR_NUMBERS_AND_ONE_STAR: {
+            TEXT: 'Probabilidad de acertar 4 números y 1 estrella en Euromillones',
+          },
+          FOUR_NUMBERS_AND_TWO_STARS: {
+            TEXT: 'Probabilidad de acertar 4 números y las 2 estrellas en Euromillones',
+          },
+          FIVE_NUMBERS: {
+            TEXT: 'Probabilidad de acertar 5 números en Euromillones',
+          },
+          FIVE_NUMBERS_AND_ONE_STAR: {
+            TEXT: 'Probabilidad de acertar 5 números y 1 estrella en Euromillones',
+          },
+          FIVE_NUMBERS_AND_TWO_STARS: {
+            TEXT: 'Probabilidad de acertar en Euromillones',
+          },
+          ONE_STAR: {
+            TEXT: 'Probabilidad de acertar 1 estrella en Euromillones',
+          },
+          TWO_STARS: {
+            TEXT: 'Probabilidad de acertar las 2 estrellas en Euromillones',
+          },
+          SUMMARY: {
+            TEXT: 'Resumen de probabilidades de Euromillones por categoría',
+          },
+        },
+        SOURCES: {
+          TEXT: 'Fuentes',
+        },
+      },
+      TICKETS: {
+        TITLE: 'Histórico de sorteos de Euromillones',
+        INTRO_TEXT: 'Aquí encontrarás un amplio histórico en el que poder buscar los sorteos históricos de Euromillones. Si lo necesitas tienes la posibilidad de filtrar por un año en concreto, así como de paginar los resultados.',
+        FILTERS: {
+          YEAR: {
+            LABEL: 'Año',
+            ERRORS: {
+              REQUIRED: 'El año es obligatorio',
+            },
+          },
+          SEARCH: {
+            TEXT: 'Buscar',
+          },
+        },
+        TABLE: {
+          RAFFLE: {
+            LABEL: 'Sorteo',
+          },
+          DATE: {
+            LABEL: 'Fecha',
+          },
+          ACTIONS: {
+            LABEL: 'Acciones',
+            SEE: {
+              TOOLTIP: 'Ver detalle de ticket',
+            },
+          },
+        },
+        TICKET: {
+          TITLE: 'Detalle de sorteo',
+          INFO: {
+            YEAR: 'Año',
+            DATE: 'Fecha',
+            RAFFLE: 'Sorteo',
+          },
+          TABLE: {
+            NUMBERS: {
+              LABEL: 'Números',
+            },
+            SPECIAL_NUMBER: {
+              LABEL: 'Número Clave',
+            },
+          },
+        },
+      },
+      STATS: {
+        TITLE: 'Estadísticas del Euromillones',
+        INTRO_TEXT: 'Aquí podrás consultar todo tipo de estadísticas sobre el Euromillones, de modo que podrás saber cuáles son los números o las estrellas que se han dado en más ocasiones. Así podrás realizar tus apuestas con mayor criterio.',
+        STATS_FORM: {
+          FILTERS: {
+            SEARCH_BY: {
+              LABEL: 'Buscar por:',
+              OPTIONS: {
+                OCCURRENCES_BY_NUMBER: {
+                  LABEL: 'Apariciones por número',
+                },
+                OCCURRENCES_BY_RESULT: {
+                  LABEL: 'Apariciones por resultado (Sin estrellas)',
+                },
+                OCCURRENCES_BY_RESULT_WITH_STARS: {
+                  LABEL: 'Apariciones por resultado (Con estrellas)',
+                },
+                OCCURRENCES_BY_STAR: {
+                  LABEL: 'Apariciones por estrella',
+                },
+                LAST_DATE_BY_NUMBER: {
+                  LABEL: 'Última aparición por número',
+                },
+                LAST_DATE_BY_STAR: {
+                  LABEL: 'Última aparición por estrella',
+                },
+              },
+            },
+            SEARCH: {
+              TEXT: 'Buscar',
+            },
+          },
+        },
+        OCCURRENCES_BY_NUMBER: {
+          TABLE: {
+            NUMBER: {
+              LABEL: 'Número',
+            },
+            OCCURRENCES: {
+              LABEL: 'Apariciones',
+            },
+          },
+        },
+        OCCURRENCES_BY_RESULT: {
+          TABLE: {
+            RESULT: {
+              LABEL: 'Resultado',
+            },
+            OCCURRENCES: {
+              LABEL: 'Apariciones',
+            },
+          },
+        },
+        OCCURRENCES_BY_RESULT_WITH_STARS: {
+          TABLE: {
+            RESULT: {
+              LABEL: 'Resultado',
+            },
+            OCCURRENCES: {
+              LABEL: 'Apariciones',
+            },
+          },
+        },
+        OCCURRENCES_BY_STAR: {
+          TABLE: {
+            STAR: {
+              LABEL: 'Estrella',
+            },
+            OCCURRENCES: {
+              LABEL: 'Apariciones',
+            },
+          },
+        },
+        LAST_DATE_BY_NUMBER: {
+          TABLE: {
+            NUMBER: {
+              LABEL: 'Número',
+            },
+            DATE: {
+              LABEL: 'Fecha',
+            },
+          },
+        },
+        LAST_DATE_BY_STAR: {
+          TABLE: {
+            STAR: {
+              LABEL: 'Estrella',
             },
             DATE: {
               LABEL: 'Fecha',
