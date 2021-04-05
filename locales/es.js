@@ -1062,8 +1062,8 @@ export default {
             NUMBERS: {
               LABEL: 'Números',
             },
-            SPECIAL_NUMBER: {
-              LABEL: 'Número Clave',
+            STARS: {
+              LABEL: 'Estrellas',
             },
           },
         },
