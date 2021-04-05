@@ -39,9 +39,9 @@ function methods(client) {
     };
 
   PronostigolClient.prototype
-    .getEuromillonesOccurrencesByResultWithStarStats = function
-    getEuromillonesOccurrencesByResultWithStarStats(params) {
-      return this.restClient.get(`/${EUROMILLONES}/${HISTORICAL}/occurrencesByResultWithStar`, {
+    .getEuromillonesOccurrencesByResultWithStarsStats = function
+    getEuromillonesOccurrencesByResultWithStarsStats(params) {
+      return this.restClient.get(`/${EUROMILLONES}/${HISTORICAL}/occurrencesByResultWithStars`, {
         params,
       })
         .then((response) => response.data);
