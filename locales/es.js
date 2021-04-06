@@ -176,6 +176,9 @@ export default {
         TEXT: 'Estadísticas',
       },
     },
+    PRIVACY: {
+      TEXT: 'Privacidad',
+    },
   },
   VIEWS: {
     HOME: {
@@ -1162,6 +1165,9 @@ export default {
           },
         },
       },
+    },
+    PRIVACY: {
+      TITLE: 'Privacidad y cookies',
     },
   },
 };
