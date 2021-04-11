@@ -14,7 +14,7 @@ require('dotenv').config();
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    titleTemplate: '%s - Pronostigol',
+    titleTemplate: '%s | PRONOSTIGOL',
     title: 'pronostigol-v2',
     meta: [
       { charset: 'utf-8' },
