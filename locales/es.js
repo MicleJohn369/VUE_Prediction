@@ -179,10 +179,13 @@ export default {
     PRIVACY: {
       TEXT: 'Privacidad',
     },
+    FAQ: {
+      TEXT: 'Preguntas frecuentes',
+    },
   },
   VIEWS: {
     HOME: {
-      TITLE: 'Inicio',
+      TITLE: '🥇 PRONOSTIGOL | 📊Estadísticas de Loterías y Apuestas del Estado',
       WELCOME: {
         TEXT: '<p>En esta aplicación web encontrarás multitud de estadísticas asociadas a diferentes loterías de España. Actualmente damos soporte a La Quiniela, Bonoloto, Primitiva, El Gordo de la Primitiva y Euromillones. Podrás consultar todo tipo de estadísticas que te facilitarán la tarea de hacer tus apuestas y con mayores garantías de éxito.</p>',
       },
@@ -1168,6 +1171,9 @@ export default {
     },
     PRIVACY: {
       TITLE: 'Privacidad y cookies',
+    },
+    FAQ: {
+      TITLE: 'Preguntas frecuentes',
     },
   },
 };
