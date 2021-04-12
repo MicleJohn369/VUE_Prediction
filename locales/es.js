@@ -182,6 +182,9 @@ export default {
     FAQ: {
       TEXT: 'Preguntas frecuentes',
     },
+    ABOUT: {
+      TEXT: 'Acerca de',
+    },
   },
   VIEWS: {
     HOME: {
@@ -1174,6 +1177,9 @@ export default {
     },
     FAQ: {
       TITLE: 'Preguntas frecuentes',
+    },
+    ABOUT: {
+      TITLE: 'Acerca de',
     },
   },
 };

@@ -1,5 +1,5 @@
 ---
-title: 'Preguntas frecuentes | PRONOSTIGOL'
+title: 'Preguntas frecuentes'
 metas: 
   description: 'Respuestas a las preguntas frecuentes relacionadas con el funcionamiento de Pronostigol.'
   keywords: 'pronostigol, faq, preguntas frecuentes'
