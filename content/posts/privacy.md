@@ -1,5 +1,5 @@
 ---
-title: 'Privacidad y Cookies | PRONOSTIGOL'
+title: 'Privacidad y Cookies'
 metas: 
   description: 'Información sobre las cláusulas de privacidad y las cookies utilizadas en Pronostigol.'
   keywords: 'pronostigol, cookies, privacidad'
