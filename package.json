@@ -24,6 +24,7 @@
     "@nuxtjs/axios": "5.12.4",
     "@nuxtjs/dotenv": "1.4.1",
     "@nuxtjs/moment": "1.6.1",
+    "@nuxtjs/sitemap": "2.4.0",
     "axios": "0.21.0",
     "core-js": "3.8.1",
     "dotenv": "8.2.0",

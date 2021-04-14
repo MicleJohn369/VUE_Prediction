@@ -4,6 +4,24 @@ import esVuetifyLocale from 'vuetify/es5/locale/es';
 import es from './locales/es';
 import { version } from './package.json';
 
+// Sitemaps
+import mainSitemap from './sitemaps/main';
+
+import quinielaSitemap from './sitemaps/quiniela';
+import quinielaTicketsSitemap from './sitemaps/quiniela/ticket-details';
+
+import bonolotoSitemap from './sitemaps/bonoloto';
+import bonolotoTicketsSitemap from './sitemaps/bonoloto/ticket-details';
+
+import euromillonesSitemap from './sitemaps/euromillones';
+import euromillonesTicketsSitemap from './sitemaps/euromillones/ticket-details';
+
+import primitivaSitemap from './sitemaps/primitiva';
+import primitivaTicketsSitemap from './sitemaps/primitiva/ticket-details';
+
+import gordoSitemap from './sitemaps/gordo';
+import gordoTicketsSitemap from './sitemaps/gordo/ticket-details';
+
 es = {
   ...es,
   $vuetify: esVuetifyLocale,
@@ -72,6 +90,7 @@ export default {
       },
     ],
     '@nuxt/content',
+    '@nuxtjs/sitemap',
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -88,5 +107,23 @@ export default {
       // eslint-disable-next-line no-param-reassign
       config.resolve.alias.vue = 'vue/dist/vue.common';
     },
+  },
+  sitemap: {
+    hostname: 'https://www.pronostigol.es',
+    path: '/sitemap.xml',
+    gzip: true,
+    sitemaps: [
+      mainSitemap,
+      quinielaSitemap,
+      quinielaTicketsSitemap,
+      bonolotoSitemap,
+      bonolotoTicketsSitemap,
+      euromillonesSitemap,
+      euromillonesTicketsSitemap,
+      primitivaSitemap,
+      primitivaTicketsSitemap,
+      gordoSitemap,
+      gordoTicketsSitemap,
+    ],
   },
 };

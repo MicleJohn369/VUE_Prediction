@@ -11,9 +11,9 @@ module.exports = (config) => {
   const restClient = axios.create();
 
 
-  const AnhqvClient = client({
+  const PronostigolClient = client({
     restClient,
   });
 
-  return new AnhqvClient();
+  return new PronostigolClient();
 };
