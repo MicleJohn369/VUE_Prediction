@@ -108,6 +108,9 @@ export default {
       config.resolve.alias.vue = 'vue/dist/vue.common';
     },
   },
+  serverMiddleware: [
+    { path: '/api', handler: '@/api/index.js' },
+  ],
   sitemap: {
     hostname: 'https://www.pronostigol.es',
     path: '/sitemap.xml',
