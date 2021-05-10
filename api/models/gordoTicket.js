@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-function numerosLengthValidation(val) {
-  return val.length === 5;
-}
-
 const gordoTicketSchema = new Schema({
   anyo: { type: Number, required: true },
   fecha: { type: Date, required: true },
@@ -17,29 +13,23 @@ const gordoTicketSchema = new Schema({
       type: Number, min: 0, max: 9, required: true,
     },
     combinaciones: [
-      {
-        type: [
-          {
-            numero: {
-              type: Number, min: 1, max: 54, required: true,
-            },
-          },
-        ],
-        validate: [numerosLengthValidation, '{PATH} must have 5 items'],
-      },
-    ],
-  },
-  resultado: {
-    bolas: {
-      type: [
+      [
         {
           numero: {
             type: Number, min: 1, max: 54, required: true,
           },
         },
       ],
-      validate: [numerosLengthValidation, '{PATH} must have 5 items'],
-    },
+    ],
+  },
+  resultado: {
+    bolas: [
+      {
+        numero: {
+          type: Number, min: 1, max: 54, required: true,
+        },
+      },
+    ],
     numeroClave: {
       type: Number, min: 0, max: 9, required: true,
     },

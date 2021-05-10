@@ -2,14 +2,6 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-function numerosLengthValidation(val) {
-  return val.length === 5;
-}
-
-function estrellasLengthValidation(val) {
-  return val.length === 2;
-}
-
 const euromillonesTicketSchema = new Schema({
   anyo: { type: Number, required: true },
   fecha: { type: Date, required: true },
@@ -19,50 +11,38 @@ const euromillonesTicketSchema = new Schema({
   apuestas: {
     combinaciones: [
       {
-        numeros: {
-          type: [
-            {
-              numero: {
-                type: Number, min: 1, max: 50, required: true,
-              },
+        numeros: [
+          {
+            numero: {
+              type: Number, min: 1, max: 50, required: true,
             },
-          ],
-          validate: [numerosLengthValidation, '{PATH} must have 5 items'],
-        },
-        estrellas: {
-          type: [
-            {
-              numero: {
-                type: Number, min: 1, max: 12, required: true,
-              },
+          },
+        ],
+        estrellas: [
+          {
+            numero: {
+              type: Number, min: 1, max: 12, required: true,
             },
-          ],
-          validate: [estrellasLengthValidation, '{PATH} must have 2 items'],
-        },
+          },
+        ],
       },
     ],
   },
   resultado: {
-    bolas: {
-      type: [
-        {
-          numero: {
-            type: Number, min: 1, max: 50, required: true,
-          },
+    bolas: [
+      {
+        numero: {
+          type: Number, min: 1, max: 50, required: true,
         },
-      ],
-      validate: [numerosLengthValidation, '{PATH} must have 5 items'],
-    },
-    estrellas: {
-      type: [
-        {
-          numero: {
-            type: Number, min: 1, max: 12, required: true,
-          },
+      },
+    ],
+    estrellas: [
+      {
+        numero: {
+          type: Number, min: 1, max: 12, required: true,
         },
-      ],
-      validate: [estrellasLengthValidation, '{PATH} must have 2 items'],
-    },
+      },
+    ],
   },
 });
 

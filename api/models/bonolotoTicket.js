@@ -2,9 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-function numerosLengthValidation(val) {
-  return val.length === 6;
-}
+const collectionName = 'bonoloto_tickets';
 
 const bonolotoTicketSchema = new Schema({
   anyo: { type: Number, required: true },
@@ -17,29 +15,23 @@ const bonolotoTicketSchema = new Schema({
       type: Number, min: 0, max: 9, required: true,
     },
     combinaciones: [
-      {
-        type: [
-          {
-            numero: {
-              type: Number, min: 1, max: 49, required: true,
-            },
-          },
-        ],
-        validate: [numerosLengthValidation, '{PATH} must have 5 items'],
-      },
-    ],
-  },
-  resultado: {
-    bolas: {
-      type: [
+      [
         {
           numero: {
             type: Number, min: 1, max: 49, required: true,
           },
         },
       ],
-      validate: [numerosLengthValidation, '{PATH} must have 5 items'],
-    },
+    ],
+  },
+  resultado: {
+    bolas: [
+      {
+        numero: {
+          type: Number, min: 1, max: 49, required: true,
+        },
+      },
+    ],
     reintegro: {
       type: Number, min: 0, max: 9, required: true,
     },
@@ -47,6 +39,8 @@ const bonolotoTicketSchema = new Schema({
       type: Number, min: 1, max: 49, required: true,
     },
   },
+}, {
+  collection: collectionName,
 });
 
 module.exports = mongoose.model('BonolotoTicket', bonolotoTicketSchema);
