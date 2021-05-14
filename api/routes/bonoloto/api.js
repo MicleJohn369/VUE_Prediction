@@ -77,8 +77,7 @@ module.exports = function api(app) {
       middlewares.isLogged_api,
       middlewares.isAuthorized_api([ROLES.ADMIN]),
       bonoloto_api_deleteTicket,
-    );
-  */
+    ); */
 
   /* Anyos */
   bonoloto
@@ -88,22 +87,21 @@ module.exports = function api(app) {
       middlewares.isLogged_api,
       middlewares.isAuthorized_api([ROLES.ADMIN]),
       bonoloto_api_newYear,
-    )
-    .put(
+    ) */
+
+  bonoloto
+    .route('/years/:id')
+    .get(BonolotoCtrl.findYearById);
+  /* .put(
       middlewares.isLogged_api,
       middlewares.isAuthorized_api([ROLES.ADMIN]),
       bonoloto_api_editYear,
     );
-  */
-  bonoloto
-    .route('/years/:id')
-    .get(BonolotoCtrl.findYearById);
-  /* .delete(
+    .delete(
       middlewares.isLogged_api,
       middlewares.isAuthorized_api([ROLES.ADMIN]),
       bonoloto_api_deleteYear,
-    );
-  */
+    ); */
 
   /* Consultas: Estandar */
   historical.get(
