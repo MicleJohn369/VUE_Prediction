@@ -16,7 +16,7 @@ module.exports = function router(app) {
   require('./routes/bonoloto/api')(app);
 
   // Importacion de rutas de la API de la Primitiva
-  // require('./routes/primitiva/api')(app);
+  require('./routes/primitiva/api')(app);
 
   // Importacion de rutas de la API de El Gordo de la Primitiva
   // require('./routes/gordo/api')(app);
