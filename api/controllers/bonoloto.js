@@ -66,8 +66,8 @@ exports.findAllTickets = async (req, res) => {
 
   const { year } = query;
   const { raffle } = query;
-  const page = query.page || 1;
-  const perPage = query.per_page || 10;
+  const page = Number(query.page) || 1;
+  const perPage = Number(query.per_page) || 10;
   const type = query.sort_type || 'desc';
 
   const filters = {};
