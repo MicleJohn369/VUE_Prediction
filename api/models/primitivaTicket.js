@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
+const collectionName = 'primitiva_tickets';
+
 const primitivaTicketSchema = new Schema({
   anyo: { type: Number, required: true },
   fecha: { type: Date, required: true },
@@ -37,6 +39,8 @@ const primitivaTicketSchema = new Schema({
       type: Number, min: 1, max: 49, required: true,
     },
   },
+}, {
+  collection: collectionName,
 });
 
 module.exports = mongoose.model('PrimitivaTicket', primitivaTicketSchema);
