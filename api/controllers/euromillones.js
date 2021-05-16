@@ -59,6 +59,7 @@ function filtrarInformacion(result) {
  * @apiParam {Number} [page] Número de página a consultar. Por defecto se establece a 1.
  * @apiParam {Number} [per_page] Número de registros por página deseados. Por defecto se establece a 10.
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Por defecto se ordenan por fecha descendentemente.
+ * @apiParam {String} [sort_property] Propiedad por la que ordenar los registros. Los posibles valores son "date". Por defecto se ordenan por "date".
  * @apiSampleRequest /api/euromillones/tickets
  */
 exports.findAllTickets = async (req, res) => {
@@ -68,15 +69,18 @@ exports.findAllTickets = async (req, res) => {
   const { raffle } = query;
   const page = Number(query.page) || 1;
   const perPage = Number(query.per_page) || 10;
-  const type = query.sort_type || 'desc';
+  let sort_property = query.sort_property || 'date';
+  const sort_type = query.sort_type || 'desc';
 
   const filters = {};
 
   if (year) filters.anyo = Number(year);
   if (raffle) filters.sorteo = Number(raffle);
 
+  sort_property = 'fecha';
+
   const sort = {
-    fecha: type,
+    [sort_property]: sort_type,
   };
   const skip = (page - 1) * perPage;
   const limit = perPage;
