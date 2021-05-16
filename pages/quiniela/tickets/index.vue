@@ -74,7 +74,7 @@
             :loading="loading"
             class="elevation-1"
           >
-            <template v-slot:[`item.fecha`]="{ item }">
+            <template v-slot:[`item.date`]="{ item }">
               {{ getFormattedDate(item.fecha) }}
             </template>
             <template v-slot:[`item.actions`]="{ item }">
@@ -173,7 +173,7 @@ export default {
       ],
       options: {
         mustSort: true,
-        sortBy: ['fecha'],
+        sortBy: ['date'],
         sortDesc: [true],
       },
       headers: [
@@ -192,7 +192,7 @@ export default {
           text: this.$t('VIEWS.QUINIELA.TICKETS.TABLE.DATE.LABEL'),
           align: 'center',
           sortable: true,
-          value: 'fecha',
+          value: 'date',
         }, {
           text: this.$t('VIEWS.QUINIELA.TICKETS.TABLE.ACTIONS.LABEL'),
           align: 'center',
