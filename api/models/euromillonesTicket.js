@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
+const collectionName = 'euromillones_tickets';
+
 const euromillonesTicketSchema = new Schema({
   anyo: { type: Number, required: true },
   fecha: { type: Date, required: true },
@@ -44,6 +46,8 @@ const euromillonesTicketSchema = new Schema({
       },
     ],
   },
+}, {
+  collection: collectionName,
 });
 
 module.exports = mongoose.model('EuromillonesTicket', euromillonesTicketSchema);
