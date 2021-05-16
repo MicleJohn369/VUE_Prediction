@@ -22,7 +22,7 @@ module.exports = function router(app) {
   // require('./routes/gordo/api')(app);
 
   // Importacion de rutas de la API del Euromillones
-  // require('./routes/euromillones/api')(app);
+  require('./routes/euromillones/api')(app);
 
   // Importacion de rutas de Queries del Euromillones
   // require('./routes/euromillones/queries')(app);
