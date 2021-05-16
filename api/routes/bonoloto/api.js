@@ -17,45 +17,6 @@ module.exports = function api(app) {
   const { validate } = require('express-validation');
   const validations = require('./validations.js');
 
-  function borrarPronosticos(aux) {
-    const json = aux;
-
-    if (json.apuestas != null) {
-      delete json.apuestas;
-    }
-
-    return json;
-  }
-
-  function borrarPrecio(aux) {
-    const json = aux;
-
-    if (json.precio != null) {
-      delete json.precio;
-    }
-
-    return json;
-  }
-
-  function borrarPremio(aux) {
-    const json = aux;
-
-    if (json.premio != null) {
-      delete json.premio;
-    }
-
-    return json;
-  }
-
-  // eslint-disable-next-line no-unused-vars
-  function filtrarInformacion(result) {
-    let json = JSON.parse(JSON.stringify(result));
-    json = borrarPronosticos(json);
-    json = borrarPrecio(json);
-    json = borrarPremio(json);
-    return json;
-  }
-
   /* Tickets de Bonoloto */
   bonoloto
     .route('/tickets')
