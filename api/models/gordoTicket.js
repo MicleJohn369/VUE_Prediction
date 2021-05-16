@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
+const collectionName = 'gordo_tickets';
+
 const gordoTicketSchema = new Schema({
   anyo: { type: Number, required: true },
   fecha: { type: Date, required: true },
@@ -34,6 +36,8 @@ const gordoTicketSchema = new Schema({
       type: Number, min: 0, max: 9, required: true,
     },
   },
+}, {
+  collection: collectionName,
 });
 
 module.exports = mongoose.model('GordoTicket', gordoTicketSchema);
