@@ -19,7 +19,7 @@ module.exports = function router(app) {
   require('./routes/primitiva/api')(app);
 
   // Importacion de rutas de la API de El Gordo de la Primitiva
-  // require('./routes/gordo/api')(app);
+  require('./routes/gordo/api')(app);
 
   // Importacion de rutas de la API del Euromillones
   require('./routes/euromillones/api')(app);
