@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
+const collectionName = 'quiniela_tickets';
+
 const quinielaTicketSchema = new Schema({
   jornada: { type: Number, required: true },
   fecha: { type: Date, required: true },
@@ -28,6 +30,8 @@ const quinielaTicketSchema = new Schema({
       temporada: { type: String, required: true },
     },
   ],
+}, {
+  collection: collectionName,
 });
 
 module.exports = mongoose.model('QuinielaTicket', quinielaTicketSchema);
