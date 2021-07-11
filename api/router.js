@@ -10,7 +10,7 @@ module.exports = function router(app) {
   // require('./routes/general/queries')(app);
 
   // Importacion de rutas de la API de la Quiniela
-  // require('./routes/quiniela/api')(app);
+  require('./routes/quiniela/api')(app);
 
   // Importacion de rutas de la API de la Bonoloto
   require('./routes/bonoloto/api')(app);
