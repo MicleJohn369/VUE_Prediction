@@ -53,9 +53,13 @@ app.use(forceDomain(forceDomainOpts));
 
 require('./models');
 
-require('./router')(app);
+function logErrors(err, req, res, next) {
+  console.error(err.stack);
+  next(err);
+}
 
-function clientErrorHandler(err, req, res) {
+// eslint-disable-next-line no-unused-vars
+function clientErrorHandler(err, req, res, next) {
   console.log('Entramos en clientErrorHandler');
 
   if (err instanceof ValidationError) {
@@ -67,6 +71,9 @@ function clientErrorHandler(err, req, res) {
     .send(JSON.stringify(err, null, 4));
 }
 
+require('./router')(app);
+
+app.use(logErrors);
 app.use(clientErrorHandler);
 
 mongoose.connect(process.env.MONGODB_URI, {
