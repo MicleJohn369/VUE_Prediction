@@ -132,7 +132,7 @@ export default {
     });
 
     this.$store.commit('quiniela/setCompetitionPagination', {
-      sort_type: 'desc',
+      sort_type: 'asc',
     });
 
     return Promise.all([
