@@ -1,12 +1,18 @@
 {
   "name": "pronostigol-v2",
   "version": "1.0.0",
+  "apidoc": {
+    "title": "Documentación de la API Rest de Pronostigol",
+    "url": "https://www.pronostigol.es/api"
+  },
   "private": true,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "apidoc": "node node_modules/apidoc/bin/apidoc -i api -o static/docs/",
+    "postinstall": "npm run apidoc",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "test": "jest"
   },
@@ -25,6 +31,7 @@
     "@nuxtjs/dotenv": "1.4.1",
     "@nuxtjs/moment": "1.6.1",
     "@nuxtjs/sitemap": "2.4.0",
+    "apidoc": "0.29.0",
     "axios": "0.21.0",
     "body-parser": "1.19.0",
     "compression": "1.7.4",
