@@ -164,8 +164,8 @@
           <v-btn
             text
             rounded
+            target="_blank"
             to="/docs"
-            nuxt
           >
             {{ apiDocText }}
           </v-btn>
