@@ -12,7 +12,7 @@
         <v-progress-linear
           indeterminate
           absolute
-          color="red darken-2"
+          color="purple darken-2"
         />
       </template>
       <template
