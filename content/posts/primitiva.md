@@ -102,6 +102,7 @@ published: true
       Al igual que en la <nuxt-link to="/bonoloto" title="Bonoloto">Bonoloto</nuxt-link> hay casi <b>14 millones</b> de combinaciones posibles de 49 números tomados en grupos de 6.
     </p>
   </v-card-text>
+  <advertisement></advertisement>
   <v-card-title id="probability-three-numbers" :class="{ 'green--text text--darken-2': true }">
     🔸 Probabilidad de acertar 3 números en la Primitiva
   </v-card-title>
@@ -559,6 +560,7 @@ published: true
       </div>
     </div>
   </v-card-text>
+  <advertisement></advertisement>
   <v-card-title id="probability-summary" :class="{ 'green--text text--darken-2': true }">
     🔸 Resumen de probabilidades de la Primitiva por categoría
   </v-card-title>
