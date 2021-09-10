@@ -125,6 +125,7 @@ published: true
       En <b>Euromillones</b> hay casi <b>140 millones</b> de combinaciones posibles de 50 números tomados en grupos de 5 y 12 estrellas tomadas de 2 en 2.
     </p>
   </v-card-text>
+  <advertisement></advertisement>
   <v-card-title id="probability-one-number-and-two-stars" :class="{ 'purple--text text--darken-4': true }">
     🔸 Probabilidad de acertar 1 número y las 2 estrellas en Euromillones
   </v-card-title>
@@ -707,6 +708,7 @@ published: true
       </div>
     </div>
   </v-card-text>
+  <advertisement></advertisement>
   <v-card-title id="probability-three-numbers-and-two-stars" :class="{ 'purple--text text--darken-4': true }">
     🔸 Probabilidad de acertar 3 números y las 2 estrellas en Euromillones
   </v-card-title>
@@ -1510,6 +1512,7 @@ published: true
       </div>
     </div>
   </v-card-text>
+  <advertisement></advertisement>
   <v-card-title id="probability-summary" :class="{ 'purple--text text--darken-4': true }">
     🔸 Resumen de probabilidades de Euromillones por categoría
   </v-card-title>

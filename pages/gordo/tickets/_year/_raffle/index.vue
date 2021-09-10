@@ -45,6 +45,7 @@
             </v-list-item>
           </v-list>
         </v-card>
+        <Advertisement />
         <v-card
           class="mt-5"
           :loading="loading"
@@ -110,11 +111,13 @@ import utils from '@/utils';
 import getFormattedDateMixin from '@/mixins/getFormattedDate';
 
 import ScrollButton from '@/components/ScrollButton.vue';
+import Advertisement from '@/components/Advertisement.vue';
 
 export default {
   name: 'GordoTicket',
   components: {
     ScrollButton,
+    Advertisement,
   },
   nuxtI18n: {
     paths: {

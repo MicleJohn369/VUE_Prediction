@@ -119,6 +119,7 @@ published: true
       En <b>El Gordo de la Primitiva</b> hay algo más de <b>31 millones</b> de combinaciones posibles de 54 números tomados en grupos de 5 y de 10 números clave escogidos individualmente.
     </p>
   </v-card-text>
+  <advertisement></advertisement>
   <v-card-title id="probability-two-numbers" :class="{ 'red--text text--darken-2': true }">
     🔸 Probabilidad de acertar 2 números en El Gordo de la Primitiva
   </v-card-title>
@@ -810,6 +811,7 @@ published: true
       </div>
     </div>
   </v-card-text>
+  <advertisement></advertisement>
   <v-card-title id="probability-summary" :class="{ 'red--text text--darken-2': true }">
     🔸 Resumen de probabilidades de El Gordo de la Primitiva por categoría
   </v-card-title>

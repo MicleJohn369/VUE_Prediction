@@ -53,11 +53,14 @@ import utils from '@/utils';
 
 import { mapState } from 'vuex';
 import ScrollButton from '@/components/ScrollButton.vue';
+import Advertisement from '@/components/Advertisement.vue';
 
 export default {
   name: 'Quiniela',
   components: {
     ScrollButton,
+    // eslint-disable-next-line vue/no-unused-components
+    Advertisement,
   },
   nuxtI18n: {
     paths: {

@@ -28,6 +28,7 @@
         flat
       >
         <PrimitivaStatsForm :show="show" />
+        <Advertisement v-if="showAdvertisement" />
         <PrimitivaOccurrencesByNumberStatsTable
           v-if="show.occurrencesByNumber"
         />
@@ -56,6 +57,7 @@
 import utils from '@/utils';
 
 import ScrollButton from '@/components/ScrollButton.vue';
+import Advertisement from '@/components/Advertisement.vue';
 
 import PrimitivaStatsForm from '@/components/primitiva/stats/PrimitivaStatsForm.vue';
 import PrimitivaOccurrencesByNumberStatsTable from '@/components/primitiva/stats/PrimitivaOccurrencesByNumberStatsTable.vue';
@@ -76,6 +78,7 @@ export default {
     PrimitivaOccurrencesByReimbursementStatsTable,
     PrimitivaLastDateByNumberStatsTable,
     PrimitivaLastDateByReimbursementStatsTable,
+    Advertisement,
   },
   nuxtI18n: {
     paths: {
@@ -129,7 +132,16 @@ export default {
       },
     };
   },
-  computed: {},
+  computed: {
+    showAdvertisement() {
+      return this.show.occurrencesByNumber
+        || this.show.occurrencesByResult
+        || this.show.occurrencesByResultWithReimbursement
+        || this.show.occurrencesByReimbursement
+        || this.show.lastDateByNumber
+        || this.show.lastDateByReimbursement;
+    },
+  },
   destroyed() {
     this.$store.dispatch('primitiva/destroyTickets');
   },
