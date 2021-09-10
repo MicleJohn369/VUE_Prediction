@@ -10,6 +10,7 @@
           md="6"
         >
           <v-autocomplete
+            id="season"
             v-model="season"
             :rules="rules.season"
             :items="seasons"
@@ -23,6 +24,7 @@
           md="6"
         >
           <v-autocomplete
+            id="competition"
             v-model="competition"
             :rules="rules.competition"
             :items="competitions"
@@ -43,6 +45,7 @@
           <v-radio-group
             v-model="searchBy"
             mandatory
+            @change="onChangeSearchBy"
           >
             <v-radio
               :label="searchByGeneralLabel"
@@ -69,6 +72,7 @@
           md="6"
         >
           <v-autocomplete
+            id="team"
             v-model="team"
             :rules="rules.team"
             :items="teams"
@@ -86,6 +90,7 @@
           md="6"
         >
           <v-autocomplete
+            id="localTeam"
             v-model="localTeam"
             :rules="rules.localTeam"
             :items="teams"
@@ -99,6 +104,7 @@
           md="6"
         >
           <v-autocomplete
+            id="visitorTeam"
             v-model="visitorTeam"
             :rules="rules.visitorTeam"
             :items="teams"
@@ -284,6 +290,14 @@ export default {
       Object.keys(this.show).forEach((item) => {
         this.show[item] = false;
       });
+    },
+    onChangeSearchBy() {
+      const team = this.$refs.form.$children.find((item) => item.id === 'team');
+      const localTeam = this.$refs.form.$children.find((item) => item.id === 'localTeam');
+      const visitorTeam = this.$refs.form.$children.find((item) => item.id === 'visitorTeam');
+      if (team) team.reset();
+      if (localTeam) localTeam.reset();
+      if (visitorTeam) visitorTeam.reset();
     },
   },
 };
