@@ -44,6 +44,7 @@
         >
           <v-tab-item>
             <CustomStatsForm :show="show" />
+            <Advertisement v-if="show.stats || show.statsByPlace" />
             <CustomStatsTable
               v-if="show.stats"
               :stats="stats"
@@ -87,6 +88,7 @@
           </v-tab-item>
           <v-tab-item>
             <StandardStatsForm :show="show" />
+            <Advertisement v-if="show.standardStats" />
             <StandardStatsTable
               v-if="show.standardStats"
             />
@@ -104,6 +106,7 @@ import utils from '@/utils';
 import { mapState } from 'vuex';
 
 import ScrollButton from '@/components/ScrollButton.vue';
+import Advertisement from '@/components/Advertisement.vue';
 
 import CustomStatsForm from '@/components/quiniela/stats/CustomStatsForm.vue';
 import CustomStatsTable from '@/components/quiniela/stats/CustomStatsTable.vue';
@@ -119,6 +122,7 @@ export default {
     CustomStatsTable,
     StandardStatsForm,
     StandardStatsTable,
+    Advertisement,
   },
   nuxtI18n: {
     paths: {

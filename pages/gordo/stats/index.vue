@@ -28,6 +28,7 @@
         flat
       >
         <GordoStatsForm :show="show" />
+        <advertisement v-if="showAdvertisement" />
         <GordoOccurrencesByNumberStatsTable
           v-if="show.occurrencesByNumber"
         />
@@ -56,6 +57,7 @@
 import utils from '@/utils';
 
 import ScrollButton from '@/components/ScrollButton.vue';
+import Advertisement from '@/components/Advertisement.vue';
 
 import GordoStatsForm from '@/components/gordo/stats/GordoStatsForm.vue';
 import GordoOccurrencesByNumberStatsTable from '@/components/gordo/stats/GordoOccurrencesByNumberStatsTable.vue';
@@ -76,6 +78,7 @@ export default {
     GordoOccurrencesBySpecialNumberStatsTable,
     GordoLastDateByNumberStatsTable,
     GordoLastDateBySpecialNumberStatsTable,
+    Advertisement,
   },
   nuxtI18n: {
     paths: {
@@ -129,7 +132,16 @@ export default {
       },
     };
   },
-  computed: {},
+  computed: {
+    showAdvertisement() {
+      return this.show.occurrencesByNumber
+        || this.show.occurrencesByResult
+        || this.show.occurrencesByResultWithSpecialNumber
+        || this.show.occurrencesBySpecialNumber
+        || this.show.lastDateByNumber
+        || this.show.lastDateBySpecialNumber;
+    },
+  },
   destroyed() {
     this.$store.dispatch('gordo/destroyTickets');
   },

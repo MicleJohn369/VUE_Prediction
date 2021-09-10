@@ -28,6 +28,7 @@
         flat
       >
         <EuromillonesStatsForm :show="show" />
+        <Advertisement v-if="showAdvertisement" />
         <EuromillonesOccurrencesByNumberStatsTable
           v-if="show.occurrencesByNumber"
         />
@@ -56,6 +57,7 @@
 import utils from '@/utils';
 
 import ScrollButton from '@/components/ScrollButton.vue';
+import Advertisement from '@/components/Advertisement.vue';
 
 import EuromillonesStatsForm from '@/components/euromillones/stats/EuromillonesStatsForm.vue';
 import EuromillonesOccurrencesByNumberStatsTable from '@/components/euromillones/stats/EuromillonesOccurrencesByNumberStatsTable.vue';
@@ -76,6 +78,7 @@ export default {
     EuromillonesOccurrencesByStarStatsTable,
     EuromillonesLastDateByNumberStatsTable,
     EuromillonesLastDateByStarStatsTable,
+    Advertisement,
   },
   nuxtI18n: {
     paths: {
@@ -129,7 +132,16 @@ export default {
       },
     };
   },
-  computed: {},
+  computed: {
+    showAdvertisement() {
+      return this.show.occurrencesByNumber
+        || this.show.occurrencesByResult
+        || this.show.occurrencesByResultWithStars
+        || this.show.occurrencesByStar
+        || this.show.lastDateByNumber
+        || this.show.lastDateByStar;
+    },
+  },
   destroyed() {
     this.$store.dispatch('euromillones/destroyTickets');
   },

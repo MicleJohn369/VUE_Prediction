@@ -28,6 +28,7 @@
         flat
       >
         <BonolotoStatsForm :show="show" />
+        <Advertisement v-if="showAdvertisement" />
         <BonolotoOccurrencesByNumberStatsTable
           v-if="show.occurrencesByNumber"
         />
@@ -56,6 +57,7 @@
 import utils from '@/utils';
 
 import ScrollButton from '@/components/ScrollButton.vue';
+import Advertisement from '@/components/Advertisement.vue';
 
 import BonolotoStatsForm from '@/components/bonoloto/stats/BonolotoStatsForm.vue';
 import BonolotoOccurrencesByNumberStatsTable from '@/components/bonoloto/stats/BonolotoOccurrencesByNumberStatsTable.vue';
@@ -76,6 +78,7 @@ export default {
     BonolotoOccurrencesByReimbursementStatsTable,
     BonolotoLastDateByNumberStatsTable,
     BonolotoLastDateByReimbursementStatsTable,
+    Advertisement,
   },
   nuxtI18n: {
     paths: {
@@ -129,7 +132,16 @@ export default {
       },
     };
   },
-  computed: {},
+  computed: {
+    showAdvertisement() {
+      return this.show.occurrencesByNumber
+        || this.show.occurrencesByResult
+        || this.show.occurrencesByResultWithReimbursement
+        || this.show.occurrencesByReimbursement
+        || this.show.lastDateByNumber
+        || this.show.lastDateByReimbursement;
+    },
+  },
   destroyed() {
     this.$store.dispatch('bonoloto/destroyTickets');
   },
