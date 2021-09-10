@@ -91,6 +91,9 @@ export default {
     ],
     '@nuxt/content',
     '@nuxtjs/sitemap',
+    ['@nuxtjs/google-adsense', {
+      id: 'ca-pub-2309187828170787',
+    }],
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -128,5 +131,8 @@ export default {
       gordoSitemap,
       gordoTicketsSitemap,
     ],
+  },
+  content: {
+    liveEdit: false,
   },
 };
