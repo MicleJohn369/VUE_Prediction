@@ -18,79 +18,100 @@
       </div>
       <ScrollButton />
       <v-card
+        :loading="loading"
         elevation="2"
         max-width="350"
       >
         <v-list>
-          <v-list-item>
+          <v-list-item
+            v-if="loading"
+            class="text-center"
+          >
+            <v-list-item-title>{{ loadingText }}</v-list-item-title>
+          </v-list-item>
+          <v-list-item v-if="!loading">
             <v-list-item-title>{{ seasonText }}</v-list-item-title>
             <v-list-item-subtitle>{{ ticket.temporada }}</v-list-item-subtitle>
           </v-list-item>
-          <v-list-item>
+          <v-list-item v-if="!loading">
             <v-list-item-title>{{ dateText }}</v-list-item-title>
             <v-list-item-subtitle>{{ getFormattedDate(ticket.fecha) }}</v-list-item-subtitle>
           </v-list-item>
-          <v-list-item>
+          <v-list-item v-if="!loading">
             <v-list-item-title>{{ dayText }}</v-list-item-title>
             <v-list-item-subtitle>{{ ticket.jornada }}</v-list-item-subtitle>
           </v-list-item>
         </v-list>
       </v-card>
-      <v-simple-table
+      <Advertisement />
+      <v-card
         class="mt-5"
+        :loading="loading"
+        elevation="2"
       >
-        <template v-slot:default>
-          <thead>
-            <tr>
-              <th class="text-center">
-                {{ rowLabel }}
-              </th>
-              <th class="text-center">
-                {{ competitionLabel }}
-              </th>
-              <th class="text-center">
-                {{ dayLabel }}
-              </th>
-              <th class="text-center" colspan="3">
-                {{ footballMatchLabel }}
-              </th>
-              <th class="text-center">
-                {{ resultLabel }}
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="partido in ticket.partidos"
-              :key="partido.fila"
-            >
-              <td class="text-center">
-                {{ partido.fila }}
-              </td>
-              <td class="text-center">
-                {{ partido.competicion }}
-              </td>
-              <td class="text-center">
-                {{ partido.jornada }}
-              </td>
-              <td class="text-right">
-                {{ partido.local }}
-              </td>
-              <td class="text-center">
-                {{ partido.golesLocal }} - {{ partido.golesVisitante }}
-              </td>
-              <td>{{ partido.visitante }}</td>
-              <td class="text-center">
-                <v-chip
-                  color="primary"
+        <v-simple-table>
+          <template v-slot:default>
+            <thead>
+              <tr>
+                <th class="text-center">
+                  {{ rowLabel }}
+                </th>
+                <th class="text-center">
+                  {{ competitionLabel }}
+                </th>
+                <th class="text-center">
+                  {{ dayLabel }}
+                </th>
+                <th class="text-center" colspan="3">
+                  {{ footballMatchLabel }}
+                </th>
+                <th class="text-center">
+                  {{ resultLabel }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-if="loading">
+                <td
+                  class="text-center"
+                  colspan="3"
                 >
-                  {{ getRowResult(partido) }}
-                </v-chip>
-              </td>
-            </tr>
-          </tbody>
-        </template>
-      </v-simple-table>
+                  {{ loadingText }}
+                </td>
+              </tr>
+              <tr
+                v-for="partido in ticket.partidos"
+                v-else
+                :key="partido.fila"
+              >
+                <td class="text-center">
+                  {{ partido.fila }}
+                </td>
+                <td class="text-center">
+                  {{ partido.competicion }}
+                </td>
+                <td class="text-center">
+                  {{ partido.jornada }}
+                </td>
+                <td class="text-right">
+                  {{ partido.local }}
+                </td>
+                <td class="text-center">
+                  {{ partido.golesLocal }} - {{ partido.golesVisitante }}
+                </td>
+                <td>{{ partido.visitante }}</td>
+                <td class="text-center">
+                  <v-chip
+                    color="primary"
+                  >
+                    {{ getRowResult(partido) }}
+                  </v-chip>
+                </td>
+              </tr>
+            </tbody>
+          </template>
+        </v-simple-table>
+      </v-card>
     </v-col>
   </v-row>
 </template>
@@ -104,11 +125,13 @@ import utils from '@/utils';
 import getFormattedDateMixin from '@/mixins/getFormattedDate';
 
 import ScrollButton from '@/components/ScrollButton.vue';
+import Advertisement from '@/components/Advertisement.vue';
 
 export default {
   name: 'QuinielaTicket',
   components: {
     ScrollButton,
+    Advertisement,
   },
   nuxtI18n: {
     paths: {
@@ -167,6 +190,7 @@ export default {
       dayLabel: this.$t('VIEWS.QUINIELA.TICKETS.TICKET.TABLE.DAY.LABEL'),
       footballMatchLabel: this.$t('VIEWS.QUINIELA.TICKETS.TICKET.TABLE.FOOTBALL_MATCH.LABEL'),
       resultLabel: this.$t('VIEWS.QUINIELA.TICKETS.TICKET.TABLE.RESULT.LABEL'),
+      loadingText: this.$t('COMMON.LOADING'),
     };
   },
   computed: {
