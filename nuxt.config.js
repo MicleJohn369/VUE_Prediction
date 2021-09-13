@@ -94,6 +94,9 @@ export default {
     ['@nuxtjs/google-adsense', {
       id: 'ca-pub-2309187828170787',
     }],
+    ['nuxt-cookie-control', {
+      controlButton: false,
+    }],
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -134,5 +137,14 @@ export default {
   },
   content: {
     liveEdit: false,
+  },
+  cookies: {
+    necessary: [
+      {
+        name: 'doubleclick.net',
+        description: 'Cookies utilizadas para gestionar las impresiones y clicks de los anuncios mostrados en Pronostigol',
+        cookies: ['DSID', 'IDE'],
+      },
+    ],
   },
 };
