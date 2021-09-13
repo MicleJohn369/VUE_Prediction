@@ -5,7 +5,6 @@
       :mini-variant="miniVariant"
       :clipped="clipped"
       floating
-      fixed
       app
     >
       <v-list>
