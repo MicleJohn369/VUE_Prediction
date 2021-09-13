@@ -18,8 +18,6 @@ metas:
 published: true
 ---
 
-<advertisement></advertisement>
-
 <v-card elevation="2" :class="{ 'my-5': true }">
   <v-card-title id="introduction" :class="{ 'blue--text': true }">🚀 Introducción</v-card-title>
   <v-card-text>
