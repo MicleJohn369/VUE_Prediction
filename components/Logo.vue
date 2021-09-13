@@ -1,0 +1,9 @@
+<template>
+  <v-avatar
+    size="150"
+  >
+    <v-img
+      src="/images/logo-pronostigol.png"
+    />
+  </v-avatar>
+</template>
