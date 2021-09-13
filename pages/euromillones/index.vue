@@ -12,7 +12,7 @@
           </v-breadcrumbs-item>
         </template>
       </v-breadcrumbs>
-      <div class="text-center text-h1 my-3 pb-4 purple--text text--darken-4">
+      <div class="text-center text-h3 my-3 pb-4 purple--text text--darken-4">
         Euromillones
       </div>
       <ScrollButton />

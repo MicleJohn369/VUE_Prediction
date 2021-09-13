@@ -3,7 +3,7 @@
     <v-col cols="12" sm="8">
       <div class="text-center">
         <Logo />
-        <div class="text-h1 pb-4">
+        <div class="text-h3 pb-4">
           Pronostigol
         </div>
         <ScrollButton />

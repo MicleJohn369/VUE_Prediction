@@ -12,7 +12,7 @@
           </v-breadcrumbs-item>
         </template>
       </v-breadcrumbs>
-      <div class="text-center text-h1 my-3 pb-4 green--text text--darken-2">
+      <div class="text-center text-h3 my-3 pb-4 green--text text--darken-2">
         Primitiva
       </div>
       <ScrollButton />
