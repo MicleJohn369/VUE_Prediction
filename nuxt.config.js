@@ -75,7 +75,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     [
-      'nuxt-i18n',
+      '@nuxtjs/i18n',
       {
         locales: ['es'],
         defaultLocale: 'es',
