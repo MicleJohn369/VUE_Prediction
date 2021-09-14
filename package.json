@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "nuxt",
     "build": "node --optimize_for_size --max-old-space-size=4096 node_modules/nuxt/bin/nuxt.js build",
-    "start": "nuxt start",
+    "start": "node --optimize_for_size --max-old-space-size=4096 node_modules/nuxt/bin/nuxt.js start",
     "generate": "nuxt generate",
     "apidoc": "node node_modules/apidoc/bin/apidoc -i api -o static/docs/",
     "postinstall": "npm run apidoc",
