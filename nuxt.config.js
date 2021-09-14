@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line import/no-extraneous-dependencies
 import esVuetifyLocale from 'vuetify/es5/locale/es';
-import es from './locales/es';
+import esLocale from './locales/es';
 import { version } from './package.json';
 
 // Sitemaps
@@ -22,8 +20,8 @@ import primitivaTicketsSitemap from './sitemaps/primitiva/ticket-details';
 import gordoSitemap from './sitemaps/gordo';
 import gordoTicketsSitemap from './sitemaps/gordo/ticket-details';
 
-es = {
-  ...es,
+const es = {
+  ...esLocale,
   $vuetify: esVuetifyLocale,
 };
 
