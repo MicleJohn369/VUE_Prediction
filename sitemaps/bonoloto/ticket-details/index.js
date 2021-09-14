@@ -14,7 +14,7 @@ export default {
         page: 1,
         per_page: 10000,
         sort_type: 'desc',
-        sort_property: 'fecha',
+        sort_property: 'date',
       },
     });
 
