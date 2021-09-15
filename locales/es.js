@@ -231,39 +231,6 @@ export default {
         TITLE: {
           TEXT: 'Índice de contenidos',
         },
-        INTRODUCTION: {
-          TEXT: 'Introducción',
-        },
-        PROBABILITIES: {
-          TEXT: 'Probabilidades',
-          TEN_RESULTS: {
-            TEXT: 'Probabilidad de acertar 10 partidos en la Quiniela',
-          },
-          ELEVEN_RESULTS: {
-            TEXT: 'Probabilidad de acertar 11 partidos en la Quiniela',
-          },
-          TWELVE_RESULTS: {
-            TEXT: 'Probabilidad de acertar 12 partidos en la Quiniela',
-          },
-          THIRTEEN_RESULTS: {
-            TEXT: 'Probabilidad de acertar 13 partidos en la Quiniela',
-          },
-          FOURTEEN_RESULTS: {
-            TEXT: 'Probabilidad de acertar 14 partidos en la Quiniela',
-          },
-          SPECIAL_RESULT: {
-            TEXT: 'Probabilidad de acertar el pleno al quince de la Quiniela',
-          },
-          FOURTEEN_RESULTS_AND_SPECIAL_RESULT: {
-            TEXT: 'Probabilidad de acertar la Quiniela',
-          },
-          SUMMARY: {
-            TEXT: 'Resumen de probabilidades de la Quiniela por categoría',
-          },
-        },
-        SOURCES: {
-          TEXT: 'Fuentes',
-        },
       },
       TICKETS: {
         TITLE: 'Histórico de sorteos de la Quiniela',
