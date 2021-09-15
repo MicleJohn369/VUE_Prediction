@@ -44,7 +44,6 @@
         >
           <v-tab-item>
             <CustomStatsForm :show="show" />
-            <Advertisement v-if="show.stats || show.statsByPlace" />
             <CustomStatsTable
               v-if="show.stats"
               :stats="stats"
@@ -88,12 +87,12 @@
           </v-tab-item>
           <v-tab-item>
             <StandardStatsForm :show="show" />
-            <Advertisement v-if="show.standardStats" />
             <StandardStatsTable
               v-if="show.standardStats"
             />
           </v-tab-item>
         </v-tabs-items>
+        <Advertisement />
       </v-card>
     </v-col>
   </v-row>
@@ -153,7 +152,7 @@ export default {
         { name: this.$t('VIEWS.QUINIELA.STATS.TABS.CUSTOM') },
         { name: this.$t('VIEWS.QUINIELA.STATS.TABS.STANDARD') },
       ],
-      currentTab: null,
+      currentTab: 0,
       placesTab: [
         {
           name: this.$t('VIEWS.QUINIELA.STATS.TEAM_STATS.TABS.LOCAL'),
