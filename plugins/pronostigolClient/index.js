@@ -10,7 +10,6 @@ module.exports = (config) => {
 
   const restClient = axios.create();
 
-
   const PronostigolClient = client({
     restClient,
   });

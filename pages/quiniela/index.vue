@@ -2,7 +2,7 @@
   <v-row justify="center" align="center">
     <v-col cols="12">
       <v-breadcrumbs :items="items">
-        <template v-slot:item="{ item }">
+        <template #item="{ item }">
           <v-breadcrumbs-item
             :to="item.to"
             :disabled="item.disabled"
@@ -12,7 +12,7 @@
           </v-breadcrumbs-item>
         </template>
       </v-breadcrumbs>
-      <div class="text-center text-h1 my-3 pb-4 blue--text">
+      <div class="text-center text-h3 my-3 pb-4 blue--text">
         Quiniela
       </div>
       <ScrollButton />
@@ -30,7 +30,7 @@
           item-children="nested"
           item-key="target"
         >
-          <template v-slot:label="{ item }">
+          <template #label="{ item }">
             <v-btn
               block
               text
@@ -49,9 +49,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import utils from '@/utils';
 
-import { mapState } from 'vuex';
 import ScrollButton from '@/components/ScrollButton.vue';
 import Advertisement from '@/components/Advertisement.vue';
 
@@ -66,13 +66,6 @@ export default {
     paths: {
       es: '/quiniela',
     },
-  },
-  async fetch() {
-    return Promise.all([
-      this.$store.dispatch('posts/getBySlug', {
-        slug: 'quiniela',
-      }),
-    ]);
   },
   data() {
     return {
@@ -145,13 +138,20 @@ export default {
       ],
     };
   },
+  async fetch() {
+    return Promise.all([
+      this.$store.dispatch('posts/getBySlug', {
+        slug: 'quiniela',
+      }),
+    ]);
+  },
+  head() {
+    return utils.getCommonMetas(this.doc);
+  },
   computed: {
     ...mapState('posts', {
       doc: 'current',
     }),
-  },
-  head() {
-    return utils.getCommonMetas(this.doc);
   },
 };
 </script>

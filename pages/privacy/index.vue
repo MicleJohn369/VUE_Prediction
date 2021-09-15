@@ -2,7 +2,7 @@
   <v-row justify="center" align="center">
     <v-col cols="12">
       <v-breadcrumbs :items="items">
-        <template v-slot:item="{ item }">
+        <template #item="{ item }">
           <v-breadcrumbs-item
             :to="item.to"
             :disabled="item.disabled"
@@ -12,7 +12,7 @@
           </v-breadcrumbs-item>
         </template>
       </v-breadcrumbs>
-      <div class="text-center text-h1 my-3 pb-4 black--text">
+      <div class="text-center text-h3 my-3 pb-4 black--text">
         {{ privacyTitle }}
       </div>
       <ScrollButton />
@@ -22,9 +22,10 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 import utils from '@/utils';
 
-import { mapState } from 'vuex';
 import ScrollButton from '@/components/ScrollButton.vue';
 
 export default {
@@ -36,13 +37,6 @@ export default {
     paths: {
       es: '/privacidad',
     },
-  },
-  async fetch() {
-    return Promise.all([
-      this.$store.dispatch('posts/getBySlug', {
-        slug: 'privacy',
-      }),
-    ]);
   },
   data() {
     return {
@@ -62,13 +56,20 @@ export default {
       privacyTitle: this.$t('VIEWS.PRIVACY.TITLE'),
     };
   },
+  async fetch() {
+    return Promise.all([
+      this.$store.dispatch('posts/getBySlug', {
+        slug: 'privacy',
+      }),
+    ]);
+  },
+  head() {
+    return utils.getCommonMetas(this.doc);
+  },
   computed: {
     ...mapState('posts', {
       doc: 'current',
     }),
-  },
-  head() {
-    return utils.getCommonMetas(this.doc);
   },
 };
 </script>

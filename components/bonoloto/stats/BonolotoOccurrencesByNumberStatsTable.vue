@@ -8,7 +8,7 @@
       :loading="loading"
       class="elevation-1"
     >
-      <template v-slot:progress>
+      <template #progress>
         <v-progress-linear
           indeterminate
           absolute
@@ -16,7 +16,7 @@
         />
       </template>
       <template
-        v-slot:[`item.number`]="{ item }"
+        #[`item.number`]="{ item }"
       >
         <v-chip
           color="primary"
@@ -25,7 +25,7 @@
         </v-chip>
       </template>
       <template
-        v-slot:[`item.occurrences`]="{ item }"
+        #[`item.occurrences`]="{ item }"
       >
         {{ item.apariciones }}
       </template>

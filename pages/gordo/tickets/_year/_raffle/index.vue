@@ -2,7 +2,7 @@
   <v-row justify="center" align="center">
     <v-col cols="12">
       <v-breadcrumbs :items="items">
-        <template v-slot:item="{ item }">
+        <template #item="{ item }">
           <v-breadcrumbs-item
             :to="item.to"
             :disabled="item.disabled"
@@ -53,7 +53,7 @@
           elevation="2"
         >
           <v-simple-table>
-            <template v-slot:default>
+            <template #default>
               <thead>
                 <tr>
                   <th
@@ -127,14 +127,6 @@ export default {
   mixins: [
     getFormattedDateMixin,
   ],
-  async fetch() {
-    return Promise.all([
-      this.$store.dispatch('gordo/getTicket', {
-        year: this.year,
-        raffle: this.raffle,
-      }),
-    ]);
-  },
   data() {
     const { year } = this.$route.params;
     const { raffle } = this.$route.params;
@@ -176,16 +168,14 @@ export default {
       loadingText: this.$t('COMMON.LOADING'),
     };
   },
-  computed: {
-    ...mapState('gordo', {
-      ticket: (state) => state.currentTicket,
-      loading: 'loading',
-    }),
+  async fetch() {
+    return Promise.all([
+      this.$store.dispatch('gordo/getTicket', {
+        year: this.year,
+        raffle: this.raffle,
+      }),
+    ]);
   },
-  destroyed() {
-    this.$store.dispatch('gordo/destroyTicket');
-  },
-  methods: {},
   head() {
     const { year } = this;
     const { raffle } = this;
@@ -212,5 +202,15 @@ export default {
 
     return utils.getCommonMetas(seoInfo);
   },
+  computed: {
+    ...mapState('gordo', {
+      ticket: (state) => state.currentTicket,
+      loading: 'loading',
+    }),
+  },
+  destroyed() {
+    this.$store.dispatch('gordo/destroyTicket');
+  },
+  methods: {},
 };
 </script>

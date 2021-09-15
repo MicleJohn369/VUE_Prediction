@@ -1,7 +1,6 @@
 /* eslint-disable global-require */
 /* eslint-disable no-console */
 const express = require('express');
-const session = require('express-session');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 
@@ -18,7 +17,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const port = process.env.PORT || 8888;
-const forceDomain = require('forcedomain');
+const { forceDomain } = require('forcedomain');
 
 const { HTTP_CODES } = require('./constants');
 
@@ -29,14 +28,6 @@ app.use(
 );
 
 app.set('port', port);
-
-app.use(
-  session({
-    secret: 'super-duper-secret-secret',
-    resave: true,
-    saveUninitialized: true,
-  }),
-);
 
 app.use(bodyParser.json());
 

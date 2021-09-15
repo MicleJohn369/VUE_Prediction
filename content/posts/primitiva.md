@@ -18,6 +18,8 @@ metas:
 published: true
 ---
 
+<advertisement></advertisement>
+
 <v-card elevation="2" :class="{ 'my-5': true }">
   <v-card-title id="introduction" :class="{ 'green--text text--darken-2': true }">🚀 Introducción</v-card-title>
   <v-card-text>
@@ -102,7 +104,6 @@ published: true
       Al igual que en la <nuxt-link to="/bonoloto" title="Bonoloto">Bonoloto</nuxt-link> hay casi <b>14 millones</b> de combinaciones posibles de 49 números tomados en grupos de 6.
     </p>
   </v-card-text>
-  <advertisement></advertisement>
   <v-card-title id="probability-three-numbers" :class="{ 'green--text text--darken-2': true }">
     🔸 Probabilidad de acertar 3 números en la Primitiva
   </v-card-title>
@@ -560,7 +561,6 @@ published: true
       </div>
     </div>
   </v-card-text>
-  <advertisement></advertisement>
   <v-card-title id="probability-summary" :class="{ 'green--text text--darken-2': true }">
     🔸 Resumen de probabilidades de la Primitiva por categoría
   </v-card-title>
@@ -569,7 +569,7 @@ published: true
       Como hemos realizado todos los cálculos, podemos finalizar esta sección con un resumen en el que consten todas y cada una de las categorías de premios de la <b>Primitiva</b> junto con sus probabilidades.
     </p>
     <v-simple-table :class="{ bordered: true }">
-      <template v-slot:default>
+      <template #default>
         <thead>
           <tr>
             <th class="text-center">
@@ -769,3 +769,5 @@ published: true
     </v-list-item>
   </v-card-text>
 </v-card>
+
+<advertisement></advertisement>

@@ -292,9 +292,13 @@ export default {
       });
     },
     onChangeSearchBy() {
-      const team = this.$refs.form.$children.find((item) => item.id === 'team');
-      const localTeam = this.$refs.form.$children.find((item) => item.id === 'localTeam');
-      const visitorTeam = this.$refs.form.$children.find((item) => item.id === 'visitorTeam');
+      const { form } = this.$refs;
+
+      if (!form) return;
+
+      const team = form.$children.find((item) => item.id === 'team');
+      const localTeam = form.$children.find((item) => item.id === 'localTeam');
+      const visitorTeam = form.$children.find((item) => item.id === 'visitorTeam');
       if (team) team.reset();
       if (localTeam) localTeam.reset();
       if (visitorTeam) visitorTeam.reset();

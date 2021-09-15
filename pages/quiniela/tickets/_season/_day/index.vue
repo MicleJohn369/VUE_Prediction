@@ -2,7 +2,7 @@
   <v-row justify="center" align="center">
     <v-col cols="12">
       <v-breadcrumbs :items="items">
-        <template v-slot:item="{ item }">
+        <template #item="{ item }">
           <v-breadcrumbs-item
             :to="item.to"
             :disabled="item.disabled"
@@ -50,7 +50,7 @@
         elevation="2"
       >
         <v-simple-table>
-          <template v-slot:default>
+          <template #default>
             <thead>
               <tr>
                 <th class="text-center">
@@ -141,14 +141,6 @@ export default {
   mixins: [
     getFormattedDateMixin,
   ],
-  async fetch() {
-    return Promise.all([
-      this.$store.dispatch('quiniela/getTicket', {
-        season: this.season,
-        day: this.day,
-      }),
-    ]);
-  },
   data() {
     const { season } = this.$route.params;
     const { day } = this.$route.params;
@@ -193,21 +185,15 @@ export default {
       loadingText: this.$t('COMMON.LOADING'),
     };
   },
-  computed: {
-    ...mapState('quiniela', {
-      ticket: (state) => state.currentTicket,
-      loading: 'loading',
-    }),
+  async fetch() {
+    return Promise.all([
+      this.$store.dispatch('quiniela/getTicket', {
+        season: this.season,
+        day: this.day,
+      }),
+    ]);
   },
-  destroyed() {
-    this.$store.dispatch('quiniela/destroyTicket');
-  },
-  methods: {
-    getRowResult(partido) {
-      if (partido.fila === 15 && partido.resultadoConGoles) return partido.resultadoConGoles;
-      return partido.resultado;
-    },
-  },
+
   head() {
     const { season } = this;
     const { day } = this;
@@ -233,6 +219,21 @@ export default {
     };
 
     return utils.getCommonMetas(seoInfo);
+  },
+  computed: {
+    ...mapState('quiniela', {
+      ticket: (state) => state.currentTicket,
+      loading: 'loading',
+    }),
+  },
+  destroyed() {
+    this.$store.dispatch('quiniela/destroyTicket');
+  },
+  methods: {
+    getRowResult(partido) {
+      if (partido.fila === 15 && partido.resultadoConGoles) return partido.resultadoConGoles;
+      return partido.resultado;
+    },
   },
 };
 </script>

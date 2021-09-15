@@ -18,6 +18,8 @@ metas:
 published: true
 ---
 
+<advertisement></advertisement>
+
 <v-card elevation="2" :class="{ 'my-5': true }">
   <v-card-title id="introduction" :class="{ 'purple--text text--darken-4': true }">🚀 Introducción</v-card-title>
   <v-card-text>
@@ -125,7 +127,6 @@ published: true
       En <b>Euromillones</b> hay casi <b>140 millones</b> de combinaciones posibles de 50 números tomados en grupos de 5 y 12 estrellas tomadas de 2 en 2.
     </p>
   </v-card-text>
-  <advertisement></advertisement>
   <v-card-title id="probability-one-number-and-two-stars" :class="{ 'purple--text text--darken-4': true }">
     🔸 Probabilidad de acertar 1 número y las 2 estrellas en Euromillones
   </v-card-title>
@@ -708,7 +709,6 @@ published: true
       </div>
     </div>
   </v-card-text>
-  <advertisement></advertisement>
   <v-card-title id="probability-three-numbers-and-two-stars" :class="{ 'purple--text text--darken-4': true }">
     🔸 Probabilidad de acertar 3 números y las 2 estrellas en Euromillones
   </v-card-title>
@@ -1512,7 +1512,6 @@ published: true
       </div>
     </div>
   </v-card-text>
-  <advertisement></advertisement>
   <v-card-title id="probability-summary" :class="{ 'purple--text text--darken-4': true }">
     🔸 Resumen de probabilidades de Euromillones por categoría
   </v-card-title>
@@ -1521,7 +1520,7 @@ published: true
       Una vez planteados todos los cálculos, ya podemos precisar con más detalle para conocer las probabilidades exactas de cada categoría de premios de <b>Euromillones</b>. Uno puede pensar inicialmente que las categorías están ordenadas de menor a mayor dificultad en el índice de este apartado: nada más lejos de la realidad. Como veremos a continuación, es más probable acertar 4 números que acertar 3 y las 2 estrellas.
     </p>
     <v-simple-table :class="{ bordered: true }">
-      <template v-slot:default>
+      <template #default>
         <thead>
           <tr>
             <th class="text-center">
@@ -1817,3 +1816,5 @@ published: true
     </v-list-item>
   </v-card-text>
 </v-card>
+
+<advertisement></advertisement>

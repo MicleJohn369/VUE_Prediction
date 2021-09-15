@@ -18,6 +18,8 @@ metas:
 published: true
 ---
 
+<advertisement></advertisement>
+
 <v-card elevation="2" :class="{ 'my-5': true }">
   <v-card-title id="introduction" :class="{ 'black--text': true }">🚀 Introducción</v-card-title>
   <v-card-text>
@@ -112,7 +114,6 @@ published: true
       Con estos cálculos podemos saber que hay casi <b>14 millones</b> de combinaciones posibles de 49 números tomados en grupos de 6. Ahora ya podemos calcular las probabilidades de tener acierto en las distintas categorías de la <b>Bonoloto</b>.
     </p>
   </v-card-text>
-  <advertisement></advertisement>
   <v-card-title id="probability-three-numbers" :class="{ 'black--text': true }">
     🔸 Probabilidad de acertar 3 números en la Bonoloto
   </v-card-title>
@@ -572,7 +573,6 @@ published: true
       <span class="result"><b>0.1</b></span>
     </div>
   </v-card-text>
-  <advertisement></advertisement>
   <v-card-title id="probability-summary" :class="{ 'black--text': true }">
     🔸 Resumen de probabilidades de la Bonoloto por categoría
   </v-card-title>
@@ -581,7 +581,7 @@ published: true
       Una vez que se han realizado todos los cálculos, podemos finalizar esta sección con un resumen en el que figuren todas y cada una de las categorías de premios de la <b>Bonoloto</b> junto con sus probabilidades.
     </p>
     <v-simple-table :class="{ bordered: true }">
-      <template v-slot:default>
+      <template #default>
         <thead>
           <tr>
             <th class="text-center">
@@ -768,3 +768,5 @@ published: true
     </v-list-item>
   </v-card-text>
 </v-card>
+
+<advertisement></advertisement>

@@ -18,6 +18,8 @@ metas:
 published: true
 ---
 
+<advertisement></advertisement>
+
 <v-card elevation="2" :class="{ 'my-5': true }">
   <v-card-title id="introduction" :class="{ 'blue--text': true }">🚀 Introducción</v-card-title>
   <v-card-text>
@@ -55,7 +57,6 @@ published: true
       Generalmente, en la <b>Quiniela</b> se obtiene premio cuando se aciertan, al menos, 10 resultados de los 15 pronosticables. Para más info consultar el <b>Capítulo Cuarto. DISTRIBUCIÓN DE FONDOS PARA PREMIOS</b> en el siguiente <a href="https://www.loteriasyapuestas.es/f/loterias/documentos/normativa/normativa%20SELAE/NORMAS_DE_LA_QUINIELA%20_A%C3%91O_2017.pdf" target="_blank" title="Normas de Quiniela" rel="nofollow">enlace</a>.
     </p>
   </v-card-text>
-  <advertisement></advertisement>
   <v-card-title id="probability-ten-results" :class="{ 'blue--text': true }">
     🔸 Probabilidad de acertar 10 partidos en la Quiniela
   </v-card-title>
@@ -665,7 +666,6 @@ published: true
       </div>
     </div>
   </v-card-text>
-  <advertisement></advertisement>
   <v-card-title id="probability-summary" :class="{ 'blue--text': true }">
     🔸 Resumen de probabilidades de la Quiniela por categoría
   </v-card-title>
@@ -674,7 +674,7 @@ published: true
       Una vez que hemos realizado todos los planteamientos tan sólo tenemos que resolver de forma exacta las fracciones para determinar la probabilidad de cada categoría:
     </p>
     <v-simple-table :class="{ bordered: true }">
-      <template v-slot:default>
+      <template #default>
         <thead>
           <tr>
             <th class="text-center">
@@ -922,3 +922,5 @@ published: true
     </v-list-item>
   </v-card-text>
 </v-card>
+
+<advertisement></advertisement>

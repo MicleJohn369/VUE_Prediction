@@ -18,6 +18,8 @@ metas:
 published: true
 ---
 
+<advertisement></advertisement>
+
 <v-card elevation="2" :class="{ 'my-5': true }">
   <v-card-title id="introduction" :class="{ 'red--text text--darken-2': true }">🚀 Introducción</v-card-title>
   <v-card-text>
@@ -119,7 +121,6 @@ published: true
       En <b>El Gordo de la Primitiva</b> hay algo más de <b>31 millones</b> de combinaciones posibles de 54 números tomados en grupos de 5 y de 10 números clave escogidos individualmente.
     </p>
   </v-card-text>
-  <advertisement></advertisement>
   <v-card-title id="probability-two-numbers" :class="{ 'red--text text--darken-2': true }">
     🔸 Probabilidad de acertar 2 números en El Gordo de la Primitiva
   </v-card-title>
@@ -811,7 +812,6 @@ published: true
       </div>
     </div>
   </v-card-text>
-  <advertisement></advertisement>
   <v-card-title id="probability-summary" :class="{ 'red--text text--darken-2': true }">
     🔸 Resumen de probabilidades de El Gordo de la Primitiva por categoría
   </v-card-title>
@@ -820,7 +820,7 @@ published: true
       Al igual que hemos hecho en otras secciones, una vez hechos todos los cálculos vamos a resumir los cálculos agrupados por categoría de premio de <b>El Gordo de la Primitiva</b>.
     </p>
     <v-simple-table :class="{ bordered: true }">
-      <template v-slot:default>
+      <template #default>
         <thead>
           <tr>
             <th class="text-center">
@@ -1032,3 +1032,5 @@ published: true
     </v-list-item>
   </v-card-text>
 </v-card>
+
+<advertisement></advertisement>
