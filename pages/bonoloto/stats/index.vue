@@ -2,7 +2,7 @@
   <v-row justify="center" align="center">
     <v-col cols="12">
       <v-breadcrumbs :items="items">
-        <template v-slot:item="{ item }">
+        <template #item="{ item }">
           <v-breadcrumbs-item
             :to="item.to"
             :disabled="item.disabled"
@@ -86,22 +86,6 @@ export default {
     },
   },
   mixins: [],
-  async fetch() {
-    this.$store.commit('bonoloto/setYearsPagination', {
-      sort_type: 'desc',
-    });
-
-    return Promise.all([
-      this.$store.dispatch('bonoloto/getYears'),
-    ])
-      .then(() => {
-        const filters = this.$store.state.bonoloto.statsFilters;
-        this.$store.commit('bonoloto/setStatsFilters', {
-          ...filters,
-          searchBy: 'occurrencesByNumber',
-        });
-      });
-  },
   data() {
     return {
       items: [
@@ -132,18 +116,21 @@ export default {
       },
     };
   },
-  computed: {
-    showAdvertisement() {
-      return this.show.occurrencesByNumber
-        || this.show.occurrencesByResult
-        || this.show.occurrencesByResultWithReimbursement
-        || this.show.occurrencesByReimbursement
-        || this.show.lastDateByNumber
-        || this.show.lastDateByReimbursement;
-    },
-  },
-  destroyed() {
-    this.$store.dispatch('bonoloto/destroyTickets');
+  async fetch() {
+    this.$store.commit('bonoloto/setYearsPagination', {
+      sort_type: 'desc',
+    });
+
+    return Promise.all([
+      this.$store.dispatch('bonoloto/getYears'),
+    ])
+      .then(() => {
+        const filters = this.$store.state.bonoloto.statsFilters;
+        this.$store.commit('bonoloto/setStatsFilters', {
+          ...filters,
+          searchBy: 'occurrencesByNumber',
+        });
+      });
   },
   head() {
     const seoInfo = {
@@ -167,6 +154,19 @@ export default {
     };
 
     return utils.getCommonMetas(seoInfo);
+  },
+  computed: {
+    showAdvertisement() {
+      return this.show.occurrencesByNumber
+        || this.show.occurrencesByResult
+        || this.show.occurrencesByResultWithReimbursement
+        || this.show.occurrencesByReimbursement
+        || this.show.lastDateByNumber
+        || this.show.lastDateByReimbursement;
+    },
+  },
+  destroyed() {
+    this.$store.dispatch('bonoloto/destroyTickets');
   },
 };
 </script>

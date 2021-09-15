@@ -14,7 +14,7 @@
     >
       <v-simple-table>
         <template
-          v-slot:default
+          #default
         >
           <thead>
             <tr>
@@ -131,7 +131,7 @@
         class="special-results-table"
       >
         <template
-          v-slot:default
+          #default
         >
           <thead>
             <tr>

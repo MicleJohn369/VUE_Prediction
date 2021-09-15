@@ -31,7 +31,7 @@ published: true
       A continuación se detallan todas y cada unas de las cookies utilizadas en Pronostigol:
     </p>
     <v-simple-table :class="{ bordered: true }">
-      <template v-slot:default>
+      <template #default>
         <thead>
           <tr>
             <th class="text-center">

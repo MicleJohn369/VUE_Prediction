@@ -569,7 +569,7 @@ published: true
       Como hemos realizado todos los cálculos, podemos finalizar esta sección con un resumen en el que consten todas y cada una de las categorías de premios de la <b>Primitiva</b> junto con sus probabilidades.
     </p>
     <v-simple-table :class="{ bordered: true }">
-      <template v-slot:default>
+      <template #default>
         <thead>
           <tr>
             <th class="text-center">

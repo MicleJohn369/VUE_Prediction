@@ -15,7 +15,7 @@ module.exports = function api(app) {
 
   // Validations
   const { validate } = require('express-validation');
-  const validations = require('./validations.js');
+  const validations = require('./validations');
 
   /* Tickets del Euromillones */
   euromillones

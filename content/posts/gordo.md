@@ -820,7 +820,7 @@ published: true
       Al igual que hemos hecho en otras secciones, una vez hechos todos los cálculos vamos a resumir los cálculos agrupados por categoría de premio de <b>El Gordo de la Primitiva</b>.
     </p>
     <v-simple-table :class="{ bordered: true }">
-      <template v-slot:default>
+      <template #default>
         <thead>
           <tr>
             <th class="text-center">

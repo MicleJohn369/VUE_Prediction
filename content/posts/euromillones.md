@@ -1520,7 +1520,7 @@ published: true
       Una vez planteados todos los cálculos, ya podemos precisar con más detalle para conocer las probabilidades exactas de cada categoría de premios de <b>Euromillones</b>. Uno puede pensar inicialmente que las categorías están ordenadas de menor a mayor dificultad en el índice de este apartado: nada más lejos de la realidad. Como veremos a continuación, es más probable acertar 4 números que acertar 3 y las 2 estrellas.
     </p>
     <v-simple-table :class="{ bordered: true }">
-      <template v-slot:default>
+      <template #default>
         <thead>
           <tr>
             <th class="text-center">

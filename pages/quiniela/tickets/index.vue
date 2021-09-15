@@ -2,7 +2,7 @@
   <v-row justify="center" align="center">
     <v-col cols="12">
       <v-breadcrumbs :items="items">
-        <template v-slot:item="{ item }">
+        <template #item="{ item }">
           <v-breadcrumbs-item
             :to="item.to"
             :disabled="item.disabled"
@@ -36,7 +36,7 @@
               <v-select
                 v-model="season"
                 :rules="[
-                  (v) => !!v || this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEASON.ERRORS.REQUIRED')
+                  (v) => !!v || $t('VIEWS.QUINIELA.TICKETS.FILTERS.SEASON.ERRORS.REQUIRED')
                 ]"
                 :items="seasons"
                 :label="seasonText"
@@ -74,10 +74,10 @@
             :loading="loading"
             class="elevation-1"
           >
-            <template v-slot:[`item.date`]="{ item }">
+            <template #[`item.date`]="{ item }">
               {{ getFormattedDate(item.fecha) }}
             </template>
-            <template v-slot:[`item.actions`]="{ item }">
+            <template #[`item.actions`]="{ item }">
               <v-btn
                 dark
                 fab
@@ -130,29 +130,6 @@ export default {
   mixins: [
     getFormattedDateMixin,
   ],
-  async fetch() {
-    this.$store.commit('quiniela/setTicketPagination', {
-      sort_property: this.options.sortBy[0],
-      sort_type: this.options.sortDesc[0] ? 'desc' : 'asc',
-    });
-
-    this.$store.commit('quiniela/setSeasonPagination', {
-      sort_type: 'desc',
-    });
-
-    return Promise.all([
-      this.$store.dispatch('quiniela/getSeasons'),
-    ])
-      .then(() => {
-        const filters = this.$store.state.quiniela.ticketsFilters;
-        this.$store.commit('quiniela/setTicketsFilters', {
-          ...filters,
-          season: 'Histórico',
-        });
-
-        return this.$store.dispatch('quiniela/getTickets');
-      });
-  },
   data() {
     return {
       items: [
@@ -208,6 +185,52 @@ export default {
       detailTicketTooltip: this.$t('VIEWS.QUINIELA.TICKETS.TABLE.ACTIONS.SEE.TOOLTIP'),
     };
   },
+  async fetch() {
+    this.$store.commit('quiniela/setTicketPagination', {
+      sort_property: this.options.sortBy[0],
+      sort_type: this.options.sortDesc[0] ? 'desc' : 'asc',
+    });
+
+    this.$store.commit('quiniela/setSeasonPagination', {
+      sort_type: 'desc',
+    });
+
+    return Promise.all([
+      this.$store.dispatch('quiniela/getSeasons'),
+    ])
+      .then(() => {
+        const filters = this.$store.state.quiniela.ticketsFilters;
+        this.$store.commit('quiniela/setTicketsFilters', {
+          ...filters,
+          season: 'Histórico',
+        });
+
+        return this.$store.dispatch('quiniela/getTickets');
+      });
+  },
+  head() {
+    const seoInfo = {
+      title: '⚽ Quiniela | Histórico de sorteos de la quiniela',
+      metas: {
+        description: 'Apartado en el que poder consultar el histórico de sorteos de la quiniela. ⚡ Se pueden filtrar por temporada.',
+        keywords: 'quiniela, histórico, historico, sorteos',
+        canonical_url: 'https://www.pronostigol.es/quiniela/sorteos',
+        og_title: '⚽ Quiniela | Histórico de sorteos de la quiniela',
+        og_type: 'website',
+        og_image: 'https://www.pronostigol.es/img/logo-quiniela.png',
+        og_url: 'https://www.pronostigol.es/quiniela',
+        og_description: 'Apartado en el que poder consultar el histórico de sorteos de la quiniela. ⚡ Se pueden filtrar por temporada.',
+        og_site_name: 'Pronostigol',
+        twitter_site: '@pronostigolesp',
+        twitter_card: 'summary_large_image',
+        twitter_image: 'https://www.pronostigol.es/img/logo-quiniela.png',
+        twitter_title: '⚽ Quiniela | Histórico de sorteos de la quiniela',
+        twitter_description: 'Apartado en el que poder consultar el histórico de sorteos de la quiniela. ⚡ Se pueden filtrar por temporada.',
+      },
+    };
+
+    return utils.getCommonMetas(seoInfo);
+  },
   computed: {
     ...mapState('quiniela', {
       tickets: (state) => state.tickets.data,
@@ -262,29 +285,6 @@ export default {
 
       this.$store.dispatch('quiniela/getTickets');
     },
-  },
-  head() {
-    const seoInfo = {
-      title: '⚽ Quiniela | Histórico de sorteos de la quiniela',
-      metas: {
-        description: 'Apartado en el que poder consultar el histórico de sorteos de la quiniela. ⚡ Se pueden filtrar por temporada.',
-        keywords: 'quiniela, histórico, historico, sorteos',
-        canonical_url: 'https://www.pronostigol.es/quiniela/sorteos',
-        og_title: '⚽ Quiniela | Histórico de sorteos de la quiniela',
-        og_type: 'website',
-        og_image: 'https://www.pronostigol.es/img/logo-quiniela.png',
-        og_url: 'https://www.pronostigol.es/quiniela',
-        og_description: 'Apartado en el que poder consultar el histórico de sorteos de la quiniela. ⚡ Se pueden filtrar por temporada.',
-        og_site_name: 'Pronostigol',
-        twitter_site: '@pronostigolesp',
-        twitter_card: 'summary_large_image',
-        twitter_image: 'https://www.pronostigol.es/img/logo-quiniela.png',
-        twitter_title: '⚽ Quiniela | Histórico de sorteos de la quiniela',
-        twitter_description: 'Apartado en el que poder consultar el histórico de sorteos de la quiniela. ⚡ Se pueden filtrar por temporada.',
-      },
-    };
-
-    return utils.getCommonMetas(seoInfo);
   },
 };
 </script>

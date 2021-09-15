@@ -9,7 +9,7 @@
       class="elevation-1"
     >
       <template
-        v-slot:[`item.result`]="{ item }"
+        #[`item.result`]="{ item }"
       >
         <v-chip
           v-for="(result, index) in item.results"

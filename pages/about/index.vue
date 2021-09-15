@@ -2,7 +2,7 @@
   <v-row justify="center" align="center">
     <v-col cols="12">
       <v-breadcrumbs :items="items">
-        <template v-slot:item="{ item }">
+        <template #item="{ item }">
           <v-breadcrumbs-item
             :to="item.to"
             :disabled="item.disabled"
@@ -22,9 +22,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import utils from '@/utils';
 
-import { mapState } from 'vuex';
 import ScrollButton from '@/components/ScrollButton.vue';
 
 export default {
@@ -36,13 +36,6 @@ export default {
     paths: {
       es: '/acerca-de',
     },
-  },
-  async fetch() {
-    return Promise.all([
-      this.$store.dispatch('posts/getBySlug', {
-        slug: 'about',
-      }),
-    ]);
   },
   data() {
     return {
@@ -62,13 +55,20 @@ export default {
       aboutTitle: this.$t('VIEWS.ABOUT.TITLE'),
     };
   },
+  async fetch() {
+    return Promise.all([
+      this.$store.dispatch('posts/getBySlug', {
+        slug: 'about',
+      }),
+    ]);
+  },
+  head() {
+    return utils.getCommonMetas(this.doc);
+  },
   computed: {
     ...mapState('posts', {
       doc: 'current',
     }),
-  },
-  head() {
-    return utils.getCommonMetas(this.doc);
   },
 };
 </script>

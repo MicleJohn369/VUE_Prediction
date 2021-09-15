@@ -95,14 +95,14 @@
 </template>
 
 <script>
-import VRuntimeTemplate from 'v-runtime-template';
-import Logo from '@/components/Logo.vue';
 import { Timeline } from 'vue-tweet-embed';
+import VRuntimeTemplate from 'v-runtime-template';
+import { mapState } from 'vuex';
+
+import Logo from '@/components/Logo.vue';
 
 import utils from '@/utils';
 import ScrollButton from '@/components/ScrollButton.vue';
-
-import { mapState } from 'vuex';
 
 export default {
   components: {
@@ -110,9 +110,6 @@ export default {
     VRuntimeTemplate,
     Timeline,
     ScrollButton,
-  },
-  async fetch() {
-    return this.$store.dispatch('github/getLastCommitDate');
   },
   data() {
     return {
@@ -122,6 +119,14 @@ export default {
       primitivaText: this.$t('VIEWS.HOME.GAMES.PRIMITIVA.TEXT'),
       gordoText: this.$t('VIEWS.HOME.GAMES.GORDO.TEXT'),
       euromillonesText: this.$t('VIEWS.HOME.GAMES.EUROMILLONES.TEXT'),
+    };
+  },
+  async fetch() {
+    return this.$store.dispatch('github/getLastCommitDate');
+  },
+  head() {
+    return {
+      title: this.$t('VIEWS.HOME.TITLE'),
     };
   },
   computed: {
@@ -137,11 +142,6 @@ export default {
     currentVersion() {
       return `${this.$t('VIEWS.HOME.APP_INFO.CURRENT_VERSION.TEXT')}: ${this.$config.appVersion}`;
     },
-  },
-  head() {
-    return {
-      title: this.$t('VIEWS.HOME.TITLE'),
-    };
   },
 };
 </script>

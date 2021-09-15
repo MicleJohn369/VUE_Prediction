@@ -33,7 +33,7 @@
             :key="item.title"
             no-action
           >
-            <template v-slot:activator>
+            <template #activator>
               <v-list-item
                 class="px-0"
               >

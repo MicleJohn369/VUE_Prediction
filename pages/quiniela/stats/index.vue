@@ -2,7 +2,7 @@
   <v-row justify="center" align="center">
     <v-col cols="12">
       <v-breadcrumbs :items="items">
-        <template v-slot:item="{ item }">
+        <template #item="{ item }">
           <v-breadcrumbs-item
             :to="item.to"
             :disabled="item.disabled"
@@ -101,9 +101,8 @@
 
 <script>
 
-import utils from '@/utils';
-
 import { mapState } from 'vuex';
+import utils from '@/utils';
 
 import ScrollButton from '@/components/ScrollButton.vue';
 import Advertisement from '@/components/Advertisement.vue';
@@ -130,30 +129,6 @@ export default {
     },
   },
   mixins: [],
-  async fetch() {
-    this.$store.commit('quiniela/setSeasonPagination', {
-      sort_type: 'desc',
-    });
-
-    this.$store.commit('quiniela/setCompetitionPagination', {
-      sort_type: 'asc',
-    });
-
-    return Promise.all([
-      this.$store.dispatch('quiniela/getSeasons'),
-      this.$store.dispatch('quiniela/getCompetitions'),
-      this.$store.dispatch('quiniela/getTeams'),
-    ])
-      .then(() => {
-        const filters = this.$store.state.quiniela.statsFilters;
-        this.$store.commit('quiniela/setStatsFilters', {
-          ...filters,
-          season: 'Histórico',
-          competition: 'Todas',
-          searchBy: 'general',
-        });
-      });
-  },
   data() {
     return {
       items: [
@@ -196,16 +171,31 @@ export default {
       },
     };
   },
-  computed: {
-    ...mapState('quiniela', {
-      stats: (state) => state.stats,
-      statsAsLocal: (state) => state.statsAsLocal,
-      statsAsVisitor: (state) => state.statsAsVisitor,
-    }),
+  async fetch() {
+    this.$store.commit('quiniela/setSeasonPagination', {
+      sort_type: 'desc',
+    });
+
+    this.$store.commit('quiniela/setCompetitionPagination', {
+      sort_type: 'asc',
+    });
+
+    return Promise.all([
+      this.$store.dispatch('quiniela/getSeasons'),
+      this.$store.dispatch('quiniela/getCompetitions'),
+      this.$store.dispatch('quiniela/getTeams'),
+    ])
+      .then(() => {
+        const filters = this.$store.state.quiniela.statsFilters;
+        this.$store.commit('quiniela/setStatsFilters', {
+          ...filters,
+          season: 'Histórico',
+          competition: 'Todas',
+          searchBy: 'general',
+        });
+      });
   },
-  destroyed() {
-    this.$store.dispatch('quiniela/destroyTickets');
-  },
+
   head() {
     // TODO: Añadir info SEO para estadísticas de quiniela
     const seoInfo = {
@@ -229,6 +219,16 @@ export default {
     };
 
     return utils.getCommonMetas(seoInfo);
+  },
+  computed: {
+    ...mapState('quiniela', {
+      stats: (state) => state.stats,
+      statsAsLocal: (state) => state.statsAsLocal,
+      statsAsVisitor: (state) => state.statsAsVisitor,
+    }),
+  },
+  destroyed() {
+    this.$store.dispatch('quiniela/destroyTickets');
   },
 };
 </script>

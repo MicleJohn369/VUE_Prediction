@@ -581,7 +581,7 @@ published: true
       Una vez que se han realizado todos los cálculos, podemos finalizar esta sección con un resumen en el que figuren todas y cada una de las categorías de premios de la <b>Bonoloto</b> junto con sus probabilidades.
     </p>
     <v-simple-table :class="{ bordered: true }">
-      <template v-slot:default>
+      <template #default>
         <thead>
           <tr>
             <th class="text-center">

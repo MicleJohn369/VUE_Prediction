@@ -2,7 +2,7 @@
   <v-row justify="center" align="center">
     <v-col cols="12">
       <v-breadcrumbs :items="items">
-        <template v-slot:item="{ item }">
+        <template #item="{ item }">
           <v-breadcrumbs-item
             :to="item.to"
             :disabled="item.disabled"
@@ -86,22 +86,6 @@ export default {
     },
   },
   mixins: [],
-  async fetch() {
-    this.$store.commit('gordo/setYearsPagination', {
-      sort_type: 'desc',
-    });
-
-    return Promise.all([
-      this.$store.dispatch('gordo/getYears'),
-    ])
-      .then(() => {
-        const filters = this.$store.state.gordo.statsFilters;
-        this.$store.commit('gordo/setStatsFilters', {
-          ...filters,
-          searchBy: 'occurrencesByNumber',
-        });
-      });
-  },
   data() {
     return {
       items: [
@@ -132,18 +116,21 @@ export default {
       },
     };
   },
-  computed: {
-    showAdvertisement() {
-      return this.show.occurrencesByNumber
-        || this.show.occurrencesByResult
-        || this.show.occurrencesByResultWithSpecialNumber
-        || this.show.occurrencesBySpecialNumber
-        || this.show.lastDateByNumber
-        || this.show.lastDateBySpecialNumber;
-    },
-  },
-  destroyed() {
-    this.$store.dispatch('gordo/destroyTickets');
+  async fetch() {
+    this.$store.commit('gordo/setYearsPagination', {
+      sort_type: 'desc',
+    });
+
+    return Promise.all([
+      this.$store.dispatch('gordo/getYears'),
+    ])
+      .then(() => {
+        const filters = this.$store.state.gordo.statsFilters;
+        this.$store.commit('gordo/setStatsFilters', {
+          ...filters,
+          searchBy: 'occurrencesByNumber',
+        });
+      });
   },
   head() {
     const seoInfo = {
@@ -167,6 +154,19 @@ export default {
     };
 
     return utils.getCommonMetas(seoInfo);
+  },
+  computed: {
+    showAdvertisement() {
+      return this.show.occurrencesByNumber
+        || this.show.occurrencesByResult
+        || this.show.occurrencesByResultWithSpecialNumber
+        || this.show.occurrencesBySpecialNumber
+        || this.show.lastDateByNumber
+        || this.show.lastDateBySpecialNumber;
+    },
+  },
+  destroyed() {
+    this.$store.dispatch('gordo/destroyTickets');
   },
 };
 </script>

@@ -674,7 +674,7 @@ published: true
       Una vez que hemos realizado todos los planteamientos tan sólo tenemos que resolver de forma exacta las fracciones para determinar la probabilidad de cada categoría:
     </p>
     <v-simple-table :class="{ bordered: true }">
-      <template v-slot:default>
+      <template #default>
         <thead>
           <tr>
             <th class="text-center">

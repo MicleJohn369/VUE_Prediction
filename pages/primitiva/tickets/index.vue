@@ -2,7 +2,7 @@
   <v-row justify="center" align="center">
     <v-col cols="12">
       <v-breadcrumbs :items="items">
-        <template v-slot:item="{ item }">
+        <template #item="{ item }">
           <v-breadcrumbs-item
             :to="item.to"
             :disabled="item.disabled"
@@ -71,17 +71,17 @@
             :loading="loading"
             class="elevation-1"
           >
-            <template v-slot:progress>
+            <template #progress>
               <v-progress-linear
                 indeterminate
                 absolute
                 color="green darken-2"
               />
             </template>
-            <template v-slot:[`item.date`]="{ item }">
+            <template #[`item.date`]="{ item }">
               {{ getFormattedDate(item.fecha) }}
             </template>
-            <template v-slot:[`item.actions`]="{ item }">
+            <template #[`item.actions`]="{ item }">
               <v-btn
                 dark
                 fab
@@ -134,23 +134,6 @@ export default {
   mixins: [
     getFormattedDateMixin,
   ],
-  async fetch() {
-    this.$store.commit('primitiva/setTicketPagination', {
-      sort_property: this.options.sortBy[0],
-      sort_type: this.options.sortDesc[0] ? 'desc' : 'asc',
-    });
-
-    // TODO: Implementar ordenación de años de Primitiva en servidor
-
-    this.$store.commit('primitiva/setYearsPagination', {
-      sort_type: 'desc',
-    });
-
-    return Promise.all([
-      this.$store.dispatch('primitiva/getYears'),
-    ])
-      .then(() => this.$store.dispatch('primitiva/getTickets'));
-  },
   data() {
     return {
       items: [
@@ -199,6 +182,47 @@ export default {
       searchText: this.$t('VIEWS.PRIMITIVA.TICKETS.FILTERS.SEARCH.TEXT'),
       detailTicketTooltip: this.$t('VIEWS.PRIMITIVA.TICKETS.TABLE.ACTIONS.SEE.TOOLTIP'),
     };
+  },
+  async fetch() {
+    this.$store.commit('primitiva/setTicketPagination', {
+      sort_property: this.options.sortBy[0],
+      sort_type: this.options.sortDesc[0] ? 'desc' : 'asc',
+    });
+
+    // TODO: Implementar ordenación de años de Primitiva en servidor
+
+    this.$store.commit('primitiva/setYearsPagination', {
+      sort_type: 'desc',
+    });
+
+    return Promise.all([
+      this.$store.dispatch('primitiva/getYears'),
+    ])
+      .then(() => this.$store.dispatch('primitiva/getTickets'));
+  },
+
+  head() {
+    const seoInfo = {
+      title: '🤑 Primitiva | Histórico de sorteos de la Primitiva',
+      metas: {
+        description: 'Apartado en el que poder consultar el histórico de sorteos de la Primitiva. ⚡ Se pueden filtrar por año.',
+        keywords: 'primitiva, histórico, historico, sorteos',
+        canonical_url: 'https://www.pronostigol.es/primitiva/sorteos',
+        og_title: '🤑 Primitiva | Histórico de sorteos de la Primitiva',
+        og_type: 'website',
+        og_image: 'https://www.pronostigol.es/img/logo-primitiva.png',
+        og_url: 'https://www.pronostigol.es/primitiva',
+        og_description: 'Apartado en el que poder consultar el histórico de sorteos de la primitiva. ⚡ Se pueden filtrar por año.',
+        og_site_name: 'Pronostigol',
+        twitter_site: '@pronostigolesp',
+        twitter_card: 'summary_large_image',
+        twitter_image: 'https://www.pronostigol.es/img/logo-primitiva.png',
+        twitter_title: '🤑 Primitiva | Histórico de sorteos de la Primitiva',
+        twitter_description: 'Apartado en el que poder consultar el histórico de sorteos de la Primitiva. ⚡ Se pueden filtrar por año.',
+      },
+    };
+
+    return utils.getCommonMetas(seoInfo);
   },
   computed: {
     ...mapState('primitiva', {
@@ -254,29 +278,6 @@ export default {
 
       this.$store.dispatch('primitiva/getTickets');
     },
-  },
-  head() {
-    const seoInfo = {
-      title: '🤑 Primitiva | Histórico de sorteos de la Primitiva',
-      metas: {
-        description: 'Apartado en el que poder consultar el histórico de sorteos de la Primitiva. ⚡ Se pueden filtrar por año.',
-        keywords: 'primitiva, histórico, historico, sorteos',
-        canonical_url: 'https://www.pronostigol.es/primitiva/sorteos',
-        og_title: '🤑 Primitiva | Histórico de sorteos de la Primitiva',
-        og_type: 'website',
-        og_image: 'https://www.pronostigol.es/img/logo-primitiva.png',
-        og_url: 'https://www.pronostigol.es/primitiva',
-        og_description: 'Apartado en el que poder consultar el histórico de sorteos de la primitiva. ⚡ Se pueden filtrar por año.',
-        og_site_name: 'Pronostigol',
-        twitter_site: '@pronostigolesp',
-        twitter_card: 'summary_large_image',
-        twitter_image: 'https://www.pronostigol.es/img/logo-primitiva.png',
-        twitter_title: '🤑 Primitiva | Histórico de sorteos de la Primitiva',
-        twitter_description: 'Apartado en el que poder consultar el histórico de sorteos de la Primitiva. ⚡ Se pueden filtrar por año.',
-      },
-    };
-
-    return utils.getCommonMetas(seoInfo);
   },
 };
 </script>
