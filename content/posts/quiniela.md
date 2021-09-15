@@ -20,7 +20,7 @@ published: true
 
 <advertisement></advertisement>
 
-## 🚀 Introducción
+## 🚀 Introduccion
 
 En esta sección encontrarás multitud de <nuxt-link to="/quiniela/estadisticas" title="Estadísticas">estadísticas</nuxt-link> asociadas a la <b>Quiniela</b> de España. Podrás conocer los resultados más repetidos, el histórico de <nuxt-link to="/quiniela/sorteos" title="Sorteos">sorteos</nuxt-link>, los equipos de fútbol que ganan con más frecuencia y una amplia gama de consultas a realizar. De este modo te será mucho más sencillo realizar tus quinielas.
 
@@ -716,7 +716,7 @@ Para calcular la probabilidad de acertar la <b>Quiniela</b> tenemos que, ahora s
   </div>
 </div>
 
-### 🔸 Resumen de probabilidades de la Quiniela por categoría
+### 🔸 Resumen de probabilidades de la Quiniela por categoria
 
 Una vez que hemos realizado todos los planteamientos tan sólo tenemos que resolver de forma exacta las fracciones para determinar la probabilidad de cada categoría:
 
