@@ -104,6 +104,7 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+    transpile: [/^vue-adblock-detector/],
     extend(config, { isDev, isClient }) {
       // eslint-disable-next-line no-param-reassign
       config.resolve.alias.vue = 'vue/dist/vue.common';

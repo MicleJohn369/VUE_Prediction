@@ -236,10 +236,42 @@
         </v-card-text>
       </v-card>
     </v-footer>
+    <v-dialog
+      v-model="showAdblockDialog"
+      max-width="500"
+    >
+      <v-card>
+        <v-card-title class="text-h5">
+          {{ adblockTitle }}
+        </v-card-title>
+        <v-card-text class="text-justify">
+          {{ adblockText }}
+        </v-card-text>
+        <v-divider />
+        <v-card-actions>
+          <v-spacer />
+          <v-btn
+            dark
+            color="teal"
+            onclick="location.reload(true)"
+          >
+            <v-icon
+              left
+              dark
+            >
+              mdi-cached
+            </v-icon>
+            {{ reloadText }}
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-app>
 </template>
 
 <script>
+import { detectAnyAdblocker } from 'vue-adblock-detector';
+
 export default {
   data() {
     return {
@@ -247,6 +279,10 @@ export default {
       drawer: true,
       fixed: false,
       miniVariant: false,
+      showAdblockDialog: false,
+      adblockTitle: this.$t('COMMON.ADBLOCK.TITLE'),
+      adblockText: this.$t('COMMON.ADBLOCK.TEXT'),
+      reloadText: this.$t('COMMON.ADBLOCK.RELOAD.TEXT'),
       items: [
         {
           icon: 'mdi-home',
@@ -393,6 +429,18 @@ export default {
       gordoText: this.$t('FOOTER.GORDO.TEXT'),
       euromillonesText: this.$t('FOOTER.EUROMILLONES.TEXT'),
     };
+  },
+  beforeMount() {
+    this.detectAdblock();
+  },
+  methods: {
+    detectAdblock() {
+      detectAnyAdblocker().then((response) => {
+        if (response) {
+          this.showAdblockDialog = true;
+        }
+      });
+    },
   },
 };
 </script>

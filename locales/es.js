@@ -2,6 +2,13 @@ export default {
   COMMON: {
     TOTAL: 'Total',
     LOADING: 'Cargando...',
+    ADBLOCK: {
+      TITLE: '🛑 AdBlock detectado',
+      TEXT: 'Este sitio web tiene como única financiación los anuncios de Google AdSense. Para visitar este sitio web, por favor, desactiva AdBlock y recarga la página.',
+      RELOAD: {
+        TEXT: 'Recargar',
+      },
+    },
   },
   MENU: {
     HOME: {
