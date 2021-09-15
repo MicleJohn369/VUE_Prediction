@@ -177,7 +177,7 @@ export default {
         { name: this.$t('VIEWS.QUINIELA.STATS.TABS.CUSTOM') },
         { name: this.$t('VIEWS.QUINIELA.STATS.TABS.STANDARD') },
       ],
-      currentTab: null,
+      currentTab: 0,
       placesTab: [
         {
           name: this.$t('VIEWS.QUINIELA.STATS.TEAM_STATS.TABS.LOCAL'),
