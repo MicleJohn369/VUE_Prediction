@@ -150,7 +150,7 @@ export default {
         a{
           &:hover{
             text-decoration: none;
-            color: #f49600;
+            color: $color-text-orange;
           }
         }
       }
@@ -175,7 +175,7 @@ export default {
 
   ::v-deep .nuxt-content{
     h2, h3{
-      color: #2196F3 !important;
+      color: $color-primary !important;
     }
 
     h2{
@@ -199,7 +199,7 @@ export default {
       &>a:before{
         content: "#";
         --text-opacity: 1;
-        color: #2196F3;
+        color: $color-primary;
         font-weight: 400;
         margin-left: -1.25rem;
         padding-right: .25rem;
@@ -259,7 +259,7 @@ export default {
         th {
           padding-top: 12px;
           padding-bottom: 12px;
-          background-color: #2196F3;
+          background-color: $color-primary;
           color: white;
           min-width: 200px;
         }
