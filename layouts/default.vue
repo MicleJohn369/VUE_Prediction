@@ -309,7 +309,7 @@ export default {
                 name: 'quiniela-tickets',
               }),
             }, {
-              icon: 'mdi-poll-box',
+              icon: 'mdi-chart-box',
               title: this.$t('MENU.QUINIELA.STATS.TEXT'),
               to: this.localePath({
                 name: 'quiniela-stats',
@@ -334,7 +334,7 @@ export default {
                 name: 'bonoloto-tickets',
               }),
             }, {
-              icon: 'mdi-poll-box',
+              icon: 'mdi-chart-box',
               title: this.$t('MENU.BONOLOTO.STATS.TEXT'),
               to: this.localePath({
                 name: 'bonoloto-stats',
@@ -359,7 +359,7 @@ export default {
                 name: 'primitiva-tickets',
               }),
             }, {
-              icon: 'mdi-poll-box',
+              icon: 'mdi-chart-box',
               title: this.$t('MENU.PRIMITIVA.STATS.TEXT'),
               to: this.localePath({
                 name: 'primitiva-stats',
@@ -384,7 +384,7 @@ export default {
                 name: 'gordo-tickets',
               }),
             }, {
-              icon: 'mdi-poll-box',
+              icon: 'mdi-chart-box',
               title: this.$t('MENU.GORDO.STATS.TEXT'),
               to: this.localePath({
                 name: 'gordo-stats',
@@ -409,7 +409,7 @@ export default {
                 name: 'euromillones-tickets',
               }),
             }, {
-              icon: 'mdi-poll-box',
+              icon: 'mdi-chart-box',
               title: this.$t('MENU.EUROMILLONES.STATS.TEXT'),
               to: this.localePath({
                 name: 'euromillones-stats',
