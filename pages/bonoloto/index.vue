@@ -100,7 +100,7 @@ export default {
           disabled: true,
         },
       ],
-      tocTitle: this.$t('VIEWS.BONOLOTO.TOC.TITLE.TEXT'),
+      tocTitleText: this.$t('VIEWS.BONOLOTO.TOC.TITLE.TEXT'),
     };
   },
   async fetch() {
