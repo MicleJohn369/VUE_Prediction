@@ -401,36 +401,6 @@ export default {
         TITLE: {
           TEXT: 'Índice de contenidos',
         },
-        INTRODUCTION: {
-          TEXT: 'Introducción',
-        },
-        PROBABILITIES: {
-          TEXT: 'Probabilidades',
-          THREE_NUMBERS: {
-            TEXT: 'Probabilidad de acertar 3 números en la Bonoloto',
-          },
-          FOUR_NUMBERS: {
-            TEXT: 'Probabilidad de acertar 4 números en la Bonoloto',
-          },
-          FIVE_NUMBERS: {
-            TEXT: 'Probabilidad de acertar 5 números en la Bonoloto',
-          },
-          FIVE_NUMBERS_AND_COMPLEMENTARY: {
-            TEXT: 'Probabilidad de acertar 5 números y el complementario en la Bonoloto',
-          },
-          SIX_NUMBERS: {
-            TEXT: 'Probabilidad de acertar la Bonoloto',
-          },
-          REIMBURSEMENT: {
-            TEXT: 'Probabilidad de acertar el reintegro de la Bonoloto',
-          },
-          SUMMARY: {
-            TEXT: 'Resumen de probabilidades de la Bonoloto por categoría',
-          },
-        },
-        SOURCES: {
-          TEXT: 'Fuentes',
-        },
       },
       TICKETS: {
         TITLE: 'Histórico de sorteos de la Bonoloto',
