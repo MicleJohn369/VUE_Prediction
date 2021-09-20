@@ -17,33 +17,47 @@
       </div>
       <ScrollButton />
       <v-card
+        id="main-card"
         elevation="2"
       >
-        <p
-          class="text-body-2 pa-3"
-          v-text="tocTitle"
-        />
-        <v-treeview
-          :items="indexItems"
-          expand-icon=""
-          open-all
-          item-children="nested"
-          item-key="target"
-        >
-          <template #label="{ item }">
-            <v-btn
-              block
-              text
-              link
-              :href="item.target"
-              class="justify-start"
+        <v-card-text>
+          <v-row>
+            <v-col
+              sm="8"
+              cols="12"
+              offset-sm="2"
             >
-              {{ item.emoji }} {{ item.title }}
-            </v-btn>
-          </template>
-        </v-treeview>
+              <v-card
+                id="toc-container"
+              >
+                <v-card-title>
+                  <p id="toc-title">
+                    {{ tocTitleText }}
+                  </p>
+                </v-card-title>
+                <v-card-text>
+                  <ul id="toc-list">
+                    <li
+                      v-for="link of doc.toc"
+                      :key="link.id"
+                      :class="{
+                        'toc2': link.depth === 2,
+                        'toc3': link.depth === 3,
+                        'toc4': link.depth === 4,
+                      }"
+                    >
+                      <NuxtLink :to="`#${link.id}`">
+                        {{ link.text }}
+                      </NuxtLink>
+                    </li>
+                  </ul>
+                </v-card-text>
+              </v-card>
+            </v-col>
+          </v-row>
+          <nuxt-content :document="doc" />
+        </v-card-text>
       </v-card>
-      <nuxt-content :document="doc" />
     </v-col>
   </v-row>
 </template>
@@ -86,89 +100,7 @@ export default {
           disabled: true,
         },
       ],
-      tocTitle: this.$t('VIEWS.EUROMILLONES.TOC.TITLE.TEXT'),
-      indexItems: [
-        {
-          title: this.$t('VIEWS.EUROMILLONES.TOC.INTRODUCTION.TEXT'),
-          target: '#introduction',
-          emoji: '🚀',
-        }, {
-          title: this.$t('VIEWS.EUROMILLONES.TOC.PROBABILITIES.TEXT'),
-          target: '#probabilities',
-          emoji: '🎲',
-          nested: [
-            {
-              title: this.$t('VIEWS.EUROMILLONES.TOC.PROBABILITIES.ONE_NUMBER_AND_TWO_STARS.TEXT'),
-              target: '#probability-one-number-and-two-stars',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.EUROMILLONES.TOC.PROBABILITIES.TWO_NUMBERS.TEXT'),
-              target: '#probability-two-numbers',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.EUROMILLONES.TOC.PROBABILITIES.TWO_NUMBERS_AND_ONE_STAR.TEXT'),
-              target: '#probability-two-numbers-and-one-star',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.EUROMILLONES.TOC.PROBABILITIES.TWO_NUMBERS_AND_TWO_STARS.TEXT'),
-              target: '#probability-two-numbers-and-two-stars',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.EUROMILLONES.TOC.PROBABILITIES.THREE_NUMBERS.TEXT'),
-              target: '#probability-three-numbers',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.EUROMILLONES.TOC.PROBABILITIES.THREE_NUMBERS_AND_ONE_STAR.TEXT'),
-              target: '#probability-three-numbers-and-one-star',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.EUROMILLONES.TOC.PROBABILITIES.THREE_NUMBERS_AND_TWO_STARS.TEXT'),
-              target: '#probability-three-numbers-and-two-stars',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.EUROMILLONES.TOC.PROBABILITIES.FOUR_NUMBERS.TEXT'),
-              target: '#probability-four-numbers',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.EUROMILLONES.TOC.PROBABILITIES.FOUR_NUMBERS_AND_ONE_STAR.TEXT'),
-              target: '#probability-four-numbers-and-one-star',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.EUROMILLONES.TOC.PROBABILITIES.FOUR_NUMBERS_AND_TWO_STARS.TEXT'),
-              target: '#probability-four-numbers-and-two-stars',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.EUROMILLONES.TOC.PROBABILITIES.FIVE_NUMBERS.TEXT'),
-              target: '#probability-five-numbers',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.EUROMILLONES.TOC.PROBABILITIES.FIVE_NUMBERS_AND_ONE_STAR.TEXT'),
-              target: '#probability-five-numbers-and-one-star',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.EUROMILLONES.TOC.PROBABILITIES.FIVE_NUMBERS_AND_TWO_STARS.TEXT'),
-              target: '#probability-five-numbers-and-two-stars',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.EUROMILLONES.TOC.PROBABILITIES.ONE_STAR.TEXT'),
-              target: '#probability-one-star',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.EUROMILLONES.TOC.PROBABILITIES.TWO_STARS.TEXT'),
-              target: '#probability-two-stars',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.EUROMILLONES.TOC.PROBABILITIES.SUMMARY.TEXT'),
-              target: '#probability-summary',
-              emoji: '🔸',
-            },
-          ],
-        }, {
-          title: this.$t('VIEWS.EUROMILLONES.TOC.SOURCES.TEXT'),
-          target: '#sources',
-          emoji: '📚',
-        },
-      ],
+      tocTitleText: this.$t('VIEWS.EUROMILLONES.TOC.TITLE.TEXT'),
     };
   },
   async fetch() {
@@ -188,3 +120,152 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+#main-card{
+  padding: $content-padding-mobile;
+
+  @include for-tablet-up{
+    padding: $content-padding-tablet;
+  }
+
+  #toc-container{
+    background: #F8F8F8;
+
+    @include for-tablet-up{
+      padding: 0 30px 0;
+    }
+
+    #toc-title{
+      text-align: center;
+      font-weight: 700;
+    }
+
+    #toc-list{
+      padding: 0;
+
+      .toc2, .toc3, .toc4{
+        list-style: none;
+        line-height: 1.8em;
+
+        a{
+          &:hover{
+            text-decoration: none;
+            color: $color-text-orange;
+          }
+        }
+      }
+
+      .toc3{
+        padding-left: 15px;
+
+        @include for-tablet-up{
+          padding-left: 30px;
+        }
+      }
+
+      .toc4{
+        padding-left: 30px;
+
+        @include for-tablet-up{
+          padding-left: 60px;
+        }
+      }
+    }
+  }
+
+  ::v-deep .nuxt-content{
+    h2, h3{
+      color: $color-text-purple !important;
+    }
+
+    h2{
+      padding: 16px 0 16px;
+    }
+
+    h3{
+      padding: 8px 0 8px;
+    }
+
+    p{
+      line-height: 1.6;
+      text-align: justify;
+
+      & + h3{
+        margin-top: 2em;
+      }
+    }
+
+    h2, h3, h4{
+      &>a:before{
+        content: "#";
+        --text-opacity: 1;
+        color: $color-text-purple;
+        font-weight: 400;
+        margin-left: -1.25rem;
+        padding-right: .25rem;
+        position: absolute;
+        opacity: 1;
+      }
+
+      &:not(:first-of-type){
+        margin-top: 50px;
+      }
+    }
+
+    ol, ul {
+      li{
+        margin: 0 0 3px 0;
+      }
+    }
+
+    .post-image-container{
+      text-align: center;
+      margin: 50px 0;
+
+      .post-image-caption {
+        color: $color-text-gray;
+        text-align: justify;
+      }
+    }
+
+    q{
+      font-style: italic;
+      color: $color-text-gray;
+    }
+
+    .static-table {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+
+      table{
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+
+        td, th {
+          border: 1px solid #ddd;
+          padding: 10px;
+        }
+
+        tr:nth-child(even){
+          background-color: #f2f2f2;
+        }
+
+        tr:hover {
+          background-color: #ddd;
+        }
+
+        th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          background-color: $color-text-purple;
+          color: white;
+          min-width: 200px;
+        }
+      }
+    }
+  }
+}
+</style>

@@ -533,7 +533,7 @@ Recordemos que en el reintegro hay 10 bolas numeradas del 0 al 9. Como sólo nos
   </div>
 </div>
 
-### 🔸 Resumen de probabilidades de la Primitiva por categoría
+### 🔸 Resumen de probabilidades de la Primitiva por categoria
 
 Como hemos realizado todos los cálculos, podemos finalizar esta sección con un resumen en el que consten todas y cada una de las categorías de premios de la <b>Primitiva</b> junto con sus probabilidades.
 
