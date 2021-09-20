@@ -550,36 +550,6 @@ export default {
         TITLE: {
           TEXT: 'Índice de contenidos',
         },
-        INTRODUCTION: {
-          TEXT: 'Introducción',
-        },
-        PROBABILITIES: {
-          TEXT: 'Probabilidades',
-          THREE_NUMBERS: {
-            TEXT: 'Probabilidad de acertar 3 números en la Primitiva',
-          },
-          FOUR_NUMBERS: {
-            TEXT: 'Probabilidad de acertar 4 números en la Primitiva',
-          },
-          FIVE_NUMBERS: {
-            TEXT: 'Probabilidad de acertar 5 números en la Primitiva',
-          },
-          FIVE_NUMBERS_AND_COMPLEMENTARY: {
-            TEXT: 'Probabilidad de acertar 5 números y el complementario en la Primitiva',
-          },
-          SIX_NUMBERS: {
-            TEXT: 'Probabilidad de acertar la Primitiva',
-          },
-          REIMBURSEMENT: {
-            TEXT: 'Probabilidad de acertar el reintegro de la Primitiva',
-          },
-          SUMMARY: {
-            TEXT: 'Resumen de probabilidades de la Primitiva por categoría',
-          },
-        },
-        SOURCES: {
-          TEXT: 'Fuentes',
-        },
       },
       TICKETS: {
         TITLE: 'Histórico de sorteos de la Primitiva',
@@ -729,45 +699,6 @@ export default {
         TITLE: {
           TEXT: 'Índice de contenidos',
         },
-        INTRODUCTION: {
-          TEXT: 'Introducción',
-        },
-        PROBABILITIES: {
-          TEXT: 'Probabilidades',
-          TWO_NUMBERS: {
-            TEXT: 'Probabilidad de acertar 2 números en El Gordo de la Primitiva',
-          },
-          TWO_NUMBERS_AND_SPECIAL_NUMBER: {
-            TEXT: 'Probabilidad de acertar 2 números y el número clave en El Gordo de la Primitiva',
-          },
-          THREE_NUMBERS: {
-            TEXT: 'Probabilidad de acertar 3 números en El Gordo de la Primitiva',
-          },
-          THREE_NUMBERS_AND_SPECIAL_NUMBER: {
-            TEXT: 'Probabilidad de acertar 3 números y el número clave en El Gordo de la Primitiva',
-          },
-          FOUR_NUMBERS: {
-            TEXT: 'Probabilidad de acertar 4 números en El Gordo de la Primitiva',
-          },
-          FOUR_NUMBERS_AND_SPECIAL_NUMBER: {
-            TEXT: 'Probabilidad de acertar 4 números y el número clave en El Gordo de la Primitiva',
-          },
-          FIVE_NUMBERS: {
-            TEXT: 'Probabilidad de acertar 5 números en El Gordo de la Primitiva',
-          },
-          FIVE_NUMBERS_AND_SPECIAL_NUMBER: {
-            TEXT: 'Probabilidad de acertar El Gordo de la Primitiva',
-          },
-          SPECIAL_NUMBER: {
-            TEXT: 'Probabilidad de acertar el número clave de El Gordo de la Primitiva',
-          },
-          SUMMARY: {
-            TEXT: 'Resumen de probabilidades de El Gordo de la Primitiva por categoría',
-          },
-        },
-        SOURCES: {
-          TEXT: 'Fuentes',
-        },
       },
       TICKETS: {
         TITLE: 'Histórico de sorteos de El Gordo de la Primitiva',
@@ -913,63 +844,6 @@ export default {
       TOC: {
         TITLE: {
           TEXT: 'Índice de contenidos',
-        },
-        INTRODUCTION: {
-          TEXT: 'Introducción',
-        },
-        PROBABILITIES: {
-          TEXT: 'Probabilidades',
-          ONE_NUMBER_AND_TWO_STARS: {
-            TEXT: 'Probabilidad de acertar 1 número y las 2 estrellas en Euromillones',
-          },
-          TWO_NUMBERS: {
-            TEXT: 'Probabilidad de acertar 2 números en Euromillones',
-          },
-          TWO_NUMBERS_AND_ONE_STAR: {
-            TEXT: 'Probabilidad de acertar 2 números y 1 estrella en Euromillones',
-          },
-          TWO_NUMBERS_AND_TWO_STARS: {
-            TEXT: 'Probabilidad de acertar 2 números y las 2 estrellas en Euromillones',
-          },
-          THREE_NUMBERS: {
-            TEXT: 'Probabilidad de acertar 3 números en Euromillones',
-          },
-          THREE_NUMBERS_AND_ONE_STAR: {
-            TEXT: 'Probabilidad de acertar 3 números y 1 estrella en Euromillones',
-          },
-          THREE_NUMBERS_AND_TWO_STARS: {
-            TEXT: 'Probabilidad de acertar 3 números y las 2 estrellas en Euromillones',
-          },
-          FOUR_NUMBERS: {
-            TEXT: 'Probabilidad de acertar 4 números en Euromillones',
-          },
-          FOUR_NUMBERS_AND_ONE_STAR: {
-            TEXT: 'Probabilidad de acertar 4 números y 1 estrella en Euromillones',
-          },
-          FOUR_NUMBERS_AND_TWO_STARS: {
-            TEXT: 'Probabilidad de acertar 4 números y las 2 estrellas en Euromillones',
-          },
-          FIVE_NUMBERS: {
-            TEXT: 'Probabilidad de acertar 5 números en Euromillones',
-          },
-          FIVE_NUMBERS_AND_ONE_STAR: {
-            TEXT: 'Probabilidad de acertar 5 números y 1 estrella en Euromillones',
-          },
-          FIVE_NUMBERS_AND_TWO_STARS: {
-            TEXT: 'Probabilidad de acertar en Euromillones',
-          },
-          ONE_STAR: {
-            TEXT: 'Probabilidad de acertar 1 estrella en Euromillones',
-          },
-          TWO_STARS: {
-            TEXT: 'Probabilidad de acertar las 2 estrellas en Euromillones',
-          },
-          SUMMARY: {
-            TEXT: 'Resumen de probabilidades de Euromillones por categoría',
-          },
-        },
-        SOURCES: {
-          TEXT: 'Fuentes',
         },
       },
       TICKETS: {
