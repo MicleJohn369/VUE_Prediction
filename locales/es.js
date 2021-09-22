@@ -988,6 +988,11 @@ export default {
     },
     PRIVACY: {
       TITLE: 'Privacidad y cookies',
+      TOC: {
+        TITLE: {
+          TEXT: 'Índice de contenidos',
+        },
+      },
     },
     FAQ: {
       TITLE: 'Preguntas frecuentes',
