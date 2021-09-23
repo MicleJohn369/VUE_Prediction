@@ -63,7 +63,12 @@
 </template>
 
 <script>
+/* eslint-disable vue/no-unused-components */
 import { mapState } from 'vuex';
+import {
+  VListItem, VListItemIcon, VIcon,
+  VListItemContent, VListItemTitle, VListItemSubtitle,
+} from 'vuetify/lib';
 
 import utils from '@/utils';
 
@@ -74,8 +79,13 @@ export default {
   name: 'Bonoloto',
   components: {
     ScrollButton,
-    // eslint-disable-next-line vue/no-unused-components
     Advertisement,
+    VListItem,
+    VListItemIcon,
+    VIcon,
+    VListItemContent,
+    VListItemTitle,
+    VListItemSubtitle,
   },
   nuxtI18n: {
     paths: {
