@@ -547,6 +547,8 @@ Como se ha comentado anteriormente, en el reintegro hay 10 bolas numeradas del 0
   <span class="result"><b>0.1</b></span>
 </div>
 
+<advertisement></advertisement>
+
 ### 🔸 Resumen de probabilidades de la Bonoloto por categoria
 
 Una vez que se han realizado todos los cálculos, podemos finalizar esta sección con un resumen en el que figuren todas y cada una de las categorías de premios de la <b>Bonoloto</b> junto con sus probabilidades.
@@ -671,54 +673,66 @@ Una vez que se han realizado todos los cálculos, podemos finalizar esta secció
 
 Para la redacción de esta página hemos utilizado información y datos de otras webs que nos han sido de gran utilidad. Por orden de influencia destacamos:
 
-<div class="static-table">
-  <table>
-    <thead>
-      <tr>
-        <th class="text-center">
-          Enlace
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <a 
-            href="http://www.estadisticaparatodos.es/taller/loterias/primitivas.html" 
-            target="_blank" 
-            title="Estadística para todos" 
-            rel="nofollow"
-          >
-            http://www.estadisticaparatodos.es/taller/loterias/primitivas.html
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a 
-            href="https://www.combinacionganadora.com/primitiva/probabilidades/" 
-            target="_blank" 
-            title="Combinación ganadora" 
-            rel="nofollow"
-          >
-            https://www.combinacionganadora.com/primitiva/probabilidades
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a 
-            href="https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html" 
-            target="_blank" 
-            title="www.periodni.com"
-            rel="nofollow"
-          >
-            https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<v-list-item>
+  <v-list-item-icon>
+    <v-icon color="primary">
+      mdi-link-variant
+    </v-icon>
+  </v-list-item-icon>
+  <v-list-item-content>
+    <v-list-item-title>
+      <a 
+        href="http://www.estadisticaparatodos.es/taller/loterias/primitivas.html" 
+        target="_blank" 
+        title="Estadística para todos" 
+        rel="nofollow"
+      >
+        http://www.estadisticaparatodos.es/taller/loterias/primitivas.html
+      </a>
+    </v-list-item-title>
+    <v-list-item-subtitle>Estadística para todos</v-list-item-subtitle>
+  </v-list-item-content>
+</v-list-item>
+<v-list-item>
+  <v-list-item-icon>
+    <v-icon color="primary">
+      mdi-link-variant
+    </v-icon>
+  </v-list-item-icon>
+  <v-list-item-content>
+    <v-list-item-title>
+      <a 
+        href="https://www.combinacionganadora.com/primitiva/probabilidades/" 
+        target="_blank" 
+        title="Combinación ganadora" 
+        rel="nofollow"
+      >
+        https://www.combinacionganadora.com/primitiva/probabilidades
+      </a>
+    </v-list-item-title>
+    <v-list-item-subtitle>Combinación ganadora</v-list-item-subtitle>
+  </v-list-item-content>
+</v-list-item>
 
-<advertisement></advertisement>
+También hay que destacar la fuente de la que hemos tomado la implementación de las fracciones matemáticas en HTML. Se trata de la siguiente página:
+
+<v-list-item>
+  <v-list-item-icon>
+    <v-icon color="primary">
+      mdi-link-variant
+    </v-icon>
+  </v-list-item-icon>
+  <v-list-item-content>
+    <v-list-item-title>
+      <a 
+        href="https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html" 
+        target="_blank" 
+        title="www.periodni.com"
+        rel="nofollow"
+      >
+        https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html
+      </a>
+    </v-list-item-title>
+    <v-list-item-subtitle>www.periodni.com</v-list-item-subtitle>
+  </v-list-item-content>
+</v-list-item>

@@ -643,6 +643,8 @@ Para calcular la probabilidad de acertar la <b>Quiniela</b> tenemos que, ahora s
   </div>
 </div>
 
+<advertisement></advertisement>
+
 ### 🔸 Resumen de probabilidades de la Quiniela por categoria
 
 Una vez que hemos realizado todos los planteamientos tan sólo tenemos que resolver de forma exacta las fracciones para determinar la probabilidad de cada categoría:
@@ -828,54 +830,66 @@ Una vez que hemos realizado todos los planteamientos tan sólo tenemos que resol
 
 Para la redacción de esta página nos hemos apoyado en la información publicada en otras webs interesantes. Entre ellas destacamos las siguientes:
 
-<div class="static-table">
-  <table>
-    <thead>
-      <tr>
-        <th class="text-center">
-          Enlace
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <a 
-            href="https://www.pdcahome.com/5116/es-rentable-jugar-a-la-quiniela-probabilidades-de-ganar" 
-            target="_blank" 
-            title="PCDA Home"
-            rel="nofollow"
-          >
-            https://www.pdcahome.com/5116/es-rentable-jugar-a-la-quiniela-probabilidades-de-ganar
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a 
-            href="http://www.estadisticaparatodos.es/taller/loterias/quinielas14.html" 
-            target="_blank" 
-            title="Estadísticas para todos"
-            rel="nofollow"
-          >
-            http://www.estadisticaparatodos.es/taller/loterias/quinielas14.html
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a 
-            href="https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html" 
-            target="_blank" 
-            title="www.periodni.com"
-            rel="nofollow"
-          >
-            https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<v-list-item>
+  <v-list-item-icon>
+    <v-icon color="primary">
+      mdi-link-variant
+    </v-icon>
+  </v-list-item-icon>
+  <v-list-item-content>
+    <v-list-item-title>
+      <a 
+        href="https://www.pdcahome.com/5116/es-rentable-jugar-a-la-quiniela-probabilidades-de-ganar" 
+        target="_blank" 
+        title="PCDA Home"
+        rel="nofollow"
+      >
+        https://www.pdcahome.com/5116/es-rentable-jugar-a-la-quiniela-probabilidades-de-ganar
+      </a>
+    </v-list-item-title>
+    <v-list-item-subtitle>PCDA Home</v-list-item-subtitle>
+  </v-list-item-content>
+</v-list-item>
+<v-list-item>
+  <v-list-item-icon>
+    <v-icon color="primary">
+      mdi-link-variant
+    </v-icon>
+  </v-list-item-icon>
+  <v-list-item-content>
+    <v-list-item-title>
+      <a 
+        href="http://www.estadisticaparatodos.es/taller/loterias/quinielas14.html" 
+        target="_blank" 
+        title="Estadísticas para todos"
+        rel="nofollow"
+      >
+        http://www.estadisticaparatodos.es/taller/loterias/quinielas14.html
+      </a>
+    </v-list-item-title>
+    <v-list-item-subtitle>Estadísticas para todos</v-list-item-subtitle>
+  </v-list-item-content>
+</v-list-item>
 
-<advertisement></advertisement>
+También hay que destacar la fuente de la que hemos tomado la implementación de las fracciones matemáticas en HTML. Se trata de la siguiente página:
+
+<v-list-item>
+  <v-list-item-icon>
+    <v-icon color="primary">
+      mdi-link-variant
+    </v-icon>
+  </v-list-item-icon>
+  <v-list-item-content>
+    <v-list-item-title>
+      <a 
+        href="https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html" 
+        target="_blank" 
+        title="www.periodni.com"
+        rel="nofollow"
+      >
+        https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html
+      </a>
+    </v-list-item-title>
+    <v-list-item-subtitle>www.periodni.com</v-list-item-subtitle>
+  </v-list-item-content>
+</v-list-item>

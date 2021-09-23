@@ -1455,6 +1455,8 @@ Para cerrar estos cálculos tenemos que multiplicar nuevamente la combinación d
   </div>
 </div>
 
+<advertisement></advertisement>
+
 ### 🔸 Resumen de probabilidades de Euromillones por categoria
 
 Una vez planteados todos los cálculos, ya podemos precisar con más detalle para conocer las probabilidades exactas de cada categoría de premios de <b>Euromillones</b>. Uno puede pensar inicialmente que las categorías están ordenadas de menor a mayor dificultad en el índice de este apartado: nada más lejos de la realidad. Como veremos a continuación, es más probable acertar 4 números que acertar 3 y las 2 estrellas.
@@ -1691,54 +1693,86 @@ Una vez planteados todos los cálculos, ya podemos precisar con más detalle par
 
 Para la redacción de esta página hemos utilizado información y datos de otras webs que nos han sido de gran utilidad. Por orden de influencia destacamos:
 
-<div class="static-table">
-  <table>
-    <thead>
-      <tr>
-        <th class="text-center">
-          Enlace
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <a 
-            href="http://www.estadisticaparatodos.es/taller/loterias/euromillon.html" 
-            target="_blank" 
-            title="Estadística para todos" 
-            rel="nofollow"
-          >
-            http://www.estadisticaparatodos.es/taller/loterias/euromillon.html
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a 
-            href="https://www.euromillones.com.es/probabilidades.html" 
-            target="_blank" 
-            title="Euromillones.com.es" 
-            rel="nofollow"
-          >
-            https://www.euromillones.com.es/probabilidades.html
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a 
-            href="https://www.combinacionganadora.com/euromillones/probabilidades" 
-            target="_blank" 
-            title="Combinación ganadora" 
-            rel="nofollow"
-          >
-            https://www.combinacionganadora.com/euromillones/probabilidades
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<v-list-item>
+  <v-list-item-icon>
+    <v-icon color="primary">
+      mdi-link-variant
+    </v-icon>
+  </v-list-item-icon>
+  <v-list-item-content>
+    <v-list-item-title>
+      <a 
+        href="http://www.estadisticaparatodos.es/taller/loterias/euromillon.html" 
+        target="_blank" 
+        title="Estadística para todos" 
+        rel="nofollow"
+      >
+        http://www.estadisticaparatodos.es/taller/loterias/euromillon.html
+      </a>
+    </v-list-item-title>
+    <v-list-item-subtitle>Estadística para todos</v-list-item-subtitle>
+  </v-list-item-content>
+</v-list-item>
+<v-list-item>
+  <v-list-item-icon>
+    <v-icon color="primary">
+      mdi-link-variant
+    </v-icon>
+  </v-list-item-icon>
+  <v-list-item-content>
+    <v-list-item-title>
+      <a 
+        href="https://www.euromillones.com.es/probabilidades.html" 
+        target="_blank" 
+        title="Euromillones.com.es" 
+        rel="nofollow"
+      >
+        https://www.euromillones.com.es/probabilidades.html
+      </a>
+    </v-list-item-title>
+    <v-list-item-subtitle>Euromillones.com.es</v-list-item-subtitle>
+  </v-list-item-content>
+</v-list-item>
+<v-list-item>
+  <v-list-item-icon>
+    <v-icon color="primary">
+      mdi-link-variant
+    </v-icon>
+  </v-list-item-icon>
+  <v-list-item-content>
+    <v-list-item-title>
+      <a 
+        href="https://www.combinacionganadora.com/euromillones/probabilidades" 
+        target="_blank" 
+        title="Combinación ganadora" 
+        rel="nofollow"
+      >
+        https://www.combinacionganadora.com/euromillones/probabilidades
+      </a>
+    </v-list-item-title>
+    <v-list-item-subtitle>Combinación ganadora</v-list-item-subtitle>
+  </v-list-item-content>
+</v-list-item>
 
-<advertisement></advertisement>
+También hay que destacar la fuente de la que hemos tomado la implementación de las fracciones matemáticas en HTML. Se trata de la siguiente página:
+
+<v-list-item>
+  <v-list-item-icon>
+    <v-icon color="primary">
+      mdi-link-variant
+    </v-icon>
+  </v-list-item-icon>
+  <v-list-item-content>
+    <v-list-item-title>
+      <a 
+        href="https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html" 
+        target="_blank" 
+        title="www.periodni.com"
+        rel="nofollow"
+      >
+        https://www.periodni.com/es/ecuaciones_matematicas_y_quimicas_en_la_web.html
+      </a>
+    </v-list-item-title>
+    <v-list-item-subtitle>www.periodni.com</v-list-item-subtitle>
+  </v-list-item-content>
+</v-list-item>
