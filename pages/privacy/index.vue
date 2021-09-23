@@ -113,6 +113,9 @@ export default {
       doc: 'current',
     }),
   },
+  destroyed() {
+    this.$store.dispatch('posts/destroyCurrent');
+  },
 };
 </script>
 
