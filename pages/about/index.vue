@@ -22,7 +22,12 @@
 </template>
 
 <script>
+/* eslint-disable vue/no-unused-components */
 import { mapState } from 'vuex';
+import {
+  VCard, VCardTitle, VCardText, VIcon, VImg,
+} from 'vuetify/lib';
+
 import utils from '@/utils';
 
 import ScrollButton from '@/components/ScrollButton.vue';
@@ -31,6 +36,11 @@ export default {
   name: 'About',
   components: {
     ScrollButton,
+    VCard,
+    VCardTitle,
+    VCardText,
+    VIcon,
+    VImg,
   },
   nuxtI18n: {
     paths: {
