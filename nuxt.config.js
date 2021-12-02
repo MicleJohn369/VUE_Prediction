@@ -46,17 +46,11 @@ export default {
     apiUrl: process.env.API_URL,
   },
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [
-    {
-      src: '@/assets/global.scss', lang: 'scss',
-    },
-  ],
-
+  css: [],
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     '@/plugins/nuxt-pronostigol-client.js',
   ],
-
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: false,
 
@@ -68,6 +62,7 @@ export default {
     '@nuxtjs/vuetify',
     '@nuxtjs/moment',
     '@nuxtjs/dotenv',
+    '@nuxtjs/style-resources',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -96,7 +91,13 @@ export default {
       controlButton: false,
     }],
   ],
-
+  styleResources: {
+    scss: [
+      './assets/styles/_variables.scss',
+      './assets/styles/_mixins.scss',
+      './assets/styles/_global.scss',
+    ],
+  },
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
 
@@ -107,6 +108,7 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+    transpile: [/^vue-adblock-detector/],
     extend(config, { isDev, isClient }) {
       // eslint-disable-next-line no-param-reassign
       config.resolve.alias.vue = 'vue/dist/vue.common';

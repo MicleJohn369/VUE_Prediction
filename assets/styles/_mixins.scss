@@ -1,0 +1,13 @@
+@import './variables.scss';
+
+@mixin for-phone-only {
+  @media (max-width: 767px) { @content; }
+}
+
+@mixin for-tablet-up {
+  @media (min-width: $min-width-tablet) { @content; }
+}
+
+@mixin for-desktop-up {
+  @media (min-width: $min-width-lg-desktop) { @content; }
+}

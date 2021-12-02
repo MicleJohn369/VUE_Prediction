@@ -22,7 +22,11 @@
 </template>
 
 <script>
+/* eslint-disable vue/no-unused-components */
 import { mapState } from 'vuex';
+import {
+  VCard, VCardText, VDivider, VTabs, VTab, VTabItem, VIcon,
+} from 'vuetify/lib';
 
 import utils from '@/utils';
 
@@ -32,6 +36,13 @@ export default {
   name: 'FAQ',
   components: {
     ScrollButton,
+    VCard,
+    VCardText,
+    VDivider,
+    VTabs,
+    VTab,
+    VTabItem,
+    VIcon,
   },
   nuxtI18n: {
     paths: {
@@ -70,6 +81,9 @@ export default {
     ...mapState('posts', {
       doc: 'current',
     }),
+  },
+  destroyed() {
+    this.$store.dispatch('posts/destroyCurrent');
   },
 };
 </script>
