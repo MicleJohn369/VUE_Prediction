@@ -266,6 +266,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    <CookieControl />
   </v-app>
 </template>
 
