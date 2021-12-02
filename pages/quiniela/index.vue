@@ -17,39 +17,59 @@
       </div>
       <ScrollButton />
       <v-card
+        id="main-card"
         elevation="2"
       >
-        <p
-          class="text-body-2 pa-3"
-          v-text="tocTitle"
-        />
-        <v-treeview
-          :items="indexItems"
-          expand-icon=""
-          open-all
-          item-children="nested"
-          item-key="target"
-        >
-          <template #label="{ item }">
-            <v-btn
-              block
-              text
-              link
-              :href="item.target"
-              class="justify-start"
+        <v-card-text>
+          <v-row>
+            <v-col
+              sm="6"
+              cols="12"
+              offset-sm="3"
             >
-              {{ item.emoji }} {{ item.title }}
-            </v-btn>
-          </template>
-        </v-treeview>
+              <v-card
+                id="toc-container"
+              >
+                <v-card-title>
+                  <p id="toc-title">
+                    {{ tocTitleText }}
+                  </p>
+                </v-card-title>
+                <v-card-text>
+                  <ul id="toc-list">
+                    <li
+                      v-for="link of doc.toc"
+                      :key="link.id"
+                      :class="{
+                        'toc2': link.depth === 2,
+                        'toc3': link.depth === 3,
+                        'toc4': link.depth === 4,
+                      }"
+                    >
+                      <NuxtLink :to="`#${link.id}`">
+                        {{ link.text }}
+                      </NuxtLink>
+                    </li>
+                  </ul>
+                </v-card-text>
+              </v-card>
+            </v-col>
+          </v-row>
+          <nuxt-content :document="doc" />
+        </v-card-text>
       </v-card>
-      <nuxt-content :document="doc" />
     </v-col>
   </v-row>
 </template>
 
 <script>
+/* eslint-disable vue/no-unused-components */
+
 import { mapState } from 'vuex';
+import {
+  VListItem, VListItemIcon, VIcon,
+  VListItemContent, VListItemTitle, VListItemSubtitle,
+} from 'vuetify/lib';
 import utils from '@/utils';
 
 import ScrollButton from '@/components/ScrollButton.vue';
@@ -59,8 +79,13 @@ export default {
   name: 'Quiniela',
   components: {
     ScrollButton,
-    // eslint-disable-next-line vue/no-unused-components
     Advertisement,
+    VListItem,
+    VListItemIcon,
+    VIcon,
+    VListItemContent,
+    VListItemTitle,
+    VListItemSubtitle,
   },
   nuxtI18n: {
     paths: {
@@ -85,57 +110,7 @@ export default {
           disabled: true,
         },
       ],
-      tocTitle: this.$t('VIEWS.QUINIELA.TOC.TITLE.TEXT'),
-      indexItems: [
-        {
-          title: this.$t('VIEWS.QUINIELA.TOC.INTRODUCTION.TEXT'),
-          target: '#introduction',
-          emoji: '🚀',
-        }, {
-          title: this.$t('VIEWS.QUINIELA.TOC.PROBABILITIES.TEXT'),
-          target: '#probabilities',
-          emoji: '🎲',
-          nested: [
-            {
-              title: this.$t('VIEWS.QUINIELA.TOC.PROBABILITIES.TEN_RESULTS.TEXT'),
-              target: '#probability-ten-results',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.QUINIELA.TOC.PROBABILITIES.ELEVEN_RESULTS.TEXT'),
-              target: '#probability-eleven-results',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.QUINIELA.TOC.PROBABILITIES.TWELVE_RESULTS.TEXT'),
-              target: '#probability-twelve-results',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.QUINIELA.TOC.PROBABILITIES.THIRTEEN_RESULTS.TEXT'),
-              target: '#probability-thirteen-results',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.QUINIELA.TOC.PROBABILITIES.FOURTEEN_RESULTS.TEXT'),
-              target: '#probability-fourteen-results',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.QUINIELA.TOC.PROBABILITIES.SPECIAL_RESULT.TEXT'),
-              target: '#probability-special-result',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.QUINIELA.TOC.PROBABILITIES.FOURTEEN_RESULTS_AND_SPECIAL_RESULT.TEXT'),
-              target: '#probability-fourteen-results-and-special-result',
-              emoji: '🔸',
-            }, {
-              title: this.$t('VIEWS.QUINIELA.TOC.PROBABILITIES.SUMMARY.TEXT'),
-              target: '#probability-summary',
-              emoji: '🔸',
-            },
-          ],
-        }, {
-          title: this.$t('VIEWS.QUINIELA.TOC.SOURCES.TEXT'),
-          target: '#sources',
-          emoji: '📚',
-        },
-      ],
+      tocTitleText: this.$t('VIEWS.QUINIELA.TOC.TITLE.TEXT'),
     };
   },
   async fetch() {
@@ -153,5 +128,157 @@ export default {
       doc: 'current',
     }),
   },
+  destroyed() {
+    this.$store.dispatch('posts/destroyCurrent');
+  },
 };
 </script>
+
+<style lang="scss" scoped>
+#main-card{
+  padding: $content-padding-mobile;
+
+  @include for-tablet-up{
+    padding: $content-padding-tablet;
+  }
+
+  #toc-container{
+    background: #F8F8F8;
+
+    @include for-tablet-up{
+      padding: 0 30px 0;
+    }
+
+    #toc-title{
+      text-align: center;
+      font-weight: 700;
+    }
+
+    #toc-list{
+      padding: 0;
+
+      .toc2, .toc3, .toc4{
+        list-style: none;
+        line-height: 1.8em;
+
+        a{
+          &:hover{
+            text-decoration: none;
+            color: $color-text-orange;
+          }
+        }
+      }
+
+      .toc3{
+        padding-left: 15px;
+
+        @include for-tablet-up{
+          padding-left: 30px;
+        }
+      }
+
+      .toc4{
+        padding-left: 30px;
+
+        @include for-tablet-up{
+          padding-left: 60px;
+        }
+      }
+    }
+  }
+
+  ::v-deep .nuxt-content{
+    h2, h3{
+      color: $color-primary !important;
+    }
+
+    h2{
+      padding: 16px 0 16px;
+    }
+
+    h3{
+      padding: 8px 0 8px;
+    }
+
+    p{
+      line-height: 1.6;
+      text-align: justify;
+
+      & + h3{
+        margin-top: 2em;
+      }
+    }
+
+    h2, h3, h4{
+      &>a:before{
+        content: "#";
+        --text-opacity: 1;
+        color: $color-primary;
+        font-weight: 400;
+        margin-left: -1.25rem;
+        padding-right: .25rem;
+        position: absolute;
+        opacity: 1;
+      }
+
+      &:not(:first-of-type){
+        margin-top: 50px;
+      }
+    }
+
+    ol, ul {
+      li{
+        margin: 0 0 3px 0;
+      }
+    }
+
+    .post-image-container{
+      text-align: center;
+      margin: 50px 0;
+
+      .post-image-caption {
+        color: $color-text-gray;
+        text-align: justify;
+      }
+    }
+
+    q{
+      font-style: italic;
+      color: $color-text-gray;
+    }
+
+    .static-table {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+
+      table{
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+
+        td, th {
+          border: 1px solid #ddd;
+          padding: 10px;
+        }
+
+        tr:nth-child(even){
+          background-color: #f2f2f2;
+        }
+
+        tr:hover {
+          background-color: #ddd;
+        }
+
+        th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          background-color: $color-primary;
+          color: white;
+          min-width: 200px;
+        }
+      }
+    }
+  }
+}
+</style>
