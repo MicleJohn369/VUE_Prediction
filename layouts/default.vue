@@ -118,6 +118,20 @@
           mdi-github
         </v-icon>
       </v-btn>
+      <v-divider
+        vertical
+      />
+      <v-btn
+        icon
+        :title="loginTitle"
+        target="_blank"
+        rel="nofollow"
+        @click="goToLoginPage()"
+      >
+        <v-icon>
+          mdi-login
+        </v-icon>
+      </v-btn>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -429,6 +443,7 @@ export default {
       primitivaText: this.$t('FOOTER.PRIMITIVA.TEXT'),
       gordoText: this.$t('FOOTER.GORDO.TEXT'),
       euromillonesText: this.$t('FOOTER.EUROMILLONES.TEXT'),
+      loginTitle: this.$t('TOP_BAR.LOGIN.TITLE'),
     };
   },
   beforeMount() {
@@ -441,6 +456,11 @@ export default {
           this.showAdblockDialog = true;
         }
       });
+    },
+    goToLoginPage() {
+      this.$router.push(this.localePath({
+        name: 'login',
+      }));
     },
   },
 };
