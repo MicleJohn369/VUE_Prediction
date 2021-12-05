@@ -10,6 +10,14 @@ export default {
       },
     },
   },
+  TOP_BAR: {
+    LOGIN: {
+      TITLE: 'Acceder',
+    },
+    LOGOUT: {
+      TITLE: 'Cerrar sesión',
+    },
+  },
   MENU: {
     HOME: {
       TEXT: 'Inicio',
@@ -983,6 +991,30 @@ export default {
               LABEL: 'Fecha',
             },
           },
+        },
+      },
+    },
+    LOGIN: {
+      TITLE: 'Login',
+      FORM: {
+        USER: {
+          LABEL: 'Usuario',
+          ERRORS: {
+            REQUIRED: 'El usuario es obligatorio',
+          },
+        },
+        PASSWORD: {
+          LABEL: 'Contraseña',
+          ERRORS: {
+            REQUIRED: 'La contraseña es obligatoria',
+          },
+        },
+        SUBMIT: {
+          TEXT: 'Enviar',
+        },
+        ERRORS: {
+          BAD_CREDENTIALS: 'Las credenciales introducidas no son correctas',
+          AUTH_ERROR: 'Se ha producido un error durante la autenticación. Inténtalo más tarde.',
         },
       },
     },

@@ -77,7 +77,7 @@
       :clipped-left="clipped"
       fixed
       app
-      color="primary"
+      color="black"
       dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
@@ -98,38 +98,13 @@
       <v-spacer />
       <v-btn
         icon
-        href="https://twitter.com/pronostigolesp"
-        title="Cuenta de Twitter"
+        :title="logoutTitle"
         target="_blank"
         rel="nofollow"
+        @click="$auth.logout()"
       >
         <v-icon>
-          mdi-twitter
-        </v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        href="https://github.com/jualoppaz/pronostigol"
-        title="Repositorio en GitHub"
-        target="_blank"
-        rel="nofollow"
-      >
-        <v-icon>
-          mdi-github
-        </v-icon>
-      </v-btn>
-      <v-divider
-        vertical
-      />
-      <v-btn
-        icon
-        :title="loginTitle"
-        target="_blank"
-        rel="nofollow"
-        @click="goToLoginPage()"
-      >
-        <v-icon>
-          mdi-login
+          mdi-logout
         </v-icon>
       </v-btn>
     </v-app-bar>
@@ -138,155 +113,10 @@
         <nuxt />
       </v-container>
     </v-main>
-    <v-footer
-      :absolute="!fixed"
-      app
-    >
-      <v-card
-        flat
-        tile
-        width="100%"
-        class="primary lighten-1 text-center"
-        dark
-      >
-        <v-card-text>
-          <v-btn
-            text
-            rounded
-            to="/privacidad"
-            nuxt
-          >
-            {{ privacyText }}
-          </v-btn>
-          <v-btn
-            text
-            rounded
-            to="/preguntas-frecuentes"
-            nuxt
-          >
-            {{ faqText }}
-          </v-btn>
-          <v-btn
-            text
-            rounded
-            to="/acerca-de"
-            nuxt
-          >
-            {{ aboutText }}
-          </v-btn>
-          <v-btn
-            text
-            rounded
-            target="_blank"
-            to="/docs"
-          >
-            {{ apiDocText }}
-          </v-btn>
-        </v-card-text>
-        <v-card-text id="games-footer">
-          <v-btn
-            text
-            rounded
-            to="/quiniela"
-            nuxt
-            class="blue darken-3"
-          >
-            {{ quinielaText }}
-          </v-btn>
-          <v-btn
-            text
-            rounded
-            to="/bonoloto"
-            nuxt
-            class="black"
-          >
-            {{ bonolotoText }}
-          </v-btn>
-          <v-btn
-            text
-            rounded
-            to="/primitiva"
-            nuxt
-            class="green darken-4"
-          >
-            {{ primitivaText }}
-          </v-btn>
-          <v-btn
-            text
-            rounded
-            to="/gordo"
-            nuxt
-            class="red accent-4"
-          >
-            {{ gordoText }}
-          </v-btn>
-          <v-btn
-            text
-            rounded
-            to="/euromillones"
-            nuxt
-            class="deep-purple darken-4"
-          >
-            {{ euromillonesText }}
-          </v-btn>
-        </v-card-text>
-
-        <v-divider />
-        <v-card-text class="white--text">
-          <strong>
-            <v-icon>
-              mdi-copyright
-            </v-icon>
-            {{ new Date().getFullYear() }}
-          </strong>
-          <v-btn
-            text
-            rounded
-            href="http://www.juanmanuellopezpazos.es"
-            target="_blank"
-          >
-            Juan Manuel López Pazos
-          </v-btn>
-        </v-card-text>
-      </v-card>
-    </v-footer>
-    <v-dialog
-      v-model="showAdblockDialog"
-      max-width="500"
-    >
-      <v-card>
-        <v-card-title class="text-h5">
-          {{ adblockTitle }}
-        </v-card-title>
-        <v-card-text class="text-justify">
-          {{ adblockText }}
-        </v-card-text>
-        <v-divider />
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            dark
-            color="teal"
-            onclick="location.reload(true)"
-          >
-            <v-icon
-              left
-              dark
-            >
-              mdi-cached
-            </v-icon>
-            {{ reloadText }}
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-    <CookieControl />
   </v-app>
 </template>
 
 <script>
-import { detectAnyAdblocker } from 'vue-adblock-detector';
-
 export default {
   data() {
     return {
@@ -294,10 +124,6 @@ export default {
       drawer: true,
       fixed: false,
       miniVariant: false,
-      showAdblockDialog: false,
-      adblockTitle: this.$t('COMMON.ADBLOCK.TITLE'),
-      adblockText: this.$t('COMMON.ADBLOCK.TEXT'),
-      reloadText: this.$t('COMMON.ADBLOCK.RELOAD.TEXT'),
       items: [
         {
           icon: 'mdi-home',
@@ -433,36 +259,11 @@ export default {
           ],
         },
       ],
-      title: 'Pronostigol',
-      privacyText: this.$t('FOOTER.PRIVACY.TEXT'),
-      faqText: this.$t('FOOTER.FAQ.TEXT'),
-      aboutText: this.$t('FOOTER.ABOUT.TEXT'),
-      apiDocText: this.$t('FOOTER.API_DOC.TEXT'),
-      quinielaText: this.$t('FOOTER.QUINIELA.TEXT'),
-      bonolotoText: this.$t('FOOTER.BONOLOTO.TEXT'),
-      primitivaText: this.$t('FOOTER.PRIMITIVA.TEXT'),
-      gordoText: this.$t('FOOTER.GORDO.TEXT'),
-      euromillonesText: this.$t('FOOTER.EUROMILLONES.TEXT'),
-      loginTitle: this.$t('TOP_BAR.LOGIN.TITLE'),
+      title: 'Dashboard',
+      logoutTitle: this.$t('TOP_BAR.LOGOUT.TITLE'),
     };
   },
-  beforeMount() {
-    this.detectAdblock();
-  },
-  methods: {
-    detectAdblock() {
-      detectAnyAdblocker().then((response) => {
-        if (response) {
-          this.showAdblockDialog = true;
-        }
-      });
-    },
-    goToLoginPage() {
-      this.$router.push(this.localePath({
-        name: 'login',
-      }));
-    },
-  },
+  methods: {},
 };
 </script>
 
@@ -477,15 +278,6 @@ export default {
       &::before{
         opacity: 0.08;
       }
-    }
-  }
-}
-.v-footer{
-  padding: 0;
-
-  #games-footer{
-    .v-btn{
-      margin: 3px 0 3px;
     }
   }
 }

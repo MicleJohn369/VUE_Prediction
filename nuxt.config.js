@@ -90,6 +90,7 @@ export default {
     ['nuxt-cookie-control', {
       controlButton: false,
     }],
+    '@nuxtjs/auth-next',
   ],
   styleResources: {
     scss: [
@@ -195,5 +196,33 @@ export default {
         cookies: ['lang'],
       },
     ],
+  },
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'token',
+          global: true,
+          // required: true,
+          // type: 'Bearer'
+        },
+        user: {
+          property: 'user',
+          // autoFetch: true
+        },
+        endpoints: {
+          login: { url: '/auth/login', method: 'post' },
+          logout: { url: '/auth/logout', method: 'post' },
+          user: { url: '/auth/user', method: 'get' },
+        },
+      },
+    },
+    redirect: {
+      login: '/login',
+      logout: '/',
+      callback: '/login',
+      home: '/',
+    },
+    watchLoggedIn: true,
   },
 };
