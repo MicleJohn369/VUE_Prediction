@@ -27,5 +27,8 @@ module.exports = function router(app) {
   // Importacion de rutas de Queries del Euromillones
   // require('./routes/euromillones/queries')(app);
 
+  // Importacion de rutas de auth
+  require('./routes/auth/api')(app);
+
   app.get('/*', (req, res) => res.status(HTTP_CODES.NOT_FOUND).send('API Method Not Found'));
 };
