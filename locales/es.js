@@ -1009,6 +1009,9 @@ export default {
             REQUIRED: 'La contraseña es obligatoria',
           },
         },
+        SUBMIT: {
+          TEXT: 'Enviar',
+        },
       },
     },
     PRIVACY: {
