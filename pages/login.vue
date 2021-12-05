@@ -95,7 +95,16 @@ export default {
 
           this.$router.push(this.localePath({ name: 'admin' }));
         } catch (err) {
-          this.displayError('Error de autenticación');
+          const { status } = err.response;
+          let message;
+
+          if (status === 400) {
+            message = this.$t('VIEWS.LOGIN.FORM.ERRORS.BAD_CREDENTIALS');
+          } else {
+            message = this.$t('VIEWS.LOGIN.FORM.ERRORS.AUTH_ERROR');
+          }
+
+          this.displayError(message);
         }
       }
     },
