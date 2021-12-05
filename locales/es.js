@@ -1012,6 +1012,10 @@ export default {
         SUBMIT: {
           TEXT: 'Enviar',
         },
+        ERRORS: {
+          BAD_CREDENTIALS: 'Las credenciales introducidas no son correctas',
+          AUTH_ERROR: 'Se ha producido un error durante la autenticación. Inténtalo más tarde.',
+        },
       },
     },
     PRIVACY: {
