@@ -12,6 +12,7 @@
             <v-form
               ref="form"
               v-model="valid"
+              @submit.prevent="onSubmit"
             >
               <v-text-field
                 v-model="form.user"
@@ -33,7 +34,7 @@
                   :disabled="!valid"
                   color="success"
                   class="mr-4"
-                  @click="submit"
+                  type="submit"
                 >
                   {{ submitText }}
                 </v-btn>
@@ -85,7 +86,7 @@ export default {
   },
   computed: {},
   methods: {
-    async submit() {
+    async onSubmit() {
       this.cleanError();
       const result = this.$refs.form.validate();
 

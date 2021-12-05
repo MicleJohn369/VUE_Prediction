@@ -1033,4 +1033,68 @@ export default {
       TITLE: 'Acerca de',
     },
   },
+  DASHBOARD: {
+    MENU: {
+      USERS: {
+        TEXT: 'Usuarios',
+      },
+      ECONOMIC_BALANCE: {
+        TEXT: 'Balance económico',
+      },
+      QUINIELA: {
+        TEXT: 'Quiniela',
+        TEAMS: {
+          TEXT: 'Equipos',
+        },
+        COMPETITIONS: {
+          TEXT: 'Competiciones',
+        },
+        SEASONS: {
+          TEXT: 'Temporadas',
+        },
+        TICKETS: {
+          TEXT: 'Sorteos',
+        },
+        ANALYZER: {
+          TEXT: 'Analizador',
+        },
+      },
+      BONOLOTO: {
+        TEXT: 'Bonoloto',
+        YEARS: {
+          TEXT: 'Años',
+        },
+        TICKETS: {
+          TEXT: 'Sorteos',
+        },
+      },
+      PRIMITIVA: {
+        TEXT: 'Primitiva',
+        YEARS: {
+          TEXT: 'Años',
+        },
+        TICKETS: {
+          TEXT: 'Sorteos',
+        },
+      },
+      GORDO: {
+        TEXT: 'Gordo',
+        YEARS: {
+          TEXT: 'Años',
+        },
+        TICKETS: {
+          TEXT: 'Sorteos',
+        },
+      },
+      EUROMILLONES: {
+        TEXT: 'Euromillones',
+        YEARS: {
+          TEXT: 'Años',
+        },
+        TICKETS: {
+          TEXT: 'Sorteos',
+        },
+      },
+    },
+  },
 };
