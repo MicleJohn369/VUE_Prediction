@@ -1,22 +1,17 @@
+const jwt = require('express-jwt');
 /* eslint-disable camelcase */
 const { HTTP_CODES } = require('./constants');
 
 /**
- * Middleware para comprobar si el usuario que accede al recurso se encuentra logado.
+ * Encapsulación del middleware de JWT para comprobar si el usuario que
+ * accede al recurso se encuentra logado.
  * En caso contrario se devuelve el error de autenticación.
- *
- * @param req
- * @param res
- * @param next
  */
-function isLogged(req, res, next) {
-  if (req.session.user == null) {
-    return res.status(HTTP_CODES.UNAUTHORIZED).send({
-      message: 'No puede acceder a este recurso porque no está logado.',
-    });
-  }
-
-  return next();
+function isLogged() {
+  return jwt({
+    secret: process.env.TOKEN_SECRET,
+    algorithms: ['HS256'],
+  });
 }
 
 /**
