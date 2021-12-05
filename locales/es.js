@@ -10,6 +10,14 @@ export default {
       },
     },
   },
+  TOP_BAR: {
+    LOGIN: {
+      TITLE: 'Acceder',
+    },
+    LOGOUT: {
+      TITLE: 'Cerrar sesión',
+    },
+  },
   MENU: {
     HOME: {
       TEXT: 'Inicio',
@@ -982,6 +990,23 @@ export default {
             DATE: {
               LABEL: 'Fecha',
             },
+          },
+        },
+      },
+    },
+    LOGIN: {
+      TITLE: 'Login',
+      FORM: {
+        USER: {
+          LABEL: 'Usuario',
+          ERRORS: {
+            REQUIRED: 'El usuario es obligatorio',
+          },
+        },
+        PASSWORD: {
+          LABEL: 'Contraseña',
+          ERRORS: {
+            REQUIRED: 'La contraseña es obligatoria',
           },
         },
       },
