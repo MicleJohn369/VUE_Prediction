@@ -85,7 +85,7 @@
         <v-btn
           id="pronostigol-toolbar-button"
           :to="localePath({
-            name: 'index',
+            name: 'admin',
           })"
           exact
           rounded
@@ -126,134 +126,127 @@ export default {
       miniVariant: false,
       items: [
         {
-          icon: 'mdi-home',
-          title: this.$t('MENU.HOME.TEXT'),
+          icon: 'mdi-account-group',
+          title: this.$t('DASHBOARD.MENU.USERS.TEXT'),
           to: this.localePath({
             name: 'index',
           }),
-        },
-        {
+        }, {
+          icon: 'mdi-finance',
+          title: this.$t('DASHBOARD.MENU.ECONOMIC_BALANCE.TEXT'),
+          to: this.localePath({
+            name: 'index',
+          }),
+        }, {
           icon: 'mdi-soccer',
           iconColor: 'primary',
-          title: this.$t('MENU.QUINIELA.TEXT'),
+          title: this.$t('DASHBOARD.MENU.QUINIELA.TEXT'),
           items: [
             {
-              icon: 'mdi-dice-multiple',
-              title: this.$t('MENU.QUINIELA.PROBABILITIES.TEXT'),
+              icon: 'mdi-shield-star',
+              title: this.$t('DASHBOARD.MENU.QUINIELA.TEAMS.TEXT'),
               to: this.localePath({
-                name: 'quiniela',
+                name: 'quiniela-teams',
+              }),
+            }, {
+              icon: 'mdi-podium',
+              title: this.$t('DASHBOARD.MENU.QUINIELA.COMPETITIONS.TEXT'),
+              to: this.localePath({
+                name: 'quiniela-competitions',
+              }),
+            }, {
+              icon: 'mdi-calendar',
+              title: this.$t('DASHBOARD.MENU.QUINIELA.SEASONS.TEXT'),
+              to: this.localePath({
+                name: 'quiniela-seasons',
               }),
             }, {
               icon: 'mdi-history',
-              title: this.$t('MENU.QUINIELA.TICKETS.TEXT'),
+              title: this.$t('DASHBOARD.MENU.QUINIELA.TICKETS.TEXT'),
               to: this.localePath({
                 name: 'quiniela-tickets',
               }),
             }, {
-              icon: 'mdi-chart-box',
-              title: this.$t('MENU.QUINIELA.STATS.TEXT'),
+              icon: 'mdi-database-search',
+              title: this.$t('DASHBOARD.MENU.QUINIELA.ANALYZER.TEXT'),
               to: this.localePath({
-                name: 'quiniela-stats',
+                name: 'quiniela-analyzer',
               }),
             },
           ],
         }, {
           icon: 'mdi-clover',
           iconColor: 'black',
-          title: this.$t('MENU.BONOLOTO.TEXT'),
+          title: this.$t('DASHBOARD.MENU.BONOLOTO.TEXT'),
           items: [
             {
-              icon: 'mdi-dice-multiple',
-              title: this.$t('MENU.BONOLOTO.PROBABILITIES.TEXT'),
+              icon: 'mdi-calendar',
+              title: this.$t('DASHBOARD.MENU.BONOLOTO.YEARS.TEXT'),
               to: this.localePath({
-                name: 'bonoloto',
+                name: 'bonoloto-years',
               }),
             }, {
               icon: 'mdi-history',
-              title: this.$t('MENU.BONOLOTO.TICKETS.TEXT'),
+              title: this.$t('DASHBOARD.MENU.BONOLOTO.TICKETS.TEXT'),
               to: this.localePath({
                 name: 'bonoloto-tickets',
-              }),
-            }, {
-              icon: 'mdi-chart-box',
-              title: this.$t('MENU.BONOLOTO.STATS.TEXT'),
-              to: this.localePath({
-                name: 'bonoloto-stats',
               }),
             },
           ],
         }, {
           icon: 'mdi-cash',
           iconColor: 'green darken-2',
-          title: this.$t('MENU.PRIMITIVA.TEXT'),
+          title: this.$t('DASHBOARD.MENU.PRIMITIVA.TEXT'),
           items: [
             {
-              icon: 'mdi-dice-multiple',
-              title: this.$t('MENU.PRIMITIVA.PROBABILITIES.TEXT'),
+              icon: 'mdi-calendar',
+              title: this.$t('DASHBOARD.MENU.PRIMITIVA.YEARS.TEXT'),
               to: this.localePath({
-                name: 'primitiva',
+                name: 'primitiva-years',
               }),
             }, {
               icon: 'mdi-history',
-              title: this.$t('MENU.PRIMITIVA.TICKETS.TEXT'),
+              title: this.$t('DASHBOARD.MENU.PRIMITIVA.TICKETS.TEXT'),
               to: this.localePath({
                 name: 'primitiva-tickets',
-              }),
-            }, {
-              icon: 'mdi-chart-box',
-              title: this.$t('MENU.PRIMITIVA.STATS.TEXT'),
-              to: this.localePath({
-                name: 'primitiva-stats',
               }),
             },
           ],
         }, {
           icon: 'mdi-cash-multiple',
           iconColor: 'red darken-2',
-          title: this.$t('MENU.GORDO.TEXT'),
+          title: this.$t('DASHBOARD.MENU.GORDO.TEXT'),
           items: [
             {
-              icon: 'mdi-dice-multiple',
-              title: this.$t('MENU.GORDO.PROBABILITIES.TEXT'),
+              icon: 'mdi-calendar',
+              title: this.$t('DASHBOARD.MENU.GORDO.YEARS.TEXT'),
               to: this.localePath({
-                name: 'gordo',
+                name: 'gordo-years',
               }),
             }, {
               icon: 'mdi-history',
-              title: this.$t('MENU.GORDO.TICKETS.TEXT'),
+              title: this.$t('DASHBOARD.MENU.GORDO.TICKETS.TEXT'),
               to: this.localePath({
                 name: 'gordo-tickets',
-              }),
-            }, {
-              icon: 'mdi-chart-box',
-              title: this.$t('MENU.GORDO.STATS.TEXT'),
-              to: this.localePath({
-                name: 'gordo-stats',
               }),
             },
           ],
         }, {
           icon: 'mdi-star-circle',
           iconColor: 'purple darken-4',
-          title: this.$t('MENU.EUROMILLONES.TEXT'),
+          title: this.$t('DASHBOARD.MENU.EUROMILLONES.TEXT'),
           items: [
             {
-              icon: 'mdi-dice-multiple',
-              title: this.$t('MENU.EUROMILLONES.PROBABILITIES.TEXT'),
+              icon: 'mdi-calendar',
+              title: this.$t('DASHBOARD.MENU.EUROMILLONES.YEARS.TEXT'),
               to: this.localePath({
-                name: 'euromillones',
+                name: 'euromillones-years',
               }),
             }, {
               icon: 'mdi-history',
-              title: this.$t('MENU.EUROMILLONES.TICKETS.TEXT'),
+              title: this.$t('DASHBOARD.MENU.EUROMILLONES.TICKETS.TEXT'),
               to: this.localePath({
                 name: 'euromillones-tickets',
-              }),
-            }, {
-              icon: 'mdi-chart-box',
-              title: this.$t('MENU.EUROMILLONES.STATS.TEXT'),
-              to: this.localePath({
-                name: 'euromillones-stats',
               }),
             },
           ],
