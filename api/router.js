@@ -30,5 +30,8 @@ module.exports = function router(app) {
   // Importacion de rutas de auth
   require('./routes/auth/api')(app);
 
+  // Importacion de rutas de usuarios
+  require('./routes/users/api')(app);
+
   app.get('/*', (req, res) => res.status(HTTP_CODES.NOT_FOUND).send('API Method Not Found'));
 };
