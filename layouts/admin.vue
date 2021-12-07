@@ -109,7 +109,7 @@
       </v-btn>
     </v-app-bar>
     <v-main>
-      <v-container>
+      <v-container fluid>
         <nuxt />
       </v-container>
     </v-main>
@@ -117,6 +117,8 @@
 </template>
 
 <script>
+import Vue from 'vue';
+
 export default {
   data() {
     return {
@@ -129,7 +131,7 @@ export default {
           icon: 'mdi-account-group',
           title: this.$t('DASHBOARD.MENU.USERS.TEXT'),
           to: this.localePath({
-            name: 'index',
+            name: 'admin-users',
           }),
         }, {
           icon: 'mdi-finance',
@@ -255,6 +257,11 @@ export default {
       title: 'Dashboard',
       logoutTitle: this.$t('TOP_BAR.LOGOUT.TITLE'),
     };
+  },
+  beforeCreate() {
+    const token = this.$auth.strategy.token.get();
+
+    Vue.pronostigolClient.setToken(token);
   },
   methods: {},
 };
