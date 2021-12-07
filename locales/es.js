@@ -1096,5 +1096,24 @@ export default {
         },
       },
     },
+    VIEWS: {
+      USERS: {
+        TITLE: 'Usuarios',
+        TABLE: {
+          USER: {
+            LABEL: 'Usuario',
+          },
+          PASSWORD: {
+            LABEL: 'Contraseña (Hash)',
+          },
+          ACTIONS: {
+            LABEL: 'Acciones',
+            EDIT: {
+              TOOLTIP: 'Editar usuario',
+            },
+          },
+        },
+      },
+    },
   },
 };
