@@ -4,6 +4,7 @@
       <div class="text-h3 pb-4">
         {{ titleText }}
       </div>
+      <UsersForm />
       <v-data-table
         :headers="headers"
         :items="users"
@@ -18,6 +19,11 @@
             absolute
             color="black"
           />
+        </template>
+        <template
+          #[`item.date`]="{ item }"
+        >
+          {{ getFormattedDate(item.date) }}
         </template>
         <template #[`item.actions`]="{ item }">
           <v-btn
@@ -49,8 +55,15 @@
 <script>
 import { mapState } from 'vuex';
 
+import getFormattedDate from '@/mixins/getFormattedDate';
+
+import UsersForm from '@/components/admin/users/UsersForm.vue';
+
 export default {
-  components: {},
+  components: {
+    UsersForm,
+  },
+  mixins: [getFormattedDate],
   layout: 'admin',
   middleware: 'auth',
   data() {
@@ -68,10 +81,20 @@ export default {
           sortable: true,
           value: 'user',
         }, {
+          text: this.$t('DASHBOARD.VIEWS.USERS.TABLE.ROLE.LABEL'),
+          align: 'center',
+          sortable: true,
+          value: 'role',
+        }, {
           text: this.$t('DASHBOARD.VIEWS.USERS.TABLE.PASSWORD.LABEL'),
           align: 'center',
           sortable: false,
           value: 'password',
+        }, {
+          text: this.$t('DASHBOARD.VIEWS.USERS.TABLE.REGISTER_DATE.LABEL'),
+          align: 'center',
+          sortable: true,
+          value: 'date',
         }, {
           text: this.$t('DASHBOARD.VIEWS.USERS.TABLE.ACTIONS.LABEL'),
           align: 'center',
