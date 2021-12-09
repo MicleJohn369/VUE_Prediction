@@ -1099,12 +1099,26 @@ export default {
     VIEWS: {
       USERS: {
         TITLE: 'Usuarios',
+        FILTERS: {
+          USER: {
+            LABEL: 'Usuario',
+          },
+          ROLE: {
+            LABEL: 'Rol',
+          },
+        },
         TABLE: {
           USER: {
             LABEL: 'Usuario',
           },
+          ROLE: {
+            LABEL: 'Rol',
+          },
           PASSWORD: {
             LABEL: 'Contraseña (Hash)',
+          },
+          REGISTER_DATE: {
+            LABEL: 'Fecha de registro',
           },
           ACTIONS: {
             LABEL: 'Acciones',
