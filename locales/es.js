@@ -10,6 +10,14 @@ export default {
       },
     },
   },
+  ROLES: {
+    ADMIN: {
+      TEXT: 'Administrador',
+    },
+    PRIVILEGED: {
+      TEXT: 'Privilegiado',
+    },
+  },
   TOP_BAR: {
     LOGIN: {
       TITLE: 'Acceder',
