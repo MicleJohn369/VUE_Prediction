@@ -16,6 +16,7 @@ const Account = mongoose.model('Account');
  * @apiVersion 2.1.0
  *
  * @apiParam {String} [user] Nombre de usuario
+ * @apiParam {String} [role] Rol del usuario
  * @apiParam {Number} [page] Número de página a consultar. Por defecto se establece a 1.
  * @apiParam {Number} [per_page] Número de registros por página deseados. Por defecto se establece a 10.
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Por defecto se ordenan por fecha descendentemente.
@@ -26,6 +27,7 @@ exports.findAllUsers = async (req, res) => {
   const { query } = req;
 
   const { user } = query;
+  const { role } = query;
   const page = Number(query.page) || 1;
   const perPage = Number(query.per_page) || 10;
   let sort_property = query.sort_property || 'date';
@@ -33,7 +35,13 @@ exports.findAllUsers = async (req, res) => {
 
   const filters = {};
 
-  if (user) filters.user = user;
+  if (user) {
+    filters.user = {
+      $regex: user,
+    };
+  }
+
+  if (role) filters.role = role;
 
   sort_property = 'user';
 
