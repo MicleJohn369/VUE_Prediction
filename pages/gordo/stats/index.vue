@@ -64,8 +64,8 @@ import GordoOccurrencesByNumberStatsTable from '@/components/gordo/stats/GordoOc
 import GordoOccurrencesByResultStatsTable from '@/components/gordo/stats/GordoOccurrencesByResultStatsTable.vue';
 import GordoLastDateByNumberStatsTable from '@/components/gordo/stats/GordoLastDateByNumberStatsTable.vue';
 import GordoLastDateBySpecialNumberStatsTable from '@/components/gordo/stats/GordoLastDateBySpecialNumberStatsTable.vue';
-import GordoOccurrencesByResultWithSpecialNumberStatsTable from '~/components/gordo/stats/GordoOccurrencesByResultWithSpecialNumberStatsTable.vue';
-import GordoOccurrencesBySpecialNumberStatsTable from '~/components/gordo/stats/GordoOccurrencesBySpecialNumberStatsTable.vue';
+import GordoOccurrencesByResultWithSpecialNumberStatsTable from '@/components/gordo/stats/GordoOccurrencesByResultWithSpecialNumberStatsTable.vue';
+import GordoOccurrencesBySpecialNumberStatsTable from '@/components/gordo/stats/GordoOccurrencesBySpecialNumberStatsTable.vue';
 
 export default {
   name: 'GordoStats',
