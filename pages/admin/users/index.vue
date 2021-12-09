@@ -4,7 +4,7 @@
       <div class="text-h3 pb-4">
         {{ titleText }}
       </div>
-      <UsersForm />
+      <UsersFiltersForm />
       <v-data-table
         :headers="headers"
         :items="users"
@@ -19,6 +19,11 @@
             absolute
             color="black"
           />
+        </template>
+        <template
+          #[`item.role`]="{ item }"
+        >
+          {{ getRole(item.role) }}
         </template>
         <template
           #[`item.date`]="{ item }"
@@ -55,13 +60,14 @@
 <script>
 import { mapState } from 'vuex';
 
+import utils from '@/utils';
 import getFormattedDate from '@/mixins/getFormattedDate';
 
-import UsersForm from '@/components/admin/users/UsersForm.vue';
+import UsersFiltersForm from '@/components/admin/users/UsersFiltersForm.vue';
 
 export default {
   components: {
-    UsersForm,
+    UsersFiltersForm,
   },
   mixins: [getFormattedDate],
   layout: 'admin',
@@ -103,6 +109,8 @@ export default {
         },
       ],
       editUserTooltip: this.$t('DASHBOARD.VIEWS.USERS.TABLE.ACTIONS.EDIT.TOOLTIP'),
+      adminText: this.$t('ROLES.ADMIN.TEXT'),
+      privilegedText: this.$t('ROLES.PRIVILEGED.TEXT'),
     };
   },
   async fetch() {
@@ -147,6 +155,11 @@ export default {
       });
 
       this.$store.dispatch('users/getUsers');
+    },
+    getRole(role) {
+      if (role === utils.ROLES.ADMIN.VALUE) return this.adminText;
+      if (role === utils.ROLES.PRIVILEGED.VALUE) return this.privilegedText;
+      return '';
     },
   },
 };
