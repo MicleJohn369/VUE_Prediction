@@ -1135,6 +1135,11 @@ export default {
             },
           },
         },
+        USER_FORM: {
+          CREATE: {
+            TITLE: 'Creación de usuario',
+          },
+        },
       },
     },
   },
