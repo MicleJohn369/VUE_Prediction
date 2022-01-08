@@ -55,7 +55,7 @@
 import utils from '@/utils';
 
 export default {
-  name: 'CustomStatsForm',
+  name: 'UsersFiltersForm',
   props: {},
   data() {
     return {
