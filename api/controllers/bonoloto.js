@@ -60,7 +60,7 @@ function filtrarInformacion(result) {
  * @apiParam {Number} [per_page] Número de registros por página deseados. Por defecto se establece a 10.
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Por defecto se ordenan por fecha descendentemente.
  * @apiParam {String} [sort_property] Propiedad por la que ordenar los registros. Los posibles valores son "date". Por defecto se ordenan por "date".
- * @apiSampleRequest /api/bonoloto/tickets
+ * @apiSampleRequest /invent/bonoloto/tickets
  */
 exports.findAllTickets = async (req, res) => {
   const { query } = req;
@@ -139,7 +139,7 @@ exports.findTicketById = async (req, res) => {
  *
  * @apiVersion 1.0.0
  *
- * @apiSampleRequest /api/bonoloto/years
+ * @apiSampleRequest /bonoloto/years
  */
 exports.findAllYears = async (req, res) => {
   try {
@@ -160,7 +160,7 @@ exports.findAllYears = async (req, res) => {
  *
  * @apiVersion 1.0.0
  *
- * @apiSampleRequest /api/bonoloto/years/:id
+ * @apiSampleRequest /bonoloto/years/:id
  *
  * @apiParam {String} id Identificador del año de Bonoloto
  */
@@ -197,7 +197,7 @@ exports.findYearById = async (req, res) => {
  * y "occurrences". Por defecto se ordenan por "occurrences".
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Los posibles valores son "asc" y "desc".
  * Por defecto se ordenan descendentemente.
- * @apiSampleRequest /api/bonoloto/historical/occurrencesByResult
+ * @apiSampleRequest /bonoloto/historical/occurrencesByResult
  */
 exports.findOccurrencesByResult = async (req, res) => {
   const { query } = req;
@@ -331,7 +331,7 @@ exports.findOccurrencesByResult = async (req, res) => {
  * y "occurrences". Por defecto se ordenan por "occurrences".
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Los posibles valores son "asc" y "desc".
  * Por defecto se ordenan descendentemente.
- * @apiSampleRequest /api/bonoloto/historical/occurrencesByResultWithReimbursement
+ * @apiSampleRequest /bonoloto/historical/occurrencesByResultWithReimbursement
  */
 exports.findOccurrencesByResultWithReimbursement = async (req, res) => {
   const { query } = req;
@@ -523,7 +523,7 @@ exports.findOccurrencesByResultWithReimbursement = async (req, res) => {
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Los posibles valores son "asc" y "desc".
  * Por defecto se ordenan descendentemente.
  *
- * @apiSampleRequest /api/bonoloto/historical/occurrencesByNumber
+ * @apiSampleRequest /bonoloto/historical/occurrencesByNumber
  */
 exports.findOccurrencesByNumber = async (req, res) => {
   const { query } = req;
@@ -613,7 +613,7 @@ exports.findOccurrencesByNumber = async (req, res) => {
  * y "occurrences". Por defecto se ordenan por "occurrences".
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Los posibles valores son "asc" y "desc".
  * Por defecto se ordenan descendentemente.
- * @apiSampleRequest /api/bonoloto/historical/occurrencesByReimbursement
+ * @apiSampleRequest /bonoloto/historical/occurrencesByReimbursement
  */
 exports.findOccurrencesByReimbursement = async (req, res) => {
   const { query } = req;
@@ -700,7 +700,7 @@ exports.findOccurrencesByReimbursement = async (req, res) => {
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Los posibles valores son "asc" y "desc".
  * Por defecto se ordenan descendentemente.
  *
- * @apiSampleRequest /api/bonoloto/historical/lastDateByNumber
+ * @apiSampleRequest /bonoloto/historical/lastDateByNumber
  */
 exports.findLastDateByNumber = async (req, res) => {
   const { query } = req;
@@ -793,7 +793,7 @@ exports.findLastDateByNumber = async (req, res) => {
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Los posibles valores son "asc" y "desc".
  * Por defecto se ordenan descendentemente.
  *
- * @apiSampleRequest /api/bonoloto/historical/lastDateByReimbursement
+ * @apiSampleRequest /bonoloto/historical/lastDateByReimbursement
  */
 exports.findLastDateByReimbursement = async (req, res) => {
   const { query } = req;
