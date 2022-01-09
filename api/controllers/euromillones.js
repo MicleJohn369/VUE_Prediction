@@ -60,7 +60,7 @@ function filtrarInformacion(result) {
  * @apiParam {Number} [per_page] Número de registros por página deseados. Por defecto se establece a 10.
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Por defecto se ordenan por fecha descendentemente.
  * @apiParam {String} [sort_property] Propiedad por la que ordenar los registros. Los posibles valores son "date". Por defecto se ordenan por "date".
- * @apiSampleRequest /api/euromillones/tickets
+ * @apiSampleRequest /euromillones/tickets
  */
 exports.findAllTickets = async (req, res) => {
   const { query } = req;
@@ -139,7 +139,7 @@ exports.findTicketById = async (req, res) => {
  *
  * @apiVersion 1.0.0
  *
- * @apiSampleRequest /api/euromillones/years
+ * @apiSampleRequest /euromillones/years
  */
 exports.findAllYears = async (req, res) => {
   try {
@@ -160,7 +160,7 @@ exports.findAllYears = async (req, res) => {
  *
  * @apiVersion 1.0.0
  *
- * @apiSampleRequest /api/euromillones/years/:id
+ * @apiSampleRequest /euromillones/years/:id
  *
  * @apiParam {String} id Identificador del año de Euromillones
  */
@@ -197,7 +197,7 @@ exports.findYearById = async (req, res) => {
  * y "occurrences". Por defecto se ordenan por "occurrences".
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Los posibles valores son "asc" y "desc".
  * Por defecto se ordenan descendentemente.
- * @apiSampleRequest /api/euromillones/historical/occurrencesByResult
+ * @apiSampleRequest /euromillones/historical/occurrencesByResult
  */
 exports.findOccurrencesByResult = async (req, res) => {
   const { query } = req;
@@ -331,7 +331,7 @@ exports.findOccurrencesByResult = async (req, res) => {
  * y "apariciones". Por defecto se ordenan por "apariciones".
  * @apiParam {String} sort_type Sentido de la ordenación de registros. Los posibles valores son "asc" y "desc".
  * Por defecto se ordenan descendentemente.
- * @apiSampleRequest /api/euromillones/historical/occurrencesByResultWithStars
+ * @apiSampleRequest /euromillones/historical/occurrencesByResultWithStars
  */
 exports.findOccurrencesByResultWithStars = async (req, res) => {
   const { query } = req;
@@ -522,7 +522,7 @@ exports.findOccurrencesByResultWithStars = async (req, res) => {
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Los posibles valores son "asc" y "desc".
  * Por defecto se ordenan descendentemente.
  *
- * @apiSampleRequest /api/euromillones/historical/occurrencesByNumber
+ * @apiSampleRequest /euromillones/historical/occurrencesByNumber
  */
 exports.findOccurrencesByNumber = async (req, res) => {
   const { query } = req;
@@ -612,7 +612,7 @@ exports.findOccurrencesByNumber = async (req, res) => {
  * y "occurrences". Por defecto se ordenan por "occurrences".
  * @apiParam {String} sort_type Sentido de la ordenación de registros. Los posibles valores son "asc" y "desc".
  * Por defecto se ordenan descendentemente.
- * @apiSampleRequest /api/euromillones/historical/occurrencesByStar
+ * @apiSampleRequest /euromillones/historical/occurrencesByStar
  */
 exports.findOccurrencesByStar = async (req, res) => {
   const { query } = req;
@@ -703,7 +703,7 @@ exports.findOccurrencesByStar = async (req, res) => {
  * y "apariciones". Por defecto se ordenan por "apariciones".
  * @apiParam {String} sort_type Sentido de la ordenación de registros. Los posibles valores son "asc" y "desc".
  * Por defecto se ordenan descendentemente.
- * @apiSampleRequest /api/euromillones/historical/occurrencesByStarsPair
+ * @apiSampleRequest /euromillones/historical/occurrencesByStarsPair
  */
 exports.findOccurrencesByStarsPair = async (req, res) => {
   const { query } = req;
@@ -791,7 +791,7 @@ exports.findOccurrencesByStarsPair = async (req, res) => {
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Los posibles valores son "asc" y "desc".
  * Por defecto se ordenan descendentemente.
  *
- * @apiSampleRequest /api/euromillones/historical/lastDateByNumber
+ * @apiSampleRequest /euromillones/historical/lastDateByNumber
  */
 exports.findLastDateByNumber = async (req, res) => {
   const { query } = req;
@@ -884,7 +884,7 @@ exports.findLastDateByNumber = async (req, res) => {
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Los posibles valores son "asc" y "desc".
  * Por defecto se ordenan descendentemente.
  *
- * @apiSampleRequest /api/euromillones/historical/lastDateByStar
+ * @apiSampleRequest /euromillones/historical/lastDateByStar
  */
 exports.findLastDateByStar = async (req, res) => {
   const { query } = req;

@@ -61,7 +61,7 @@ function filtrarInformacion(result) {
  * @apiParam {Number} [per_page] Número de registros por página deseados. Por defecto se establece a 10.
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Por defecto se ordenan por fecha descendentemente.
  * @apiParam {String} [sort_property] Propiedad por la que ordenar los registros. Los posibles valores son "date". Por defecto se ordenan por "date".
- * @apiSampleRequest /api/quiniela/tickets
+ * @apiSampleRequest /quiniela/tickets
  */
 exports.findAllTickets = async (req, res) => {
   const { query } = req;
@@ -120,7 +120,7 @@ exports.findAllTickets = async (req, res) => {
  *
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Los posibles valores son "asc" y "desc".
  *
- * @apiSampleRequest /api/quiniela/seasons
+ * @apiSampleRequest /quiniela/seasons
  */
 exports.findAllSeasons = async (req, res) => {
   const { query } = req;
@@ -154,7 +154,7 @@ exports.findAllSeasons = async (req, res) => {
  *
  * @apiVersion 1.0.0
  *
- * @apiSampleRequest /api/quiniela/seasons/:id
+ * @apiSampleRequest /quiniela/seasons/:id
  *
  * @apiParam {String} id Identificador de la temporada de Quiniela
  */
@@ -187,7 +187,7 @@ exports.findSeasonById = async (req, res) => {
  *
  * @apiParam {String} season Temporada asociada al sorteo consultado
  * @apiParam {String} day Jornada asociada al sorteo consultado
- * @apiSampleRequest /api/quiniela/tickets/season/:season/day/:day
+ * @apiSampleRequest /quiniela/tickets/season/:season/day/:day
  */
 exports.findTicketBySeasonAndDay = async (req, res) => {
   const errores = {};
@@ -228,7 +228,7 @@ exports.findTicketBySeasonAndDay = async (req, res) => {
  *
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Los posibles valores son "asc" y "desc".
  *
- * @apiSampleRequest /api/quiniela/competitions
+ * @apiSampleRequest /quiniela/competitions
  */
 exports.findAllCompetitions = async (req, res) => {
   const { query } = req;
@@ -262,7 +262,7 @@ exports.findAllCompetitions = async (req, res) => {
  *
  * @apiVersion 1.0.0
  *
- * @apiSampleRequest /api/quiniela/competitions/:id
+ * @apiSampleRequest /quiniela/competitions/:id
  *
  * @apiParam {String} id Identificador de la competición de Quiniela
  */
@@ -295,7 +295,7 @@ exports.findCompetitionById = async (req, res) => {
  *
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Los posibles valores son "asc" y "desc".
  *
- * @apiSampleRequest /api/quiniela/teams
+ * @apiSampleRequest /quiniela/teams
  */
 exports.findAllTeams = async (req, res) => {
   const { query } = req;
@@ -329,7 +329,7 @@ exports.findAllTeams = async (req, res) => {
  *
  * @apiVersion 1.0.0
  *
- * @apiSampleRequest /api/quiniela/teams/:id
+ * @apiSampleRequest /quiniela/teams/:id
  *
  * @apiParam {String} id Identificador del equipo
  */
@@ -421,7 +421,7 @@ const getTicketsGroupedByRes = async (givenFilters) => {
  * @apiParam {String} [season] Temporada sobre la que se quieren consultar los resultados.
  * @apiParam {String} [local_team] Nombre del equipo que actúa de local en los partidos sobre los que se quieren consultar los resultados.
  * @apiParam {String} [visitor_team] Nombre del equipo que actúa de visitante en los partidos sobre los que se quieren consultar los resultados.
- * @apiSampleRequest /api/quiniela/historical
+ * @apiSampleRequest /quiniela/historical
  */
 exports.findHistorical = async (req, res) => {
   const { competition } = req.query;
@@ -552,7 +552,7 @@ exports.findHistorical = async (req, res) => {
  * y "occurrences". Por defecto se ordenan por "occurrences".
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Los posibles valores son "asc" y "desc".
  * Por defecto se ordenan descendentemente.
- * @apiSampleRequest /api/quiniela/historical/combinations
+ * @apiSampleRequest /quiniela/historical/combinations
  */
 exports.findHistoricalAppearedResults = async (req, res) => {
   const { query } = req;
