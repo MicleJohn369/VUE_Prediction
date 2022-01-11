@@ -1104,9 +1104,16 @@ export default {
         },
       },
     },
+    BREADCRUMBS: {
+      DASHBOARD: 'Dashboard',
+      USERS: 'Usuarios',
+    },
     VIEWS: {
       USERS: {
         TITLE: 'Usuarios',
+        SHOW_FILTERS: {
+          TEXT: 'Filtros',
+        },
         FILTERS: {
           USER: {
             LABEL: 'Usuario',
@@ -1114,6 +1121,9 @@ export default {
           ROLE: {
             LABEL: 'Rol',
           },
+        },
+        ADD_USER: {
+          TEXT: 'Añadir usuario',
         },
         TABLE: {
           USER: {
