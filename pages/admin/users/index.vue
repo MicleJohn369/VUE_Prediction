@@ -4,55 +4,104 @@
       <div class="text-h3 pb-4">
         {{ titleText }}
       </div>
-      <UsersFiltersForm />
-      <v-data-table
-        :headers="headers"
-        :items="users"
-        :options.sync="options"
-        :server-items-length="total"
-        :loading="loading"
-        class="elevation-1"
+      <v-breadcrumbs
+        :items="items"
+      />
+      <v-card
+        class="mb-5"
       >
-        <template #progress>
-          <v-progress-linear
-            indeterminate
-            absolute
-            color="black"
-          />
-        </template>
-        <template
-          #[`item.role`]="{ item }"
+        <v-card-title>
+          <v-row>
+            <v-col cols="12">
+              <v-btn
+                id="filters-btn"
+                outlined
+                color="primary"
+                dark
+                @click="toggleFilters()"
+              >
+                <v-icon left>
+                  mdi-filter-variant
+                </v-icon>
+                {{ filtersButtonText }}
+              </v-btn>
+              <v-btn
+                id="add-user-btn"
+                class="float-right"
+                color="success"
+                dark
+                nuxt
+                :to="localePath({
+                  name: 'admin-users-create'
+                })"
+              >
+                <v-icon left>
+                  mdi-plus
+                </v-icon>
+                {{ addUserButtonText }}
+              </v-btn>
+            </v-col>
+            <v-expand-transition>
+              <v-col
+                v-show="showFilters"
+                cols="12"
+                md="8"
+                offset-md="2"
+              >
+                <UsersFiltersForm />
+              </v-col>
+            </v-expand-transition>
+          </v-row>
+        </v-card-title>
+        <v-data-table
+          class="mt-5"
+          :headers="headers"
+          :items="users"
+          :options.sync="options"
+          :server-items-length="total"
+          :loading="loading"
         >
-          {{ getRole(item.role) }}
-        </template>
-        <template
-          #[`item.date`]="{ item }"
-        >
-          {{ getFormattedDate(item.date) }}
-        </template>
-        <template #[`item.actions`]="{ item }">
-          <v-btn
-            dark
-            fab
-            x-small
-            color="warning"
-            :to="localePath({
-              name: 'admin-user',
-              params: {
-                id: item.id,
-              }
-            })"
-            nuxt
+          <template #progress>
+            <v-progress-linear
+              indeterminate
+              absolute
+              color="black"
+            />
+          </template>
+          <template
+            #[`item.role`]="{ item }"
           >
-            <v-icon
-              small
-              :title="editUserTooltip"
+            {{ getRole(item.role) }}
+          </template>
+          <template
+            #[`item.date`]="{ item }"
+          >
+            {{ getFormattedDate(item.date) }}
+          </template>
+          <template #[`item.actions`]="{ item }">
+            <v-btn
+              dark
+              fab
+              x-small
+              color="warning"
+              :to="localePath({
+                name: 'admin-user',
+                params: {
+                  id: item.id,
+                }
+              })"
+              nuxt
             >
-              mdi-pencil
-            </v-icon>
-          </v-btn>
-        </template>
-      </v-data-table>
+              <v-icon
+                small
+                :title="editUserTooltip"
+              >
+                mdi-pencil
+              </v-icon>
+            </v-btn>
+          </template>
+        </v-data-table>
+      </v-card>
     </v-col>
   </v-row>
 </template>
@@ -75,6 +124,29 @@ export default {
   data() {
     return {
       titleText: this.$t('DASHBOARD.VIEWS.USERS.TITLE'),
+      items: [
+        {
+          text: this.$t('DASHBOARD.BREADCRUMBS.DASHBOARD'),
+          disabled: false,
+          to: this.localePath({
+            name: 'admin',
+          }),
+          nuxt: true,
+          exactPath: true,
+        },
+        {
+          text: this.$t('DASHBOARD.BREADCRUMBS.USERS'),
+          disabled: true,
+          to: this.localePath({
+            name: 'admin-users',
+          }),
+          nuxt: true,
+          exactPath: true,
+        },
+      ],
+      showFilters: false,
+      filtersButtonText: this.$t('DASHBOARD.VIEWS.USERS.SHOW_FILTERS.TEXT'),
+      addUserButtonText: this.$t('DASHBOARD.VIEWS.USERS.ADD_USER.TEXT'),
       options: {
         mustSort: true,
         sortBy: ['user'],
@@ -161,10 +233,12 @@ export default {
       if (role === utils.ROLES.PRIVILEGED.VALUE) return this.privilegedText;
       return '';
     },
+    toggleFilters() {
+      this.showFilters = !this.showFilters;
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
 </style>
