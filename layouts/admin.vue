@@ -281,4 +281,12 @@ export default {
     }
   }
 }
+
+.v-main {
+  background-color: $color-background-gray;
+
+  .v-main__wrap > .container {
+    padding: 24px;
+  }
+}
 </style>
