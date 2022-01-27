@@ -11,6 +11,14 @@ function isLogged() {
   return jwt({
     secret: process.env.TOKEN_SECRET,
     algorithms: ['HS256'],
+    getToken: function fromHeaderOrQuerystring(req) {
+      if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+        return req.headers.authorization.split(' ')[1];
+      } if (req.query && req.query.token) {
+        return req.query.token;
+      }
+      return null;
+    },
   });
 }
 
@@ -23,14 +31,14 @@ function isLogged() {
  */
 function isAuthorized(allowedRoles) {
   return function middleware(req, res, next) {
-    const { user } = req.session;
+    const { user } = req;
 
     // Para el caso en que no esté logado: GUEST
     let actualRole = null;
 
     // Para cualquier otro caso: BASIC, PRIVILEGED Y ADMIN
     if (user !== undefined) {
-      actualRole = req.session.user.role;
+      actualRole = req.user.role;
     }
 
     let authorized = false;
