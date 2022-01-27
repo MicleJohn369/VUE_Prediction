@@ -72,3 +72,20 @@ exports.findAllUsers = async (req, res) => {
     return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).send(err.message);
   }
 };
+
+exports.createUser = async (req, res) => {
+  const { body } = req;
+
+  try {
+    const account = new Account({
+      ...body,
+      estaActivo: true,
+      estaBaneado: false,
+      date: new Date(),
+    });
+    await account.save();
+    return res.status(HTTP_CODES.CREATED).json();
+  } catch (err) {
+    return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).send(err.message);
+  }
+};
