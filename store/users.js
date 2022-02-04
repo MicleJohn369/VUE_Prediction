@@ -33,6 +33,12 @@ export const actions = {
       .then((user) => commit('setUser', user))
       .finally(() => commit('setIsLoading', false));
   },
+  createUser({ commit }, user) {
+    commit('setIsLoading', true);
+
+    return Vue.pronostigolClient.createUser(user)
+      .finally(() => commit('setIsLoading', false));
+  },
   destroyUsers({ commit }) {
     return commit('setUsers', {
       data: [],
