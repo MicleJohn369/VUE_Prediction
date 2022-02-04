@@ -9,6 +9,14 @@ export default {
         TEXT: 'Recargar',
       },
     },
+    BUTTON: {
+      CANCEL: {
+        TEXT: 'Cancelar',
+      },
+      SUBMIT: {
+        TEXT: 'Guardar',
+      },
+    },
   },
   ROLES: {
     ADMIN: {
@@ -1122,7 +1130,7 @@ export default {
             LABEL: 'Rol',
           },
         },
-        ADD_USER: {
+        CREATE_USER_BUTTON: {
           TEXT: 'Añadir usuario',
         },
         TABLE: {
@@ -1148,6 +1156,18 @@ export default {
         USER_FORM: {
           CREATE: {
             TITLE: 'Creación de usuario',
+          },
+          USER: {
+            LABEL: 'Usuario',
+          },
+          ROLE: {
+            LABEL: 'Rol',
+          },
+          PASSWORD: {
+            LABEL: 'Contraseña',
+          },
+          MESSAGES: {
+            CREATED: 'El usuario <b>{user}</b> fue creado correctamente.',
           },
         },
       },
