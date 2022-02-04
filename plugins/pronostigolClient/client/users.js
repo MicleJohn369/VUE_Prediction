@@ -9,6 +9,13 @@ function usersMethods(client) {
     })
       .then((response) => response.data);
   };
+
+  PronostigolClient.prototype.createUser = function createUser(user) {
+    return this.restClient.post(`/${USERS}`, {
+      ...user,
+    })
+      .then((response) => response.data);
+  };
 }
 
 module.exports = usersMethods;
