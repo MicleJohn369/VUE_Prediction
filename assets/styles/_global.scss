@@ -113,3 +113,8 @@ a:not([class*=v-]){
   border-radius: 20px;
   border: 3px solid white;
 }
+
+div.toasted{
+  font-family: $vuetify-font-family;
+  white-space: break-spaces;
+}
