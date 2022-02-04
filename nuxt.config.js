@@ -91,6 +91,8 @@ export default {
       controlButton: false,
     }],
     '@nuxtjs/auth-next',
+    '@nuxtjs/toast',
+    'nuxt-material-design-icons',
   ],
   styleResources: {
     scss: [
@@ -224,5 +226,9 @@ export default {
       home: '/',
     },
     watchLoggedIn: true,
+  },
+  toast: {
+    position: 'top-right',
+    duration: 5000,
   },
 };
