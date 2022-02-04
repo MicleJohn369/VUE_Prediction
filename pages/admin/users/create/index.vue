@@ -4,10 +4,17 @@
       <div class="text-h3 pb-4">
         {{ titleText }}
       </div>
-      <div>
-        <p>Botón</p>
-      </div>
-      <UserForm ref="createUserForm" />
+      <v-card class="mb-5">
+        <v-breadcrumbs
+          :items="items"
+        />
+      </v-card>
+      <v-card>
+        <UserForm
+          ref="createUserForm"
+          @onSubmit="createUser()"
+        />
+      </v-card>
     </v-col>
   </v-row>
 </template>
@@ -30,6 +37,26 @@ export default {
   data() {
     return {
       titleText: this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.CREATE.TITLE'),
+      items: [
+        {
+          text: this.$t('DASHBOARD.BREADCRUMBS.DASHBOARD'),
+          disabled: false,
+          to: this.localePath({
+            name: 'admin',
+          }),
+          nuxt: true,
+          exactPath: true,
+        },
+        {
+          text: this.$t('DASHBOARD.BREADCRUMBS.USERS'),
+          disabled: false,
+          to: this.localePath({
+            name: 'admin-users',
+          }),
+          nuxt: true,
+          exactPath: true,
+        },
+      ],
     };
   },
   head() {
@@ -44,14 +71,21 @@ export default {
     }),
   },
   methods: {
-    submitForm() {
-      this.$refs.createUserForm.userForm.validateForm()
-        .then((valid) => {
-          if (valid) this.createUser();
-        });
-    },
     createUser() {
-      return this.$store.dispatch('users/createUser', this.$refs.createUserForm.userForm);
+      const { form } = this.$refs.createUserForm;
+      const userCreatedText = this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.MESSAGES.CREATED', {
+        user: form.user,
+      });
+      return this.$store.dispatch('users/createUser', form)
+        .then(() => this.$toast.success(userCreatedText, {
+          icon: 'check',
+        }))
+        .then(() => this.$router.push(this.localePath({
+          name: 'admin-users',
+        })))
+        .catch(() => {
+          this.$toast.error('xoxHubo un error al crear el usuario');
+        });
     },
   },
 };
