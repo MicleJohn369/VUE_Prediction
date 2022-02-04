@@ -20,7 +20,10 @@ module.exports = function api(app) {
 
   user
     .route('/')
-    .get(middlewares.isLogged(), validate(validations.getUsers), UserCtrl.findAllUsers);
+    .get(middlewares.isLogged(), validate(validations.getUsers, {}, {
+      allowUnknown: true,
+    }), UserCtrl.findAllUsers)
+    .post(middlewares.isLogged(), middlewares.isAuthorized(['admin']), validate(validations.createUser), UserCtrl.createUser);
 
   app.use('/users', user);
 };
