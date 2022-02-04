@@ -4,9 +4,11 @@
       <div class="text-h3 pb-4">
         {{ titleText }}
       </div>
-      <v-breadcrumbs
-        :items="items"
-      />
+      <v-card class="mb-5">
+        <v-breadcrumbs
+          :items="items"
+        />
+      </v-card>
       <v-card
         class="mb-5"
       >
@@ -26,7 +28,7 @@
                 {{ filtersButtonText }}
               </v-btn>
               <v-btn
-                id="add-user-btn"
+                id="create-user-btn"
                 class="float-right"
                 color="success"
                 dark
@@ -38,7 +40,7 @@
                 <v-icon left>
                   mdi-plus
                 </v-icon>
-                {{ addUserButtonText }}
+                {{ createUserButtonText }}
               </v-btn>
             </v-col>
             <v-expand-transition>
@@ -146,7 +148,7 @@ export default {
       ],
       showFilters: false,
       filtersButtonText: this.$t('DASHBOARD.VIEWS.USERS.SHOW_FILTERS.TEXT'),
-      addUserButtonText: this.$t('DASHBOARD.VIEWS.USERS.ADD_USER.TEXT'),
+      createUserButtonText: this.$t('DASHBOARD.VIEWS.USERS.CREATE_USER_BUTTON.TEXT'),
       options: {
         mustSort: true,
         sortBy: ['user'],
