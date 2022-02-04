@@ -10,7 +10,6 @@
           md="6"
         >
           <v-text-field
-            id="user"
             v-model="user"
             :rules="rules.user"
             :label="userText"
@@ -22,7 +21,6 @@
           md="6"
         >
           <v-autocomplete
-            id="role"
             v-model="role"
             :rules="rules.role"
             :items="roles"

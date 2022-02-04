@@ -10,7 +10,6 @@
           md="6"
         >
           <v-autocomplete
-            id="season"
             v-model="season"
             :rules="rules.season"
             :items="seasons"
@@ -24,7 +23,6 @@
           md="6"
         >
           <v-autocomplete
-            id="competition"
             v-model="competition"
             :rules="rules.competition"
             :items="competitions"
@@ -72,7 +70,6 @@
           md="6"
         >
           <v-autocomplete
-            id="team"
             v-model="team"
             :rules="rules.team"
             :items="teams"
@@ -90,7 +87,6 @@
           md="6"
         >
           <v-autocomplete
-            id="localTeam"
             v-model="localTeam"
             :rules="rules.localTeam"
             :items="teams"
@@ -104,7 +100,6 @@
           md="6"
         >
           <v-autocomplete
-            id="visitorTeam"
             v-model="visitorTeam"
             :rules="rules.visitorTeam"
             :items="teams"
