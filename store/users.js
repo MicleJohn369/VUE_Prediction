@@ -54,6 +54,12 @@ export const actions = {
   destroyUser({ commit }) {
     return commit('setUser', {});
   },
+  deleteUser({ commit }, { id }) {
+    commit('setIsLoading', true);
+
+    return Vue.pronostigolClient.deleteUser(id)
+      .finally(() => commit('setIsLoading', false));
+  },
 };
 
 export const mutations = {
