@@ -21,7 +21,7 @@ const Account = mongoose.model('Account');
  * @apiParam {Number} [per_page] Número de registros por página deseados. Por defecto se establece a 10.
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Por defecto se ordenan por fecha descendentemente.
  * @apiParam {String} [sort_property] Propiedad por la que ordenar los registros. Los posibles valores son "user". Por defecto se ordenan por "user".
- * @apiSampleRequest /api/users
+ * @apiSampleRequest /users
  */
 exports.findAllUsers = async (req, res) => {
   const { query } = req;
