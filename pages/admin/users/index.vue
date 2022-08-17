@@ -96,9 +96,57 @@
                 mdi-pencil
               </v-icon>
             </v-btn>
+            <v-btn
+              dark
+              fab
+              x-small
+              color="error"
+              @click="deleteUser(item)"
+            >
+              <v-icon
+                small
+                :title="deleteUserTooltip"
+              >
+                mdi-trash-can
+              </v-icon>
+            </v-btn>
           </template>
         </v-data-table>
       </v-card>
+      <v-dialog
+        v-model="dialog"
+        width="500"
+      >
+        <v-card>
+          <v-card-title class="text-h5 grey lighten-2">
+            {{ confirmDeleteDialogTitle }}
+          </v-card-title>
+
+          <v-card-text class="pt-5">
+            {{ confirmDeleteDialogText }}
+          </v-card-text>
+
+          <v-divider />
+
+          <v-card-actions>
+            <v-spacer />
+            <v-btn
+              color="primary"
+              text
+              @click="cancelDeleteUser()"
+            >
+              {{ cancelButtonText }}
+            </v-btn>
+            <v-btn
+              color="primary"
+              text
+              @click="confirmDeleteUser()"
+            >
+              {{ confirmButtonText }}
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </v-col>
   </v-row>
 </template>
@@ -178,8 +226,15 @@ export default {
         },
       ],
       editUserTooltip: this.$t('DASHBOARD.VIEWS.USERS.TABLE.ACTIONS.EDIT.TOOLTIP'),
+      deleteUserTooltip: this.$t('DASHBOARD.VIEWS.USERS.TABLE.ACTIONS.DELETE.TOOLTIP'),
       adminText: this.$t('ROLES.ADMIN.TEXT'),
       privilegedText: this.$t('ROLES.PRIVILEGED.TEXT'),
+      userToBeDeleted: null,
+      dialog: false,
+      confirmDeleteDialogTitle: this.$t('COMMON.CONFIRM_DELETE_DIALOG.TITLE'),
+      confirmDeleteDialogText: this.$t('COMMON.CONFIRM_DELETE_DIALOG.TEXT'),
+      cancelButtonText: this.$t('COMMON.BUTTON.CANCEL.TEXT'),
+      confirmButtonText: this.$t('COMMON.BUTTON.CONFIRM.TEXT'),
     };
   },
   async fetch() {
@@ -223,7 +278,7 @@ export default {
         sort_property: sortBy[0],
       });
 
-      this.$store.dispatch('users/getUsers');
+      return this.$store.dispatch('users/getUsers');
     },
     getRole(role) {
       if (role === utils.ROLES.ADMIN.VALUE) return this.adminText;
@@ -241,6 +296,28 @@ export default {
           id: user._id,
         },
       });
+    },
+    deleteUser(user) {
+      this.userToBeDeleted = user;
+      this.dialog = true;
+    },
+    cancelDeleteUser() {
+      this.userToBeDeleted = null;
+      this.dialog = false;
+    },
+    confirmDeleteUser() {
+      const userDeletedText = this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.MESSAGES.DELETED', {
+        user: this.userToBeDeleted.user,
+      });
+      // eslint-disable-next-line no-underscore-dangle
+      return this.$store.dispatch('users/deleteUser', { id: this.userToBeDeleted._id })
+        .then(() => this.$toast.success(userDeletedText, {
+          icon: 'check',
+        }))
+        .then(() => this.getUsers())
+        .finally(() => {
+          this.cancelDeleteUser();
+        });
     },
   },
 };
