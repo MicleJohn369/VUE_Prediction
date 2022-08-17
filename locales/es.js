@@ -1157,6 +1157,9 @@ export default {
           CREATE: {
             TITLE: 'Creación de usuario',
           },
+          EDIT: {
+            TITLE: 'Edición de usuario',
+          },
           USER: {
             LABEL: 'Usuario',
           },
