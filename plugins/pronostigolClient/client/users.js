@@ -28,6 +28,11 @@ function usersMethods(client) {
     })
       .then((response) => response.data);
   };
+
+  PronostigolClient.prototype.deleteUser = function deleteUser(id) {
+    return this.restClient.delete(`/${USERS}/${id}`)
+      .then((response) => response.data);
+  };
 }
 
 module.exports = usersMethods;

@@ -72,11 +72,12 @@ export default {
   },
   methods: {
     createUser() {
-      const { form } = this.$refs.createUserForm;
+      const { userForm } = this.$refs.createUserForm;
+
       const userCreatedText = this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.MESSAGES.CREATED', {
-        user: form.user,
+        user: userForm.user,
       });
-      return this.$store.dispatch('users/createUser', form)
+      return this.$store.dispatch('users/createUser', userForm)
         .then(() => this.$toast.success(userCreatedText, {
           icon: 'check',
         }))

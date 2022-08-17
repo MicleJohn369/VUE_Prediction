@@ -16,6 +16,13 @@ export default {
       SUBMIT: {
         TEXT: 'Guardar',
       },
+      CONFIRM: {
+        TEXT: 'Confirmar',
+      },
+    },
+    CONFIRM_DELETE_DIALOG: {
+      TITLE: '¿Estás seguro?',
+      TEXT: 'La eliminación se realizará de forma permanente y no podrá ser deshecha.',
     },
   },
   ROLES: {
@@ -1151,6 +1158,9 @@ export default {
             EDIT: {
               TOOLTIP: 'Editar usuario',
             },
+            DELETE: {
+              TOOLTIP: 'Eliminar usuario',
+            },
           },
         },
         USER_FORM: {
@@ -1171,6 +1181,8 @@ export default {
           },
           MESSAGES: {
             CREATED: 'El usuario <b>{user}</b> fue creado correctamente.',
+            EDITED: 'El usuario <b>{user}</b> fue actualizado correctamente.',
+            DELETED: 'El usuario <b>{user}</b> fue eliminado correctamente.',
           },
         },
       },

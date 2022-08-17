@@ -25,8 +25,11 @@ module.exports = function api(app) {
   users.route('/:id')
     .get(middlewares.isLogged(), middlewares.isAuthorized(['admin']), validate(
       validations.getUser,
-    ), UserCtrl.editUser)
-    .put(middlewares.isLogged(), middlewares.isAuthorized(['admin']), validate(validations.editUser), UserCtrl.editUser);
+    ), UserCtrl.findUser)
+    .put(middlewares.isLogged(), middlewares.isAuthorized(['admin']), validate(validations.editUser), UserCtrl.editUser)
+    .delete(middlewares.isLogged(), middlewares.isAuthorized(['admin']), validate(
+      validations.deleteUser,
+    ), UserCtrl.deleteUser);
 
   app.use('/users', users);
 };

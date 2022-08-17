@@ -32,4 +32,9 @@ module.exports = {
       password: Joi.string().required(),
     }),
   },
+  deleteUser: {
+    params: Joi.object({
+      id: Joi.string().hex().length(24),
+    }),
+  },
 };
