@@ -73,6 +73,20 @@ exports.findAllUsers = async (req, res) => {
   }
 };
 
+exports.findUser = async (req, res) => {
+  try {
+    const filters = {
+      _id: req.params.id,
+    };
+
+    const user = await Account.findOne(filters).exec();
+
+    return res.status(HTTP_CODES.OK).json(user);
+  } catch (err) {
+    return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).send(err.message);
+  }
+};
+
 exports.createUser = async (req, res) => {
   const { body } = req;
 
@@ -85,6 +99,21 @@ exports.createUser = async (req, res) => {
     });
     await account.save();
     return res.status(HTTP_CODES.CREATED).json();
+  } catch (err) {
+    return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).send(err.message);
+  }
+};
+
+exports.editUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userForm = req.body;
+
+    const user = await Account.findByIdAndUpdate(id, {
+      $set: userForm,
+    }).exec();
+
+    return res.status(HTTP_CODES.OK).json(user);
   } catch (err) {
     return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).send(err.message);
   }
