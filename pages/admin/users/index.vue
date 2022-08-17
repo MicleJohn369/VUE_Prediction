@@ -86,12 +86,7 @@
               fab
               x-small
               color="warning"
-              :to="localePath({
-                name: 'admin-user',
-                params: {
-                  id: item.id,
-                }
-              })"
+              :to="getEditUserRoute(item)"
               nuxt
             >
               <v-icon
@@ -237,6 +232,15 @@ export default {
     },
     toggleFilters() {
       this.showFilters = !this.showFilters;
+    },
+    getEditUserRoute(user) {
+      return this.localePath({
+        name: 'admin-users-id',
+        params: {
+          // eslint-disable-next-line no-underscore-dangle
+          id: user._id,
+        },
+      });
     },
   },
 };

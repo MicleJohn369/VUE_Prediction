@@ -10,7 +10,7 @@
           md="6"
         >
           <v-text-field
-            v-model="form.user"
+            v-model="userForm.user"
             :rules="rules.user"
             :label="userText"
             clearable
@@ -23,7 +23,7 @@
           md="6"
         >
           <v-autocomplete
-            v-model="form.role"
+            v-model="userForm.role"
             :rules="rules.role"
             :items="roles"
             :label="roleText"
@@ -39,7 +39,7 @@
           md="6"
         >
           <v-text-field
-            v-model="form.password"
+            v-model="userForm.password"
             type="password"
             :rules="rules.password"
             :label="passwordText"
@@ -80,7 +80,14 @@ export default {
   name: 'UserForm',
   props: {},
   data() {
+    const initialUserForm = {
+      user: '',
+      role: null,
+      password: '',
+    };
+
     return {
+      isEditMode: !!this.$route.params.id,
       rules: {
         user: [
           (v) => !!v || 'xoxName is required',
@@ -93,11 +100,8 @@ export default {
         ],
       },
       valid: false,
-      form: {
-        user: '',
-        role: null,
-        password: '',
-      },
+      initialUserForm,
+      userForm: utils.cloneObject(initialUserForm),
       userText: this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.USER.LABEL'),
       roleText: this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.ROLE.LABEL'),
       roles: [
@@ -115,6 +119,17 @@ export default {
     };
   },
   computed: {},
+  created() {
+    const userForm = {};
+
+    if (this.isEditMode) {
+      userForm.user = utils.cloneObject(this.$store.state.users.currentUser.user);
+      userForm.role = utils.cloneObject(this.$store.state.users.currentUser.role);
+      userForm.password = utils.cloneObject(this.$store.state.users.currentUser.password);
+    }
+
+    this.userForm = { ...this.userForm, ...userForm };
+  },
   methods: {
     async validateForm() {
       this.$refs.userForm.validate();

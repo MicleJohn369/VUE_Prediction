@@ -9,7 +9,7 @@ const { HTTP_CODES } = require('../constants');
 const Account = mongoose.model('Account');
 
 /**
- * @api {get} /auth/login Recurso para autenticar un usuario
+ * @api {post} /auth/login Recurso para autenticar un usuario
  * @apiName Login
  * @apiGroup Auth
  *
@@ -17,10 +17,10 @@ const Account = mongoose.model('Account');
  *
  * @apiVersion 2.1.0
  *
- * @apiParam {String} user Usuario a autenticar en la web.
- * @apiParam {String} password Contraseña vinculada al usuario a autenticar en la web.
+ * @apiBody {String} user Usuario a autenticar en la web.
+ * @apiBody {String} password Contraseña vinculada al usuario a autenticar en la web.
  *
- * @apiSampleRequest /api/auth/login
+ * @apiSampleRequest /auth/login
  */
 exports.login = async (req, res) => {
   const { body } = req;

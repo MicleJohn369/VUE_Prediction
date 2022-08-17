@@ -6,11 +6,8 @@ const middlewares = require('../../middlewares');
 /* eslint-disable camelcase */
 /* eslint-disable global-require */
 module.exports = function api(app) {
-  // const middlewares = require('../../middlewares');
-  // const { ROLES, HTTP_CODES } = require('../../constants');
-
   const express = require('express');
-  const user = express.Router();
+  const users = express.Router();
 
   const UserCtrl = require('../../controllers/users');
 
@@ -18,12 +15,18 @@ module.exports = function api(app) {
   const { validate } = require('express-validation');
   const validations = require('./validations');
 
-  user
+  users
     .route('/')
     .get(middlewares.isLogged(), validate(validations.getUsers, {}, {
       allowUnknown: true,
     }), UserCtrl.findAllUsers)
     .post(middlewares.isLogged(), middlewares.isAuthorized(['admin']), validate(validations.createUser), UserCtrl.createUser);
 
-  app.use('/users', user);
+  users.route('/:id')
+    .get(middlewares.isLogged(), middlewares.isAuthorized(['admin']), validate(
+      validations.getUser,
+    ), UserCtrl.editUser)
+    .put(middlewares.isLogged(), middlewares.isAuthorized(['admin']), validate(validations.editUser), UserCtrl.editUser);
+
+  app.use('/users', users);
 };
