@@ -118,3 +118,15 @@ exports.editUser = async (req, res) => {
     return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).send(err.message);
   }
 };
+
+exports.deleteUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const user = await Account.findByIdAndDelete(id).exec();
+
+    return res.status(HTTP_CODES.OK).json(user);
+  } catch (err) {
+    return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).send(err.message);
+  }
+};
