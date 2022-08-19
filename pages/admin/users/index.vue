@@ -171,7 +171,7 @@ export default {
       titleText: this.$t('DASHBOARD.VIEWS.USERS.TITLE'),
       items: [
         {
-          text: this.$t('DASHBOARD.BREADCRUMBS.DASHBOARD'),
+          text: this.$t('DASHBOARD.BREADCRUMBS.DASHBOARD.TEXT'),
           disabled: false,
           to: this.localePath({
             name: 'admin',
@@ -180,7 +180,7 @@ export default {
           exactPath: true,
         },
         {
-          text: this.$t('DASHBOARD.BREADCRUMBS.USERS'),
+          text: this.$t('DASHBOARD.BREADCRUMBS.USERS.TEXT'),
           disabled: true,
           to: this.localePath({
             name: 'admin-users',

@@ -39,7 +39,7 @@ export default {
       titleText: this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.CREATE.TITLE'),
       items: [
         {
-          text: this.$t('DASHBOARD.BREADCRUMBS.DASHBOARD'),
+          text: this.$t('DASHBOARD.BREADCRUMBS.DASHBOARD.TEXT'),
           disabled: false,
           to: this.localePath({
             name: 'admin',
@@ -48,7 +48,7 @@ export default {
           exactPath: true,
         },
         {
-          text: this.$t('DASHBOARD.BREADCRUMBS.USERS'),
+          text: this.$t('DASHBOARD.BREADCRUMBS.USERS.TEXT'),
           disabled: false,
           to: this.localePath({
             name: 'admin-users',
