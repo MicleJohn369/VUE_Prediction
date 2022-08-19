@@ -58,7 +58,7 @@ export default {
       valid: false,
       searchByLabel: this.$t('VIEWS.QUINIELA.STATS.STANDARD_STATS_FORM.FILTERS.SEARCH_BY.LABEL'),
       searchByOccurrencesLabel: this.$t('VIEWS.QUINIELA.STATS.STANDARD_STATS_FORM.FILTERS.SEARCH_BY.OPTIONS.OCCURRENCES.LABEL'),
-      searchText: this.$t('VIEWS.QUINIELA.STATS.STANDARD_STATS_FORM.FILTERS.SEARCH.TEXT'),
+      searchText: this.$t('COMMON.BUTTON.SEARCH.TEXT'),
     };
   },
   computed: {

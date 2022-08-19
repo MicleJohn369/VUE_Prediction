@@ -64,7 +64,7 @@ export default {
       valid: false,
       userText: this.$t('DASHBOARD.VIEWS.USERS.FILTERS.USER.LABEL'),
       roleText: this.$t('DASHBOARD.VIEWS.USERS.FILTERS.ROLE.LABEL'),
-      searchText: this.$t('VIEWS.QUINIELA.STATS.CUSTOM_STATS_FORM.FILTERS.SEARCH.TEXT'),
+      searchText: this.$t('COMMON.BUTTON.SEARCH.TEXT'),
       roles: [
         {
           name: this.$t('ROLES.ADMIN.TEXT'),

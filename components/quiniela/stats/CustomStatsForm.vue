@@ -164,7 +164,7 @@ export default {
       teamText: this.$t('VIEWS.QUINIELA.STATS.CUSTOM_STATS_FORM.FILTERS.TEAM.LABEL'),
       localTeamText: this.$t('VIEWS.QUINIELA.STATS.CUSTOM_STATS_FORM.FILTERS.LOCAL_TEAM.LABEL'),
       visitorTeamText: this.$t('VIEWS.QUINIELA.STATS.CUSTOM_STATS_FORM.FILTERS.VISITOR_TEAM.LABEL'),
-      searchText: this.$t('VIEWS.QUINIELA.STATS.CUSTOM_STATS_FORM.FILTERS.SEARCH.TEXT'),
+      searchText: this.$t('COMMON.BUTTON.SEARCH.TEXT'),
     };
   },
   computed: {
@@ -261,9 +261,11 @@ export default {
 
       if (this.valid) {
         if (this.searchBy === 'general' || this.searchBy === 'partido') {
+          // eslint-disable-next-line vue/no-mutating-props
           this.show.stats = true;
           await this.getStats();
         } else if (this.searchBy === 'equipo') {
+          // eslint-disable-next-line vue/no-mutating-props
           this.show.statsByPlace = true;
           await Promise.all([
             this.getStatsAsLocal(),
@@ -283,6 +285,7 @@ export default {
     },
     resetShow() {
       Object.keys(this.show).forEach((item) => {
+        // eslint-disable-next-line vue/no-mutating-props
         this.show[item] = false;
       });
     },

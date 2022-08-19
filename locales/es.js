@@ -19,6 +19,9 @@ export default {
       CONFIRM: {
         TEXT: 'Confirmar',
       },
+      SEARCH: {
+        TEXT: 'Buscar',
+      },
     },
     CONFIRM_DELETE_DIALOG: {
       TITLE: '¿Estás seguro?',
@@ -273,9 +276,6 @@ export default {
               REQUIRED: 'La temporada es obligatoria',
             },
           },
-          SEARCH: {
-            TEXT: 'Buscar',
-          },
         },
         TABLE: {
           DAY: {
@@ -367,9 +367,6 @@ export default {
                 REQUIRED: 'El equipo visitante es obligatorio',
               },
             },
-            SEARCH: {
-              TEXT: 'Buscar',
-            },
           },
         },
         GENERAL_STATS: {
@@ -410,9 +407,6 @@ export default {
                 },
               },
             },
-            SEARCH: {
-              TEXT: 'Buscar',
-            },
           },
         },
         STANDARD_STATS: {
@@ -442,9 +436,6 @@ export default {
             ERRORS: {
               REQUIRED: 'El año es obligatorio',
             },
-          },
-          SEARCH: {
-            TEXT: 'Buscar',
           },
         },
         TABLE: {
@@ -508,9 +499,6 @@ export default {
                   LABEL: 'Última aparición por reintegro',
                 },
               },
-            },
-            SEARCH: {
-              TEXT: 'Buscar',
             },
           },
         },
@@ -592,9 +580,6 @@ export default {
               REQUIRED: 'El año es obligatorio',
             },
           },
-          SEARCH: {
-            TEXT: 'Buscar',
-          },
         },
         TABLE: {
           RAFFLE: {
@@ -657,9 +642,6 @@ export default {
                   LABEL: 'Última aparición por reintegro',
                 },
               },
-            },
-            SEARCH: {
-              TEXT: 'Buscar',
             },
           },
         },
@@ -741,9 +723,6 @@ export default {
               REQUIRED: 'El año es obligatorio',
             },
           },
-          SEARCH: {
-            TEXT: 'Buscar',
-          },
         },
         TABLE: {
           RAFFLE: {
@@ -803,9 +782,6 @@ export default {
                   LABEL: 'Última aparición por número clave',
                 },
               },
-            },
-            SEARCH: {
-              TEXT: 'Buscar',
             },
           },
         },
@@ -887,9 +863,6 @@ export default {
               REQUIRED: 'El año es obligatorio',
             },
           },
-          SEARCH: {
-            TEXT: 'Buscar',
-          },
         },
         TABLE: {
           RAFFLE: {
@@ -949,9 +922,6 @@ export default {
                   LABEL: 'Última aparición por estrella',
                 },
               },
-            },
-            SEARCH: {
-              TEXT: 'Buscar',
             },
           },
         },

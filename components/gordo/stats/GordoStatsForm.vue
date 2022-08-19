@@ -87,7 +87,7 @@ export default {
       searchByOccurrencesBySpecialNumberLabel: this.$t('VIEWS.GORDO.STATS.STATS_FORM.FILTERS.SEARCH_BY.OPTIONS.OCCURRENCES_BY_SPECIAL_NUMBER.LABEL'),
       searchByLastDateByNumberLabel: this.$t('VIEWS.GORDO.STATS.STATS_FORM.FILTERS.SEARCH_BY.OPTIONS.LAST_DATE_BY_NUMBER.LABEL'),
       searchByLastDateBySpecialNumberLabel: this.$t('VIEWS.GORDO.STATS.STATS_FORM.FILTERS.SEARCH_BY.OPTIONS.LAST_DATE_BY_SPECIAL_NUMBER.LABEL'),
-      searchText: this.$t('VIEWS.GORDO.STATS.STATS_FORM.FILTERS.SEARCH.TEXT'),
+      searchText: this.$t('COMMON.BUTTON.SEARCH.TEXT'),
     };
   },
   computed: {
@@ -116,11 +116,13 @@ export default {
       this.$refs.form.validate();
 
       if (this.valid) {
+        // eslint-disable-next-line vue/no-mutating-props
         this.show[this.searchBy] = true;
       }
     },
     resetShow() {
       Object.keys(this.show).forEach((item) => {
+        // eslint-disable-next-line vue/no-mutating-props
         this.show[item] = false;
       });
     },

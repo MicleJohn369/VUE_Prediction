@@ -181,7 +181,7 @@ export default {
       titleText: this.$t('VIEWS.QUINIELA.TICKETS.TITLE'),
       ticketsIntroText: this.$t('VIEWS.QUINIELA.TICKETS.INTRO_TEXT'),
       seasonText: this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEASON.LABEL'),
-      searchText: this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEARCH.TEXT'),
+      searchText: this.$t('COMMON.BUTTON.SEARCH.TEXT'),
       detailTicketTooltip: this.$t('VIEWS.QUINIELA.TICKETS.TABLE.ACTIONS.SEE.TOOLTIP'),
     };
   },
