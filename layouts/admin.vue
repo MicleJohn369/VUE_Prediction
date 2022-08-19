@@ -148,7 +148,7 @@ export default {
               icon: 'mdi-shield-star',
               title: this.$t('DASHBOARD.MENU.QUINIELA.TEAMS.TEXT'),
               to: this.localePath({
-                name: 'quiniela-teams',
+                name: 'admin-quiniela-teams',
               }),
             }, {
               icon: 'mdi-podium',
