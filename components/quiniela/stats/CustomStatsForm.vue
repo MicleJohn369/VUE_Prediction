@@ -171,7 +171,7 @@ export default {
     ...mapState('quiniela', {
       seasons: (state) => state.seasons,
       competitions: (state) => state.competitions,
-      teams: (state) => state.teams,
+      teams: (state) => state.teams.data,
     }),
     season: {
       get() {
