@@ -87,7 +87,7 @@ export default {
       searchByOccurrencesByReimbursementLabel: this.$t('VIEWS.PRIMITIVA.STATS.STATS_FORM.FILTERS.SEARCH_BY.OPTIONS.OCCURRENCES_BY_REIMBURSEMENT.LABEL'),
       searchByLastDateByNumberLabel: this.$t('VIEWS.PRIMITIVA.STATS.STATS_FORM.FILTERS.SEARCH_BY.OPTIONS.LAST_DATE_BY_NUMBER.LABEL'),
       searchByLastDateByReimbursementLabel: this.$t('VIEWS.PRIMITIVA.STATS.STATS_FORM.FILTERS.SEARCH_BY.OPTIONS.LAST_DATE_BY_REIMBURSEMENT.LABEL'),
-      searchText: this.$t('VIEWS.PRIMITIVA.STATS.STATS_FORM.FILTERS.SEARCH.TEXT'),
+      searchText: this.$t('COMMON.BUTTON.SEARCH.TEXT'),
     };
   },
   computed: {
@@ -116,11 +116,13 @@ export default {
       this.$refs.form.validate();
 
       if (this.valid) {
+        // eslint-disable-next-line vue/no-mutating-props
         this.show[this.searchBy] = true;
       }
     },
     resetShow() {
       Object.keys(this.show).forEach((item) => {
+        // eslint-disable-next-line vue/no-mutating-props
         this.show[item] = false;
       });
     },

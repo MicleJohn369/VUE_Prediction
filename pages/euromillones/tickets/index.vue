@@ -179,7 +179,7 @@ export default {
       titleText: this.$t('VIEWS.EUROMILLONES.TICKETS.TITLE'),
       ticketsIntroText: this.$t('VIEWS.EUROMILLONES.TICKETS.INTRO_TEXT'),
       yearText: this.$t('VIEWS.EUROMILLONES.TICKETS.FILTERS.YEAR.LABEL'),
-      searchText: this.$t('VIEWS.EUROMILLONES.TICKETS.FILTERS.SEARCH.TEXT'),
+      searchText: this.$t('COMMON.BUTTON.SEARCH.TEXT'),
       detailTicketTooltip: this.$t('VIEWS.EUROMILLONES.TICKETS.TABLE.ACTIONS.SEE.TOOLTIP'),
     };
   },

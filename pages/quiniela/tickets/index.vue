@@ -181,7 +181,7 @@ export default {
       titleText: this.$t('VIEWS.QUINIELA.TICKETS.TITLE'),
       ticketsIntroText: this.$t('VIEWS.QUINIELA.TICKETS.INTRO_TEXT'),
       seasonText: this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEASON.LABEL'),
-      searchText: this.$t('VIEWS.QUINIELA.TICKETS.FILTERS.SEARCH.TEXT'),
+      searchText: this.$t('COMMON.BUTTON.SEARCH.TEXT'),
       detailTicketTooltip: this.$t('VIEWS.QUINIELA.TICKETS.TABLE.ACTIONS.SEE.TOOLTIP'),
     };
   },
@@ -191,7 +191,7 @@ export default {
       sort_type: this.options.sortDesc[0] ? 'desc' : 'asc',
     });
 
-    this.$store.commit('quiniela/setSeasonPagination', {
+    this.$store.commit('quiniela/setSeasonsPagination', {
       sort_type: 'desc',
     });
 

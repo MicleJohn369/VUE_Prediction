@@ -208,7 +208,7 @@ export const mutations = {
   setTicketsFilters(state, filters) {
     Vue.set(state, 'ticketsFilters', filters);
   },
-  setTicketPagination(state, pagination) {
+  setTicketsPagination(state, pagination) {
     Vue.set(state, 'ticketsPagination', pagination);
   },
   setTicket(state, ticket) {

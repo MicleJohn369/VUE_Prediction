@@ -10,23 +10,9 @@
           md="6"
         >
           <v-text-field
-            v-model="user"
-            :rules="rules.user"
-            :label="userText"
-            clearable
-          />
-        </v-col>
-        <v-col
-          cols="12"
-          md="6"
-        >
-          <v-autocomplete
-            v-model="role"
-            :rules="rules.role"
-            :items="roles"
-            :label="roleText"
-            item-text="name"
-            item-value="value"
+            v-model="name"
+            :rules="rules.name"
+            :label="nameText"
             clearable
           />
         </v-col>
@@ -53,17 +39,15 @@
 import utils from '@/utils';
 
 export default {
-  name: 'UsersFiltersForm',
+  name: 'QuinielaTeamsFiltersForm',
   props: {},
   data() {
     return {
       rules: {
-        user: [],
-        role: [],
+        name: [],
       },
       valid: false,
-      userText: this.$t('DASHBOARD.VIEWS.USERS.FILTERS.USER.LABEL'),
-      roleText: this.$t('DASHBOARD.VIEWS.USERS.FILTERS.ROLE.LABEL'),
+      nameText: this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.FILTERS.NAME.LABEL'),
       searchText: this.$t('COMMON.BUTTON.SEARCH.TEXT'),
       roles: [
         {
@@ -77,27 +61,15 @@ export default {
     };
   },
   computed: {
-    user: {
+    name: {
       get() {
-        return this.$store.state.users.usersFilters.user;
+        return this.$store.state.quiniela.teamsFilters.name;
       },
       set(value) {
-        const filters = this.$store.state.users.usersFilters;
-        this.$store.commit('users/setUsersFilters', {
+        const filters = this.$store.state.quiniela.teamsFilters;
+        this.$store.commit('quiniela/setTeamsFilters', {
           ...filters,
-          user: value,
-        });
-      },
-    },
-    role: {
-      get() {
-        return this.$store.state.users.usersFilters.role;
-      },
-      set(value) {
-        const filters = this.$store.state.users.usersFilters;
-        this.$store.commit('users/setUsersFilters', {
-          ...filters,
-          role: value,
+          name: value,
         });
       },
     },
@@ -107,11 +79,8 @@ export default {
       this.$refs.form.validate();
 
       if (this.valid) {
-        await this.getUsers();
+        this.$emit('onSearch');
       }
-    },
-    getUsers() {
-      return this.$store.dispatch('users/getUsers');
     },
   },
 };

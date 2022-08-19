@@ -28,19 +28,19 @@
                 {{ filtersButtonText }}
               </v-btn>
               <v-btn
-                id="create-user-btn"
+                id="create-team-btn"
                 class="float-right"
                 color="success"
                 dark
                 nuxt
                 :to="localePath({
-                  name: 'admin-users-create'
+                  name: 'admin-quiniela-teams-create'
                 })"
               >
                 <v-icon left>
                   mdi-plus
                 </v-icon>
-                {{ createUserButtonText }}
+                {{ createTeamButtonText }}
               </v-btn>
             </v-col>
             <v-expand-transition>
@@ -50,7 +50,7 @@
                 md="8"
                 offset-md="2"
               >
-                <UsersFiltersForm />
+                <QuinielaTeamsFiltersForm @onSearch="search" />
               </v-col>
             </v-expand-transition>
           </v-row>
@@ -58,7 +58,7 @@
         <v-data-table
           class="mt-5"
           :headers="headers"
-          :items="users"
+          :items="teams"
           :options.sync="options"
           :server-items-length="total"
           :loading="loading"
@@ -86,12 +86,12 @@
               fab
               x-small
               color="warning"
-              :to="getEditUserRoute(item)"
+              :to="getEditTeamRoute(item)"
               nuxt
             >
               <v-icon
                 small
-                :title="editUserTooltip"
+                :title="editTeamTooltip"
               >
                 mdi-pencil
               </v-icon>
@@ -101,11 +101,11 @@
               fab
               x-small
               color="error"
-              @click="deleteUser(item)"
+              @click="deleteTeam(item)"
             >
               <v-icon
                 small
-                :title="deleteUserTooltip"
+                :title="deleteTeamTooltip"
               >
                 mdi-trash-can
               </v-icon>
@@ -133,14 +133,14 @@
             <v-btn
               color="primary"
               text
-              @click="cancelDeleteUser()"
+              @click="canceldeleteTeam()"
             >
               {{ cancelButtonText }}
             </v-btn>
             <v-btn
               color="primary"
               text
-              @click="confirmDeleteUser()"
+              @click="confirmdeleteTeam()"
             >
               {{ confirmButtonText }}
             </v-btn>
@@ -157,18 +157,23 @@ import { mapState } from 'vuex';
 import utils from '@/utils';
 import getFormattedDate from '@/mixins/getFormattedDate';
 
-import UsersFiltersForm from '@/components/admin/users/UsersFiltersForm.vue';
+import QuinielaTeamsFiltersForm from '~/components/admin/quiniela/teams/QuinielaTeamsFiltersForm.vue';
 
 export default {
   components: {
-    UsersFiltersForm,
+    QuinielaTeamsFiltersForm,
+  },
+  nuxtI18n: {
+    paths: {
+      es: '/admin/quiniela/equipos',
+    },
   },
   mixins: [getFormattedDate],
   layout: 'admin',
   middleware: 'auth',
   data() {
     return {
-      titleText: this.$t('DASHBOARD.VIEWS.USERS.TITLE'),
+      titleText: this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TITLE'),
       items: [
         {
           text: this.$t('DASHBOARD.BREADCRUMBS.DASHBOARD.TEXT'),
@@ -180,58 +185,49 @@ export default {
           exactPath: true,
         },
         {
-          text: this.$t('DASHBOARD.BREADCRUMBS.USERS.TEXT'),
+          text: this.$t('DASHBOARD.BREADCRUMBS.QUINIELA.TEXT'),
+          disabled: true,
+          nuxt: true,
+          exactPath: true,
+        },
+        {
+          text: this.$t('DASHBOARD.BREADCRUMBS.QUINIELA.TEAMS.TEXT'),
           disabled: true,
           to: this.localePath({
-            name: 'admin-users',
+            name: 'admin-quiniela-teams',
           }),
           nuxt: true,
           exactPath: true,
         },
       ],
       showFilters: false,
-      filtersButtonText: this.$t('DASHBOARD.VIEWS.USERS.SHOW_FILTERS.TEXT'),
-      createUserButtonText: this.$t('DASHBOARD.VIEWS.USERS.CREATE_USER_BUTTON.TEXT'),
+      filtersButtonText: this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.SHOW_FILTERS.TEXT'),
+      createTeamButtonText: this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.CREATE_TEAM_BUTTON.TEXT'),
       options: {
         mustSort: true,
-        sortBy: ['user'],
-        sortDesc: [true],
+        sortBy: ['name'],
+        sortDesc: [false],
         page: 1,
         itemsPerPage: 10,
       },
       headers: [
         {
-          text: this.$t('DASHBOARD.VIEWS.USERS.TABLE.USER.LABEL'),
+          text: this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TABLE.NAME.LABEL'),
           align: 'center',
           sortable: true,
-          value: 'user',
+          value: 'name',
         }, {
-          text: this.$t('DASHBOARD.VIEWS.USERS.TABLE.ROLE.LABEL'),
-          align: 'center',
-          sortable: true,
-          value: 'role',
-        }, {
-          text: this.$t('DASHBOARD.VIEWS.USERS.TABLE.PASSWORD.LABEL'),
-          align: 'center',
-          sortable: false,
-          value: 'password',
-        }, {
-          text: this.$t('DASHBOARD.VIEWS.USERS.TABLE.REGISTER_DATE.LABEL'),
-          align: 'center',
-          sortable: true,
-          value: 'date',
-        }, {
-          text: this.$t('DASHBOARD.VIEWS.USERS.TABLE.ACTIONS.LABEL'),
+          text: this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TABLE.ACTIONS.LABEL'),
           align: 'center',
           sortable: false,
           value: 'actions',
         },
       ],
-      editUserTooltip: this.$t('DASHBOARD.VIEWS.USERS.TABLE.ACTIONS.EDIT.TOOLTIP'),
-      deleteUserTooltip: this.$t('DASHBOARD.VIEWS.USERS.TABLE.ACTIONS.DELETE.TOOLTIP'),
+      editTeamTooltip: this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TABLE.ACTIONS.EDIT.TOOLTIP'),
+      deleteTeamTooltip: this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TABLE.ACTIONS.DELETE.TOOLTIP'),
       adminText: this.$t('ROLES.ADMIN.TEXT'),
       privilegedText: this.$t('ROLES.PRIVILEGED.TEXT'),
-      userToBeDeleted: null,
+      teamToBeDeleted: null,
       dialog: false,
       confirmDeleteDialogTitle: this.$t('COMMON.CONFIRM_DELETE_DIALOG.TITLE'),
       confirmDeleteDialogText: this.$t('COMMON.CONFIRM_DELETE_DIALOG.TEXT'),
@@ -244,37 +240,38 @@ export default {
       sortBy, sortDesc, page, itemsPerPage,
     } = this.options;
 
-    this.$store.commit('users/setUsersPagination', {
+    this.$store.commit('quiniela/setTeamsPagination', {
       page,
       per_page: itemsPerPage,
       sort_type: sortDesc[0] ? 'desc' : 'asc',
       sort_property: sortBy[0],
     });
 
-    return this.$store.dispatch('users/getUsers');
+    return this.$store.dispatch('quiniela/getTeams');
   },
   head() {
     return {
-      title: this.$t('DASHBOARD.VIEWS.USERS.TITLE'),
+      title: this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TITLE'),
     };
   },
   computed: {
-    ...mapState('users', {
+    ...mapState('quiniela', {
       loading: 'loading',
-      users: (state) => state.users.data,
-      total: (state) => state.users.total,
+      teams: (state) => state.teams.data,
+      total: (state) => state.teams.total,
     }),
   },
   watch: {
     options: {
       handler() {
-        this.getUsers();
+        debugger;
+        this.getTeams();
       },
       deep: true,
     },
   },
   methods: {
-    getUsers() {
+    getTeams() {
       if (this.loading) {
         return;
       }
@@ -283,7 +280,7 @@ export default {
         sortBy, sortDesc, page, itemsPerPage,
       } = this.options;
 
-      this.$store.commit('users/setUsersPagination', {
+      this.$store.commit('quiniela/setTeamsPagination', {
         page,
         per_page: itemsPerPage,
         sort_type: sortDesc[0] ? 'desc' : 'asc',
@@ -291,7 +288,7 @@ export default {
       });
 
       // eslint-disable-next-line consistent-return
-      return this.$store.dispatch('users/getUsers');
+      return this.$store.dispatch('quiniela/getTeams');
     },
     getRole(role) {
       if (role === utils.ROLES.ADMIN.VALUE) return this.adminText;
@@ -301,36 +298,50 @@ export default {
     toggleFilters() {
       this.showFilters = !this.showFilters;
     },
-    getEditUserRoute(user) {
+    getEditTeamRoute(team) {
       return this.localePath({
-        name: 'admin-users-id',
+        name: 'admin-teams-id',
         params: {
           // eslint-disable-next-line no-underscore-dangle
-          id: user._id,
+          id: team._id,
         },
       });
     },
-    deleteUser(user) {
-      this.userToBeDeleted = user;
+    deleteTeam(team) {
+      this.teamToBeDeleted = team;
       this.dialog = true;
     },
-    cancelDeleteUser() {
-      this.userToBeDeleted = null;
+    cancelDeleteTeam() {
+      this.teamToBeDeleted = null;
       this.dialog = false;
     },
-    confirmDeleteUser() {
-      const userDeletedText = this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.MESSAGES.DELETED', {
-        user: this.userToBeDeleted.user,
+    confirmDeleteTeam() {
+      const teamDeletedText = this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TEAM_FORM.MESSAGES.DELETED', {
+        team: this.teamToBeDeleted.name,
       });
       // eslint-disable-next-line no-underscore-dangle
-      return this.$store.dispatch('users/deleteUser', { id: this.userToBeDeleted._id })
-        .then(() => this.$toast.success(userDeletedText, {
+      return this.$store.dispatch('quiniela/deleteTeam', { id: this.teamToBeDeleted._id })
+        .then(() => this.$toast.success(teamDeletedText, {
           icon: 'check',
         }))
-        .then(() => this.getUsers())
+        .then(() => this.getTeams())
         .finally(() => {
-          this.cancelDeleteUser();
+          this.cancelDeleteTeam();
         });
+    },
+    search() {
+      const {
+        sortBy, sortDesc, itemsPerPage,
+      } = this.options;
+
+      this.$store.commit('quiniela/setTeamsPagination', {
+        page: 1,
+        per_page: itemsPerPage,
+        sort_type: sortDesc[0] ? 'desc' : 'asc',
+        sort_property: sortBy[0],
+      });
+
+      return this.$store.dispatch('quiniela/getTeams');
     },
   },
 };

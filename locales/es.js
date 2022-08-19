@@ -19,6 +19,9 @@ export default {
       CONFIRM: {
         TEXT: 'Confirmar',
       },
+      SEARCH: {
+        TEXT: 'Buscar',
+      },
     },
     CONFIRM_DELETE_DIALOG: {
       TITLE: '¿Estás seguro?',
@@ -273,9 +276,6 @@ export default {
               REQUIRED: 'La temporada es obligatoria',
             },
           },
-          SEARCH: {
-            TEXT: 'Buscar',
-          },
         },
         TABLE: {
           DAY: {
@@ -367,9 +367,6 @@ export default {
                 REQUIRED: 'El equipo visitante es obligatorio',
               },
             },
-            SEARCH: {
-              TEXT: 'Buscar',
-            },
           },
         },
         GENERAL_STATS: {
@@ -410,9 +407,6 @@ export default {
                 },
               },
             },
-            SEARCH: {
-              TEXT: 'Buscar',
-            },
           },
         },
         STANDARD_STATS: {
@@ -442,9 +436,6 @@ export default {
             ERRORS: {
               REQUIRED: 'El año es obligatorio',
             },
-          },
-          SEARCH: {
-            TEXT: 'Buscar',
           },
         },
         TABLE: {
@@ -508,9 +499,6 @@ export default {
                   LABEL: 'Última aparición por reintegro',
                 },
               },
-            },
-            SEARCH: {
-              TEXT: 'Buscar',
             },
           },
         },
@@ -592,9 +580,6 @@ export default {
               REQUIRED: 'El año es obligatorio',
             },
           },
-          SEARCH: {
-            TEXT: 'Buscar',
-          },
         },
         TABLE: {
           RAFFLE: {
@@ -657,9 +642,6 @@ export default {
                   LABEL: 'Última aparición por reintegro',
                 },
               },
-            },
-            SEARCH: {
-              TEXT: 'Buscar',
             },
           },
         },
@@ -741,9 +723,6 @@ export default {
               REQUIRED: 'El año es obligatorio',
             },
           },
-          SEARCH: {
-            TEXT: 'Buscar',
-          },
         },
         TABLE: {
           RAFFLE: {
@@ -803,9 +782,6 @@ export default {
                   LABEL: 'Última aparición por número clave',
                 },
               },
-            },
-            SEARCH: {
-              TEXT: 'Buscar',
             },
           },
         },
@@ -887,9 +863,6 @@ export default {
               REQUIRED: 'El año es obligatorio',
             },
           },
-          SEARCH: {
-            TEXT: 'Buscar',
-          },
         },
         TABLE: {
           RAFFLE: {
@@ -949,9 +922,6 @@ export default {
                   LABEL: 'Última aparición por estrella',
                 },
               },
-            },
-            SEARCH: {
-              TEXT: 'Buscar',
             },
           },
         },
@@ -1120,8 +1090,18 @@ export default {
       },
     },
     BREADCRUMBS: {
-      DASHBOARD: 'Dashboard',
-      USERS: 'Usuarios',
+      DASHBOARD: {
+        TEXT: 'Dashboard',
+      },
+      USERS: {
+        TEXT: 'Usuarios',
+      },
+      QUINIELA: {
+        TEXT: 'Quiniela',
+        TEAMS: {
+          TEXT: 'Equipos',
+        },
+      },
     },
     VIEWS: {
       USERS: {
@@ -1183,6 +1163,52 @@ export default {
             CREATED: 'El usuario <b>{user}</b> fue creado correctamente.',
             EDITED: 'El usuario <b>{user}</b> fue actualizado correctamente.',
             DELETED: 'El usuario <b>{user}</b> fue eliminado correctamente.',
+          },
+        },
+      },
+      QUINIELA: {
+        TEAMS: {
+          TITLE: 'Equipos',
+          SHOW_FILTERS: {
+            TEXT: 'Filtros',
+          },
+          FILTERS: {
+            NAME: {
+              LABEL: 'Nombre',
+            },
+          },
+          CREATE_TEAM_BUTTON: {
+            TEXT: 'Añadir equipo',
+          },
+          TABLE: {
+            NAME: {
+              LABEL: 'Nombre',
+            },
+            ACTIONS: {
+              LABEL: 'Acciones',
+              EDIT: {
+                TOOLTIP: 'Editar equipo',
+              },
+              DELETE: {
+                TOOLTIP: 'Eliminar equipo',
+              },
+            },
+          },
+          TEAM_FORM: {
+            CREATE: {
+              TITLE: 'Creación de equipo',
+            },
+            EDIT: {
+              TITLE: 'Edición de equipo',
+            },
+            NAME: {
+              LABEL: 'Nombre',
+            },
+            MESSAGES: {
+              CREATED: 'El equipo <b>{team}</b> fue creado correctamente.',
+              EDITED: 'El equipo <b>{team}</b> fue actualizado correctamente.',
+              DELETED: 'El equipo <b>{team}</b> fue eliminado correctamente.',
+            },
           },
         },
       },

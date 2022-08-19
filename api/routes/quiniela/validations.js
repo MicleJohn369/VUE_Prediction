@@ -15,7 +15,13 @@ module.exports = {
   },
   getTeams: {
     query: Joi.object({
+      page: Joi.number()
+        .min(1),
+      per_page: Joi.number()
+        .min(1),
       sort_type: Joi.string().valid('asc', 'desc'),
+      sort_property: Joi.string().valid('name'),
+      name: Joi.string(),
     }),
   },
   getSeasons: {

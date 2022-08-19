@@ -56,6 +56,7 @@ export const state = () => ({
     'M-M',
   ],
   loading: true,
+  teamsFilters: {},
 });
 
 export const actions = {
@@ -113,7 +114,7 @@ export const actions = {
   getCompetitions({ state, commit }) {
     commit('setIsLoading', true);
     return Vue.pronostigolClient.getQuinielaCompetitions({
-      ...state.competitionPagination,
+      ...state.competitionsPagination,
     })
       .then((competitions) => commit('setCompetitions', competitions))
       .finally(() => commit('setIsLoading', false));
@@ -123,7 +124,10 @@ export const actions = {
    */
   getTeams({ state, commit }) {
     commit('setIsLoading', true);
+    const teamsFilters = { ...state.teamsFilters };
+
     return Vue.pronostigolClient.getQuinielaTeams({
+      ...teamsFilters,
       ...state.teamsPagination,
     })
       .then((teams) => commit('setTeams', teams))
@@ -250,7 +254,7 @@ export const mutations = {
   setTicketsFilters(state, filters) {
     Vue.set(state, 'ticketsFilters', filters);
   },
-  setTicketPagination(state, pagination) {
+  setTicketsPagination(state, pagination) {
     Vue.set(state, 'ticketsPagination', pagination);
   },
   setTicket(state, ticket) {
@@ -262,7 +266,7 @@ export const mutations = {
   setSeasons(state, seasons) {
     Vue.set(state, 'seasons', seasons);
   },
-  setSeasonPagination(state, pagination) {
+  setSeasonsPagination(state, pagination) {
     Vue.set(state, 'seasonsPagination', pagination);
   },
   /**
@@ -271,8 +275,8 @@ export const mutations = {
   setCompetitions(state, competitions) {
     Vue.set(state, 'competitions', competitions);
   },
-  setCompetitionPagination(state, pagination) {
-    Vue.set(state, 'competitionPagination', pagination);
+  setCompetitionsPagination(state, pagination) {
+    Vue.set(state, 'competitionsPagination', pagination);
   },
   /**
    * Teams
@@ -280,8 +284,11 @@ export const mutations = {
   setTeams(state, teams) {
     Vue.set(state, 'teams', teams);
   },
-  setTeamPagination(state, pagination) {
+  setTeamsPagination(state, pagination) {
     Vue.set(state, 'teamsPagination', pagination);
+  },
+  setTeamsFilters(state, filters) {
+    Vue.set(state, 'teamsFilters', filters);
   },
   /**
    * Stats

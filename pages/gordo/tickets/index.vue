@@ -179,7 +179,7 @@ export default {
       titleText: this.$t('VIEWS.GORDO.TICKETS.TITLE'),
       ticketsIntroText: this.$t('VIEWS.GORDO.TICKETS.INTRO_TEXT'),
       yearText: this.$t('VIEWS.GORDO.TICKETS.FILTERS.YEAR.LABEL'),
-      searchText: this.$t('VIEWS.GORDO.TICKETS.FILTERS.SEARCH.TEXT'),
+      searchText: this.$t('COMMON.BUTTON.SEARCH.TEXT'),
       detailTicketTooltip: this.$t('VIEWS.GORDO.TICKETS.TABLE.ACTIONS.SEE.TOOLTIP'),
     };
   },

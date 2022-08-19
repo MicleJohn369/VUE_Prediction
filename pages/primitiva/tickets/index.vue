@@ -179,7 +179,7 @@ export default {
       titleText: this.$t('VIEWS.PRIMITIVA.TICKETS.TITLE'),
       ticketsIntroText: this.$t('VIEWS.PRIMITIVA.TICKETS.INTRO_TEXT'),
       yearText: this.$t('VIEWS.PRIMITIVA.TICKETS.FILTERS.YEAR.LABEL'),
-      searchText: this.$t('VIEWS.PRIMITIVA.TICKETS.FILTERS.SEARCH.TEXT'),
+      searchText: this.$t('COMMON.BUTTON.SEARCH.TEXT'),
       detailTicketTooltip: this.$t('VIEWS.PRIMITIVA.TICKETS.TABLE.ACTIONS.SEE.TOOLTIP'),
     };
   },

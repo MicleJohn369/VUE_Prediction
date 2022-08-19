@@ -75,7 +75,7 @@ export const mutations = {
   setUsersFilters(state, filters) {
     Vue.set(state, 'usersFilters', filters);
   },
-  setUserPagination(state, pagination) {
+  setUsersPagination(state, pagination) {
     Vue.set(state, 'usersPagination', pagination);
   },
   setUser(state, user) {
