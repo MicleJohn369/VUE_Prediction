@@ -83,11 +83,13 @@ export default {
       this.$refs.form.validate();
 
       if (this.valid) {
+        // eslint-disable-next-line vue/no-mutating-props
         this.show.standardStats = true;
       }
     },
     resetShow() {
       Object.keys(this.show).forEach((item) => {
+        // eslint-disable-next-line vue/no-mutating-props
         this.show[item] = false;
       });
     },

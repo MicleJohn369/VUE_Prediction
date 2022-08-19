@@ -168,14 +168,19 @@ export default {
         statsByPlace: false,
         standardStats: false,
       },
+      teamsOptions: {
+        mustSort: true,
+        sortBy: ['name'],
+        sortDesc: [false],
+      },
     };
   },
   async fetch() {
-    this.$store.commit('quiniela/setSeasonPagination', {
+    this.$store.commit('quiniela/setSeasonsPagination', {
       sort_type: 'desc',
     });
 
-    this.$store.commit('quiniela/setCompetitionPagination', {
+    this.$store.commit('quiniela/setCompetitionsPagination', {
       sort_type: 'asc',
     });
 

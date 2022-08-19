@@ -191,7 +191,7 @@ export default {
       sort_type: this.options.sortDesc[0] ? 'desc' : 'asc',
     });
 
-    this.$store.commit('quiniela/setSeasonPagination', {
+    this.$store.commit('quiniela/setSeasonsPagination', {
       sort_type: 'desc',
     });
 

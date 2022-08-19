@@ -238,9 +238,9 @@ export default {
     };
   },
   async fetch() {
-    this.$store.commit('users/setUserPagination', {
       sort_property: this.options.sortBy[0],
       sort_type: this.options.sortDesc[0] ? 'desc' : 'asc',
+    this.$store.commit('users/setUsersPagination', {
     });
 
     return this.$store.dispatch('users/getUsers');
@@ -271,7 +271,7 @@ export default {
         sortBy, sortDesc, page, itemsPerPage,
       } = this.options;
 
-      this.$store.commit('users/setUserPagination', {
+      this.$store.commit('users/setUsersPagination', {
         page,
         per_page: itemsPerPage,
         sort_type: sortDesc[0] ? 'desc' : 'asc',
