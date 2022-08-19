@@ -196,6 +196,8 @@ export default {
         mustSort: true,
         sortBy: ['user'],
         sortDesc: [true],
+        page: 1,
+        itemsPerPage: 10,
       },
       headers: [
         {
@@ -238,9 +240,15 @@ export default {
     };
   },
   async fetch() {
-      sort_property: this.options.sortBy[0],
-      sort_type: this.options.sortDesc[0] ? 'desc' : 'asc',
+    const {
+      sortBy, sortDesc, page, itemsPerPage,
+    } = this.options;
+
     this.$store.commit('users/setUsersPagination', {
+      page,
+      per_page: itemsPerPage,
+      sort_type: sortDesc[0] ? 'desc' : 'asc',
+      sort_property: sortBy[0],
     });
 
     return this.$store.dispatch('users/getUsers');
@@ -267,6 +275,10 @@ export default {
   },
   methods: {
     getUsers() {
+      if (this.loading) {
+        return;
+      }
+
       const {
         sortBy, sortDesc, page, itemsPerPage,
       } = this.options;
@@ -278,6 +290,7 @@ export default {
         sort_property: sortBy[0],
       });
 
+      // eslint-disable-next-line consistent-return
       return this.$store.dispatch('users/getUsers');
     },
     getRole(role) {
