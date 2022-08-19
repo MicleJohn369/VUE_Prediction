@@ -1090,8 +1090,18 @@ export default {
       },
     },
     BREADCRUMBS: {
-      DASHBOARD: 'Dashboard',
-      USERS: 'Usuarios',
+      DASHBOARD: {
+        TEXT: 'Dashboard',
+      },
+      USERS: {
+        TEXT: 'Usuarios',
+      },
+      QUINIELA: {
+        TEXT: 'Quiniela',
+        TEAMS: {
+          TEXT: 'Equipos',
+        },
+      },
     },
     VIEWS: {
       USERS: {
@@ -1153,6 +1163,52 @@ export default {
             CREATED: 'El usuario <b>{user}</b> fue creado correctamente.',
             EDITED: 'El usuario <b>{user}</b> fue actualizado correctamente.',
             DELETED: 'El usuario <b>{user}</b> fue eliminado correctamente.',
+          },
+        },
+      },
+      QUINIELA: {
+        TEAMS: {
+          TITLE: 'Equipos',
+          SHOW_FILTERS: {
+            TEXT: 'Filtros',
+          },
+          FILTERS: {
+            NAME: {
+              LABEL: 'Nombre',
+            },
+          },
+          CREATE_TEAM_BUTTON: {
+            TEXT: 'Añadir equipo',
+          },
+          TABLE: {
+            NAME: {
+              LABEL: 'Nombre',
+            },
+            ACTIONS: {
+              LABEL: 'Acciones',
+              EDIT: {
+                TOOLTIP: 'Editar equipo',
+              },
+              DELETE: {
+                TOOLTIP: 'Eliminar equipo',
+              },
+            },
+          },
+          TEAM_FORM: {
+            CREATE: {
+              TITLE: 'Creación de equipo',
+            },
+            EDIT: {
+              TITLE: 'Edición de equipo',
+            },
+            NAME: {
+              LABEL: 'Nombre',
+            },
+            MESSAGES: {
+              CREATED: 'El equipo <b>{team}</b> fue creado correctamente.',
+              EDITED: 'El equipo <b>{team}</b> fue actualizado correctamente.',
+              DELETED: 'El equipo <b>{team}</b> fue eliminado correctamente.',
+            },
           },
         },
       },
