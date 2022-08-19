@@ -184,6 +184,11 @@ export default {
       sort_type: 'asc',
     });
 
+    this.$store.commit('quiniela/setTeamsPagination', {
+      sort_property: this.teamsOptions.sortBy[0],
+      sort_type: this.teamsOptions.sortDesc[0] ? 'desc' : 'asc',
+    });
+
     return Promise.all([
       this.$store.dispatch('quiniela/getSeasons'),
       this.$store.dispatch('quiniela/getCompetitions'),
