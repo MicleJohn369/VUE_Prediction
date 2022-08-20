@@ -4,8 +4,8 @@
 /* eslint-disable camelcase */
 /* eslint-disable global-require */
 module.exports = function api(app) {
-  // const middlewares = require('../../middlewares');
-  // const { ROLES, HTTP_CODES } = require('../../constants');
+  const middlewares = require('../../middlewares');
+  const { ROLES } = require('../../constants');
 
   const express = require('express');
   const quiniela = express.Router();
@@ -20,12 +20,14 @@ module.exports = function api(app) {
   /* Equipos */
   quiniela
     .route('/teams')
-    .get(validate(validations.getTeams), QuinielaCtrl.findAllTeams);
-  /* .post(
-      middlewares.isLogged_api,
-      middlewares.isAuthorized_api([ROLES.ADMIN]),
-      quiniela_api_createTeam,
-    )
+    .get(validate(validations.getTeams), QuinielaCtrl.findAllTeams)
+    .post(
+      middlewares.isLogged(),
+      middlewares.isAuthorized([ROLES.ADMIN]),
+      validate(validations.createTeam),
+      QuinielaCtrl.createTeam,
+    );
+  /*
     .put(
       middlewares.isLogged_api,
       middlewares.isAuthorized_api([ROLES.ADMIN]),

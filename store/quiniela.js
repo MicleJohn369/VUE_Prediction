@@ -133,6 +133,12 @@ export const actions = {
       .then((teams) => commit('setTeams', teams))
       .finally(() => commit('setIsLoading', false));
   },
+  createTeam({ commit }, team) {
+    commit('setIsLoading', true);
+
+    return Vue.pronostigolClient.createQuinielaTeam(team)
+      .finally(() => commit('setIsLoading', false));
+  },
   /**
    * Stats
    */

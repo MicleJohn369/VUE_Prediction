@@ -45,6 +45,11 @@ function methods(client) {
       .then((response) => response.data);
   };
 
+  PronostigolClient.prototype.createQuinielaTeam = function createQuinielaTeam(team) {
+    return this.restClient.post(`/${QUINIELA}/${TEAMS}`, team)
+      .then((response) => response.data);
+  };
+
   PronostigolClient.prototype.getQuinielaStats = function getQuinielaStats(params) {
     return this.restClient.get(`/${QUINIELA}/${HISTORICAL}`, {
       params,

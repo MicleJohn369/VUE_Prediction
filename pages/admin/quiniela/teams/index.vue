@@ -70,16 +70,6 @@
               color="black"
             />
           </template>
-          <template
-            #[`item.role`]="{ item }"
-          >
-            {{ getRole(item.role) }}
-          </template>
-          <template
-            #[`item.date`]="{ item }"
-          >
-            {{ getFormattedDate(item.date) }}
-          </template>
           <template #[`item.actions`]="{ item }">
             <v-btn
               dark

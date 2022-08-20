@@ -328,6 +328,9 @@ export default {
           icon: 'check',
         }))
         .then(() => this.getUsers())
+        .catch(() => {
+          this.$toast.success(this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.MESSAGES.DELETE_ERROR'));
+        })
         .finally(() => {
           this.cancelDeleteUser();
         });
