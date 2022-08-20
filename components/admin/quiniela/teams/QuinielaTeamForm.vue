@@ -1,6 +1,6 @@
 <template>
   <v-form
-    ref="userForm"
+    ref="teamForm"
     v-model="valid"
   >
     <v-container fluid>
@@ -10,25 +10,9 @@
           md="6"
         >
           <v-text-field
-            v-model="userForm.user"
-            :rules="rules.user"
-            :label="userText"
-            clearable
-          />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col
-          cols="12"
-          md="6"
-        >
-          <v-autocomplete
-            v-model="userForm.role"
-            :rules="rules.role"
-            :items="roles"
-            :label="roleText"
-            item-text="name"
-            item-value="value"
+            v-model="teamForm.name"
+            :rules="rules.name"
+            :label="nameText"
             clearable
           />
         </v-col>
@@ -39,10 +23,11 @@
           md="6"
         >
           <v-text-field
-            v-model="userForm.password"
-            type="password"
-            :rules="rules.password"
-            :label="passwordText"
+            v-model="teamForm.value"
+            :rules="rules.value"
+            :label="valueText"
+            :placeholder="valuePlaceholder"
+            :persistent-placeholder="true"
             clearable
           />
         </v-col>
@@ -55,7 +40,7 @@
           <v-btn
             nuxt
             :to="localePath({
-              name: 'admin-users'
+              name: 'admin-quiniela-teams'
             })"
           >
             {{ cancelButtonText }}
@@ -77,62 +62,48 @@
 import utils from '@/utils';
 
 export default {
-  name: 'UserForm',
+  name: 'QuinielaTeamForm',
   props: {},
   data() {
-    const initialUserForm = {
-      user: '',
-      role: null,
-      password: '',
+    const initialTeamForm = {
+      name: '',
+      value: '',
     };
 
     return {
       isEditMode: !!this.$route.params.id,
       rules: {
-        user: [
+        name: [
           (v) => !!v || 'xoxName is required',
         ],
-        role: [
-          (v) => !!v || 'xoxRole is required',
-        ],
-        password: [
-          (v) => !!v || 'xoxPassword is required',
+        value: [
+          (v) => !!v || 'xoxValue is required',
         ],
       },
       valid: false,
-      initialUserForm,
-      userForm: utils.cloneObject(initialUserForm),
-      userText: this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.USER.LABEL'),
-      roleText: this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.ROLE.LABEL'),
-      roles: [
-        {
-          name: this.$t('ROLES.ADMIN.TEXT'),
-          value: utils.ROLES.ADMIN.VALUE,
-        }, {
-          name: this.$t('ROLES.PRIVILEGED.TEXT'),
-          value: utils.ROLES.PRIVILEGED.VALUE,
-        },
-      ],
-      passwordText: this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.PASSWORD.LABEL'),
+      initialTeamForm,
+      teamForm: utils.cloneObject(initialTeamForm),
+      nameText: this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TEAM_FORM.NAME.LABEL'),
+      valueText: this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TEAM_FORM.VALUE.LABEL'),
+      valuePlaceholder: this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TEAM_FORM.VALUE.PLACEHOLDER'),
       cancelButtonText: this.$t('COMMON.BUTTON.CANCEL.TEXT'),
       submitButtonText: this.$t('COMMON.BUTTON.SUBMIT.TEXT'),
     };
   },
   computed: {},
   created() {
-    const userForm = {};
+    const teamForm = {};
 
     if (this.isEditMode) {
-      userForm.user = utils.cloneObject(this.$store.state.users.currentUser.user);
-      userForm.role = utils.cloneObject(this.$store.state.users.currentUser.role);
-      userForm.password = utils.cloneObject(this.$store.state.users.currentUser.password);
+      teamForm.name = utils.cloneObject(this.$store.state.quiniela.currentTeam.name);
+      teamForm.value = utils.cloneObject(this.$store.state.quiniela.currentTeam.value);
     }
 
-    this.userForm = { ...this.userForm, ...userForm };
+    this.teamForm = { ...this.teamForm, ...teamForm };
   },
   methods: {
     async validateForm() {
-      this.$refs.userForm.validate();
+      this.$refs.teamForm.validate();
 
       return this.valid;
     },
