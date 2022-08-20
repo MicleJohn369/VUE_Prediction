@@ -107,7 +107,7 @@ export default {
           name: 'admin-users',
         })))
         .catch(() => {
-          this.$toast.error('xoxHubo un error al editar el usuario');
+          this.$toast.error(this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.MESSAGES.EDIT_ERROR'));
         });
     },
   },

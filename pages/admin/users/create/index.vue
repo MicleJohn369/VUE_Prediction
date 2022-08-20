@@ -85,7 +85,7 @@ export default {
           name: 'admin-users',
         })))
         .catch(() => {
-          this.$toast.error('xoxHubo un error al crear el usuario');
+          this.$toast.error(this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.MESSAGES.CREATE_ERROR'));
         });
     },
   },
