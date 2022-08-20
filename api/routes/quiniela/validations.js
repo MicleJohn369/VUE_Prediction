@@ -13,6 +13,12 @@ module.exports = {
       sort_property: Joi.string().valid('result', 'occurrences'),
     }),
   },
+  createTeam: {
+    body: Joi.object({
+      name: Joi.string().required(),
+      value: Joi.string().required(),
+    }),
+  },
   getTeams: {
     query: Joi.object({
       page: Joi.number()

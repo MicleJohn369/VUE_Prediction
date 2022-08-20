@@ -284,6 +284,17 @@ exports.findCompetitionById = async (req, res) => {
   }
 };
 
+exports.createTeam = async (req, res) => {
+  const team = req.body;
+  try {
+    await QuinielaTeam.create(team);
+
+    return res.status(HTTP_CODES.CREATED).json(team);
+  } catch (err) {
+    return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).send(err.message);
+  }
+};
+
 /**
  * @api {get} /quiniela/teams Obtención de todos los equipos que han aparecido en la Quiniela
  * @apiName GetQuinielaTeams
