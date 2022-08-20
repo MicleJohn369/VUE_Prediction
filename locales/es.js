@@ -1204,6 +1204,10 @@ export default {
             NAME: {
               LABEL: 'Nombre',
             },
+            VALUE: {
+              LABEL: 'Valor',
+              PLACEHOLDER: 'Texto sin caracteres especiales utilizado para las búsquedas',
+            },
             MESSAGES: {
               CREATED: 'El equipo <b>{team}</b> fue creado correctamente.',
               EDITED: 'El equipo <b>{team}</b> fue actualizado correctamente.',
