@@ -74,10 +74,10 @@ export default {
       isEditMode: !!this.$route.params.id,
       rules: {
         name: [
-          (v) => !!v || 'xoxName is required',
+          (v) => !!v || this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TEAM_FORM.NAME.ERRORS.REQUIRED'),
         ],
         value: [
-          (v) => !!v || 'xoxValue is required',
+          (v) => !!v || this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TEAM_FORM.VALUE.ERRORS.REQUIRED'),
         ],
       },
       valid: false,

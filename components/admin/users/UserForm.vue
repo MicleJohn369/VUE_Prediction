@@ -90,13 +90,13 @@ export default {
       isEditMode: !!this.$route.params.id,
       rules: {
         user: [
-          (v) => !!v || 'xoxName is required',
+          (v) => !!v || this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.USER.ERRORS.REQUIRED'),
         ],
         role: [
-          (v) => !!v || 'xoxRole is required',
+          (v) => !!v || this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.ROLE.ERRORS.REQUIRED'),
         ],
         password: [
-          (v) => !!v || 'xoxPassword is required',
+          (v) => !!v || this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.PASSWORD.ERRORS.REQUIRED'),
         ],
       },
       valid: false,

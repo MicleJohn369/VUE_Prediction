@@ -1152,12 +1152,21 @@ export default {
           },
           USER: {
             LABEL: 'Usuario',
+            ERRORS: {
+              REQUIRED: 'El nombre es obligatorio',
+            },
           },
           ROLE: {
             LABEL: 'Rol',
+            ERRORS: {
+              REQUIRED: 'El rol es obligatorio',
+            },
           },
           PASSWORD: {
             LABEL: 'Contraseña',
+            ERRORS: {
+              REQUIRED: 'La contraseña es obligatoria',
+            },
           },
           MESSAGES: {
             CREATED: 'El usuario <b>{user}</b> fue creado correctamente.',
@@ -1203,10 +1212,16 @@ export default {
             },
             NAME: {
               LABEL: 'Nombre',
+              ERRORS: {
+                REQUIRED: 'El nombre es obligatorio',
+              },
             },
             VALUE: {
               LABEL: 'Valor',
               PLACEHOLDER: 'Texto sin caracteres especiales utilizado para las búsquedas',
+              ERRORS: {
+                REQUIRED: 'El valor es obligatorio',
+              },
             },
             MESSAGES: {
               CREATED: 'El equipo <b>{team}</b> fue creado correctamente.',
