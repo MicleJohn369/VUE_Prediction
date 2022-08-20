@@ -67,7 +67,6 @@ export default {
   computed: {
     ...mapState('users', {
       loading: 'loading',
-      user: (state) => state.users.current,
     }),
   },
   methods: {
