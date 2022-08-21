@@ -254,7 +254,6 @@ export default {
   watch: {
     options: {
       handler() {
-        debugger;
         this.getTeams();
       },
       deep: true,
@@ -290,7 +289,7 @@ export default {
     },
     getEditTeamRoute(team) {
       return this.localePath({
-        name: 'admin-teams-id',
+        name: 'admin-quiniela-teams-id',
         params: {
           // eslint-disable-next-line no-underscore-dangle
           id: team._id,
