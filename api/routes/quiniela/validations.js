@@ -36,7 +36,7 @@ module.exports = {
         .min(1),
       sort_type: Joi.string().valid('asc', 'desc'),
       sort_property: Joi.string().valid('name'),
-      name: Joi.string(),
+      name: Joi.string().allow(''),
     }),
   },
   getSeasons: {
