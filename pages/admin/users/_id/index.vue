@@ -63,9 +63,7 @@ export default {
   },
   async fetch() {
     return Promise.all([
-      this.$store.dispatch('users/getUser', {
-        id: this.id,
-      }),
+      this.$store.dispatch('users/getUser', this.id),
     ]).then(() => {
       const user = this.$store.state.users.currentUser;
 

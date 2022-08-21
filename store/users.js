@@ -26,7 +26,7 @@ export const actions = {
       .then((users) => commit('setUsers', users))
       .finally(() => commit('setIsLoading', false));
   },
-  getUser({ commit }, { id }) {
+  getUser({ commit }, id) {
     commit('setIsLoading', true);
 
     return Vue.pronostigolClient.getUser(id)

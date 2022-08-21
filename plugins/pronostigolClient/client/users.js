@@ -21,9 +21,7 @@ function usersMethods(client) {
   };
 
   PronostigolClient.prototype.editUser = function editUser(id, user) {
-    return this.restClient.put(`/${USERS}/${id}`, {
-      ...user,
-    })
+    return this.restClient.put(`/${USERS}/${id}`, user)
       .then((response) => response.data);
   };
 
