@@ -85,7 +85,7 @@ export const actions = {
       season,
       day,
     })
-      .then((ticket) => commit('setTicket', ticket))
+      .then((ticket) => commit('setCurrentTicket', ticket))
       .finally(() => commit('setIsLoading', false));
   },
   destroyTickets({ commit }) {
@@ -95,7 +95,7 @@ export const actions = {
     });
   },
   destroyTicket({ commit }) {
-    return commit('setTicket', {});
+    return commit('setCurrentTicket', {});
   },
   /**
    * Seasons

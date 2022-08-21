@@ -57,7 +57,7 @@ export const actions = {
       year,
       raffle,
     })
-      .then((tickets) => commit('setTicket', tickets.data[0]))
+      .then((tickets) => commit('setCurrentTicket', tickets.data[0]))
       .finally(() => commit('setIsLoading', false));
   },
   destroyTickets({ commit }) {
@@ -67,7 +67,7 @@ export const actions = {
     });
   },
   destroyTicket({ commit }) {
-    return commit('setTicket', {
+    return commit('setCurrentTicket', {
       resultado: {
         bolas: [],
       },
