@@ -45,8 +45,18 @@ function methods(client) {
       .then((response) => response.data);
   };
 
+  PronostigolClient.prototype.getQuinielaTeam = function getQuinielaTeam(id) {
+    return this.restClient.get(`/${QUINIELA}/${TEAMS}/${id}`)
+      .then((response) => response.data);
+  };
+
   PronostigolClient.prototype.createQuinielaTeam = function createQuinielaTeam(team) {
     return this.restClient.post(`/${QUINIELA}/${TEAMS}`, team)
+      .then((response) => response.data);
+  };
+
+  PronostigolClient.prototype.editQuinielaTeam = function editQuinielaTeam(id, team) {
+    return this.restClient.put(`/${QUINIELA}/${TEAMS}/${id}`, team)
       .then((response) => response.data);
   };
 
