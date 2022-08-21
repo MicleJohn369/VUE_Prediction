@@ -339,9 +339,14 @@ exports.findAllTeams = async (req, res) => {
   const filters = {};
 
   if (name) {
-    filters.name = {
-      $regex: name,
-      $options: '(?-i)',
+    filters.value = {
+      $regex: name
+        .replace(/á|à|ä/, 'a')
+        .replace(/é|è|ë/, 'e')
+        .replace(/í|ì|ï/, 'i')
+        .replace(/ó|ò|ö/, 'o')
+        .replace(/ú|ù|ü/, 'u'),
+      $options: '(?-i)g',
     };
   }
 
