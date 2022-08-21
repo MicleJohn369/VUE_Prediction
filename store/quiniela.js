@@ -57,6 +57,7 @@ export const state = () => ({
   ],
   loading: true,
   teamsFilters: {},
+  currentTeam: null,
 });
 
 export const actions = {
@@ -85,7 +86,7 @@ export const actions = {
       season,
       day,
     })
-      .then((ticket) => commit('setTicket', ticket))
+      .then((ticket) => commit('setCurrentTicket', ticket))
       .finally(() => commit('setIsLoading', false));
   },
   destroyTickets({ commit }) {
@@ -95,7 +96,7 @@ export const actions = {
     });
   },
   destroyTicket({ commit }) {
-    return commit('setTicket', {});
+    return commit('setCurrentTicket', {});
   },
   /**
    * Seasons
@@ -133,10 +134,23 @@ export const actions = {
       .then((teams) => commit('setTeams', teams))
       .finally(() => commit('setIsLoading', false));
   },
+  getTeam({ commit }, id) {
+    commit('setIsLoading', true);
+
+    return Vue.pronostigolClient.getQuinielaTeam(id)
+      .then((team) => commit('setCurrentTeam', team))
+      .finally(() => commit('setIsLoading', false));
+  },
   createTeam({ commit }, team) {
     commit('setIsLoading', true);
 
     return Vue.pronostigolClient.createQuinielaTeam(team)
+      .finally(() => commit('setIsLoading', false));
+  },
+  editTeam({ commit }, { id, team }) {
+    commit('setIsLoading', true);
+
+    return Vue.pronostigolClient.editQuinielaTeam(id, team)
       .finally(() => commit('setIsLoading', false));
   },
   /**
@@ -295,6 +309,9 @@ export const mutations = {
   },
   setTeamsFilters(state, filters) {
     Vue.set(state, 'teamsFilters', filters);
+  },
+  setCurrentTeam(state, team) {
+    Vue.set(state, 'currentTeam', team);
   },
   /**
    * Stats

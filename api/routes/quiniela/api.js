@@ -27,15 +27,16 @@ module.exports = function api(app) {
       validate(validations.createTeam),
       QuinielaCtrl.createTeam,
     );
-  /*
-    .put(
-      middlewares.isLogged_api,
-      middlewares.isAuthorized_api([ROLES.ADMIN]),
-      quiniela_api_editTeam,
-    ); */
+
   quiniela
     .route('/teams/:id')
-    .get(QuinielaCtrl.findTeamById);
+    .get(QuinielaCtrl.findTeamById)
+    .put(
+      middlewares.isLogged(),
+      middlewares.isAuthorized([ROLES.ADMIN]),
+      validate(validations.editTeam),
+      QuinielaCtrl.editTeam,
+    );
   /* .delete(
       middlewares.isLogged_api,
       middlewares.isAuthorized_api([ROLES.ADMIN]),

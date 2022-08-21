@@ -3,7 +3,7 @@ const { Joi } = require('express-validation');
 module.exports = {
   getUsers: {
     query: Joi.object({
-      user: Joi.string(),
+      user: Joi.string().allow(''),
       page: Joi.number().min(1),
       per_page: Joi.number().min(1),
       sort_type: Joi.string().valid('asc', 'desc'),

@@ -295,6 +295,21 @@ exports.createTeam = async (req, res) => {
   }
 };
 
+exports.editTeam = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const teamForm = req.body;
+
+    const team = await QuinielaTeam.findByIdAndUpdate(id, {
+      $set: teamForm,
+    }).exec();
+
+    return res.status(HTTP_CODES.OK).json(team);
+  } catch (err) {
+    return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).send(err.message);
+  }
+};
+
 /**
  * @api {get} /quiniela/teams Obtención de todos los equipos que han aparecido en la Quiniela
  * @apiName GetQuinielaTeams
@@ -324,9 +339,14 @@ exports.findAllTeams = async (req, res) => {
   const filters = {};
 
   if (name) {
-    filters.name = {
-      $regex: name,
-      $options: '(?-i)',
+    filters.value = {
+      $regex: name
+        .replace(/á|à|ä/, 'a')
+        .replace(/é|è|ë/, 'e')
+        .replace(/í|ì|ï/, 'i')
+        .replace(/ó|ò|ö/, 'o')
+        .replace(/ú|ù|ü/, 'u'),
+      $options: '(?-i)g',
     };
   }
 

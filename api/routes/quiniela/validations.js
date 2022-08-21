@@ -19,6 +19,15 @@ module.exports = {
       value: Joi.string().required(),
     }),
   },
+  editTeam: {
+    params: Joi.object({
+      id: Joi.string().hex().length(24),
+    }),
+    body: Joi.object({
+      name: Joi.string().required(),
+      value: Joi.string().required(),
+    }),
+  },
   getTeams: {
     query: Joi.object({
       page: Joi.number()
@@ -27,7 +36,7 @@ module.exports = {
         .min(1),
       sort_type: Joi.string().valid('asc', 'desc'),
       sort_property: Joi.string().valid('name'),
-      name: Joi.string(),
+      name: Joi.string().allow(''),
     }),
   },
   getSeasons: {

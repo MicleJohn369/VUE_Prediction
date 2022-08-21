@@ -10,10 +10,10 @@
         />
       </v-card>
       <v-card>
-        <UserForm
-          v-if="userLoaded"
-          ref="editUserForm"
-          @onSubmit="editUser()"
+        <QuinielaTeamForm
+          v-if="teamLoaded"
+          ref="editTeamForm"
+          @onSubmit="editTeam()"
         />
       </v-card>
     </v-col>
@@ -23,23 +23,21 @@
 <script>
 import { mapState } from 'vuex';
 
-import getFormattedDate from '@/mixins/getFormattedDate';
-
-import UserForm from '@/components/admin/users/UserForm.vue';
+import QuinielaTeamForm from '@/components/admin/quiniela/teams/QuinielaTeamForm.vue';
 
 export default {
   components: {
-    UserForm,
+    QuinielaTeamForm,
   },
-  mixins: [getFormattedDate],
+  mixins: [],
   layout: 'admin',
   middleware: 'auth',
   data() {
     const { id } = this.$route.params;
 
     return {
-      userLoaded: false,
-      titleText: this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.EDIT.TITLE'),
+      teamLoaded: false,
+      titleText: this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TEAM_FORM.EDIT.TITLE'),
       items: [{
         text: this.$t('DASHBOARD.BREADCRUMBS.DASHBOARD.TEXT'),
         disabled: false,
@@ -50,10 +48,10 @@ export default {
         exactPath: true,
       },
       {
-        text: this.$t('DASHBOARD.BREADCRUMBS.USERS.TEXT'),
+        text: this.$t('DASHBOARD.BREADCRUMBS.QUINIELA.TEAMS.TEXT'),
         disabled: false,
         to: this.localePath({
-          name: 'admin-users',
+          name: 'admin-teams',
         }),
         nuxt: true,
         exactPath: true,
@@ -63,48 +61,48 @@ export default {
   },
   async fetch() {
     return Promise.all([
-      this.$store.dispatch('users/getUser', this.id),
+      this.$store.dispatch('quiniela/getTeam', this.id),
     ]).then(() => {
-      const user = this.$store.state.users.currentUser;
+      const team = this.$store.state.quiniela.currentTeam;
 
       this.items.push({
-        text: user.user,
+        text: team.name,
         disabled: false,
         to: this.localePath({
-          name: 'admin-users-id',
+          name: 'admin-teams-id',
         }),
         nuxt: true,
         exactPath: true,
       });
-      this.userLoaded = true;
+      this.teamLoaded = true;
     });
   },
   head() {
     return {
-      title: this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.EDIT.TITLE'),
+      title: this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TEAM_FORM.EDIT.TITLE'),
     };
   },
   computed: {
-    ...mapState('users', {
+    ...mapState('quiniela', {
       loading: 'loading',
     }),
   },
   methods: {
-    editUser() {
-      const { userForm } = this.$refs.editUserForm;
-      const userEditedText = this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.MESSAGES.EDITED', {
-        user: userForm.user,
+    editTeam() {
+      const { teamForm } = this.$refs.editTeamForm;
+      const teamEditedText = this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TEAM_FORM.MESSAGES.EDITED', {
+        team: teamForm.team,
       });
 
-      return this.$store.dispatch('users/editUser', { id: this.id, user: userForm })
-        .then(() => this.$toast.success(userEditedText, {
+      return this.$store.dispatch('quiniela/editTeam', { id: this.id, team: teamForm })
+        .then(() => this.$toast.success(teamEditedText, {
           icon: 'check',
         }))
         .then(() => this.$router.push(this.localePath({
-          name: 'admin-users',
+          name: 'admin-quiniela-teams',
         })))
         .catch(() => {
-          this.$toast.error(this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.MESSAGES.EDIT_ERROR'));
+          this.$toast.error(this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TEAM_FORM.MESSAGES.EDIT_ERROR'));
         });
     },
   },
