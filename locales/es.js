@@ -1230,6 +1230,7 @@ export default {
               EDITED: 'El equipo <b>{team}</b> fue actualizado correctamente.',
               DELETED: 'El equipo <b>{team}</b> fue eliminado correctamente.',
               CREATE_ERROR: 'Hubo un error al crear el equipo.',
+              EDIT_ERROR: 'Hubo un error al editar el equipo.',
             },
           },
         },
