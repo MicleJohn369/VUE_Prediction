@@ -2,6 +2,7 @@
   <v-form
     ref="form"
     v-model="valid"
+    @submit.prevent="submitForm"
   >
     <v-container fluid>
       <v-row>
