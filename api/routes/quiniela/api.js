@@ -36,12 +36,12 @@ module.exports = function api(app) {
       middlewares.isAuthorized([ROLES.ADMIN]),
       validate(validations.editTeam),
       QuinielaCtrl.editTeam,
+    ).delete(
+      middlewares.isLogged(),
+      middlewares.isAuthorized([ROLES.ADMIN]),
+      validate(validations.deleteTeam),
+      QuinielaCtrl.deleteTeam,
     );
-  /* .delete(
-      middlewares.isLogged_api,
-      middlewares.isAuthorized_api([ROLES.ADMIN]),
-      quiniela_api_deleteTeam,
-    ); */
 
   /* Competiciones */
   quiniela
