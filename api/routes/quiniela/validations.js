@@ -28,6 +28,11 @@ module.exports = {
       value: Joi.string().required(),
     }),
   },
+  deleteTeam: {
+    params: Joi.object({
+      id: Joi.string().hex().length(24),
+    }),
+  },
   getTeams: {
     query: Joi.object({
       page: Joi.number()
