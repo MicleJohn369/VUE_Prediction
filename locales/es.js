@@ -1171,10 +1171,13 @@ export default {
           MESSAGES: {
             CREATED: 'El usuario <b>{user}</b> fue creado correctamente.',
             EDITED: 'El usuario <b>{user}</b> fue actualizado correctamente.',
-            DELETED: 'El usuario <b>{user}</b> fue eliminado correctamente.',
             CREATE_ERROR: 'Hubo un error al crear el usuario.',
             EDIT_ERROR: 'Hubo un error al editar el usuario.',
           },
+        },
+        MESSAGES: {
+          DELETED: 'El usuario <b>{user}</b> fue eliminado correctamente.',
+          DELETE_ERROR: 'El usuario <b>{user}</b> no pudo ser eliminado.',
         },
       },
       QUINIELA: {
@@ -1228,10 +1231,13 @@ export default {
             MESSAGES: {
               CREATED: 'El equipo <b>{team}</b> fue creado correctamente.',
               EDITED: 'El equipo <b>{team}</b> fue actualizado correctamente.',
-              DELETED: 'El equipo <b>{team}</b> fue eliminado correctamente.',
               CREATE_ERROR: 'Hubo un error al crear el equipo.',
               EDIT_ERROR: 'Hubo un error al editar el equipo.',
             },
+          },
+          MESSAGES: {
+            DELETED: 'El equipo <b>{team}</b> fue eliminado correctamente.',
+            DELETE_ERROR: 'El equipo <b>{team}</b> no pudo ser eliminado.',
           },
         },
       },
