@@ -123,14 +123,14 @@
             <v-btn
               color="primary"
               text
-              @click="canceldeleteTeam()"
+              @click="cancelDeleteTeam()"
             >
               {{ cancelButtonText }}
             </v-btn>
             <v-btn
               color="primary"
               text
-              @click="confirmdeleteTeam()"
+              @click="confirmDeleteTeam()"
             >
               {{ confirmButtonText }}
             </v-btn>
