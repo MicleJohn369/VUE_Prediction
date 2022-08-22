@@ -310,6 +310,18 @@ exports.editTeam = async (req, res) => {
   }
 };
 
+exports.deleteTeam = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const team = await QuinielaTeam.findByIdAndDelete(id).exec();
+
+    return res.status(HTTP_CODES.OK).json(team);
+  } catch (err) {
+    return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).send(err.message);
+  }
+};
+
 /**
  * @api {get} /quiniela/teams Obtención de todos los equipos que han aparecido en la Quiniela
  * @apiName GetQuinielaTeams
