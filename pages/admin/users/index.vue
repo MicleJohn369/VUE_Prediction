@@ -329,7 +329,9 @@ export default {
         }))
         .then(() => this.getUsers())
         .catch(() => {
-          this.$toast.success(this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.MESSAGES.DELETE_ERROR'));
+          this.$toast.error(this.$t('DASHBOARD.VIEWS.USERS.USER_FORM.MESSAGES.DELETE_ERROR', {
+            user: this.userToBeDeleted.user,
+          }));
         })
         .finally(() => {
           this.cancelDeleteUser();

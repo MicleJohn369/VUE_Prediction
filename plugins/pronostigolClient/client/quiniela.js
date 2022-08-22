@@ -60,6 +60,11 @@ function methods(client) {
       .then((response) => response.data);
   };
 
+  PronostigolClient.prototype.deleteQuinielaTeam = function deleteQuinielaTeam(id) {
+    return this.restClient.delete(`/${QUINIELA}/${TEAMS}/${id}`)
+      .then((response) => response.data);
+  };
+
   PronostigolClient.prototype.getQuinielaStats = function getQuinielaStats(params) {
     return this.restClient.get(`/${QUINIELA}/${HISTORICAL}`, {
       params,

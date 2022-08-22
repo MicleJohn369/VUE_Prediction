@@ -123,14 +123,14 @@
             <v-btn
               color="primary"
               text
-              @click="canceldeleteTeam()"
+              @click="cancelDeleteTeam()"
             >
               {{ cancelButtonText }}
             </v-btn>
             <v-btn
               color="primary"
               text
-              @click="confirmdeleteTeam()"
+              @click="confirmDeleteTeam()"
             >
               {{ confirmButtonText }}
             </v-btn>
@@ -305,7 +305,7 @@ export default {
       this.dialog = false;
     },
     confirmDeleteTeam() {
-      const teamDeletedText = this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TEAM_FORM.MESSAGES.DELETED', {
+      const teamDeletedText = this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.MESSAGES.DELETED', {
         team: this.teamToBeDeleted.name,
       });
       // eslint-disable-next-line no-underscore-dangle
@@ -314,6 +314,11 @@ export default {
           icon: 'check',
         }))
         .then(() => this.getTeams())
+        .catch(() => {
+          this.$toast.error(this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.MESSAGES.DELETE_ERROR', {
+            team: this.teamToBeDeleted.name,
+          }));
+        })
         .finally(() => {
           this.cancelDeleteTeam();
         });
