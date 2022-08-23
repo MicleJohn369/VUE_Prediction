@@ -154,7 +154,7 @@ export default {
               icon: 'mdi-podium',
               title: this.$t('DASHBOARD.MENU.QUINIELA.COMPETITIONS.TEXT'),
               to: this.localePath({
-                name: 'quiniela-competitions',
+                name: 'admin-quiniela-competitions',
               }),
             }, {
               icon: 'mdi-calendar',
