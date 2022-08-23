@@ -1101,6 +1101,9 @@ export default {
         TEAMS: {
           TEXT: 'Equipos',
         },
+        COMPETITIONS: {
+          TEXT: 'Competiciones',
+        },
       },
     },
     VIEWS: {
@@ -1238,6 +1241,65 @@ export default {
           MESSAGES: {
             DELETED: 'El equipo <b>{team}</b> fue eliminado correctamente.',
             DELETE_ERROR: 'El equipo <b>{team}</b> no pudo ser eliminado.',
+          },
+        },
+        COMPETITIONS: {
+          TITLE: 'Competiciones',
+          SHOW_FILTERS: {
+            TEXT: 'Filtros',
+          },
+          FILTERS: {
+            NAME: {
+              LABEL: 'Nombre',
+            },
+          },
+          CREATE_COMPETITION_BUTTON: {
+            TEXT: 'Añadir competición',
+          },
+          TABLE: {
+            NAME: {
+              LABEL: 'Nombre',
+            },
+            ACTIONS: {
+              LABEL: 'Acciones',
+              EDIT: {
+                TOOLTIP: 'Editar competición',
+              },
+              DELETE: {
+                TOOLTIP: 'Eliminar competición',
+              },
+            },
+          },
+          TEAM_FORM: {
+            CREATE: {
+              TITLE: 'Creación de competición',
+            },
+            EDIT: {
+              TITLE: 'Edición de competición',
+            },
+            NAME: {
+              LABEL: 'Nombre',
+              ERRORS: {
+                REQUIRED: 'El nombre es obligatorio',
+              },
+            },
+            VALUE: {
+              LABEL: 'Valor',
+              PLACEHOLDER: 'Texto sin caracteres especiales utilizado para las búsquedas',
+              ERRORS: {
+                REQUIRED: 'El valor es obligatorio',
+              },
+            },
+            MESSAGES: {
+              CREATED: 'La competición <b>{competition}</b> fue creada correctamente.',
+              EDITED: 'La competición <b>{competition}</b> fue actualizada correctamente.',
+              CREATE_ERROR: 'Hubo un error al crear la competición.',
+              EDIT_ERROR: 'Hubo un error al editar la competición.',
+            },
+          },
+          MESSAGES: {
+            DELETED: 'La competición <b>{competition}</b> fue eliminada correctamente.',
+            DELETE_ERROR: 'La competición <b>{competition}</b> no pudo ser eliminada.',
           },
         },
       },

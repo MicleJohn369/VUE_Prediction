@@ -233,21 +233,49 @@ exports.findTicketBySeasonAndDay = async (req, res) => {
 exports.findAllCompetitions = async (req, res) => {
   const { query } = req;
 
-  const sort_property = 'name';
-  const sort_type = query.sort_type || 'asc';
+  const { name } = query;
+  const page = Number(query.page) || 1;
+  const perPage = Number(query.per_page);
+  const sort_property = query.sort_property || 'name';
+  const sort_type = query.sort_type || 'desc';
+
+  const filters = {};
+
+  if (name) {
+    filters.name = {
+      $regex: name
+        .replace(/á|à|ä/, 'a')
+        .replace(/é|è|ë/, 'e')
+        .replace(/í|ì|ï/, 'i')
+        .replace(/ó|ò|ö/, 'o')
+        .replace(/ú|ù|ü/, 'u'),
+      $options: '(?-i)g',
+    };
+  }
 
   const sort = {
     [sort_property]: sort_type,
   };
+  const skip = (page - 1) * (perPage || 0);
+  const limit = perPage || undefined;
 
   const options = {
     sort,
+    skip,
+    limit,
   };
 
   try {
-    const tickets = await QuinielaCompetition.find({}, null, options).exec();
+    const total = await QuinielaCompetition.countDocuments(filters).exec();
 
-    return res.status(HTTP_CODES.OK).json(tickets);
+    const competitions = await QuinielaCompetition.find(filters, null, options).exec();
+
+    return res.status(HTTP_CODES.OK).json({
+      page,
+      perPage,
+      total,
+      data: competitions,
+    });
   } catch (err) {
     return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).send(err.message);
   }

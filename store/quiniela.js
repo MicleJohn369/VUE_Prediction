@@ -58,6 +58,7 @@ export const state = () => ({
   loading: true,
   teamsFilters: {},
   currentTeam: null,
+  competitionsFilters: {},
 });
 
 export const actions = {
@@ -114,7 +115,10 @@ export const actions = {
    */
   getCompetitions({ state, commit }) {
     commit('setIsLoading', true);
+    const competitionsFilters = { ...state.competitionsFilters };
+
     return Vue.pronostigolClient.getQuinielaCompetitions({
+      ...competitionsFilters,
       ...state.competitionsPagination,
     })
       .then((competitions) => commit('setCompetitions', competitions))
@@ -303,6 +307,9 @@ export const mutations = {
   },
   setCompetitionsPagination(state, pagination) {
     Vue.set(state, 'competitionsPagination', pagination);
+  },
+  setCompetitionsFilters(state, filters) {
+    Vue.set(state, 'competitionsFilters', filters);
   },
   /**
    * Teams
