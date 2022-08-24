@@ -217,6 +217,17 @@ exports.findTicketBySeasonAndDay = async (req, res) => {
   }
 };
 
+exports.createCompetition = async (req, res) => {
+  const competition = req.body;
+  try {
+    await QuinielaCompetition.create(competition);
+
+    return res.status(HTTP_CODES.CREATED).json(competition);
+  } catch (err) {
+    return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).send(err.message);
+  }
+};
+
 /**
  * @api {get} /quiniela/competitions Obtención de todas las competiciones de la Quiniela
  * @apiName GetQuinielaCompetitions
@@ -242,7 +253,7 @@ exports.findAllCompetitions = async (req, res) => {
   const filters = {};
 
   if (name) {
-    filters.name = {
+    filters.value = {
       $regex: name
         .replace(/á|à|ä/, 'a')
         .replace(/é|è|ë/, 'e')
