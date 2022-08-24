@@ -28,6 +28,11 @@ export default {
   components: {
     QuinielaTeamForm,
   },
+  nuxtI18n: {
+    paths: {
+      es: '/admin/quiniela/equipos/crear',
+    },
+  },
   mixins: [],
   layout: 'admin',
   middleware: 'auth',
