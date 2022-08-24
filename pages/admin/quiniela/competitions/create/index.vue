@@ -10,9 +10,9 @@
         />
       </v-card>
       <v-card>
-        <QuinielaTeamForm
-          ref="createTeamForm"
-          @onSubmit="createTeam()"
+        <QuinielaCompetitionForm
+          ref="createCompetitionForm"
+          @onSubmit="createCompetition()"
         />
       </v-card>
     </v-col>
@@ -22,15 +22,15 @@
 <script>
 import { mapState } from 'vuex';
 
-import QuinielaTeamForm from '@/components/admin/quiniela/teams/QuinielaTeamForm.vue';
+import QuinielaCompetitionForm from '@/components/admin/quiniela/competitions/QuinielaCompetitionForm.vue';
 
 export default {
   components: {
-    QuinielaTeamForm,
+    QuinielaCompetitionForm,
   },
   nuxtI18n: {
     paths: {
-      es: '/admin/quiniela/equipos/crear',
+      es: '/admin/quiniela/competiciones/crear',
     },
   },
   mixins: [],
@@ -38,7 +38,7 @@ export default {
   middleware: 'auth',
   data() {
     return {
-      titleText: this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TEAM_FORM.CREATE.TITLE'),
+      titleText: this.$t('DASHBOARD.VIEWS.QUINIELA.COMPETITIONS.COMPETITION_FORM.CREATE.TITLE'),
       items: [
         {
           text: this.$t('DASHBOARD.BREADCRUMBS.DASHBOARD.TEXT'),
@@ -58,10 +58,10 @@ export default {
           nuxt: true,
           exactPath: true,
         }, {
-          text: this.$t('DASHBOARD.BREADCRUMBS.QUINIELA.TEAMS.TEXT'),
+          text: this.$t('DASHBOARD.BREADCRUMBS.QUINIELA.COMPETITIONS.TEXT'),
           disabled: false,
           to: this.localePath({
-            name: 'admin-quiniela-teams',
+            name: 'admin-quiniela-competitions',
           }),
           nuxt: true,
           exactPath: true,
@@ -71,31 +71,31 @@ export default {
   },
   head() {
     return {
-      title: this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TEAM_FORM.CREATE.TITLE'),
+      title: this.$t('DASHBOARD.VIEWS.QUINIELA.COMPETITIONS.COMPETITION_FORM.CREATE.TITLE'),
     };
   },
   computed: {
     ...mapState('quiniela', {
       loading: 'loading',
-      team: (state) => state.quiniela.currentTeam,
+      competition: (state) => state.quiniela.currentCompetition,
     }),
   },
   methods: {
-    createTeam() {
-      const { teamForm } = this.$refs.createTeamForm;
+    createCompetition() {
+      const { competitionForm } = this.$refs.createCompetitionForm;
 
-      const teamCreatedText = this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TEAM_FORM.MESSAGES.CREATED', {
-        team: teamForm.name,
+      const competitionCreatedText = this.$t('DASHBOARD.VIEWS.QUINIELA.COMPETITIONS.COMPETITION_FORM.MESSAGES.CREATED', {
+        competition: competitionForm.name,
       });
-      return this.$store.dispatch('quiniela/createTeam', teamForm)
-        .then(() => this.$toast.success(teamCreatedText, {
+      return this.$store.dispatch('quiniela/createCompetition', competitionForm)
+        .then(() => this.$toast.success(competitionCreatedText, {
           icon: 'check',
         }))
         .then(() => this.$router.push(this.localePath({
-          name: 'admin-quiniela-teams',
+          name: 'admin-quiniela-competitions',
         })))
         .catch(() => {
-          this.$toast.error(this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TEAM_FORM.MESSAGES.CREATE_ERROR'));
+          this.$toast.error(this.$t('DASHBOARD.VIEWS.QUINIELA.COMPETITIONS.COMPETITION_FORM.MESSAGES.CREATE_ERROR'));
         });
     },
   },

@@ -46,13 +46,13 @@ module.exports = function api(app) {
   /* Competiciones */
   quiniela
     .route('/competitions')
-    .get(validate(validations.getCompetitions), QuinielaCtrl.findAllCompetitions);
-  /* .post(
-      middlewares.isLogged_api,
-      middlewares.isAuthorized_api([ROLES.ADMIN]),
-      quiniela_api_createCompetition,
-    )
-    .put(
+    .get(validate(validations.getCompetitions), QuinielaCtrl.findAllCompetitions)
+    .post(
+      middlewares.isLogged(),
+      middlewares.isAuthorized([ROLES.ADMIN]),
+      QuinielaCtrl.createCompetition,
+    );
+  /* .put(
       middlewares.isLogged_api,
       middlewares.isAuthorized_api([ROLES.ADMIN]),
       quiniela_api_editCompetition,

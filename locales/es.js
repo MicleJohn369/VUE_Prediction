@@ -1270,7 +1270,7 @@ export default {
               },
             },
           },
-          TEAM_FORM: {
+          COMPETITION_FORM: {
             CREATE: {
               TITLE: 'Creación de competición',
             },
