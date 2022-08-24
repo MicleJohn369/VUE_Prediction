@@ -49,6 +49,12 @@ module.exports = {
       sort_type: Joi.string().valid('asc', 'desc'),
     }),
   },
+  createCompetition: {
+    body: Joi.object({
+      name: Joi.string().required(),
+      value: Joi.string().required(),
+    }),
+  },
   getCompetitions: {
     query: Joi.object({
       page: Joi.number()
