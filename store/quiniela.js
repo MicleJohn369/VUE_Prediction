@@ -124,6 +124,12 @@ export const actions = {
       .then((competitions) => commit('setCompetitions', competitions))
       .finally(() => commit('setIsLoading', false));
   },
+  createCompetition({ commit }, competition) {
+    commit('setIsLoading', true);
+
+    return Vue.pronostigolClient.createQuinielaCompetition(competition)
+      .finally(() => commit('setIsLoading', false));
+  },
   /**
    * Teams
    */
