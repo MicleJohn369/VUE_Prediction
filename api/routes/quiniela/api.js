@@ -52,14 +52,15 @@ module.exports = function api(app) {
       middlewares.isAuthorized([ROLES.ADMIN]),
       QuinielaCtrl.createCompetition,
     );
-  /* .put(
-      middlewares.isLogged_api,
-      middlewares.isAuthorized_api([ROLES.ADMIN]),
-      quiniela_api_editCompetition,
-    ); */
+
   quiniela
     .route('/competitions/:id')
-    .get(QuinielaCtrl.findCompetitionById);
+    .get(QuinielaCtrl.findCompetitionById)
+    .put(
+      middlewares.isLogged(),
+      middlewares.isAuthorized([ROLES.ADMIN]),
+      QuinielaCtrl.editCompetition,
+    );
   /* .delete(
       middlewares.isLogged_api,
       middlewares.isAuthorized_api([ROLES.ADMIN]),
