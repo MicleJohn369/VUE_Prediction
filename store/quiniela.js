@@ -124,10 +124,23 @@ export const actions = {
       .then((competitions) => commit('setCompetitions', competitions))
       .finally(() => commit('setIsLoading', false));
   },
+  getCompetition({ commit }, id) {
+    commit('setIsLoading', true);
+
+    return Vue.pronostigolClient.getQuinielaCompetition(id)
+      .then((competition) => commit('setCurrentCompetition', competition))
+      .finally(() => commit('setIsLoading', false));
+  },
   createCompetition({ commit }, competition) {
     commit('setIsLoading', true);
 
     return Vue.pronostigolClient.createQuinielaCompetition(competition)
+      .finally(() => commit('setIsLoading', false));
+  },
+  editCompetition({ commit }, { id, competition }) {
+    commit('setIsLoading', true);
+
+    return Vue.pronostigolClient.editQuinielaCompetition(id, competition)
       .finally(() => commit('setIsLoading', false));
   },
   /**
@@ -316,6 +329,9 @@ export const mutations = {
   },
   setCompetitionsFilters(state, filters) {
     Vue.set(state, 'competitionsFilters', filters);
+  },
+  setCurrentCompetition(state, competition) {
+    Vue.set(state, 'currentCompetition', competition);
   },
   /**
    * Teams
