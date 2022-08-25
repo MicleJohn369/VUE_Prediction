@@ -55,6 +55,15 @@ module.exports = {
       value: Joi.string().required(),
     }),
   },
+  editCompetition: {
+    params: Joi.object({
+      id: Joi.string().hex().length(24),
+    }),
+    body: Joi.object({
+      name: Joi.string().required(),
+      value: Joi.string().required(),
+    }),
+  },
   getCompetitions: {
     query: Joi.object({
       page: Joi.number()
