@@ -38,9 +38,20 @@ function methods(client) {
       .then((response) => response.data);
   };
 
+  PronostigolClient.prototype.getQuinielaCompetition = function getQuinielaCompetition(id) {
+    return this.restClient.get(`/${QUINIELA}/${COMPETITIONS}/${id}`)
+      .then((response) => response.data);
+  };
+
   PronostigolClient.prototype
     .createQuinielaCompetition = function createQuinielaCompetition(competition) {
       return this.restClient.post(`/${QUINIELA}/${COMPETITIONS}`, competition)
+        .then((response) => response.data);
+    };
+
+  PronostigolClient.prototype
+    .editQuinielaCompetition = function editQuinielaCompetition(id, competition) {
+      return this.restClient.put(`/${QUINIELA}/${COMPETITIONS}/${id}`, competition)
         .then((response) => response.data);
     };
 
