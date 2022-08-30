@@ -143,6 +143,12 @@ export const actions = {
     return Vue.pronostigolClient.editQuinielaCompetition(id, competition)
       .finally(() => commit('setIsLoading', false));
   },
+  deleteCompetition({ commit }, { id }) {
+    commit('setIsLoading', true);
+
+    return Vue.pronostigolClient.deleteQuinielaCompetition(id)
+      .finally(() => commit('setIsLoading', false));
+  },
   /**
    * Teams
    */
