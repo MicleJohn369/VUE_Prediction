@@ -169,8 +169,8 @@ export default {
   },
   computed: {
     ...mapState('quiniela', {
-      seasons: (state) => state.seasons,
-      competitions: (state) => state.competitions,
+      seasons: (state) => state.seasons.data,
+      competitions: (state) => state.competitions.data,
       teams: (state) => state.teams.data,
     }),
     season: {
