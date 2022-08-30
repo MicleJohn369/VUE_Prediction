@@ -243,6 +243,18 @@ exports.editCompetition = async (req, res) => {
   }
 };
 
+exports.deleteCompetition = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const competition = await QuinielaCompetition.findByIdAndDelete(id).exec();
+
+    return res.status(HTTP_CODES.OK).json(competition);
+  } catch (err) {
+    return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).send(err.message);
+  }
+};
+
 /**
  * @api {get} /quiniela/competitions Obtención de todas las competiciones de la Quiniela
  * @apiName GetQuinielaCompetitions

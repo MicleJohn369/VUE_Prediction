@@ -55,6 +55,11 @@ function methods(client) {
         .then((response) => response.data);
     };
 
+  PronostigolClient.prototype.deleteQuinielaCompetition = function deleteQuinielaCompetition(id) {
+    return this.restClient.delete(`/${QUINIELA}/${COMPETITIONS}/${id}`)
+      .then((response) => response.data);
+  };
+
   PronostigolClient.prototype.getQuinielaTeams = function getQuinielaTeams(params) {
     return this.restClient.get(`/${QUINIELA}/${TEAMS}`, {
       params,

@@ -59,13 +59,15 @@ module.exports = function api(app) {
     .put(
       middlewares.isLogged(),
       middlewares.isAuthorized([ROLES.ADMIN]),
+      validate(validations.editCompetition),
       QuinielaCtrl.editCompetition,
+    )
+    .delete(
+      middlewares.isLogged(),
+      middlewares.isAuthorized([ROLES.ADMIN]),
+      validate(validations.deleteCompetition),
+      QuinielaCtrl.deleteCompetition,
     );
-  /* .delete(
-      middlewares.isLogged_api,
-      middlewares.isAuthorized_api([ROLES.ADMIN]),
-      quiniela_api_deleteCompetition,
-    ); */
 
   /* Temporadas */
   quiniela
