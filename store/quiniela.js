@@ -59,6 +59,8 @@ export const state = () => ({
   teamsFilters: {},
   currentTeam: null,
   competitionsFilters: {},
+  currentCompetition: null,
+  seasonsFilters: {},
 });
 
 export const actions = {
@@ -104,7 +106,10 @@ export const actions = {
    */
   getSeasons({ state, commit }) {
     commit('setIsLoading', true);
+    const seasonsFilters = { ...state.seasonsFilters };
+
     return Vue.pronostigolClient.getQuinielaSeasons({
+      ...seasonsFilters,
       ...state.seasonsPagination,
     })
       .then((seasons) => commit('setSeasons', seasons))
@@ -323,6 +328,9 @@ export const mutations = {
   },
   setSeasonsPagination(state, pagination) {
     Vue.set(state, 'seasonsPagination', pagination);
+  },
+  setSeasonsFilters(state, filters) {
+    Vue.set(state, 'seasonsFilters', filters);
   },
   /**
    * Competitions

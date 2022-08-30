@@ -160,7 +160,7 @@ export default {
               icon: 'mdi-calendar',
               title: this.$t('DASHBOARD.MENU.QUINIELA.SEASONS.TEXT'),
               to: this.localePath({
-                name: 'quiniela-seasons',
+                name: 'admin-quiniela-seasons',
               }),
             }, {
               icon: 'mdi-history',

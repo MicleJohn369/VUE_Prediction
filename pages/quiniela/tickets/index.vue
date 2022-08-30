@@ -236,7 +236,7 @@ export default {
       tickets: (state) => state.tickets.data,
       total: (state) => state.tickets.total,
       pagination: 'ticketsPagination',
-      seasons: (state) => state.seasons,
+      seasons: (state) => state.seasons.data,
       loading: 'loading',
     }),
     season: {

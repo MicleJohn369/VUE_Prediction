@@ -1104,6 +1104,9 @@ export default {
         COMPETITIONS: {
           TEXT: 'Competiciones',
         },
+        SEASONS: {
+          TEXT: 'Temporadas',
+        },
       },
     },
     VIEWS: {
@@ -1300,6 +1303,65 @@ export default {
           MESSAGES: {
             DELETED: 'La competición <b>{competition}</b> fue eliminada correctamente.',
             DELETE_ERROR: 'La competición <b>{competition}</b> no pudo ser eliminada.',
+          },
+        },
+        SEASONS: {
+          TITLE: 'Temporadas',
+          SHOW_FILTERS: {
+            TEXT: 'Filtros',
+          },
+          FILTERS: {
+            NAME: {
+              LABEL: 'Nombre',
+            },
+          },
+          CREATE_SEASON_BUTTON: {
+            TEXT: 'Añadir temporada',
+          },
+          TABLE: {
+            NAME: {
+              LABEL: 'Nombre',
+            },
+            ACTIONS: {
+              LABEL: 'Acciones',
+              EDIT: {
+                TOOLTIP: 'Editar temporada',
+              },
+              DELETE: {
+                TOOLTIP: 'Eliminar temporada',
+              },
+            },
+          },
+          SEASON_FORM: {
+            CREATE: {
+              TITLE: 'Creación de temporada',
+            },
+            EDIT: {
+              TITLE: 'Edición de temporada',
+            },
+            NAME: {
+              LABEL: 'Nombre',
+              ERRORS: {
+                REQUIRED: 'El nombre es obligatorio',
+              },
+            },
+            VALUE: {
+              LABEL: 'Valor',
+              PLACEHOLDER: 'Texto sin caracteres especiales utilizado para las búsquedas',
+              ERRORS: {
+                REQUIRED: 'El valor es obligatorio',
+              },
+            },
+            MESSAGES: {
+              CREATED: 'La temporada <b>{season}</b> fue creada correctamente.',
+              EDITED: 'La temporada <b>{season}</b> fue actualizada correctamente.',
+              CREATE_ERROR: 'Hubo un error al crear la temporada.',
+              EDIT_ERROR: 'Hubo un error al editar la temporada.',
+            },
+          },
+          MESSAGES: {
+            DELETED: 'La temporada <b>{season}</b> fue eliminada correctamente.',
+            DELETE_ERROR: 'La temporada <b>{season}</b> no pudo ser eliminada.',
           },
         },
       },

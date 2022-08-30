@@ -119,27 +119,54 @@ exports.findAllTickets = async (req, res) => {
  * @apiVersion 1.0.0
  *
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Los posibles valores son "asc" y "desc".
+ * @apiParam {String} [sort_property] Propiedad por la que ordenar los registros. El posible valor es "name". Por defecto se ordenan por "name".
+ * @apiParam {Number} [page] Número de página a consultar. Por defecto se establece a 1.
+ * @apiParam {Number} [per_page] Número de registros por página deseados. Por defecto se establece a 10.
+ * @apiParam {String} [name] Filtro de los registros por el nombre dado.
  *
  * @apiSampleRequest /quiniela/seasons
  */
 exports.findAllSeasons = async (req, res) => {
   const { query } = req;
 
-  const sort_property = 'name';
+  const { name } = query;
+  const page = Number(query.page) || 1;
+  const perPage = Number(query.per_page);
+  const sort_property = query.sort_property || 'name';
   const sort_type = query.sort_type || 'desc';
+
+  const filters = {};
+
+  if (name) {
+    filters.name = {
+      $regex: name,
+      $options: '(?-i)g',
+    };
+  }
 
   const sort = {
     [sort_property]: sort_type,
   };
+  const skip = (page - 1) * (perPage || 0);
+  const limit = perPage || undefined;
 
   const options = {
     sort,
+    skip,
+    limit,
   };
 
   try {
-    const tickets = await QuinielaSeason.find({}, null, options).exec();
+    const total = await QuinielaSeason.countDocuments(filters).exec();
 
-    return res.status(HTTP_CODES.OK).json(tickets);
+    const seasons = await QuinielaSeason.find(filters, null, options).exec();
+
+    return res.status(HTTP_CODES.OK).json({
+      page,
+      perPage,
+      total,
+      data: seasons,
+    });
   } catch (err) {
     return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).send(err.message);
   }
@@ -265,6 +292,10 @@ exports.deleteCompetition = async (req, res) => {
  * @apiVersion 1.0.0
  *
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Los posibles valores son "asc" y "desc".
+ * @apiParam {String} [sort_property] Propiedad por la que ordenar los registros. El posible valor es "name". Por defecto se ordenan por "name".
+ * @apiParam {Number} [page] Número de página a consultar. Por defecto se establece a 1.
+ * @apiParam {Number} [per_page] Número de registros por página deseados. Por defecto se establece a 10.
+ * @apiParam {String} [name] Filtro de los registros por el nombre dado.
  *
  * @apiSampleRequest /quiniela/competitions
  */
