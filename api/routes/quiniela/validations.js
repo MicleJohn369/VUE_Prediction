@@ -64,6 +64,11 @@ module.exports = {
       value: Joi.string().required(),
     }),
   },
+  deleteCompetition: {
+    params: Joi.object({
+      id: Joi.string().hex().length(24),
+    }),
+  },
   getCompetitions: {
     query: Joi.object({
       page: Joi.number()
