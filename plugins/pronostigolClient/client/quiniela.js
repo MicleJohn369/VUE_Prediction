@@ -31,6 +31,12 @@ function methods(client) {
       .then((response) => response.data);
   };
 
+  PronostigolClient.prototype
+    .createQuinielaSeason = function createQuinielaSeason(season) {
+      return this.restClient.post(`/${QUINIELA}/${SEASONS}`, season)
+        .then((response) => response.data);
+    };
+
   PronostigolClient.prototype.getQuinielaCompetitions = function getQuinielaCompetitions(params) {
     return this.restClient.get(`/${QUINIELA}/${COMPETITIONS}`, {
       params,
