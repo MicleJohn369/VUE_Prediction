@@ -255,6 +255,21 @@ exports.createSeason = async (req, res) => {
   }
 };
 
+exports.editSeason = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const seasonForm = req.body;
+
+    const season = await QuinielaSeason.findByIdAndUpdate(id, {
+      $set: seasonForm,
+    }).exec();
+
+    return res.status(HTTP_CODES.OK).json(season);
+  } catch (err) {
+    return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).send(err.message);
+  }
+};
+
 exports.createCompetition = async (req, res) => {
   const competition = req.body;
   try {
