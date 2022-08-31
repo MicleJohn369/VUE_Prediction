@@ -115,6 +115,12 @@ export const actions = {
       .then((seasons) => commit('setSeasons', seasons))
       .finally(() => commit('setIsLoading', false));
   },
+  createSeason({ commit }, season) {
+    commit('setIsLoading', true);
+
+    return Vue.pronostigolClient.createQuinielaSeason(season)
+      .finally(() => commit('setIsLoading', false));
+  },
   /**
    * Competitions
    */
