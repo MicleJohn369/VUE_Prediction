@@ -270,6 +270,18 @@ exports.editSeason = async (req, res) => {
   }
 };
 
+exports.deleteSeason = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const season = await QuinielaSeason.findByIdAndDelete(id).exec();
+
+    return res.status(HTTP_CODES.OK).json(season);
+  } catch (err) {
+    return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).send(err.message);
+  }
+};
+
 exports.createCompetition = async (req, res) => {
   const competition = req.body;
   try {
