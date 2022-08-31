@@ -244,6 +244,17 @@ exports.findTicketBySeasonAndDay = async (req, res) => {
   }
 };
 
+exports.createSeason = async (req, res) => {
+  const season = req.body;
+  try {
+    await QuinielaSeason.create(season);
+
+    return res.status(HTTP_CODES.CREATED).json(season);
+  } catch (err) {
+    return res.status(HTTP_CODES.INTERNAL_SERVER_ERROR).send(err.message);
+  }
+};
+
 exports.createCompetition = async (req, res) => {
   const competition = req.body;
   try {

@@ -50,6 +50,7 @@ module.exports = function api(app) {
     .post(
       middlewares.isLogged(),
       middlewares.isAuthorized([ROLES.ADMIN]),
+      validate(validations.createCompetition),
       QuinielaCtrl.createCompetition,
     );
 
@@ -72,12 +73,14 @@ module.exports = function api(app) {
   /* Temporadas */
   quiniela
     .route('/seasons')
-    .get(validate(validations.getSeasons), QuinielaCtrl.findAllSeasons);
-  /* .post(
-      middlewares.isLogged_api,
-      middlewares.isAuthorized_api([ROLES.ADMIN]),
-      quiniela_api_createSeason,
-    )
+    .get(validate(validations.getSeasons), QuinielaCtrl.findAllSeasons)
+    .post(
+      middlewares.isLogged(),
+      middlewares.isAuthorized([ROLES.ADMIN]),
+      validate(validations.createSeason),
+      QuinielaCtrl.createSeason,
+    );
+  /*
     .put(
       middlewares.isLogged_api,
       middlewares.isAuthorized_api([ROLES.ADMIN]),

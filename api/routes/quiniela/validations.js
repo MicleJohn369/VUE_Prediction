@@ -55,6 +55,12 @@ module.exports = {
       name: Joi.string().allow(''),
     }),
   },
+  createSeason: {
+    body: Joi.object({
+      name: Joi.string().required(),
+      value: Joi.string().required(),
+    }),
+  },
   createCompetition: {
     body: Joi.object({
       name: Joi.string().required(),
