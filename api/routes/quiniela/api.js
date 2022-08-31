@@ -80,15 +80,15 @@ module.exports = function api(app) {
       validate(validations.createSeason),
       QuinielaCtrl.createSeason,
     );
-  /*
-    .put(
-      middlewares.isLogged_api,
-      middlewares.isAuthorized_api([ROLES.ADMIN]),
-      quiniela_api_editSeason,
-    ); */
+
   quiniela
     .route('/seasons/:id')
-    .get(QuinielaCtrl.findSeasonById);
+    .get(QuinielaCtrl.findSeasonById)
+    .put(
+      middlewares.isLogged(),
+      middlewares.isAuthorized([ROLES.ADMIN]),
+      QuinielaCtrl.editSeason,
+    );
   /* .delete(
       middlewares.isLogged_api,
       middlewares.isAuthorized_api([ROLES.ADMIN]),

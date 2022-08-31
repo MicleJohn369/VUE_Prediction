@@ -61,6 +61,15 @@ module.exports = {
       value: Joi.string().required(),
     }),
   },
+  editSeason: {
+    params: Joi.object({
+      id: Joi.string().hex().length(24),
+    }),
+    body: Joi.object({
+      name: Joi.string().required(),
+      value: Joi.string().required(),
+    }),
+  },
   createCompetition: {
     body: Joi.object({
       name: Joi.string().required(),

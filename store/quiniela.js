@@ -61,6 +61,7 @@ export const state = () => ({
   competitionsFilters: {},
   currentCompetition: null,
   seasonsFilters: {},
+  currentSeason: null,
 });
 
 export const actions = {
@@ -115,10 +116,23 @@ export const actions = {
       .then((seasons) => commit('setSeasons', seasons))
       .finally(() => commit('setIsLoading', false));
   },
+  getSeason({ commit }, id) {
+    commit('setIsLoading', true);
+
+    return Vue.pronostigolClient.getQuinielaSeason(id)
+      .then((season) => commit('setCurrentSeason', season))
+      .finally(() => commit('setIsLoading', false));
+  },
   createSeason({ commit }, season) {
     commit('setIsLoading', true);
 
     return Vue.pronostigolClient.createQuinielaSeason(season)
+      .finally(() => commit('setIsLoading', false));
+  },
+  editSeason({ commit }, { id, season }) {
+    commit('setIsLoading', true);
+
+    return Vue.pronostigolClient.editQuinielaSeason(id, season)
       .finally(() => commit('setIsLoading', false));
   },
   /**
@@ -337,6 +351,9 @@ export const mutations = {
   },
   setSeasonsFilters(state, filters) {
     Vue.set(state, 'seasonsFilters', filters);
+  },
+  setCurrentSeason(state, season) {
+    Vue.set(state, 'currentSeason', season);
   },
   /**
    * Competitions
