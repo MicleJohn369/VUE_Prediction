@@ -155,7 +155,7 @@ export default {
   },
   nuxtI18n: {
     paths: {
-      es: '/admin/quiniela/equipos',
+      es: '/admin/quiniela/temporadas',
     },
   },
   mixins: [getFormattedDate],
