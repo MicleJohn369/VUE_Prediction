@@ -37,16 +37,21 @@ function methods(client) {
   };
 
   PronostigolClient.prototype
+    .createQuinielaSeason = function createQuinielaSeason(season) {
+      return this.restClient.post(`/${QUINIELA}/${SEASONS}`, season)
+        .then((response) => response.data);
+    };
+
+  PronostigolClient.prototype
     .editQuinielaSeason = function editQuinielaSeason(id, season) {
       return this.restClient.put(`/${QUINIELA}/${SEASONS}/${id}`, season)
         .then((response) => response.data);
     };
 
-  PronostigolClient.prototype
-    .createQuinielaSeason = function createQuinielaSeason(season) {
-      return this.restClient.post(`/${QUINIELA}/${SEASONS}`, season)
-        .then((response) => response.data);
-    };
+  PronostigolClient.prototype.deleteQuinielaSeason = function deleteQuinielaSeason(id) {
+    return this.restClient.delete(`/${QUINIELA}/${SEASONS}/${id}`)
+      .then((response) => response.data);
+  };
 
   PronostigolClient.prototype.getQuinielaCompetitions = function getQuinielaCompetitions(params) {
     return this.restClient.get(`/${QUINIELA}/${COMPETITIONS}`, {
