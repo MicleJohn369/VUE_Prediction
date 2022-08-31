@@ -10,10 +10,10 @@
         />
       </v-card>
       <v-card>
-        <QuinielaTeamForm
-          v-if="teamLoaded"
-          ref="editTeamForm"
-          @onSubmit="editTeam()"
+        <QuinielaSeasonForm
+          v-if="seasonLoaded"
+          ref="editSeasonForm"
+          @onSubmit="editSeason()"
         />
       </v-card>
     </v-col>
@@ -23,11 +23,11 @@
 <script>
 import { mapState } from 'vuex';
 
-import QuinielaTeamForm from '@/components/admin/quiniela/teams/QuinielaTeamForm.vue';
+import QuinielaSeasonForm from '@/components/admin/quiniela/seasons/QuinielaSeasonForm.vue';
 
 export default {
   components: {
-    QuinielaTeamForm,
+    QuinielaSeasonForm,
   },
   mixins: [],
   layout: 'admin',
@@ -36,8 +36,8 @@ export default {
     const { id } = this.$route.params;
 
     return {
-      teamLoaded: false,
-      titleText: this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TEAM_FORM.EDIT.TITLE'),
+      seasonLoaded: false,
+      titleText: this.$t('DASHBOARD.VIEWS.QUINIELA.SEASONS.SEASON_FORM.EDIT.TITLE'),
       items: [{
         text: this.$t('DASHBOARD.BREADCRUMBS.DASHBOARD.TEXT'),
         disabled: false,
@@ -48,10 +48,10 @@ export default {
         exactPath: true,
       },
       {
-        text: this.$t('DASHBOARD.BREADCRUMBS.QUINIELA.TEAMS.TEXT'),
+        text: this.$t('DASHBOARD.BREADCRUMBS.QUINIELA.SEASONS.TEXT'),
         disabled: false,
         to: this.localePath({
-          name: 'admin-teams',
+          name: 'admin-seasons',
         }),
         nuxt: true,
         exactPath: true,
@@ -61,25 +61,25 @@ export default {
   },
   async fetch() {
     return Promise.all([
-      this.$store.dispatch('quiniela/getTeam', this.id),
+      this.$store.dispatch('quiniela/getSeason', this.id),
     ]).then(() => {
-      const team = this.$store.state.quiniela.currentTeam;
+      const season = this.$store.state.quiniela.currentSeason;
 
       this.items.push({
-        text: team.name,
+        text: season.name,
         disabled: false,
         to: this.localePath({
-          name: 'admin-teams-id',
+          name: 'admin-seasons-id',
         }),
         nuxt: true,
         exactPath: true,
       });
-      this.teamLoaded = true;
+      this.seasonLoaded = true;
     });
   },
   head() {
     return {
-      title: this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TEAM_FORM.EDIT.TITLE'),
+      title: this.$t('DASHBOARD.VIEWS.QUINIELA.SEASONS.SEASON_FORM.EDIT.TITLE'),
     };
   },
   computed: {
@@ -88,21 +88,21 @@ export default {
     }),
   },
   methods: {
-    editTeam() {
-      const { teamForm } = this.$refs.editTeamForm;
-      const teamEditedText = this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TEAM_FORM.MESSAGES.EDITED', {
-        team: teamForm.name,
+    editSeason() {
+      const { seasonForm } = this.$refs.editSeasonForm;
+      const seasonEditedText = this.$t('DASHBOARD.VIEWS.QUINIELA.SEASONS.SEASON_FORM.MESSAGES.EDITED', {
+        season: seasonForm.name,
       });
 
-      return this.$store.dispatch('quiniela/editTeam', { id: this.id, team: teamForm })
-        .then(() => this.$toast.success(teamEditedText, {
+      return this.$store.dispatch('quiniela/editSeason', { id: this.id, season: seasonForm })
+        .then(() => this.$toast.success(seasonEditedText, {
           icon: 'check',
         }))
         .then(() => this.$router.push(this.localePath({
-          name: 'admin-quiniela-teams',
+          name: 'admin-quiniela-seasons',
         })))
         .catch(() => {
-          this.$toast.error(this.$t('DASHBOARD.VIEWS.QUINIELA.TEAMS.TEAM_FORM.MESSAGES.EDIT_ERROR'));
+          this.$toast.error(this.$t('DASHBOARD.VIEWS.QUINIELA.SEASONS.SEASON_FORM.MESSAGES.EDIT_ERROR'));
         });
     },
   },
