@@ -70,6 +70,11 @@ module.exports = {
       value: Joi.string().required(),
     }),
   },
+  deleteSeason: {
+    params: Joi.object({
+      id: Joi.string().hex().length(24),
+    }),
+  },
   createCompetition: {
     body: Joi.object({
       name: Joi.string().required(),

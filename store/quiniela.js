@@ -135,6 +135,12 @@ export const actions = {
     return Vue.pronostigolClient.editQuinielaSeason(id, season)
       .finally(() => commit('setIsLoading', false));
   },
+  deleteSeason({ commit }, { id }) {
+    commit('setIsLoading', true);
+
+    return Vue.pronostigolClient.deleteQuinielaSeason(id)
+      .finally(() => commit('setIsLoading', false));
+  },
   /**
    * Competitions
    */
