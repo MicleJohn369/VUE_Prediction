@@ -1107,6 +1107,9 @@ export default {
         SEASONS: {
           TEXT: 'Temporadas',
         },
+        TICKETS: {
+          TEXT: 'Sorteos',
+        },
       },
     },
     VIEWS: {
@@ -1362,6 +1365,77 @@ export default {
           MESSAGES: {
             DELETED: 'La temporada <b>{season}</b> fue eliminada correctamente.',
             DELETE_ERROR: 'La temporada <b>{season}</b> no pudo ser eliminada.',
+          },
+        },
+        TICKETS: {
+          TITLE: 'Sorteos',
+          SHOW_FILTERS: {
+            TEXT: 'Filtros',
+          },
+          FILTERS: {
+            SEASON: {
+              LABEL: 'Temporada',
+            },
+            DATE: {
+              LABEL: 'Fecha',
+            },
+            DAY: {
+              LABEL: 'Jornada',
+            },
+          },
+          CREATE_TICKET_BUTTON: {
+            TEXT: 'Añadir sorteo',
+          },
+          TABLE: {
+            SEASON: {
+              LABEL: 'Temporada',
+            },
+            DATE: {
+              LABEL: 'Fecha',
+            },
+            DAY: {
+              LABEL: 'Jornada',
+            },
+            ACTIONS: {
+              LABEL: 'Acciones',
+              EDIT: {
+                TOOLTIP: 'Editar sorteo',
+              },
+              DELETE: {
+                TOOLTIP: 'Eliminar sorteo',
+              },
+            },
+          },
+          TICKET_FORM: {
+            CREATE: {
+              TITLE: 'Creación de sorteo',
+            },
+            EDIT: {
+              TITLE: 'Edición de sorteo',
+            },
+            NAME: {
+              LABEL: 'Nombre',
+              ERRORS: {
+                REQUIRED: 'El nombre es obligatorio',
+              },
+            },
+            VALUE: {
+              LABEL: 'Valor',
+              PLACEHOLDER: 'Texto sin caracteres especiales utilizado para las búsquedas',
+              ERRORS: {
+                REQUIRED: 'El valor es obligatorio',
+              },
+            },
+            MESSAGES: {
+              CREATED: 'El sorteo <b>{ticket}</b> fue creado correctamente.',
+              EDITED: 'El sorteo <b>{ticket}</b> fue actualizado correctamente.',
+              CREATE_ERROR: 'Hubo un error al crear el sorteo.',
+              EDIT_ERROR: 'Hubo un error al editar el sorteo.',
+            },
+          },
+          MESSAGES: {
+            DELETED: 'El sorteo <b>{ticket}</b> fue eliminado correctamente.',
+            DELETE_ERROR: 'El sorteo <b>{ticket}</b> no pudo ser eliminado.',
           },
         },
       },
