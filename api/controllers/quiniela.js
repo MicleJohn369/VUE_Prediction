@@ -56,7 +56,9 @@ function filtrarInformacion(result) {
  *
  * @apiVersion 1.0.0
  *
- * @apiParam {Number} [season] Temporada asociada a los sorteos consultados
+ * @apiParam {String} [season] Temporada asociada a los sorteos consultados
+ * @apiParam {String} [date] Fecha asociada a los sorteos consultados
+ * @apiParam {Number} [day] Jornada asociada a los sorteos consultados
  * @apiParam {Number} [page] Número de página a consultar. Por defecto se establece a 1.
  * @apiParam {Number} [per_page] Número de registros por página deseados. Por defecto se establece a 10.
  * @apiParam {String} [sort_type] Sentido de la ordenación de registros. Por defecto se ordenan por fecha descendentemente.
@@ -66,7 +68,7 @@ function filtrarInformacion(result) {
 exports.findAllTickets = async (req, res) => {
   const { query } = req;
 
-  const { season } = query;
+  const { season, date, day } = query;
   const page = Number(query.page) || 1;
   const perPage = Number(query.per_page) || 10;
   let sort_property = query.sort_property || 'date';
@@ -75,6 +77,8 @@ exports.findAllTickets = async (req, res) => {
   const filters = {};
 
   if (season) filters.temporada = season;
+  if (date) filters.fecha = date;
+  if (day) filters.jornada = day;
 
   sort_property = 'fecha';
 
@@ -91,7 +95,7 @@ exports.findAllTickets = async (req, res) => {
   };
 
   try {
-    const total = await QuinielaTicket.countDocuments().exec();
+    const total = await QuinielaTicket.countDocuments(filters).exec();
 
     const tickets = await QuinielaTicket.find(filters, null, options).exec();
 
