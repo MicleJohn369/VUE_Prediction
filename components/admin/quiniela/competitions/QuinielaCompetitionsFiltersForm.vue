@@ -37,8 +37,6 @@
 </template>
 
 <script>
-import utils from '@/utils';
-
 export default {
   name: 'QuinielaCompetitionsFiltersForm',
   props: {},
@@ -50,15 +48,6 @@ export default {
       valid: false,
       nameText: this.$t('DASHBOARD.VIEWS.QUINIELA.COMPETITIONS.FILTERS.NAME.LABEL'),
       searchText: this.$t('COMMON.BUTTON.SEARCH.TEXT'),
-      roles: [
-        {
-          name: this.$t('ROLES.ADMIN.TEXT'),
-          value: utils.ROLES.ADMIN.VALUE,
-        }, {
-          name: this.$t('ROLES.PRIVILEGED.TEXT'),
-          value: utils.ROLES.PRIVILEGED.VALUE,
-        },
-      ],
     };
   },
   computed: {
