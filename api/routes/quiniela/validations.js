@@ -109,6 +109,8 @@ module.exports = {
   getTickets: {
     query: Joi.object({
       season: Joi.string(),
+      date: Joi.string(),
+      day: Joi.number().min(1),
       page: Joi.number().min(1),
       per_page: Joi.number().min(1),
       sort_type: Joi.string().valid('asc', 'desc'),
