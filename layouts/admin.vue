@@ -166,7 +166,7 @@ export default {
               icon: 'mdi-history',
               title: this.$t('DASHBOARD.MENU.QUINIELA.TICKETS.TEXT'),
               to: this.localePath({
-                name: 'quiniela-tickets',
+                name: 'admin-quiniela-tickets',
               }),
             }, {
               icon: 'mdi-database-search',
